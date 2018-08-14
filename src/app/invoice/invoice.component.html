@@ -1,0 +1,64 @@
+<div class="main col-lg-12 row">
+  <div class=" col-lg-4">
+    <div class="container col-lg-12">
+      <h5>Add new invoice</h5>
+      <form>
+          <div class="form-group">
+              <label for="invoice_title">Invoice title</label>
+              <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-control"  [(ngModel)]="invoice.title" placeholder="Invoice title">
+          </div>
+
+          <div class="form-group">
+              <label for="invoice_id">Invoice id</label>
+              <input [ngModelOptions]="{standalone: true}" name="invoice_id" id="invoice_id" type="text" class="form-control"  [(ngModel)]="invoice.id" placeholder="Invoice id">
+          </div>
+
+          <div class="form-group">
+            <button (click)="addItem()">+ add item</button>
+            <div *ngFor="let i of invoice.items"><input [ngModelOptions]="{standalone: true}" [(ngModel)]="i.description"/></div>
+          </div>
+
+      </form>
+      <button  (click)="save()" type="button" class="btn btn-outline-secondary">Save invoice</button>
+
+    </div>
+    <div class="container col-lg-12" style="margin-top:10px">
+      <h5>History</h5>
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Open</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let i of history">
+              <th scope="row">{{i.id}}</th>
+              <td>{{i.title}}</td>
+              <td><a (click)="openInvoice(i)" class="button">open</a></td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="container col-lg-7">
+    <i class="glyphicon glyphicon-eye-open"></i>
+    <h3 class="{{invoice.title?'':'gris'}}">{{invoice.title?invoice.title:'No title'}}</h3>
+    <div class="items">
+      <div class="item-header col-lg-12 row">
+            <div class="col-lg-8">Description</div>
+            <div class="col-lg-2">Amount</div>
+            <div class="col-lg-2">Unit</div>
+      </div>
+      <div *ngFor="let i of invoice.items" class="item col-lg-12 row">
+        <div class="col-lg-8">{{i.description}}</div>
+        <div class="col-lg-2">{{i.amount}}</div>
+        <div class="col-lg-2">{{i.unit}}</div>
+      </div>
+
+    </div>
+  </div>
+</div>
