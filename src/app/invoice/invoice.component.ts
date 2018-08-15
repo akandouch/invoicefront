@@ -38,11 +38,19 @@ export class InvoiceComponent implements OnInit {
     item.setDescription('dummy item');
     item.setUnit(8);
     item.setAmount(500);
-    this.invoice.getAddItem(item);
+    this.invoice.addItem(item);
   }
-  openInvoice(invoice:Invoice){
-    this.current = invoice;
-    this.invoice = invoice;
+  openInvoice(invoice:any){
+    this.current = this.invoice;
+
+    let i:Invoice = new Invoice();
+    i.fillInvoice(invoice);
+    this.invoice = i;
+
+  }
+  newInvoice(){
+    this.invoice = this.current;
+    this.current = null;
   }
 
 }
