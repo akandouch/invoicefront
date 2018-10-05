@@ -9,19 +9,25 @@ import {FormsModule } from '@angular/forms';
 
 import {HttpClientModule} from '@angular/common/http';
 
-import {NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule,NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { ItemListComponent } from './item-list/item-list.component';
+import { InvoicePreviewComponent } from './invoice-preview/invoice-preview.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InvoiceComponent,
-    ItemComponent
+    ItemComponent,
+    ItemListComponent,
+    InvoicePreviewComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

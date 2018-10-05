@@ -3,72 +3,68 @@
     <div class="container col-lg-12">
       <h5>{{current?'Edit invoice':'Add new invoice'}}</h5>
       <a class="{{current?'':'hide'}} button new-invoice" (click)="newInvoice()" >new</a>
-      <form>
-          <div class="col-lg-12 row">
-            <div class="col-lg-6">
-              <div class="form-group">
-                  <label for="invoice_title">Street</label>
-                  <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-control"  [(ngModel)]="invoice.vat" placeholder="BE123456789">
-              </div>
 
-              <div class="form-group">
-                  <label for="invoice_title">Street</label>
-                  <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-control"  [(ngModel)]="invoice.street" placeholder="Rue du milieu, 6">
-              </div>
-              
-              <div class="form-group">
-                  <label for="invoice_title">City</label>
-                  <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-control"  [(ngModel)]="invoice.city" placeholder="Bruxelles">
-              </div>
-
-              <div class="form-group">
-                  <label for="invoice_title">Postcode</label>
-                  <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-control"  [(ngModel)]="invoice.postcode" placeholder="1000">
-              </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="invoice_title">Street</label>
-                    <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-control"  [(ngModel)]="invoice.cust_vat" placeholder="BE123456789">
-                </div>
-                <div class="form-group">
-                    <label for="invoice_title">Street</label>
-                    <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-control"  [(ngModel)]="invoice.cust_street" placeholder="Rue du milieu, 6">
-                </div>
-                
-                <div class="form-group">
-                    <label for="invoice_title">City</label>
-                    <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-control"  [(ngModel)]="invoice.cust_city" placeholder="Bruxelles">
-                </div>
-  
-                <div class="form-group">
-                    <label for="invoice_title">Postcode</label>
-                    <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-control"  [(ngModel)]="invoice.cust_postcode" placeholder="1000">
-                </div>
-
-            </div>
+      <div class="col-lg-12 row">
+        <div class="col-lg-12 row invoicer-edit">
+          
+          <div class="col-lg-4">
+            <label for="invoice_title">Name</label>
+            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.name" placeholder="me">
+          </div>
+          
+          <div class="col-lg-8">
+            <label for="invoice_title">VAT</label>
+            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.vat" placeholder="BE123456789">
+          </div>
+          
+          <div class="col-lg-4">
+            <label for="invoice_title">Street</label>
+            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.street" placeholder="Rue du milieu, 6">
+          </div>
+          
+          <div class="col-lg-4">
+            <label for="invoice_title">City</label>
+            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class=""  [(ngModel)]="invoice.city" placeholder="Bruxelles">
+          </div>
+          
+          <div class="col-lg-4">
+            <label for="invoice_title">Postcode</label>
+            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class=""  [(ngModel)]="invoice.postcode" placeholder="1000">
           </div>
 
-          <div class="form-group">
-            <a (click)="addItem()" class="button">+ add item</a>
-            <div class="col-lg-12 row new-items {{invoice.items.length>0?'':'hide'}}">
-              <div class="col-lg-2">Project</div>
-              <div class="col-lg-2">Period</div>
-              <div class="col-lg-2">Nature</div>
-              <div class="col-lg-2">Days</div>
-              <div class="col-lg-2">Rate</div>
+        </div>
+        <div class="col-lg-12 row invoiced-edit">
+            <div class="col-lg-4">
+              <label for="invoice_title">Customer</label>
+              <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_name" placeholder="customer">
             </div>
-            <div *ngFor="let i of invoice.items" class="col-lg-12 row">
-                <div class="col-lg-2"><input [ngModelOptions]="{standalone: true}" [(ngModel)]="i.project"/></div>
-                <div class="col-lg-2"><input [ngModelOptions]="{standalone: true}" [(ngModel)]="i.period"/></div>
-                <div class="col-lg-2"><input [ngModelOptions]="{standalone: true}" [(ngModel)]="i.nature"/></div>
-                <div class="col-lg-2"><input [ngModelOptions]="{standalone: true}" [(ngModel)]="i.days"/></div>
-                <div class="col-lg-2"><input [ngModelOptions]="{standalone: true}" [(ngModel)]="i.rate"/></div>
+            <div class="col-lg-8">
+              <label for="invoice_title">VAT</label>
+              <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_vat" placeholder="BE123456789">
             </div>
-          </div>
+            <div class="col-lg-4">
+              <label for="invoice_title">Street</label>
+              <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_street" placeholder="Rue du milieu, 6">
+            </div>
+            
+            <div class="col-lg-4">
+              <label for="invoice_title">City</label>
+              <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_city" placeholder="Bruxelles">
+            </div>
 
-      </form>
-      <button  (click)="save()" type="button" class="btn btn-outline-secondary">Save invoice</button>
+            <div class="col-lg-4">
+              <label for="invoice_title">Postcode</label>
+              <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_postcode" placeholder="1000">
+            </div>
+
+        </div>
+      </div>
+      
+      <hr/>
+      
+      <app-item-list [invoice]="invoice"></app-item-list>
+
+      <button  (click)="save()" type="button" class="btn btn-outline-secondary  new-invoice">Save invoice</button>
 
     </div>
     <div class="container col-lg-12" style="margin-top:10px">
@@ -77,104 +73,23 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Title</th>
-              <th scope="col">Open</th>
+              <th scope="col">Period</th>
+              <th scope="col">Customer</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let i of history">
               <th scope="row">{{i.id}}</th>
-              <td>{{i.title}}</td>
+              <td>{{i.date}}</td>
+              <td>{{i.cust_name}}</td>
               <td><a (click)="openInvoice(i)" class="button">open</a></td>
             </tr>
           </tbody>
       </table>
     </div>
   </div>
-
-
-  <div class="container col-lg-6 invoice-view">
-    <div class="invoice-header col-lg-12 row">
-      <div class="logo col-lg-10"><img src="./assets/img/logo.png" height="75px" width="75px"/></div>
-      <div class="label col-lg-2"><label>INVOICE</label></div>
-      <div class="to col-lg-10">
-        <label>invoice to : {{invoice.cust_vat}}</label><br/>
-        <label>{{invoice.cust_street}}</label><br/>
-        <label>{{invoice.cust_postcode}}, {{invoice.cust_city}}</label><br/>
-      </div>
-      <div class="id col-lg-2">INVOICE NUMBER</div>
-    </div>
-    <h3 class="{{invoice.title?'':'gris'}}">{{invoice.title?invoice.title:'No title'}}</h3>
-    <div class="col-lg-12 items-header">
-      <div class="col-lg-12 row">
-        <div class="col-lg-3 item-header">PROJECT</div>
-        <div class="col-lg-1 item-header">PERIOD</div>
-        <div class="col-lg-4 item-header">NATURE</div>
-        <div class="col-lg-1 item-header">DAYS</div>
-        <div class="col-lg-1 item-header">RATE</div>
-        <div class="col-lg-2 item-header">AMOUNT</div>
-      </div>
-    </div>
-    <div class="col-lg-12 items">
-      <div *ngFor="let i of invoice.items" class="col-lg-12 row">
-        <div class="col-lg-3 item">{{i.project}}</div>
-        <div class="col-lg-1 item">{{i.period}}</div>
-        <div class="col-lg-4 item">{{i.nature}}</div>
-        <div class="col-lg-1 item">{{i.days}}</div>
-        <div class="col-lg-1 item">{{i.rate}}</div>
-        <div class="col-lg-2 item">{{i.amount}}</div>
-      </div>
-      <div class="col-lg-12 row">
-          <div class="col-lg-3 item-last-but-not-least"></div>
-          <div class="col-lg-1 item-last-but-not-least"></div>
-          <div class="col-lg-4 item-last-but-not-least"></div>
-          <div class="col-lg-1 item-last-but-not-least"></div>
-          <div class="col-lg-1 item-last-but-not-least"></div>
-          <div class="col-lg-2 item-last-but-not-least"></div>
-      </div>
-    </div>
-    
-    <div class="col-lg-12 items-footer">
-        <div class="col-lg-12 row">
-          <div class="col-lg-8"></div>
-          <div class="col-lg-2 item-footer-label">SUBTOTAL</div>
-          <div class="col-lg-2 item-footer">155</div>
-        </div>
-      </div>
-      
-    <div class="col-lg-12 items-footer">
-        <div class="col-lg-12 row">
-          <div class="col-lg-8"></div>
-          <div class="col-lg-2 item-footer-label">TAXABLE</div>
-          <div class="col-lg-2 item-footer">155</div>
-        </div>
-      </div>
-
-      
-    <div class="col-lg-12 items-footer">
-        <div class="col-lg-12 row">
-          <div class="col-lg-8"></div>
-          <div class="col-lg-2 item-footer-label">VAT RATE</div>
-          <div class="col-lg-2 item-footer">155</div>
-        </div>
-      </div>
-
-      
-    <div class="col-lg-12 items-footer">
-        <div class="col-lg-12 row">
-          <div class="col-lg-8"></div>
-          <div class="col-lg-2 item-footer-label">VAT AMOUNT</div>
-          <div class="col-lg-2 item-footer">155</div>
-        </div>
-      </div>
-
-      
-      <div class="col-lg-12 items-footer">
-          <div class="col-lg-12 row">
-            <div class="col-lg-8"></div>
-            <div class="col-lg-2 item-footer-label" style="font-weight: bold;">TOTAL</div>
-            <div class="col-lg-2 item-footer" style="font-weight: bold;">155</div>
-          </div>
-        </div>
+  <div class=" col-lg-6">
+    <app-invoice-preview [invoice]="invoice"></app-invoice-preview>
   </div>
 </div>

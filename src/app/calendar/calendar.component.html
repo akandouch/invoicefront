@@ -1,0 +1,14 @@
+<p *ngIf="period.from && period.to">{{period.from.day}}/{{period.from.month}}/{{period.from.year}} ->
+{{period.to.day}}/{{period.to.month}}/{{period.to.year}}
+</p>
+<ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"></ngb-datepicker>
+<ng-template #t let-date="date" let-focused="focused">
+    <span class="custom-day"
+          [class.focused]="focused"
+          [class.range]="isRange(date)"
+          [class.faded]="isHovered(date) || isInside(date)"
+          (mouseenter)="hoveredDate = date"
+          (mouseleave)="hoveredDate = null">
+      {{ date.day }}
+    </span>
+</ng-template>

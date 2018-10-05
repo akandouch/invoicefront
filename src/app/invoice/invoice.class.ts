@@ -10,6 +10,7 @@ export class Invoice {
     private cust_street:string;
     private cust_city:string;
     private cust_postcode:string;
+    private cust_name:string;
     /** customer informations */
 
     /** invoicer informations */
@@ -17,6 +18,7 @@ export class Invoice {
     private street:string;
     private city:string;
     private postcode:string;
+    private name:string;
     /** invoicer informations */
 
 
@@ -35,11 +37,21 @@ export class Invoice {
         this.city = invoice.city;
         this.postcode = invoice.postcode;
         this.street = invoice.street;
+        this.name = invoice.name;
 
         this.cust_city =invoice.cust_city;
         this.cust_postcode = invoice.cust_postcode;
         this.cust_street = invoice.cust_street;
-        this.cust_vat = invoice.cust_vat
+        this.cust_vat = invoice.cust_vat;
+        this.cust_name = invoice.cust_name;
 
+    }
+
+    public removeItem(idx:number){
+        this.items.splice(idx, 1);
+    }
+
+    public updateItem(idx:number,item:Item){
+        this.items[idx] = item;
     }
 }

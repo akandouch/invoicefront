@@ -1,0 +1,97 @@
+<div class="form-group">
+  <h5>Items</h5>
+  <div class="col-lg-12 row new-items table-header {{invoice.items.length>0?'':'hide'}}">
+    <div class="col-lg-2">Project</div>
+    <div class="col-lg-2">Period</div>
+    <div class="col-lg-3">Nature</div>
+    <div class="col-lg-2">Days</div>
+    <div class="col-lg-1">Rate</div>
+    <div class="col-lg-2">Delete</div>
+  </div>
+  <div *ngFor="let i of invoice.items; let idx = index" class="col-lg-12 row add-items table-items">
+      <div class="col-lg-2">{{i.project}}</div>
+      <div class="col-lg-2">
+        {{i.period.from.day}}/{{i.period.from.month}}/{{i.period.from.year}} -
+        {{i.period.to.day}}/{{i.period.to.month}}/{{i.period.to.year}}
+      </div>
+      <div class="col-lg-3">{{i.nature}}</div>
+      <div class="col-lg-2">{{i.days}}</div>
+      <div class="col-lg-1">{{i.rate}}</div>
+      <div class="col-lg-2">
+        <a class="delete-item" (click)="removeItem(idx)">x</a>
+        <a class="edit-item" (click)="editItem(contentEdit,i,idx)">o</a>
+      </div>
+  </div>
+  <div class="col-lg-12 add-items row">
+    <div class="col-lg-11" style="border:none"></div>
+    <div class="col-lg-1" style="text-align: center;cursor: pointer;" (click)="addItem(content)"><b>+</b></div>
+
+  </div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Edit New</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body col-lg-12 row">
+      <div class="col-lg-12">
+        <label>Project</label>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.project"/>
+      </div>
+      <div class="col-lg-12">
+        <label>Period</label>
+        <app-calendar [period]="newItem.period"></app-calendar>
+      </div>
+      <div class="col-lg-12">
+        <label>Natur</label>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.nature"/>
+      </div>
+      <div class="col-lg-6">
+        <label># Days</label>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.days"/>
+      </div>
+      <div class="col-lg-6">
+        <label>Rate</label>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.rate"/>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="saveItem()">Save</button>
+    </div>
+</ng-template>
+<ng-template #contentEdit let-c="close" let-d="dismiss" class="col-lg-12">
+    <div class="modal-header col-lg-12">
+      <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body col-lg-12 row">
+      <div class="col-lg-12">
+        <label>Project</label>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.project"/>
+      </div>
+      <div class="col-lg-12">
+        <label>Period</label>
+        <app-calendar [period]="currentItem.period"></app-calendar>
+      </div>
+      <div class="col-lg-12">
+        <label>Natur</label>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.nature"/>
+      </div>
+      <div class="col-lg-6">
+        <label># Days</label>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.days"/>
+      </div>
+      <div class="col-lg-6">
+        <label>Rate</label>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.rate"/>
+      </div>
+    </div>
+    <div class="modal-footer col-lg-12">
+      <button type="button" class="btn btn-outline-dark" (click)="updateItem()">Save</button>
+    </div>
+</ng-template>

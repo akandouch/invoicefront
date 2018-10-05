@@ -1,13 +1,17 @@
+import { Period } from "./period.class";
+
 export class Item {
+
+    private id:number;
     private description:string;
-    private amount:number;
     private unit:number;
 
     private project:string;
-    private period:string;
+    public period:Period;
     private nature:string;
-    private days:number;
-    private rate:number;
+    private days:number = 0;
+    private rate:number = 0;
+    private amount:number = this.days * this.rate;
     
     public setDescription(description:string){
         this.description = description;
