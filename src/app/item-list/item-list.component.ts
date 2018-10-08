@@ -3,7 +3,7 @@ import { Invoice } from '../invoice/invoice.class';
 import { NgbModal, NgbActiveModal, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { Item } from '../item/item.class';
 import { Period } from '../item/Period.class';
-import { faCoffee,faEye,faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee,faEye,faTrashAlt, faCopy } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-item-list',
@@ -21,6 +21,7 @@ export class ItemListComponent implements OnInit {
   private faCoffee = faCoffee;
   private faEye = faEye;
   private faTrashAlt = faTrashAlt;
+  private faCopy = faCopy;
   constructor(private ngbModalService:NgbModal) { 
    // this.invoice = invoice;
   }
@@ -55,6 +56,9 @@ export class ItemListComponent implements OnInit {
   saveItem(){
     this.invoice.addItem(this.newItem);
     this.currentModal.close();
+  }
+  copyItem(item:Item){
+    this.invoice.addItem(item);
   }
   d(a){
     this.currentModal.dismiss(a);

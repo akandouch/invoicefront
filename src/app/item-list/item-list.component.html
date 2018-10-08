@@ -4,10 +4,10 @@
   <div class="row new-items table-header {{invoice.items.length>0?'':'hide'}}">
     <div class="col-lg-2">Project</div>
     <div class="col-lg-2">Period</div>
-    <div class="col-lg-3">Nature</div>
+    <div class="col-lg-2">Nature</div>
     <div class="col-lg-2">Days</div>
     <div class="col-lg-1">Rate</div>
-    <div class="col-lg-2">Delete</div>
+    <div class="col-lg-3">Actions</div>
   </div>
   <div *ngFor="let i of invoice.items; let idx = index" class="row add-items table-items">
       <div class="col-lg-2">{{i.project}}</div>
@@ -15,12 +15,14 @@
         {{i.period.from.day}}/{{i.period.from.month}}/{{i.period.from.year}} -
         {{i.period.to.day}}/{{i.period.to.month}}/{{i.period.to.year}}
       </div>
-      <div class="col-lg-3">{{i.nature}}</div>
+      <div class="col-lg-2">{{i.nature}}</div>
       <div class="col-lg-2">{{i.days}}</div>
       <div class="col-lg-1">{{i.rate}}</div>
-      <div class="col-lg-2">
-        <a class="delete-item glyphicon glyphicon-eye-open" (click)="removeItem(idx)"><fa-icon [icon]="faTrashAlt"></fa-icon></a>
+      <div class="col-lg-3">
         <a class="edit-item" (click)="editItem(contentEdit,i,idx)"><fa-icon [icon]="faEye"></fa-icon></a>
+        <a class="copy-item" (click)="copyItem(i)"><fa-icon [icon]="faCopy"></fa-icon></a>
+        <a class="delete-item glyphicon glyphicon-eye-open" (click)="removeItem(idx)"><fa-icon [icon]="faTrashAlt"></fa-icon></a>
+        
       </div>
   </div>
   </div>

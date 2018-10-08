@@ -8,7 +8,7 @@
    /* background-color: rgb(247, 255, 137);*/
     padding: 5px;
     color: #333;
-    border-bottom: solid 1px #ddd;
+    border-bottom: solid 1px #fff;
     padding: 0;
 }
 .add-items.table-items > div {
@@ -44,6 +44,16 @@
     border-radius: 3px;
     cursor: pointer;
     color: #EEE !important;
+    margin-right: 2px;
+}
+
+.copy-item {
+    background-color: rgb(56, 139, 207);
+    padding: 10px 20px 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #EEE !important;
+    margin-right: 2px;
 }
 .modal-body > div > label{
     display: block !important;

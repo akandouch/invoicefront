@@ -1,7 +1,7 @@
 <div class="main row">
-  <div class=" col-lg-12">
+  <div class="col-lg-12">
     <div class="container col-lg-12">
-      <h5>{{current?'Edit invoice':'Add new invoice'}}</h5>
+      <h5>{{current?'Edit invoice':'Add new invoice'}} <fa-icon *ngIf="current" [icon]="faEye" (click)="openPreview(content)"></fa-icon></h5>
       <a class="{{current?'':'hide'}} button new-invoice" (click)="newInvoice()" >new</a>
 
       <div class="col-lg-12 row">
@@ -61,35 +61,47 @@
       </div>
       
       <hr/>
-      
-      <app-item-list [invoice]="invoice"></app-item-list>
+      <div class="col-lg-12 row">
+        <div class="col-lg-8">
+          <app-item-list [invoice]="invoice"></app-item-list>
+        </div>
+        <div class="col-lg-3">
+          <h5>History</h5>
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Period</th>
+                  <th scope="col">Customer</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let i of history">
+                  <th scope="row">{{i.id}}</th>
+                  <td>{{i.date}}</td>
+                  <td>{{i.cust_name}}</td>
+                  <td><a (click)="openInvoice(i)" class="button">open</a></td>
+                </tr>
+              </tbody>
+          </table>
+        </div>
+      </div>
       <app-data-table [dataSource]="invoice.items" [dataColumns]="['project','period','nature','days','rate']"></app-data-table>
       <button  (click)="save()" type="button" class="btn btn-outline-secondary  new-invoice">Save invoice</button>
 
     </div>
-    <div class="container col-lg-12" style="margin-top:10px">
-      <h5>History</h5>
-      <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Period</th>
-              <th scope="col">Customer</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let i of history">
-              <th scope="row">{{i.id}}</th>
-              <td>{{i.date}}</td>
-              <td>{{i.cust_name}}</td>
-              <td><a (click)="openInvoice(i)" class="button">open</a></td>
-            </tr>
-          </tbody>
-      </table>
-    </div>
-  </div>
-  <div class=" col-lg-12">
-    <app-invoice-preview [invoice]="invoice"></app-invoice-preview>
   </div>
 </div>
+
+
+
+<ng-template #content let-c="close" let-d="dismiss" class="col-lg-12">
+    <div class="modal-header col-lg-12">
+        <h4 class="modal-title" id="modal-basic-title">Invoice preview</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  <app-invoice-preview [invoice]="invoice"></app-invoice-preview>
+</ng-template>

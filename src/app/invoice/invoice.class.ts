@@ -2,7 +2,7 @@ import { Item } from "../item/item.class";
 
 export class Invoice {
     private title:string = "";
-    private id:number=0;
+    private id:number;
     private items:Item[] = [];
 
     /** customer informations */

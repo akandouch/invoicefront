@@ -1,10 +1,12 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Invoice } from './invoice.class';
 import { DataService } from '../data.service';
-import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, NgbModalOptions, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { Item } from '../item/item.class';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-invoice',
   templateUrl: './invoice.component.html',
@@ -20,12 +22,14 @@ export class InvoiceComponent implements OnInit {
   ds:DataService;
   history:Invoice[];
   current:Invoice;
+  faEye;
+  private currentModal: NgbActiveModal;
 
-  constructor(ds:DataService) {
+  constructor(ds:DataService, private ngbModalService:NgbModal) {
       this.invoice = new Invoice();
       this.ds = ds;
       ds.getInvoices().subscribe((data:Invoice[])=> this.history = data);
-
+      this.faEye = faEye;
    }
 
   ngOnInit() {
@@ -51,8 +55,8 @@ export class InvoiceComponent implements OnInit {
 
   }
   newInvoice(){
-    this.invoice = this.current;
-    this.current = null;
+    this.invoice = new Invoice();/*this.current;
+    this.current = null;*/
   }
 
 
@@ -78,5 +82,14 @@ export class InvoiceComponent implements OnInit {
     console.log('drag him !! x : ' + event.clientX + ' y : ' + event.clientY);
     
 
+  }
+  openPreview(content){
+    this.currentModal = this.ngbModalService.open(content, {
+      backdrop: 'static',
+      keyboard:false
+    });
+  }  
+  d(a){
+    this.currentModal.dismiss(a);
   }
 }
