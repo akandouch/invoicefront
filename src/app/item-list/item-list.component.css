@@ -4,7 +4,7 @@
     color: #EEE;
 }
 .add-items.table-items {
-    background-color: rgb(247, 255, 137);
+   /* background-color: rgb(247, 255, 137);*/
     padding: 5px;
     color: #333;
     border-bottom: solid 1px #ddd;
@@ -12,7 +12,7 @@
 }
 .add-items.table-items > div {
     padding: 5px;
-    border-right:solid 1px #ddd;
+   /* border-right:solid 1px #ddd;*/
 }
 .add-items.table-items > div:last-of-type {
     border-right:none;

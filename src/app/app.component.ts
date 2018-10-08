@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {faHome, faHistory, faFileInvoice} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'invoicecfront';
+  faHome = faHome;faHistory = faHistory;faFileInvoice = faFileInvoice;
 }

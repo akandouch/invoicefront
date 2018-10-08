@@ -1,2 +1,20 @@
-<app-invoice></app-invoice>
+<div class="menu-top"><div class="brand">Invoicer</div></div>
+<div class="row">
+    <div class="col-sm-2 sidebar">
+        <ul>
+            <li><fa-icon [icon]="faHome"></fa-icon> Menu</li>
+            <li><fa-icon [icon]="faHistory"></fa-icon> History</li>
+            <li><fa-icon [icon]="faFileInvoice"></fa-icon> Invoices</li>
+        </ul>
+        <hr class="recent-hr"/>
+        <ul class="recent">
+            recent
+            <li><fa-icon [icon]="faFileInvoice"></fa-icon> My Money</li>
+            <li><fa-icon [icon]="faFileInvoice"></fa-icon> Customer</li>
+        </ul>
+    </div>
+    <div class="col-sm-10">
+        <app-invoice></app-invoice>
+    </div>
+</div>
 

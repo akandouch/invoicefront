@@ -1,4 +1,4 @@
-<div class="main col-lg-12 row">
+<div class="main row">
   <div class=" col-lg-6">
     <div class="container col-lg-12">
       <h5>{{current?'Edit invoice':'Add new invoice'}}</h5>
@@ -63,7 +63,7 @@
       <hr/>
       
       <app-item-list [invoice]="invoice"></app-item-list>
-
+      <app-data-table [dataSource]="invoice.items" [dataColumns]="['project','period','nature','days','rate']"></app-data-table>
       <button  (click)="save()" type="button" class="btn btn-outline-secondary  new-invoice">Save invoice</button>
 
     </div>
