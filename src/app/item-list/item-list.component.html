@@ -1,6 +1,7 @@
 <div class="form-group">
   <h5>Items</h5>
-  <div class="col-lg-12 row new-items table-header {{invoice.items.length>0?'':'hide'}}">
+  <div class="container-table-items col-lg-12">
+  <div class="row new-items table-header {{invoice.items.length>0?'':'hide'}}">
     <div class="col-lg-2">Project</div>
     <div class="col-lg-2">Period</div>
     <div class="col-lg-3">Nature</div>
@@ -8,7 +9,7 @@
     <div class="col-lg-1">Rate</div>
     <div class="col-lg-2">Delete</div>
   </div>
-  <div *ngFor="let i of invoice.items; let idx = index" class="col-lg-12 row add-items table-items">
+  <div *ngFor="let i of invoice.items; let idx = index" class="row add-items table-items">
       <div class="col-lg-2">{{i.project}}</div>
       <div class="col-lg-2">
         {{i.period.from.day}}/{{i.period.from.month}}/{{i.period.from.year}} -
@@ -22,7 +23,8 @@
         <a class="edit-item" (click)="editItem(contentEdit,i,idx)">o</a>
       </div>
   </div>
-  <div class="col-lg-12 add-items row">
+  </div>
+  <div class="add-items row">
     <div class="col-lg-11" style="border:none"></div>
     <div class="col-lg-1" style="text-align: center;cursor: pointer;" (click)="addItem(content)"><b>+</b></div>
 
