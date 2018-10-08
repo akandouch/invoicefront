@@ -13,6 +13,7 @@ import {NgbModule,NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { ItemListComponent } from './item-list/item-list.component';
 import { InvoicePreviewComponent } from './invoice-preview/invoice-preview.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

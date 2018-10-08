@@ -1,8 +1,8 @@
-.invoicer-edit, .invoiced-edit {
+/*.invoicer-edit, .invoiced-edit {
     border : solid 1px #999;
     padding : 25px;
     margin-bottom: 5px;
-}
+}*/
 .invoiced-edit label, .invoicer-edit label {
     display: block;
     margin: 0px;
