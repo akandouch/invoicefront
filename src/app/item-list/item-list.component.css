@@ -1,7 +1,8 @@
 .new-items.table-header {
-    background-color: rgb(145, 196, 255);    
-    padding: 5px;
-    color: #EEE;
+    background-color: rgb(103, 157, 255);
+    padding: 10px;
+    color: #fff;
+    font-weight: 600;
 }
 .add-items.table-items {
    /* background-color: rgb(247, 255, 137);*/
@@ -12,6 +13,8 @@
 }
 .add-items.table-items > div {
     padding: 5px;
+    height: 48px;
+    padding: 15px;
    /* border-right:solid 1px #ddd;*/
 }
 .add-items.table-items > div:last-of-type {
@@ -30,14 +33,14 @@
 .delete-item {
     background-color: rgb(207, 56, 56);
     margin-right: 2px;
-    padding: 3px 20px 3px 20px;    
+    padding: 10px 20px 10px 20px;
     border-radius: 3px;
     cursor: pointer;
     color: #EEE !important;
 }
 .edit-item {
     background-color: rgb(56, 207, 119);
-    padding: 3px 20px 3px 20px;
+    padding: 10px 20px 10px 20px;
     border-radius: 3px;
     cursor: pointer;
     color: #EEE !important;
