@@ -1,8 +1,13 @@
 .sidebar {
     background-color: rgb(249, 249, 249);
     border-right: solid 1px #DDD;
+    padding-right: 0px;
 }
-.sidebar > ul, ul.recent > li {
+.sidebar > ul {
+    padding-left: 0px;
+    margin-top: 15px;
+}
+ul.recent > li {
     margin-top: 15px;
     padding-left: 15px !important;
 }
@@ -10,7 +15,7 @@ ul.recent {
     padding-left: 0px !important;
 }
 .sidebar > ul > li {
-    padding: 5px 0px 5px 0px;
+    padding: 5px 0px 5px 20px;
     list-style-type: none;
     color: rgb(70, 70, 70);
     font-weight: 500;
@@ -21,7 +26,7 @@ ul.recent {
 
 .sidebar > ul > li:hover {
     cursor: pointer;
-    background-color: #d6d6d6;
+    background-color: #ededed;
 }
 .menu-top {
     background-color: rgb(87, 87, 87);
@@ -39,7 +44,8 @@ ul.recent {
 
 }
 .recent-hr {
-    margin-left: 15px;
+    margin-left: 4%;
+    width: 92%;
 }
 ul.recent {
     padding: 0px;
