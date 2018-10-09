@@ -5,7 +5,7 @@ export class InvoiceProfile {
     private _id:string;
     private firstname:string;
     private lastname:string;
-    private active:boolean;
+    private _active:boolean;
     private vat:string;
     private address:Address;
 
@@ -17,6 +17,12 @@ export class InvoiceProfile {
     }
     set id(id:string){
         this._id = id;
+    }
+    get active(){
+        return this._active;
+    }
+    set active(active:boolean){
+        this._active = active;
     }
 
 }

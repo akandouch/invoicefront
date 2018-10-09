@@ -6,6 +6,7 @@ import { Item } from '../item/item.class';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import { faEye,faPlus, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import { InvoiceProfile } from '../invoiceprofile/invoiceprofile.class';
 
 @Component({
   selector: 'app-invoice',
@@ -26,11 +27,15 @@ export class InvoiceComponent implements OnInit {
   faEye=faEye;faPlus=faPlus;faFolderOpen=faFolderOpen;
   private currentModal: NgbActiveModal;
 
+  private profiles:InvoiceProfile[];
+  private currentProfile:InvoiceProfile;
+
   constructor(ds:DataService, private ngbModalService:NgbModal) {
-     // this.invoice = new Invoice();
       this.ds = ds;
       ds.getInvoices().subscribe((data:Invoice[])=> this.history = data);
       this.faEye = faEye;
+      ds.getInvoiceProfiles().subscribe(x=>this.profiles=x);
+      this.currentProfile = new InvoiceProfile();
    }
 
   ngOnInit() {
@@ -56,11 +61,8 @@ export class InvoiceComponent implements OnInit {
 
   }
   newInvoice(){
-    this.invoice = new Invoice();/*this.current;
-    this.current = null;*/
+    this.invoice = new Invoice();
   }
-
-
   public captureScreen()  
   {  
     var data = document.getElementById('invoice');  
@@ -85,7 +87,9 @@ export class InvoiceComponent implements OnInit {
 
   }
   openModal(content,invoice?:Invoice){
-    this.preview = invoice;
+    invoice?this.preview = invoice:this.invoice = new Invoice();
+
+    this.profiles.forEach(x=>x.active?this.currentProfile=x:{});
     this.currentModal = this.ngbModalService.open(content, {
       backdrop: 'static',
       keyboard:false
