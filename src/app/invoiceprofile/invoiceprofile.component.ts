@@ -33,7 +33,7 @@ export class InvoiceprofileComponent implements OnInit {
   }
 
   save(invoiceProfile:InvoiceProfile){
-    this.ds.postInvoiceProfile(invoiceProfile, ()=>this.getAll());
+    this.ds.postInvoiceProfile(invoiceProfile, ()=>{this.getAll();this.closeModal()});
   }
 
   openModal(content){
@@ -52,6 +52,9 @@ export class InvoiceprofileComponent implements OnInit {
   }
   removeItem(invoiceProfile:InvoiceProfile){
     this.ds.deleteInvoiceProfile(invoiceProfile,()=>this.getAll());
+  }
+  closeModal(){
+    this.currentModal.close();
   }
 
 }

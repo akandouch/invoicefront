@@ -55,7 +55,17 @@
     </div>
     
     <div class="col-lg-12 row">
-      {{currentProfile.firstname}}, {{currentProfile.lastname}}
+      <div class="col-lg-6">
+        <div class="col-lg-12"><p>{{currentProfile.firstname}}, {{currentProfile.lastname}}</p></div>
+        <div class="col-lg-12"><p>{{currentProfile.vat}}</p></div>
+        <div class="col-lg-12"><p>{{currentProfile.address.street}}, {{currentProfile.address.streetNumber}}</p></div>
+        <div class="col-lg-12"><p>{{currentProfile.address.city}} {{currentProfile.address.postcode}}, {{currentProfile.address.country}}</p></div>
+      </div>
+      <div>
+      <select>
+        <option *ngFor="let i of profiles">{{i.firstname}}</option>
+      </select>
+      </div>
      <!-- <div class="col-lg-6 row invoicer-edit">
         
         <div class="col-lg-12">
