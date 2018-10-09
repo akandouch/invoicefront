@@ -2,6 +2,7 @@
     background-color: rgb(249, 249, 249);
     border-right: solid 1px #DDD;
     padding-right: 0px;
+    min-height: 91vh;
 }
 .sidebar > ul {
     padding-left: 0px;
