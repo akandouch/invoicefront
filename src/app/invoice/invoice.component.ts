@@ -5,7 +5,7 @@ import {NgbModal, NgbModalOptions, NgbActiveModal} from '@ng-bootstrap/ng-bootst
 import { Item } from '../item/item.class';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEye,faPlus, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-invoice',
@@ -22,11 +22,12 @@ export class InvoiceComponent implements OnInit {
   ds:DataService;
   history:Invoice[];
   current:Invoice;
-  faEye;
+  preview:Invoice;
+  faEye=faEye;faPlus=faPlus;faFolderOpen=faFolderOpen;
   private currentModal: NgbActiveModal;
 
   constructor(ds:DataService, private ngbModalService:NgbModal) {
-      this.invoice = new Invoice();
+     // this.invoice = new Invoice();
       this.ds = ds;
       ds.getInvoices().subscribe((data:Invoice[])=> this.history = data);
       this.faEye = faEye;
@@ -83,7 +84,8 @@ export class InvoiceComponent implements OnInit {
     
 
   }
-  openPreview(content){
+  openModal(content,invoice?:Invoice){
+    this.preview = invoice;
     this.currentModal = this.ngbModalService.open(content, {
       backdrop: 'static',
       keyboard:false

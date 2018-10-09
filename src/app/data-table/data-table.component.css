@@ -7,3 +7,6 @@
     padding: 10px 0px 10px 0px;
     text-indent: 5px;
 }
+.mat-row:hover {
+    background-color: #ededed;
+}

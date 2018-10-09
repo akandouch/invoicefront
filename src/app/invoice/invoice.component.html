@@ -1,97 +1,37 @@
 <div class="main row">
   <div class="col-lg-12">
-    <div class="container col-lg-12">
-      <h5>{{current?'Edit invoice':'Add new invoice'}} <fa-icon *ngIf="current" [icon]="faEye" (click)="openPreview(content)"></fa-icon></h5>
-      <a class="{{current?'':'hide'}} button new-invoice" (click)="newInvoice()" >new</a>
-
       <div class="col-lg-12 row">
-        <div class="col-lg-6 row invoicer-edit">
-          
-          <div class="col-lg-12">
-            <label for="invoice_title">Name</label>
-            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.name" placeholder="me">
-          </div>
-          
-          <div class="col-lg-12">
-            <label for="invoice_title">VAT</label>
-            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.vat" placeholder="BE123456789">
-          </div>
-          
-          <div class="col-lg-6">
-            <label for="invoice_title">Street</label>
-            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.street" placeholder="Rue du milieu, 6">
-          </div>
-          
-          <div class="col-lg-6">
-            <label for="invoice_title">City</label>
-            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class=""  [(ngModel)]="invoice.city" placeholder="Bruxelles">
-          </div>
-          
-          <div class="col-lg-12">
-            <label for="invoice_title">Postcode</label>
-            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class=""  [(ngModel)]="invoice.postcode" placeholder="1000">
-          </div>
-
+        <div class="col-lg-12">
+          <h5>
+            <fa-icon [icon]="faPlus" class="btn btn-secondary" (click)="openModal(invoiceContent)"></fa-icon>&nbsp;
+            Invoices
+          </h5>
         </div>
-        <div class="col-lg-6 row invoiced-edit">
-            <div class="col-lg-12">
-              <label for="invoice_title">Customer</label>
-              <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_name" placeholder="customer">
+        <div class="col-lg-12">
+          <div class="container-table-items col-lg-12">
+            <div class="row new-items table-header">
+              <div class="col-lg-3">#</div>
+              <div class="col-lg-3">Period</div>
+              <div class="col-lg-3">Customer</div>
+              <div class="col-lg-3"></div>
             </div>
-            <div class="col-lg-12">
-              <label for="invoice_title">VAT</label>
-              <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_vat" placeholder="BE123456789">
+            <div *ngFor="let i of history; let idx = index" class="row add-items table-items">
+              <div class="col-lg-3">{{i.id}}</div>
+              <div class="col-lg-3">{{i.date}}</div>
+              <div class="col-lg-3">{{i.cust_name}}</div>
+              <div class="col-lg-3">
+                <fa-icon [icon]="faFolderOpen" class="btn btn-warning" (click)="openInvoice(i)"></fa-icon>&nbsp;
+                <fa-icon [icon]="faEye" class="btn btn-warning" (click)="openModal(content, i)"></fa-icon>
+              </div>
             </div>
-            <div class="col-lg-6">
-              <label for="invoice_title">Street</label>
-              <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_street" placeholder="Rue du milieu, 6">
-            </div>
-            
-            <div class="col-lg-6">
-              <label for="invoice_title">City</label>
-              <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_city" placeholder="Bruxelles">
-            </div>
-
-            <div class="col-lg-12">
-              <label for="invoice_title">Postcode</label>
-              <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_postcode" placeholder="1000">
-            </div>
-
+          </div>    
+        </div>
+        <p></p>
+        <div class="col-lg-12">
+          <app-item-list [invoice]="invoice" *ngIf="invoice"></app-item-list>
         </div>
       </div>
-      
-      <hr/>
-      <div class="col-lg-12 row">
-        <div class="col-lg-8">
-          <app-item-list [invoice]="invoice"></app-item-list>
-        </div>
-        <div class="col-lg-3">
-          <h5>History</h5>
-          <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Period</th>
-                  <th scope="col">Customer</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let i of history">
-                  <th scope="row">{{i.id}}</th>
-                  <td>{{i.date}}</td>
-                  <td>{{i.cust_name}}</td>
-                  <td><a (click)="openInvoice(i)" class="button">open</a></td>
-                </tr>
-              </tbody>
-          </table>
-        </div>
-      </div>
-      <app-data-table [dataSource]="invoice.items" [dataColumns]="['project','period','nature','days','rate']"></app-data-table>
-      <button  (click)="save()" type="button" class="btn btn-outline-secondary  new-invoice">Save invoice</button>
-
     </div>
-  </div>
 </div>
 
 
@@ -103,5 +43,72 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-  <app-invoice-preview [invoice]="invoice"></app-invoice-preview>
+  <app-invoice-preview [invoice]="preview"></app-invoice-preview>
+</ng-template>
+
+<ng-template #invoiceContent let-c="close" let-d="dismiss" class="col-lg-12">
+    <div class="modal-header col-lg-12">
+        <h4 class="modal-title" id="modal-basic-title">New Invoice</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="col-lg-12 row">
+      <div class="col-lg-6 row invoicer-edit">
+        
+        <div class="col-lg-12">
+          <label for="invoice_title">Name</label>
+          <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.name" placeholder="me">
+        </div>
+        
+        <div class="col-lg-12">
+          <label for="invoice_title">VAT</label>
+          <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.vat" placeholder="BE123456789">
+        </div>
+        
+        <div class="col-lg-6">
+          <label for="invoice_title">Street</label>
+          <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.street" placeholder="Rue du milieu, 6">
+        </div>
+        
+        <div class="col-lg-6">
+          <label for="invoice_title">City</label>
+          <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class=""  [(ngModel)]="invoice.city" placeholder="Bruxelles">
+        </div>
+        
+        <div class="col-lg-12">
+          <label for="invoice_title">Postcode</label>
+          <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class=""  [(ngModel)]="invoice.postcode" placeholder="1000">
+        </div>
+
+      </div>
+      <div class="col-lg-6 row invoiced-edit">
+          <div class="col-lg-12">
+            <label for="invoice_title">Customer</label>
+            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_name" placeholder="customer">
+          </div>
+          <div class="col-lg-12">
+            <label for="invoice_title">VAT</label>
+            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_vat" placeholder="BE123456789">
+          </div>
+          <div class="col-lg-6">
+            <label for="invoice_title">Street</label>
+            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_street" placeholder="Rue du milieu, 6">
+          </div>
+          
+          <div class="col-lg-6">
+            <label for="invoice_title">City</label>
+            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_city" placeholder="Bruxelles">
+          </div>
+
+          <div class="col-lg-12">
+            <label for="invoice_title">Postcode</label>
+            <input [ngModelOptions]="{standalone: true}" name="invoice_title" id="invoice_title" type="text" class="form-"  [(ngModel)]="invoice.cust_postcode" placeholder="1000">
+          </div>
+
+      </div>
+    </div>
+    <div class="modal-footer col-lg-12">
+      <button  (click)="save()" type="button" class="btn btn-outline-secondary  new-invoice">Save invoice</button>
+    </div>
 </ng-template>

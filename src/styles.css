@@ -2,7 +2,15 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~font-awesome/css/font-awesome.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Karla');
 /*@import '../vendor/bootstrap-4.0.0-dist/css/bootstrap.min.css';*/
+html {
+    height: 100%;
+  }
+  body {
+    min-height: 100%;
+    font-family: 'Karla', sans-serif;
+  }
 .container {
     /*border : solid 1px #BEBEBE;
     padding: 25px;*/
@@ -10,9 +18,6 @@
     color: rgb(95, 95, 95);
     font-size: 12px;
     /*height: 100%;*/
-}
-.main {
-    font-family: Arial, Helvetica, sans-serif;
 }
 .gris {
     color: #888;
@@ -143,9 +148,88 @@ a.button:hover {
 input{
     height: 30px;
     border-radius: 3px;
-    border: solid 1px #999;
+    border: solid 1px rgb(209, 209, 209);
     margin-bottom: 5px;
+    text-indent: 5px;
 }
 .modal-dialog {
     max-width: 550px !important;
+}
+
+
+
+
+/*****table list css *****/
+.new-items.table-header {
+    background-color: rgb(255, 200, 43);
+    padding: 10px;
+    color: #fff;
+    font-weight: 600;
+}
+.add-items.table-items {
+   /* background-color: rgb(247, 255, 137);*/
+    padding: 5px;
+    color: #333;
+    border-bottom: solid 1px #ebebeb;
+    padding: 0;
+}
+.add-items.table-items > div {
+    padding: 5px;
+    height: 48px;
+    /*padding: 15px;
+    border-right:solid 1px #ddd;*/
+}
+.add-items.table-items > div > fa-icon.btn {
+    background-color:#ffeebb !important;
+}
+.add-items.table-items > div:last-of-type {
+    border-right:none;
+}
+.new-items {
+    margin-top: 25px;
+}
+.new-items>div{
+    padding:0;
+}
+.add-items>div {
+    border-right:none;
+    padding: 5px;
+}
+.delete-item {
+    background-color: rgb(207, 56, 56);
+    margin-right: 2px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #EEE !important;
+}
+.edit-item {
+    background-color: rgb(56, 207, 119);
+    padding: 10px 20px 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #EEE !important;
+    margin-right: 2px;
+}
+
+.copy-item {
+    background-color: rgb(56, 139, 207);
+    padding: 10px 20px 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #EEE !important;
+    margin-right: 2px;
+}
+.modal-body > div > label{
+    display: block !important;
+    margin: 0 !important;
+    margin-top: 7px !important;
+}
+
+.container-table-items {
+    box-shadow: 1px 1px 1px 1px #ddd;
+}
+
+.table-items:hover {
+    background-color: #ebebeb;
 }

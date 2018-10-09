@@ -1,5 +1,8 @@
 <div class="form-group">
-  <h5>Items</h5>
+  <h5>
+    <fa-icon [icon]="faPlus" class="btn btn-secondary" (click)="addItem(content)"></fa-icon>&nbsp;
+    Items
+  </h5>
   <div class="container-table-items col-lg-12">
   <div class="row new-items table-header {{invoice.items.length>0?'':'hide'}}">
     <div class="col-lg-2">Project</div>
@@ -19,17 +22,11 @@
       <div class="col-lg-2">{{i.days}}</div>
       <div class="col-lg-1">{{i.rate}}</div>
       <div class="col-lg-3">
-        <a class="edit-item" (click)="editItem(contentEdit,i,idx)"><fa-icon [icon]="faEye"></fa-icon></a>
-        <a class="copy-item" (click)="copyItem(i)"><fa-icon [icon]="faCopy"></fa-icon></a>
-        <a class="delete-item glyphicon glyphicon-eye-open" (click)="removeItem(idx)"><fa-icon [icon]="faTrashAlt"></fa-icon></a>
-        
+        <fa-icon [icon]="faEye" class="btn btn-warning" (click)="editItem(contentEdit,i,idx)"></fa-icon>&nbsp;
+        <fa-icon [icon]="faCopy" class="btn btn-warning" (click)="copyItem(i)"></fa-icon>&nbsp;
+        <fa-icon [icon]="faTrashAlt" class="btn btn-warning" (click)="removeItem(idx)"></fa-icon>        
       </div>
   </div>
-  </div>
-  <div class="add-items row">
-    <div class="col-lg-11" style="border:none"></div>
-    <div class="col-lg-1" style="text-align: center;cursor: pointer;" (click)="addItem(content)"><b>+</b></div>
-
   </div>
 </div>
 

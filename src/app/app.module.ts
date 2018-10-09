@@ -17,6 +17,15 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { DataTableComponent } from './data-table/data-table.component';
 import { MatSelectModule, MatGridListModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { NoopAnimationsModule,BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InvoiceprofileComponent } from './invoiceprofile/invoiceprofile.component';
+import { RouterModule, Route } from '@angular/router';
+
+
+
+const routes:Route[] = [
+  {path:"invoiceprofile",component:InvoiceprofileComponent},
+  {path:"invoice", component:InvoiceComponent}
+];
 
 @NgModule({
   declarations: [
@@ -26,7 +35,8 @@ import { NoopAnimationsModule,BrowserAnimationsModule } from '@angular/platform-
     ItemListComponent,
     InvoicePreviewComponent,
     CalendarComponent,
-    DataTableComponent
+    DataTableComponent,
+    InvoiceprofileComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +50,8 @@ import { NoopAnimationsModule,BrowserAnimationsModule } from '@angular/platform-
     MatGridListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    RouterModule.forRoot(routes,{enableTracing:true})
   ],
   providers: [],
   bootstrap: [AppComponent]

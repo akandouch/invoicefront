@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild, OnChanges } from '@angular/core';
-import { MatSort, MatTableDataSource } from '@angular/material'
+import { MatSort, MatTableDataSource } from '@angular/material';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 
 export interface Food {
@@ -24,6 +25,7 @@ export class DataTableComponent implements OnInit, OnChanges {
   @ViewChild(MatSort) sort:MatSort;
 
   private matDataSource;
+  faOpen=faEye;
 
   constructor() {
   }

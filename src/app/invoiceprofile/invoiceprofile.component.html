@@ -1,0 +1,103 @@
+<div class="col-lg-12 row">
+  <div class="col-lg-12">
+    <h5>
+      <fa-icon [icon]="faPlus" class="btn btn-secondary" (click)="openModal(content)"></fa-icon>&nbsp;
+      Profiles
+    </h5>
+  </div>
+  <div class="col-lg-12">
+    <!--
+    <app-data-table [dataSource]="profiles" [dataColumns]="['firstname','lastname','vat','active','open']"></app-data-table>
+    -->
+    <div class="container-table-items col-lg-12">
+        <div class="row new-items table-header">
+          <div class="col-lg-3">Firsname</div>
+          <div class="col-lg-3">Lastname</div>
+          <div class="col-lg-3">VAT</div>
+          <div class="col-lg-3">Actions</div>
+        </div>
+        <div *ngFor="let i of profiles; let idx = index" class="row add-items table-items">
+            <div class="col-lg-3">{{i.firstname}}</div>
+            <div class="col-lg-3">{{i.lastname}}</div>
+            <div class="col-lg-3">{{i.vat}}</div>
+            <div class="col-lg-3">
+                <fa-icon [icon]="faEye" class="btn btn-warning" (click)="editItem(contentEdit,i,idx)"></fa-icon>&nbsp;
+                <fa-icon [icon]="faCopy" class="btn btn-warning" (click)="copyItem(i)"></fa-icon>&nbsp;
+                <fa-icon [icon]="faTrashAlt" class="btn btn-warning" (click)="removeItem(i)"></fa-icon>
+              
+            </div>
+        </div>
+        </div>    
+  </div>
+</div>
+
+
+<ng-template #content let-c="close" let-d="dismiss" class="col-lg-12">
+    <div class="modal-header col-lg-12">
+        <h4 class="modal-title" id="modal-basic-title">New Profile</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="col-lg-12 row">
+      <div class="col-lg-6">
+        <fieldset>
+          <legend>General</legend>
+  
+          <div class="col-lg-12"><label>Firsname </label><input type="text" [(ngModel)]="newInvoiceProfile.firstname"></div>
+          <div class="col-lg-12"><label>Lastname </label><input type="text" [(ngModel)]="newInvoiceProfile.lastname"></div>
+          <div class="col-lg-12"><label>VAT </label><input type="text" [(ngModel)]="newInvoiceProfile.vat"></div>
+          <div class="col-lg-12"><label>active profile?</label><input type="checkbox" [(ngModel)]="newInvoiceProfile.active"></div>
+        </fieldset>
+      </div>
+      <div class="col-lg-6">
+        <fieldset>
+          <legend>Address</legend>
+          
+          <div class="col-lg-12"><label>Street </label><input type="text" [(ngModel)]="newInvoiceProfile.address.street"></div>
+          <div class="col-lg-12"><label>N° </label><input type="text" [(ngModel)]="newInvoiceProfile.address.streetNumber"></div>
+          <div class="col-lg-12"><label>City </label><input type="text" [(ngModel)]="newInvoiceProfile.address.city"></div>
+          <div class="col-lg-12"><label>Postcode </label><input type="text" [(ngModel)]="newInvoiceProfile.address.postcode"></div>
+          <div class="col-lg-12"><label>Country </label><input type="text" [(ngModel)]="newInvoiceProfile.address.country"></div>
+        </fieldset>
+      </div>
+    </div>
+    <div class="modal-footer col-lg-12">
+        <button  (click)="save(newInvoiceProfile)" type="button" class="btn btn-outline-secondary  new-invoice">Save profile</button>
+    </div>
+</ng-template>
+
+<ng-template #contentEdit let-c="close" let-d="dismiss" class="col-lg-12">
+    <div class="modal-header col-lg-12">
+        <h4 class="modal-title" id="modal-basic-title">Edit Profile</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="col-lg-12 row">
+      <div class="col-lg-6">
+        <fieldset>
+          <legend>General</legend>
+  
+          <div class="col-lg-12"><label>Firsname </label><input type="text" [(ngModel)]="currentProfile.firstname"></div>
+          <div class="col-lg-12"><label>Lastname </label><input type="text" [(ngModel)]="currentProfile.lastname"></div>
+          <div class="col-lg-12"><label>VAT </label><input type="text" [(ngModel)]="currentProfile.vat"></div>
+          <div class="col-lg-12"><label>active profile?</label><input type="checkbox" [(ngModel)]="currentProfile.active"></div>
+        </fieldset>
+      </div>
+      <div class="col-lg-6">
+        <fieldset>
+          <legend>Address</legend>
+          
+          <div class="col-lg-12"><label>Street </label><input type="text" [(ngModel)]="currentProfile.address.street"></div>
+          <div class="col-lg-12"><label>N° </label><input type="text" [(ngModel)]="currentProfile.address.streetNumber"></div>
+          <div class="col-lg-12"><label>City </label><input type="text" [(ngModel)]="currentProfile.address.city"></div>
+          <div class="col-lg-12"><label>Postcode </label><input type="text" [(ngModel)]="currentProfile.address.postcode"></div>
+          <div class="col-lg-12"><label>Country </label><input type="text" [(ngModel)]="currentProfile.address.country"></div>
+        </fieldset>
+      </div>
+    </div>
+    <div class="modal-footer col-lg-12">
+        <button  (click)="save(currentProfile)" type="button" class="btn btn-outline-secondary  new-invoice">Save profile</button>
+    </div>
+</ng-template>
