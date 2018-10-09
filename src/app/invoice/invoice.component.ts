@@ -5,7 +5,7 @@ import {NgbModal, NgbModalOptions, NgbActiveModal} from '@ng-bootstrap/ng-bootst
 import { Item } from '../item/item.class';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-import { faEye,faPlus, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import { faEye,faPlus, faFolderOpen, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { InvoiceProfile } from '../invoiceprofile/invoiceprofile.class';
 
 @Component({
@@ -24,7 +24,7 @@ export class InvoiceComponent implements OnInit {
   history:Invoice[];
   current:Invoice;
   preview:Invoice;
-  faEye=faEye;faPlus=faPlus;faFolderOpen=faFolderOpen;
+  faEye=faEye;faPlus=faPlus;faFolderOpen=faFolderOpen;faTrashAlt=faTrashAlt;
   private currentModal: NgbActiveModal;
 
   private profiles:InvoiceProfile[];
@@ -32,8 +32,8 @@ export class InvoiceComponent implements OnInit {
 
   constructor(ds:DataService, private ngbModalService:NgbModal) {
       this.ds = ds;
-      ds.getInvoices().subscribe((data:Invoice[])=> this.history = data);
       this.faEye = faEye;
+      this.getAll();
       ds.getInvoiceProfiles().subscribe(x=>this.profiles=x);
       this.currentProfile = new InvoiceProfile();
    }
@@ -41,9 +41,12 @@ export class InvoiceComponent implements OnInit {
   ngOnInit() {
   }
 
+  getAll(){
+    this.ds.getInvoices().subscribe((data:Invoice[])=> this.history = data);
+  }
   save(){
     console.log('I will save this sheet');
-    this.ds.postInvoice(this.invoice);
+    this.ds.postInvoice(this.invoice, ()=>{this.getAll();this.closeModal()});
   }
   addItem(){
     let item:Item = new Item();
@@ -95,7 +98,13 @@ export class InvoiceComponent implements OnInit {
       keyboard:false
     });
   }  
+  closeModal(){
+    this.currentModal.close();
+  }
   d(a){
     this.currentModal.dismiss(a);
+  }
+  deleteInvoice(invoice:Invoice){
+    this.ds.deleteInvoice(invoice,()=>{this.getAll()});
   }
 }

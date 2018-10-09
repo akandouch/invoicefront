@@ -2,7 +2,7 @@ import { Item } from "../item/item.class";
 
 export class Invoice {
     private title:string = "";
-    private id:number;
+    private _id:string;
     private items:Item[] = [];
 
     /** customer informations */
@@ -29,7 +29,7 @@ export class Invoice {
         this.title = title;
     }
     public fillInvoice(invoice:any){
-        this.id = invoice.id;
+        this._id = invoice.id;
         this.items = invoice.items;
         this.title = invoice.title;
        
@@ -53,5 +53,13 @@ export class Invoice {
 
     public updateItem(idx:number,item:Item){
         this.items[idx] = item;
+    }
+
+    get id():string{
+        return this._id;
+    }
+
+    set id(id:string){
+        this._id = id;
     }
 }

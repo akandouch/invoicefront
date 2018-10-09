@@ -9,8 +9,8 @@ import { InvoiceProfile } from "./invoiceprofile/invoiceprofile.class";
 export class DataService {
     constructor(private http:HttpClient){}
 
-    postInvoice(invoice:Invoice){
-        this.http.post("http://127.0.0.1:8080/invoice",invoice).subscribe();
+    postInvoice(invoice:Invoice,callback?){
+        this.http.post("http://127.0.0.1:8080/invoice",invoice).subscribe(()=>callback());
     }
 
     getInvoices(){
@@ -27,5 +27,9 @@ export class DataService {
 
     deleteInvoiceProfile(invoiceProfile:InvoiceProfile,callback?){
         this.http.delete("http://127.0.0.1:8080/invoiceprofile",{params:{id:invoiceProfile.id}}).subscribe(()=>callback());
+    }
+
+    deleteInvoice(invoice:Invoice, callback?){
+        this.http.delete("http://127.0.0.1:8080/invoice",{params:{id:invoice.id}}).subscribe(()=>callback());
     }
 }

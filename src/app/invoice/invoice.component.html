@@ -21,12 +21,13 @@
               <div class="col-lg-3">{{i.cust_name}}</div>
               <div class="col-lg-3">
                 <fa-icon [icon]="faFolderOpen" class="btn btn-warning" (click)="openInvoice(i)"></fa-icon>&nbsp;
-                <fa-icon [icon]="faEye" class="btn btn-warning" (click)="openModal(content, i)"></fa-icon>
+                <fa-icon [icon]="faEye" class="btn btn-warning" (click)="openModal(content, i)"></fa-icon>&nbsp;
+                <fa-icon [icon]="faTrashAlt" class="btn btn-warning" (click)="deleteInvoice(i)"></fa-icon>
               </div>
             </div>
           </div>    
         </div>
-        <p></p>
+        &nbsp;
         <div class="col-lg-12">
           <app-item-list [invoice]="invoice" *ngIf="invoice"></app-item-list>
         </div>
