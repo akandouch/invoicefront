@@ -40,7 +40,11 @@ export class DataService {
             data=>{
                 var file = new Blob([data], {type: 'application/pdf'});
                 var fileURL = URL.createObjectURL(file);
-                window.open(fileURL);
+                if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+                    window.navigator.msSaveOrOpenBlob(file,'invoice.pdf');  
+                }else{
+                    window.open(fileURL);
+                }
             }
         );
     }

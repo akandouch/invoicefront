@@ -46,6 +46,7 @@ export class InvoiceComponent implements OnInit {
   }
   save(){
     console.log('I will save this sheet');
+    console.log(this.invoice);
     this.invoice.setInvoicer(this.currentProfile);
     this.invoice.setInvoiced(this.currentProfile);
     this.ds.postInvoice(this.invoice, ()=>{this.getAll();this.closeModal()});
@@ -58,12 +59,10 @@ export class InvoiceComponent implements OnInit {
     this.invoice.addItem(item);
   }
   openInvoice(invoice:any){
-    this.current = this.invoice;
-
+    console.log(invoice)
     let i:Invoice = new Invoice();
     i.fillInvoice(invoice);
-    this.invoice = i;
-
+    this.current = i;
   }
   newInvoice(){
     this.invoice = new Invoice();

@@ -3,7 +3,7 @@ import { InvoiceProfile } from "../invoiceprofile/invoiceprofile.class";
 
 export class Invoice {
     private title:string = "";
-    private _id:string;
+    public id:string;
     private items:Item[] = [];
 
     private invoicer:InvoiceProfile;
@@ -15,6 +15,12 @@ export class Invoice {
     public setTitle(title:string){
         this.title = title;
     }
+    public getInvoicer(){
+        return this.invoicer;
+    }
+    public getInvoiced(){
+        return this.invoiced;
+    }
     public setInvoicer(invoicer:InvoiceProfile){
         this.invoicer = invoicer;
     }
@@ -22,8 +28,8 @@ export class Invoice {
         this.invoiced = invoiced;
     }
 
-    public fillInvoice(invoice:any){
-        this._id = invoice.id;
+    public fillInvoice(invoice:Invoice){
+        this.id = invoice.id;
         this.items = invoice.items;
         this.title = invoice.title;
         this.invoicer = invoice.invoicer;
@@ -37,12 +43,17 @@ export class Invoice {
     public updateItem(idx:number,item:Item){
         this.items[idx] = item;
     }
-
+    public getId():string{
+        return this.id;
+    }
+    public setId(id:string){
+        this.id = id;
+    }/*
     get id():string{
         return this._id;
     }
 
     set id(id:string){
         this._id = id;
-    }
+    }*/
 }

@@ -52,6 +52,8 @@ export class ItemListComponent implements OnInit {
   }
   updateItem(){
     this.invoice.updateItem(this.currentIdx, this.currentItem);
+    console.log(this.invoice);
+    this.ds.postInvoice(this.invoice,()=>{});
     this.currentModal.close();
   }
   saveItem(){
