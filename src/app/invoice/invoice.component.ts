@@ -5,7 +5,7 @@ import {NgbModal, NgbModalOptions, NgbActiveModal} from '@ng-bootstrap/ng-bootst
 import { Item } from '../item/item.class';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-import { faEye,faPlus, faFolderOpen, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEye,faPlus, faFolderOpen, faTrashAlt, faFileDownload } from '@fortawesome/free-solid-svg-icons';
 import { InvoiceProfile } from '../invoiceprofile/invoiceprofile.class';
 
 @Component({
@@ -24,7 +24,7 @@ export class InvoiceComponent implements OnInit {
   history:Invoice[];
   current:Invoice;
   preview:Invoice;
-  faEye=faEye;faPlus=faPlus;faFolderOpen=faFolderOpen;faTrashAlt=faTrashAlt;
+  faEye=faEye;faPlus=faPlus;faFolderOpen=faFolderOpen;faTrashAlt=faTrashAlt;faFileDownload=faFileDownload;
   private currentModal: NgbActiveModal;
 
   private profiles:InvoiceProfile[];
@@ -106,5 +106,8 @@ export class InvoiceComponent implements OnInit {
   }
   deleteInvoice(invoice:Invoice){
     this.ds.deleteInvoice(invoice,()=>{this.getAll()});
+  }
+  generatePdf(invoice:Invoice){
+    this.ds.generatePdf(invoice);
   }
 }

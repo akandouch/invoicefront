@@ -22,6 +22,7 @@
               <div class="col-lg-3">
                 <fa-icon [icon]="faFolderOpen" class="btn btn-warning" (click)="openInvoice(i)"></fa-icon>&nbsp;
                 <fa-icon [icon]="faEye" class="btn btn-warning" (click)="openModal(content, i)"></fa-icon>&nbsp;
+                <fa-icon [icon]="faFileDownload" class="btn btn-warning" (click)="generatePdf(i)"></fa-icon>&nbsp;
                 <fa-icon [icon]="faTrashAlt" class="btn btn-warning" (click)="deleteInvoice(i)"></fa-icon>
               </div>
             </div>

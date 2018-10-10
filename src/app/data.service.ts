@@ -32,4 +32,16 @@ export class DataService {
     deleteInvoice(invoice:Invoice, callback?){
         this.http.delete("http://127.0.0.1:8080/invoice",{params:{id:invoice.id}}).subscribe(()=>callback());
     }
+    generatePdf(invoice: Invoice): any {
+        this.http.get("http://127.0.0.1:8080/invoice/generatepdf",{
+            params:{id:invoice.id},
+            responseType:"arraybuffer"
+        }).subscribe(
+            data=>{
+                var file = new Blob([data], {type: 'application/pdf'});
+                var fileURL = URL.createObjectURL(file);
+                window.open(fileURL);
+            }
+        );
+    }
 }

@@ -161,9 +161,9 @@ input{
 
 /*****table list css *****/
 .new-items.table-header {
-    background-color: rgb(255, 200, 43);
-    padding: 10px;
-    color: #fff;
+    background-color: rgb(255, 218, 6);
+    padding: 5px;
+    color: #696969;
 }
 .add-items.table-items {
    /* background-color: rgb(247, 255, 137);*/
