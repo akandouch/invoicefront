@@ -1,26 +1,13 @@
 import { Item } from "../item/item.class";
+import { InvoiceProfile } from "../invoiceprofile/invoiceprofile.class";
 
 export class Invoice {
     private title:string = "";
     private _id:string;
     private items:Item[] = [];
 
-    /** customer informations */
-    private cust_vat:string;
-    private cust_street:string;
-    private cust_city:string;
-    private cust_postcode:string;
-    private cust_name:string;
-    /** customer informations */
-
-    /** invoicer informations */
-    private vat:string;
-    private street:string;
-    private city:string;
-    private postcode:string;
-    private name:string;
-    /** invoicer informations */
-
+    private invoicer:InvoiceProfile;
+    private invoiced:InvoiceProfile;
 
     public addItem(item:Item){
         this.items.push(item);
@@ -28,23 +15,19 @@ export class Invoice {
     public setTitle(title:string){
         this.title = title;
     }
+    public setInvoicer(invoicer:InvoiceProfile){
+        this.invoicer = invoicer;
+    }
+    public setInvoiced(invoiced:InvoiceProfile){
+        this.invoiced = invoiced;
+    }
+
     public fillInvoice(invoice:any){
         this._id = invoice.id;
         this.items = invoice.items;
         this.title = invoice.title;
-       
-        this.vat = invoice.vat;
-        this.city = invoice.city;
-        this.postcode = invoice.postcode;
-        this.street = invoice.street;
-        this.name = invoice.name;
-
-        this.cust_city =invoice.cust_city;
-        this.cust_postcode = invoice.cust_postcode;
-        this.cust_street = invoice.cust_street;
-        this.cust_vat = invoice.cust_vat;
-        this.cust_name = invoice.cust_name;
-
+        this.invoicer = invoice.invoicer;
+        this.invoiced = invoice.invoiced;
     }
 
     public removeItem(idx:number){

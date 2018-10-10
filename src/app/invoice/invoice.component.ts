@@ -46,6 +46,8 @@ export class InvoiceComponent implements OnInit {
   }
   save(){
     console.log('I will save this sheet');
+    this.invoice.setInvoicer(this.currentProfile);
+    this.invoice.setInvoiced(this.currentProfile);
     this.ds.postInvoice(this.invoice, ()=>{this.getAll();this.closeModal()});
   }
   addItem(){
