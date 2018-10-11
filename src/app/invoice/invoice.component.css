@@ -19,3 +19,20 @@
 .new-invoice-profiles > td {
     padding: 10px;
 }
+.current-profile > div, .customer-profile > div {
+    
+    border: solid 1px #575757;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #ed9f3d;
+    color: #2a2a2a;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.current-profile > div > p, .customer-profile > div > p{
+    margin-bottom: 1px;
+}
+
+.customer-profile > div {
+    background-color: #3ded8c;    
+    border-radius: 5px 0px 0px 5px ;
+}
