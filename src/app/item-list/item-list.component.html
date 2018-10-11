@@ -9,8 +9,8 @@
     <div class="col-lg-2">Period</div>
     <div class="col-lg-2">Nature</div>
     <div class="col-lg-2">Days</div>
-    <div class="col-lg-1">Rate</div>
-    <div class="col-lg-3"></div>
+    <div class="col-lg-2">Rate</div>
+    <div class="col-lg-2"></div>
   </div>
   <div *ngFor="let i of invoice.items; let idx = index" class="row add-items table-items">
       <div class="col-lg-2">{{i.project}}</div>
@@ -20,8 +20,8 @@
       </div>
       <div class="col-lg-2">{{i.nature}}</div>
       <div class="col-lg-2">{{i.days}}</div>
-      <div class="col-lg-1">{{i.rate}}</div>
-      <div class="col-lg-3">
+      <div class="col-lg-2">{{i.rate}}</div>
+      <div class="col-lg-2">
         <fa-icon [icon]="faEye" class="btn btn-warning" (click)="editItem(contentEdit,i,idx)"></fa-icon>&nbsp;
         <fa-icon [icon]="faCopy" class="btn btn-warning" (click)="copyItem(i)"></fa-icon>&nbsp;
         <fa-icon [icon]="faTrashAlt" class="btn btn-warning" (click)="removeItem(idx)"></fa-icon>        
