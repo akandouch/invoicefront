@@ -161,9 +161,10 @@ input{
 
 /*****table list css *****/
 .new-items.table-header {
-    background-color: rgb(255, 218, 6);
+    background-color: /*rgb(255, 218, 6);*/rgb(239, 239, 239);
     padding: 5px;
     color: #696969;
+    border-radius: 5px 5px 0px 0px;
 }
 .add-items.table-items {
    /* background-color: rgb(247, 255, 137);*/
@@ -226,7 +227,8 @@ input{
 }
 
 .container-table-items {
-    box-shadow: 1px 1px 1px 1px #ddd;
+    box-shadow: 1px 1px 1px 1px #ddd;    
+    border-radius: 5px 5px 0px 0px;
 }
 
 .table-items:hover {

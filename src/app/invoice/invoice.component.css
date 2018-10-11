@@ -26,7 +26,8 @@
     background-color: #ed9f3d;
     color: #2a2a2a;
     padding: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 15px;    
+    /*box-shadow: 1px 1px 4px 1px #b7b7b7;*/
 }
 .current-profile > div > p, .customer-profile > div > p{
     margin-bottom: 1px;
