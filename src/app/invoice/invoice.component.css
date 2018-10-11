@@ -10,3 +10,12 @@
 .modal-dialog {
     max-width: 750px !important;
 }
+.new-invoice-profiles {
+    border : solid 1px #EDEDED;
+}
+.new-invoice-profiles:hover {
+    background-color : #EDEDED;
+}
+.new-invoice-profiles > td {
+    padding: 10px;
+}

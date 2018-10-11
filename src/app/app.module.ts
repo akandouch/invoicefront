@@ -51,7 +51,7 @@ const routes:Route[] = [
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    RouterModule.forRoot(routes,{enableTracing:true})
+    RouterModule.forRoot(routes,{enableTracing:false})
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -56,4 +56,17 @@ export class Invoice {
     set id(id:string){
         this._id = id;
     }*/
+    /*get invoicer(){
+        return this._invoicer;
+    }
+    set invoicer(invoicer:InvoiceProfile){
+        this._invoicer = invoicer;
+    }
+
+    get invoiced(){
+        return this._invoiced;
+    }
+    set invoiced(invoiced:InvoiceProfile){
+        this._invoiced = invoiced;
+    }*/
 }

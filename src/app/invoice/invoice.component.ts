@@ -5,7 +5,7 @@ import {NgbModal, NgbModalOptions, NgbActiveModal} from '@ng-bootstrap/ng-bootst
 import { Item } from '../item/item.class';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-import { faEye,faPlus, faFolderOpen, faTrashAlt, faFileDownload } from '@fortawesome/free-solid-svg-icons';
+import { faEye,faPlus, faFolderOpen, faTrashAlt, faFileDownload, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { InvoiceProfile } from '../invoiceprofile/invoiceprofile.class';
 
 @Component({
@@ -24,11 +24,13 @@ export class InvoiceComponent implements OnInit {
   history:Invoice[];
   current:Invoice;
   preview:Invoice;
-  faEye=faEye;faPlus=faPlus;faFolderOpen=faFolderOpen;faTrashAlt=faTrashAlt;faFileDownload=faFileDownload;
+  faEye=faEye;faPlus=faPlus;faFolderOpen=faFolderOpen;faTrashAlt=faTrashAlt;faFileDownload=faFileDownload;faSearch=faSearch;
   private currentModal: NgbActiveModal;
 
   private profiles:InvoiceProfile[];
+  private profilesFound:InvoiceProfile[];
   private currentProfile:InvoiceProfile;
+  private currentCustomer:InvoiceProfile;
 
   constructor(ds:DataService, private ngbModalService:NgbModal) {
       this.ds = ds;
@@ -47,8 +49,11 @@ export class InvoiceComponent implements OnInit {
   save(){
     console.log('I will save this sheet');
     console.log(this.invoice);
+    //let newInvoice:Invoice = new Invoice();
+    
     this.invoice.setInvoicer(this.currentProfile);
-    this.invoice.setInvoiced(this.currentProfile);
+    this.invoice.setInvoiced(this.currentCustomer);
+    //ewInvoice.fillInvoice(this.invoice);
     this.ds.postInvoice(this.invoice, ()=>{this.getAll();this.closeModal()});
   }
   addItem(){
@@ -110,5 +115,19 @@ export class InvoiceComponent implements OnInit {
   }
   generatePdf(invoice:Invoice){
     this.ds.generatePdf(invoice);
+  }
+  searchProfiles(event:any){
+    var value:string = event.target.value.toLowerCase();
+    this.profilesFound = [];
+    if(value.length >=2 ){
+      this.profiles.forEach(x=>{
+        if (x.firstname.toLowerCase().lastIndexOf( value, 0 ) != -1 || x.lastname.toLowerCase().lastIndexOf( value, 0 ) != -1 || x.vat.toLowerCase().lastIndexOf( value, 0 ) != -1 ){
+          this.profilesFound.push(x);
+        }
+      })
+    }
+  }
+  selectCustomer(profile:InvoiceProfile){
+    this.currentCustomer = profile;
   }
 }

@@ -42,6 +42,10 @@ export class InvoiceprofileComponent implements OnInit {
       keyboard:false
     });
   }
+  copyItem(profile:InvoiceProfile){
+    profile.id = null;
+    this.ds.postInvoiceProfile(profile, ()=>{this.getAll()});
+  }
   editItem(content,invoiceProfile:InvoiceProfile,idx:number){
     this.currentProfile = invoiceProfile;
     this.currentIdx = idx;
