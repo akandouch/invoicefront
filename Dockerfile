@@ -4,7 +4,7 @@ RUN npm install -g @angular/cli@6.1.2
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN sed -i "s/REST_API_URL/http://127.0.0.1:8080/g" src/app/data.service.ts
+RUN sed -i "s/REST_API_URL/http:\/\/127.0.0.1:8080/g" src/app/data.service.ts
 RUN ng build
 EXPOSE 4200
 CMD [ "ng", "serve", "--host","0.0.0.0" ]
