@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
-import { Period } from '../item/Period.class';
+import { Period } from '../item/period.class';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
