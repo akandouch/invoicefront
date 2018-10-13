@@ -1,6 +1,6 @@
 FROM node:10.5.0
 WORKDIR /usr/src/app
-ENV REST_API_URL http://localhost:8080
+ENV REST_API_URL=http://localhost:8080
 RUN npm install -g @angular/cli@6.1.2
 COPY package*.json ./
 RUN npm install
