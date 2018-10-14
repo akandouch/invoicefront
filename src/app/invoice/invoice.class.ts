@@ -1,72 +1,86 @@
-import { Item } from "../item/item.class";
-import { InvoiceProfile } from "../invoiceprofile/invoiceprofile.class";
+import {Item} from '../item/item.class';
+import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 
 export class Invoice {
-    public title:string = "";
-    public id:string;
-  public items:Item[] = [];
+  public title: string = '';
+  public id: string;
+  public items: Item[] = [];
 
-  public invoicer:InvoiceProfile;
-  public invoiced:InvoiceProfile;
+  public invoicer: InvoiceProfile;
+  public invoiced: InvoiceProfile;
 
-    public addItem(item:Item){
-        this.items.push(item);
-    }
-    public setTitle(title:string){
-        this.title = title;
-    }
-    public getInvoicer(){
-        return this.invoicer;
-    }
-    public getInvoiced(){
-        return this.invoiced;
-    }
-    public setInvoicer(invoicer:InvoiceProfile){
-        this.invoicer = invoicer;
-    }
-    public setInvoiced(invoiced:InvoiceProfile){
-        this.invoiced = invoiced;
-    }
+  constructor() {
+    this.invoiced = new InvoiceProfile();
+    this.invoicer = new InvoiceProfile();
+  }
 
-    public fillInvoice(invoice:Invoice){
-        this.id = invoice.id;
-        this.items = invoice.items;
-        this.title = invoice.title;
-        this.invoicer = invoice.invoicer;
-        this.invoiced = invoice.invoiced;
-    }
+  public addItem(item: Item) {
+    this.items.push(item);
+  }
 
-    public removeItem(idx:number){
-        this.items.splice(idx, 1);
-    }
+  public setTitle(title: string) {
+    this.title = title;
+  }
 
-    public updateItem(idx:number,item:Item){
-        this.items[idx] = item;
-    }
-    public getId():string{
-        return this.id;
-    }
-    public setId(id:string){
-        this.id = id;
-    }/*
-    get id():string{
-        return this._id;
-    }
+  public getInvoicer() {
+    return this.invoicer;
+  }
 
-    set id(id:string){
-        this._id = id;
-    }*/
-    /*get invoicer(){
-        return this._invoicer;
-    }
-    set invoicer(invoicer:InvoiceProfile){
-        this._invoicer = invoicer;
-    }
+  public getInvoiced() {
+    return this.invoiced;
+  }
 
-    get invoiced(){
-        return this._invoiced;
-    }
-    set invoiced(invoiced:InvoiceProfile){
-        this._invoiced = invoiced;
-    }*/
+  public setInvoicer(invoicer: InvoiceProfile) {
+    this.invoicer = invoicer;
+  }
+
+  public setInvoiced(invoiced: InvoiceProfile) {
+    this.invoiced = invoiced;
+  }
+
+  public fillInvoice(invoice: Invoice) {
+    this.id = invoice.id;
+    this.items = invoice.items;
+    this.title = invoice.title;
+    this.invoicer = invoice.invoicer;
+    this.invoiced = invoice.invoiced;
+  }
+
+  public removeItem(idx: number) {
+    this.items.splice(idx, 1);
+  }
+
+  public updateItem(idx: number, item: Item) {
+    this.items[idx] = item;
+  }
+
+  public getId(): string {
+    return this.id;
+  }
+
+  public setId(id: string) {
+    this.id = id;
+  }
+
+  /*
+      get id():string{
+          return this._id;
+      }
+
+      set id(id:string){
+          this._id = id;
+      }*/
+  /*get invoicer(){
+      return this._invoicer;
+  }
+  set invoicer(invoicer:InvoiceProfile){
+      this._invoicer = invoicer;
+  }
+
+  get invoiced(){
+      return this._invoiced;
+  }
+  set invoiced(invoiced:InvoiceProfile){
+      this._invoiced = invoiced;
+  }*/
 }
