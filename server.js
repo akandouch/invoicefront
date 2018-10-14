@@ -14,7 +14,7 @@ const app = express();
 
 app.use(express.static('public'));
 app.all("/*", function(req, res, next) {
-  res.sendFile("index.html", { root: "dist/invoicecfront" });
+  res.sendFile("index.html", { root: "public" });
 });
 
 app.use(cors());
