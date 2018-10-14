@@ -4,6 +4,6 @@ RUN npm install -g @angular/cli@6.1.2
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN ng build --prod
+RUN ng build
 EXPOSE 4200
 CMD [ "npm", "run", "prod" ]
