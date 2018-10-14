@@ -1,6 +1,9 @@
 # Invoicecfront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
+## How to Build Docker
+docker build -t invoice/invoice-front .
+
+docker run -p 4200:4200 -d --name=InvoiceFrontend invoice/invoice-front
 
 ## Development server
 

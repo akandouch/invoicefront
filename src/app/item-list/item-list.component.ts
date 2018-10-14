@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Invoice } from '../invoice/invoice.class';
 import { NgbModal, NgbActiveModal, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { Item } from '../item/item.class';
-import { Period } from '../item/Period.class';
+import { Period } from '../item/period.class';
 import { faCoffee,faEye,faTrashAlt, faCopy, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { DataService } from '../data.service';
 
