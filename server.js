@@ -11,7 +11,11 @@ const app = express();
 // *************************************************************************************************************
 // define view-engine & static resources
 // *************************************************************************************************************
+
 app.use(express.static('public'));
+app.all("/*", function(req, res, next) {
+  res.sendFile("index.html", { root: "./dist/invoicecfront/" });
+});
 
 app.use(cors());
 
