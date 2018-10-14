@@ -2,12 +2,12 @@ import { Item } from "../item/item.class";
 import { InvoiceProfile } from "../invoiceprofile/invoiceprofile.class";
 
 export class Invoice {
-    private title:string = "";
+    public title:string = "";
     public id:string;
-    private items:Item[] = [];
+  public items:Item[] = [];
 
-    private invoicer:InvoiceProfile;
-    private invoiced:InvoiceProfile;
+  public invoicer:InvoiceProfile;
+  public invoiced:InvoiceProfile;
 
     public addItem(item:Item){
         this.items.push(item);

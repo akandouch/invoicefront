@@ -7,6 +7,7 @@ export class InvoiceProfile {
     public lastname:string;
     public active:boolean;
     public vat:string;
+    public mail:string;
     public address:Address;
 
     constructor(){

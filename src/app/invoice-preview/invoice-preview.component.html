@@ -6,10 +6,10 @@
   <div class="to col-lg-10 bill-to">
     <p>
     <label><b>Bill to :</b></label><br/>
-    <label><b>{{invoice.cust_name}}</b></label><br/>
-    <label>{{invoice.cust_street}}</label><br/>
-    <label>{{invoice.cust_postcode}}, {{invoice.cust_city}}</label><br/>
-    <label>VAT N°: {{invoice.cust_vat}}</label><br/>
+    <label><b>{{invoice.invoiced.lastname}}</b></label><br/>
+    <label>{{invoice.invoiced.address.street}}</label><br/>
+    <label>{{invoice.invoiced.address.postcode}}, {{invoice.invoiced.address.city}}</label><br/>
+    <label>VAT N°: {{invoice.invoiced.vat}}</label><br/>
   </p>
 </div>
   <div class="id col-lg-2">INVOICE NUMBER</div>
@@ -92,11 +92,11 @@
     <label>BIC : 12345</label><br/>
 
     
-    <label><b>{{invoice.name}}</b></label><br/>
-    <label>VAT N°: <b>{{invoice.vat}}</b></label><br/>
-    <label>{{invoice.street}}</label><br/>
-    <label>{{invoice.postcode}}, {{invoice.city}}</label><br/>
+    <label><b>{{invoice.invoicer.lastname}}</b></label><br/>
+    <label>VAT N°: <b>{{invoice.invoicer.vat}}</b></label><br/>
+    <label>{{invoice.invoicer.address.street}}</label><br/>
+    <label>{{invoice.invoicer.address.postcode}}, {{invoice.invoicer.address.city}}</label><br/>
     </p>
-    <p>if you have any question concerning this invoice, contact <b>02/12.456.789</b> or {{invoice.mail}}</p>
+    <p>if you have any question concerning this invoice, contact <b>02/12.456.789</b> or {{invoice.invoicer.mail}}</p>
   </div>
 </div>

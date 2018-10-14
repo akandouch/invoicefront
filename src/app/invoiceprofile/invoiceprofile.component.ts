@@ -12,13 +12,13 @@ import { faSave, faWindowClose, faPlus,faCoffee,faEye,faTrashAlt, faCopy } from 
 })
 export class InvoiceprofileComponent implements OnInit {
 
-  private newInvoiceProfile:InvoiceProfile;
-  private profiles:InvoiceProfile[];
-  private currentModal: NgbActiveModal;
+  public newInvoiceProfile:InvoiceProfile;
+  public profiles:InvoiceProfile[];
+  public currentModal: NgbActiveModal;
   faSave=faSave;faWindowClose=faWindowClose;faPlus=faPlus;faCoffee = faCoffee;faEye = faEye;faTrashAlt = faTrashAlt;faCopy = faCopy;
  
-  private currentProfile:InvoiceProfile;
-  private currentIdx:number;
+  public currentProfile:InvoiceProfile;
+  public currentIdx:number;
 
   constructor(private ds:DataService, private ngbModalService:NgbModal) { 
     this.newInvoiceProfile = new InvoiceProfile();
@@ -34,6 +34,7 @@ export class InvoiceprofileComponent implements OnInit {
 
   save(invoiceProfile:InvoiceProfile){
     this.ds.postInvoiceProfile(invoiceProfile, ()=>{this.getAll();this.closeModal()});
+    this.newInvoiceProfile = new InvoiceProfile();
   }
 
   openModal(content){

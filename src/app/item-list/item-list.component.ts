@@ -14,15 +14,15 @@ import { DataService } from '../data.service';
 export class ItemListComponent implements OnInit {
 
   @Input()
-  private invoice:Invoice;
-  private newItem:Item;
-  private currentItem:Item;
-  private currentIdx: number;
-  private currentModal: NgbActiveModal;
-  private faCoffee = faCoffee;
-  private faEye = faEye;
-  private faTrashAlt = faTrashAlt;
-  private faCopy = faCopy;faPlus=faPlus;
+  public invoice:Invoice;
+  public newItem:Item;
+  public currentItem:Item;
+  public currentIdx: number;
+  public currentModal: NgbActiveModal;
+  public faCoffee = faCoffee;
+  public faEye = faEye;
+  public faTrashAlt = faTrashAlt;
+  public faCopy = faCopy;faPlus=faPlus;
   constructor(private ds:DataService ,private ngbModalService:NgbModal) { 
    // this.invoice = invoice;
   }

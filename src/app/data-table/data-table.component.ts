@@ -17,14 +17,14 @@ export interface Food {
 export class DataTableComponent implements OnInit, OnChanges {
 
   @Input()
-  private dataSource;
+  public  dataSource;
 
   @Input()
-  private dataColumns:Array<string>;
+  public  dataColumns:Array<string>;
 
   @ViewChild(MatSort) sort:MatSort;
 
-  private matDataSource;
+  public  matDataSource;
   faOpen=faEye;
 
   constructor() {
