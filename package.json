@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prod": "node server.js"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +30,8 @@
     "boostrap": "^2.0.0",
     "bootstrap": "^4.1.3",
     "core-js": "^2.5.4",
+    "cors": "^2.8.4",
+    "express": "^4.16.4",
     "font-awesome": "^4.7.0",
     "html2canvas": "^1.0.0-alpha.12",
     "jspdf": "^1.4.1",
