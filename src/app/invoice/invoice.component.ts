@@ -1,12 +1,12 @@
-import { Component, OnInit, Injectable } from '@angular/core';
-import { Invoice } from './invoice.class';
-import { DataService } from '../data.service';
-import {NgbModal, NgbModalOptions, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import { Item } from '../item/item.class';
+import {Component, Injectable, OnInit} from '@angular/core';
+import {Invoice} from './invoice.class';
+import {DataService} from '../data.service';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Item} from '../item/item.class';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-import { faEye,faPlus, faFolderOpen, faTrashAlt, faFileDownload, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { InvoiceProfile } from '../invoiceprofile/invoiceprofile.class';
+import {faEye, faFileDownload, faFolderOpen, faPlus, faSearch, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 
 @Component({
   selector: 'app-invoice',
@@ -14,120 +14,143 @@ import { InvoiceProfile } from '../invoiceprofile/invoiceprofile.class';
   styleUrls: ['./invoice.component.css'],
   providers: [NgbModal]
 })
-@Injectable( 
-  {providedIn:'root'}
+@Injectable(
+  {providedIn: 'root'}
 )
 export class InvoiceComponent implements OnInit {
 
-  invoice:Invoice;
-  ds:DataService;
-  history:Invoice[];
-  current:Invoice;
-  preview:Invoice;
-  faEye=faEye;faPlus=faPlus;faFolderOpen=faFolderOpen;faTrashAlt=faTrashAlt;faFileDownload=faFileDownload;faSearch=faSearch;
+  invoice: Invoice;
+  ds: DataService;
+  history: Invoice[];
+  current: Invoice;
+  preview: Invoice;
+  faEye = faEye;
+  faPlus = faPlus;
+  faFolderOpen = faFolderOpen;
+  faTrashAlt = faTrashAlt;
+  faFileDownload = faFileDownload;
+  faSearch = faSearch;
   private currentModal: NgbActiveModal;
 
-  private profiles:InvoiceProfile[];
-  private profilesFound:InvoiceProfile[];
-  private currentProfile:InvoiceProfile;
-  private currentCustomer:InvoiceProfile;
+  private profiles: InvoiceProfile[];
+  private profilesFound: InvoiceProfile[];
+  private currentProfile: InvoiceProfile;
+  private currentCustomer: InvoiceProfile;
 
-  constructor(ds:DataService, private ngbModalService:NgbModal) {
-      this.ds = ds;
-      this.faEye = faEye;
-      this.getAll();
-      ds.getInvoiceProfiles().subscribe(x=>this.profiles=x);
-      this.currentProfile = new InvoiceProfile();
-   }
+  constructor(ds: DataService, private ngbModalService: NgbModal) {
+    this.ds = ds;
+    this.faEye = faEye;
+    this.getAll();
+    ds.getInvoiceProfiles().subscribe(x => this.profiles = x);
+    this.currentProfile = new InvoiceProfile();
+    this.currentProfile = new InvoiceProfile();
+  }
 
   ngOnInit() {
   }
 
-  getAll(){
-    this.ds.getInvoices().subscribe((data:Invoice[])=> this.history = data);
+  getAll() {
+    this.ds.getInvoices().subscribe((data: Invoice[]) => this.history = data);
   }
-  save(){
+
+  save() {
     console.log('I will save this sheet');
     console.log(this.invoice);
     //let newInvoice:Invoice = new Invoice();
-    
+
     this.invoice.setInvoicer(this.currentProfile);
     this.invoice.setInvoiced(this.currentCustomer);
     //ewInvoice.fillInvoice(this.invoice);
-    this.ds.postInvoice(this.invoice, ()=>{this.getAll();this.closeModal()});
+    this.ds.postInvoice(this.invoice, () => {
+      this.getAll();
+      this.closeModal();
+    });
   }
-  addItem(){
-    let item:Item = new Item();
+
+  addItem() {
+    let item: Item = new Item();
     item.setDescription('dummy item');
     item.setUnit(8);
     item.setAmount(500);
     this.invoice.addItem(item);
   }
-  openInvoice(invoice:any){
-    console.log(invoice)
-    let i:Invoice = new Invoice();
+
+  openInvoice(invoice: any) {
+    console.log(invoice);
+    let i: Invoice = new Invoice();
     i.fillInvoice(invoice);
     this.current = i;
   }
-  newInvoice(){
+
+  newInvoice() {
     this.invoice = new Invoice();
   }
-  public captureScreen()  
-  {  
-    var data = document.getElementById('invoice');  
-    html2canvas(data).then(canvas => {  
+
+  public captureScreen() {
+    var data = document.getElementById('invoice');
+    html2canvas(data).then(canvas => {
       // Few necessary setting options  
-      var imgWidth = 208;   
-      var pageHeight = 295;    
-      var imgHeight = canvas.height * imgWidth / canvas.width;  
-      var heightLeft = imgHeight;  
-  
-      const contentDataURL = canvas.toDataURL('image/png')  
+      var imgWidth = 208;
+      var pageHeight = 295;
+      var imgHeight = canvas.height * imgWidth / canvas.width;
+      var heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('image/png');
       let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-      var position = 0;  
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+      var position = 0;
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
       pdf.save('MYPdf.pdf'); // Generated PDF   
-    });  
-  } 
-  dragMe(event:MouseEvent){
+    });
+  }
+
+  dragMe(event: MouseEvent) {
     console.log(event);
     console.log('drag him !! x : ' + event.clientX + ' y : ' + event.clientY);
-    
+
 
   }
-  openModal(content,invoice?:Invoice){
-    invoice?this.preview = invoice:this.invoice = new Invoice();
 
-    this.profiles.forEach(x=>x.active?this.currentProfile=x:{});
+  openModal(content, invoice?: Invoice) {
+    invoice ? this.preview = invoice : this.invoice = new Invoice();
+
+    this.profiles.forEach(x => x.active ? this.currentProfile = x : {});
     this.currentModal = this.ngbModalService.open(content, {
       backdrop: 'static',
-      keyboard:false
+      keyboard: false
     });
-  }  
-  closeModal(){
+  }
+
+  closeModal() {
     this.currentModal.close();
   }
-  d(a){
+
+  d(a) {
     this.currentModal.dismiss(a);
   }
-  deleteInvoice(invoice:Invoice){
-    this.ds.deleteInvoice(invoice,()=>{this.getAll()});
+
+  deleteInvoice(invoice: Invoice) {
+    this.ds.deleteInvoice(invoice, () => {
+      this.getAll();
+    });
   }
-  generatePdf(invoice:Invoice){
+
+  generatePdf(invoice: Invoice) {
     this.ds.generatePdf(invoice);
   }
-  searchProfiles(event:any){
-    var value:string = event.target.value.toLowerCase();
+
+  searchProfiles(event: any) {
+    var value: string = event.target.value.toLowerCase();
     this.profilesFound = [];
-    if(value.length >=2 ){
-      this.profiles.forEach(x=>{
-        if (x.firstname.toLowerCase().lastIndexOf( value, 0 ) != -1 || x.lastname.toLowerCase().lastIndexOf( value, 0 ) != -1 || x.vat.toLowerCase().lastIndexOf( value, 0 ) != -1 ){
+    if (value.length >= 2) {
+      this.profiles.forEach(x => {
+        if (x.firstname.toLowerCase().lastIndexOf(value, 0) != -1 || x.lastname.toLowerCase().lastIndexOf(value, 0) != -1 || x.vat.toLowerCase().lastIndexOf(value, 0) != -1) {
           this.profilesFound.push(x);
         }
-      })
+      });
     }
   }
-  selectCustomer(profile:InvoiceProfile){
+
+  selectCustomer(profile: InvoiceProfile) {
     this.currentCustomer = profile;
   }
 }
