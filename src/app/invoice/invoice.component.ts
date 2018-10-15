@@ -43,7 +43,8 @@ export class InvoiceComponent implements OnInit {
     this.getAll();
     ds.getInvoiceProfiles().subscribe(x => this.profiles = x);
     this.currentProfile = new InvoiceProfile();
-    this.currentProfile = new InvoiceProfile();
+    this.currentCustomer = new InvoiceProfile();
+    this.invoice = new Invoice();
   }
 
   ngOnInit() {
@@ -58,8 +59,8 @@ export class InvoiceComponent implements OnInit {
     console.log(this.invoice);
     //let newInvoice:Invoice = new Invoice();
 
-    this.invoice.setInvoicer(this.currentProfile);
-    this.invoice.setInvoiced(this.currentCustomer);
+    this.invoice.invoicer = this.currentProfile;
+    this.invoice.invoiced = this.currentCustomer;
     //ewInvoice.fillInvoice(this.invoice);
     this.ds.postInvoice(this.invoice, () => {
       this.getAll();
@@ -113,7 +114,7 @@ export class InvoiceComponent implements OnInit {
   openModal(content, invoice?: Invoice) {
     invoice ? this.preview = invoice : this.invoice = new Invoice();
 
-    this.profiles.forEach(x => x.active ? this.currentProfile = x : {});
+    this.profiles.forEach(x => x.active ? this.currentProfile = x : this.currentCustomer = x);
     this.currentModal = this.ngbModalService.open(content, {
       backdrop: 'static',
       keyboard: false

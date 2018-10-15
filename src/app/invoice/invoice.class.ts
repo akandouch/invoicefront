@@ -6,12 +6,10 @@ export class Invoice {
   public id: string;
   public items: Item[] = [];
 
-  public invoicer: InvoiceProfile;
-  public invoiced: InvoiceProfile;
+  public invoicer: InvoiceProfile = new InvoiceProfile();
+  public invoiced: InvoiceProfile = new InvoiceProfile();
 
   constructor() {
-    this.invoiced = new InvoiceProfile();
-    this.invoicer = new InvoiceProfile();
   }
 
   public addItem(item: Item) {
