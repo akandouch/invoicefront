@@ -20,6 +20,7 @@ ul.recent {
     list-style-type: none;
     color: rgb(70, 70, 70);
     font-weight: 500;
+    outline:none;
 }
 .sidebar > ul > li > fa-icon {
     margin-right:25px;
