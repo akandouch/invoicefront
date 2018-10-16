@@ -19,12 +19,14 @@ import { MatSelectModule, MatGridListModule, MatTableModule, MatPaginatorModule,
 import { NoopAnimationsModule,BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InvoiceprofileComponent } from './invoiceprofile/invoiceprofile.component';
 import { RouterModule, Route } from '@angular/router';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
 const routes:Route[] = [
   {path:"invoiceprofile",component:InvoiceprofileComponent},
-  {path:"invoice", component:InvoiceComponent}
+  {path:"invoice", component:InvoiceComponent},
+  {path:"settings", component:SettingsComponent}
 ];
 
 @NgModule({
@@ -36,7 +38,8 @@ const routes:Route[] = [
     InvoicePreviewComponent,
     CalendarComponent,
     DataTableComponent,
-    InvoiceprofileComponent
+    InvoiceprofileComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

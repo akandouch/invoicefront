@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {faHome, faHistory, faFileInvoice, faAddressBook} from '@fortawesome/free-solid-svg-icons';
+import {faHome, faHistory, faFileInvoice, faAddressBook, faCogs} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,5 @@ import {faHome, faHistory, faFileInvoice, faAddressBook} from '@fortawesome/free
 })
 export class AppComponent {
   title = 'invoicecfront';
-  faHome = faHome;faHistory = faHistory;faFileInvoice = faFileInvoice;faProfile=faAddressBook;
+  faHome = faHome;faHistory = faHistory;faFileInvoice = faFileInvoice;faProfile=faAddressBook;faCogs=faCogs;
 }
