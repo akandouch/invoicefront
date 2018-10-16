@@ -17,7 +17,7 @@ export class AppComponent {
     this.menu = [];
     this.menu.push({color:"#5cc664", route:"/invoice", label:"Invoices", icon:faFileInvoice});
     this.menu.push({color:"#848dff", route:"/invoiceprofile", label:"Profiles", icon:faAddressBook});
-    this.menu.push({color:"#ff8484", route:"/settings", label:"Settings", icon:faHome});
+    this.menu.push({color:"#ff8484", route:"/settings", label:"Settings", icon:faCogs});
   }
   click(){
     this.menu.forEach(x=>x.selected=false);
