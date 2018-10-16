@@ -5,7 +5,7 @@ import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Item} from '../item/item.class';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-import {faEye, faFileDownload, faFolderOpen, faPlus, faSearch, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {faEye, faFileDownload, faFolderOpen, faPlus, faSearch, faTrashAlt, faHome, faUser} from '@fortawesome/free-solid-svg-icons';
 import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 
 @Component({
@@ -30,6 +30,8 @@ export class InvoiceComponent implements OnInit {
   faTrashAlt = faTrashAlt;
   faFileDownload = faFileDownload;
   faSearch = faSearch;
+  faHome = faHome;
+  faUser = faUser;
   private currentModal: NgbActiveModal;
 
   private profiles: InvoiceProfile[];
@@ -144,7 +146,7 @@ export class InvoiceComponent implements OnInit {
     this.profilesFound = [];
     if (value.length >= 2) {
       this.profiles.forEach(x => {
-        if (x.firstname.toLowerCase().lastIndexOf(value, 0) != -1 || x.lastname.toLowerCase().lastIndexOf(value, 0) != -1 || x.vat.toLowerCase().lastIndexOf(value, 0) != -1) {
+        if (x.firstname.toLowerCase().indexOf(value, 0) != -1 || x.lastname.toLowerCase().indexOf(value, 0) != -1 || x.vat.toLowerCase().indexOf(value, 0) != -1) {
           this.profilesFound.push(x);
         }
       });

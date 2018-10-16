@@ -80,10 +80,10 @@
           </div>
       </div>
 
-      <div class="col-lg-12">
+      <div class="col-lg-12 " style="margin-bottom: 15px">
         <table class="col-lg-12">
         <tbody>
-        <tr><td colspan="3"><input type="text" (keyup)="searchProfiles($event)" class="col-lg-11"><fa-icon [icon]="faSearch"></fa-icon></td></tr>
+        <tr><td colspan="3" class="search"><input type="text" (keyup)="searchProfiles($event)" class="offset-lg-6 col-lg-5"><fa-icon [icon]="faSearch"></fa-icon></td></tr>
         <tr *ngFor="let i of profilesFound" class="new-invoice-profiles" (click)="selectCustomer(i)">
           <td>{{i.firstname}}</td>
           <td>{{i.lastname}}</td>
