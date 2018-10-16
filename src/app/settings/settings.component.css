@@ -13,3 +13,6 @@
     white-space: nowrap;
     vertical-align: middle;
 }
+label {
+    display: block;
+}
