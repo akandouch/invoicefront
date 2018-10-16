@@ -5,7 +5,7 @@
             <li><fa-icon [icon]="faHome"></fa-icon> Menu</li>
             <li><fa-icon [icon]="faHistory"></fa-icon> History</li>
 
-            <li  *ngFor="let m of menu" routerLink="{{m.route}}" routerLinkActive="{{m.active}}" [ngStyle]="{'color': m.selected ? m.color:''}" (click)="click();m.selected=true"><fa-icon [icon]="m.icon" [ngStyle]="{color: m.color}"></fa-icon>{{m.label}}</li>
+            <li *ngFor="let m of menu" routerLink="{{m.route}}" routerLinkActive="selected" [ngStyle]="{'color': m.selected ? m.color:''}" (click)="click();m.selected=true"><fa-icon [icon]="m.icon" [ngStyle]="{color: m.color}"></fa-icon>{{m.label}}</li>
         </ul>
         <hr class="recent-hr"/>
         <ul class="recent">
