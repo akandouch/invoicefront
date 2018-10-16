@@ -63,6 +63,7 @@ export class InvoiceComponent implements OnInit {
 
     this.invoice.invoicer = this.currentProfile;
     this.invoice.invoiced = this.currentCustomer;
+    this.invoice.title = 'No title yet';
     //ewInvoice.fillInvoice(this.invoice);
     this.ds.postInvoice(this.invoice, () => {
       this.getAll();

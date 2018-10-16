@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { InvoiceProfile } from './invoiceprofile.class';
-import { DataService } from '../data.service';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { faSave, faWindowClose, faPlus,faCoffee,faEye,faTrashAlt, faCopy } from '@fortawesome/free-solid-svg-icons';
+import {Component, OnInit} from '@angular/core';
+import {InvoiceProfile} from './invoiceprofile.class';
+import {DataService} from '../data.service';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {faCoffee, faCopy, faEye, faPlus, faSave, faTrashAlt, faWindowClose} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -12,53 +12,68 @@ import { faSave, faWindowClose, faPlus,faCoffee,faEye,faTrashAlt, faCopy } from 
 })
 export class InvoiceprofileComponent implements OnInit {
 
-  public newInvoiceProfile:InvoiceProfile;
-  public profiles:InvoiceProfile[];
+  public newInvoiceProfile: InvoiceProfile;
+  public profiles: InvoiceProfile[];
   public currentModal: NgbActiveModal;
-  faSave=faSave;faWindowClose=faWindowClose;faPlus=faPlus;faCoffee = faCoffee;faEye = faEye;faTrashAlt = faTrashAlt;faCopy = faCopy;
- 
-  public currentProfile:InvoiceProfile;
-  public currentIdx:number;
+  faSave = faSave;
+  faWindowClose = faWindowClose;
+  faPlus = faPlus;
+  faCoffee = faCoffee;
+  faEye = faEye;
+  faTrashAlt = faTrashAlt;
+  faCopy = faCopy;
 
-  constructor(private ds:DataService, private ngbModalService:NgbModal) { 
+  public currentProfile: InvoiceProfile;
+  public currentIdx: number;
+
+  constructor(private ds: DataService, private ngbModalService: NgbModal) {
     this.newInvoiceProfile = new InvoiceProfile();
     this.getAll();
   }
 
   ngOnInit() {
   }
-  
-  getAll(){
-    this.ds.getInvoiceProfiles().subscribe(data=>this.profiles =data);
+
+  getAll() {
+    this.ds.getInvoiceProfiles().subscribe(data => this.profiles = data);
   }
 
-  save(invoiceProfile:InvoiceProfile){
-    this.ds.postInvoiceProfile(invoiceProfile, ()=>{this.getAll();this.closeModal()});
+  save(invoiceProfile: InvoiceProfile) {
+    this.ds.postInvoiceProfile(invoiceProfile, () => {
+      this.getAll();
+      this.closeModal();
+    });
     this.newInvoiceProfile = new InvoiceProfile();
   }
 
-  openModal(content){
+  openModal(content) {
     this.currentModal = this.ngbModalService.open(content, {
       backdrop: 'static',
-      keyboard:false
+      keyboard: false
     });
   }
-  copyItem(profile:InvoiceProfile){
+
+  copyItem(profile: InvoiceProfile) {
     profile.id = null;
-    this.ds.postInvoiceProfile(profile, ()=>{this.getAll()});
+    this.ds.postInvoiceProfile(profile, () => {
+      this.getAll();
+    });
   }
-  editItem(content,invoiceProfile:InvoiceProfile,idx:number){
+
+  editItem(content, invoiceProfile: InvoiceProfile, idx: number) {
     this.currentProfile = invoiceProfile;
     this.currentIdx = idx;
     this.currentModal = this.ngbModalService.open(content, {
       backdrop: 'static',
-      keyboard:false
+      keyboard: false
     });
   }
-  removeItem(invoiceProfile:InvoiceProfile){
-    this.ds.deleteInvoiceProfile(invoiceProfile,()=>this.getAll());
+
+  removeItem(invoiceProfile: InvoiceProfile) {
+    this.ds.deleteInvoiceProfile(invoiceProfile, () => this.getAll());
   }
-  closeModal(){
+
+  closeModal() {
     this.currentModal.close();
   }
 
