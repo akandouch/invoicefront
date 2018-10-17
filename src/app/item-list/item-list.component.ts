@@ -56,20 +56,16 @@ export class ItemListComponent implements OnInit {
   }
 
   updateItem() {
+    this.invoice.updateItem(this.currentIdx, this.currentItem);
     console.log(this.invoice);
-    this.ds.postItem(this.invoice.id, this.currentItem, (item) => {
-      this.invoice.updateItem(this.currentIdx, this.currentItem);
-      this.currentModal.close();
-    });
-
+    this.ds.postInvoice(this.invoice,()=>{});
+    this.currentModal.close();
   }
 
   saveItem() {
-    this.ds.postItem(this.invoice.id, this.currentItem, (item) => {
-      this.invoice.addItem(item);
-      this.currentModal.close();
-
-    });
+    this.invoice.addItem(this.newItem);
+    this.ds.postInvoice(this.invoice,()=>{});
+    this.currentModal.close();
   }
 
   copyItem(item: Item) {
