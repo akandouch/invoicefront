@@ -43,11 +43,11 @@
       <div class="col-lg-6">
         <fieldset>
           <legend>General</legend>
-  
           <div class="col-lg-12"><label>Firsname </label><input type="text" [(ngModel)]="newInvoiceProfile.firstname"></div>
           <div class="col-lg-12"><label>Lastname </label><input type="text" [(ngModel)]="newInvoiceProfile.lastname"></div>
           <div class="col-lg-12"><label>VAT </label><input type="text" [(ngModel)]="newInvoiceProfile.vat"></div>
           <div class="col-lg-12"><label>active profile?</label><input type="checkbox" [(ngModel)]="newInvoiceProfile.active"></div>
+          <div class="col-lg-12"><label>customer?</label><input type="checkbox" [(ngModel)]="newInvoiceProfile.customer"></div>
         </fieldset>
       </div>
       <div class="col-lg-6">
@@ -83,6 +83,7 @@
           <div class="col-lg-12"><label>Lastname </label><input type="text" [(ngModel)]="currentProfile.lastname"></div>
           <div class="col-lg-12"><label>VAT </label><input type="text" [(ngModel)]="currentProfile.vat"></div>
           <div class="col-lg-12"><label>active profile?</label><input type="checkbox" [(ngModel)]="currentProfile.active"></div>
+          <div class="col-lg-12"><label>customer profile?</label><input type="checkbox" [(ngModel)]="currentProfile.customer"></div>
         </fieldset>
       </div>
       <div class="col-lg-6">

@@ -117,7 +117,7 @@ export class InvoiceComponent implements OnInit {
   openModal(content, invoice?: Invoice) {
     invoice ? this.preview = invoice : this.invoice = new Invoice();
 
-    this.profiles.forEach(x => x.active ? this.currentProfile = x : this.currentCustomer = x);
+    this.profiles.forEach(x => x.active ? this.currentProfile = x : this.currentCustomer = x); // todo use list of profiles
     this.currentModal = this.ngbModalService.open(content, {
       backdrop: 'static',
       keyboard: false
