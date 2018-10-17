@@ -27,7 +27,7 @@
 <div class="col-lg-12 items">
   <div *ngFor="let i of invoice.items" class="col-lg-12 row">
     <div class="col-lg-3 item">{{i.project}}</div>
-    <div class="col-lg-1 item">{{i.period}}</div>
+    <div class="col-lg-1 item">{{i.period.from.day}}/{{i.period.from.month}}/{{i.period.from.year}} -> {{i.period.to.day}}/{{i.period.to.month}}/{{i.period.to.year}} </div>
     <div class="col-lg-4 item">{{i.nature}}</div>
     <div class="col-lg-1 item">{{i.days}}</div>
     <div class="col-lg-1 item">{{i.rate}}</div>
@@ -88,7 +88,7 @@
 
   <div class="col-lg-12 invoice-footer">
     <p>
-    <label>Make all checks payable to : <b>BE45 123 455 7478</b></label><br/>
+    <label>Make all checks payable to : <b>{{invoice.invoicer.accountNumber}}</b></label><br/>
     <label>BIC : 12345</label><br/>
 
     
