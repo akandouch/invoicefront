@@ -10,6 +10,7 @@ export class InvoiceProfile {
     public mail:string;
     public accountNumber:string;
     public address:Address;
+    public logo:Blob;
 
     constructor(){
         this.address = new Address();

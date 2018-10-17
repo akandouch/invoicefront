@@ -3,6 +3,9 @@ import {InvoiceProfile} from './invoiceprofile.class';
 import {DataService} from '../data.service';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {faCoffee, faCopy, faEye, faPlus, faSave, faTrashAlt, faWindowClose} from '@fortawesome/free-solid-svg-icons';
+import { Input } from '@angular/compiler/src/core';
+import { load } from '@angular/core/src/render3/instructions';
+import { Timeouts } from 'selenium-webdriver';
 
 
 @Component({
@@ -25,6 +28,7 @@ export class InvoiceprofileComponent implements OnInit {
 
   public currentProfile: InvoiceProfile;
   public currentIdx: number;
+  public loadingLogo:boolean=false;
 
   constructor(private ds: DataService, private ngbModalService: NgbModal) {
     this.newInvoiceProfile = new InvoiceProfile();
@@ -75,6 +79,19 @@ export class InvoiceprofileComponent implements OnInit {
 
   closeModal() {
     this.currentModal.close();
+  }
+
+  changeLogo(event:any, profile:InvoiceProfile){
+    this.loadingLogo = true;
+    var fileReader = new FileReader();
+    fileReader.addEventListener("load",()=>{
+      console.info("loading logo ...");
+      profile.logo = fileReader.result;
+     // setTimeout(()=>{},2000);
+     this.loadingLogo = false
+    });
+    var blob = event.srcElement.files[0];
+    fileReader.readAsDataURL(blob);
   }
 
 }
