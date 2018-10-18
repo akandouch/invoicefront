@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {InvoiceProfile} from './invoiceprofile.class';
 import {DataService} from '../data.service';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {faCoffee, faCopy, faEye, faPlus, faSave, faTrashAlt, faWindowClose, faEllipsisH} from '@fortawesome/free-solid-svg-icons';
+import {faCoffee, faCopy, faEye, faPlus, faSave, faTrashAlt, faWindowClose, faEllipsisH, faEdit} from '@fortawesome/free-solid-svg-icons';
 import { Input } from '@angular/compiler/src/core';
 import { load } from '@angular/core/src/render3/instructions';
 import { Timeouts } from 'selenium-webdriver';
@@ -24,7 +24,7 @@ export class InvoiceprofileComponent implements OnInit {
   faCoffee = faCoffee;
   faEye = faEye;
   faTrashAlt = faTrashAlt;
-  faCopy = faCopy;faEllipsisH = faEllipsisH;
+  faCopy = faCopy;faEllipsisH = faEllipsisH;faEdit=faEdit;
 
   public currentProfile: InvoiceProfile;
   public currentIdx: number;
