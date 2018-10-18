@@ -24,6 +24,7 @@ import { SettingsComponent } from './settings/settings.component';
 
 
 const routes:Route[] = [
+  {path:"", component:InvoiceComponent},
   {path:"invoiceprofile",component:InvoiceprofileComponent},
   {path:"invoice", component:InvoiceComponent},
   {path:"settings", component:SettingsComponent}

@@ -5,7 +5,7 @@ import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Item} from '../item/item.class';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-import {faEye, faFileDownload, faFolderOpen, faPlus, faSearch, faTrashAlt, faHome, faUser, faEllipsisH, faFilePdf} from '@fortawesome/free-solid-svg-icons';
+import {faEye, faFileDownload, faFolderOpen, faPlus, faSearch, faTrashAlt, faHome, faUser, faEllipsisH, faFilePdf, faFileInvoice} from '@fortawesome/free-solid-svg-icons';
 import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 
 @Component({
@@ -25,7 +25,7 @@ export class InvoiceComponent implements OnInit {
   current: Invoice;
   preview: Invoice;
   faEye = faEye;faPlus = faPlus;faFolderOpen = faFolderOpen;faTrashAlt = faTrashAlt;faFileDownload = faFileDownload;
-  faSearch = faSearch;faHome = faHome;faUser = faUser;faEllipsisH = faEllipsisH;faFilePdf=faFilePdf
+  faSearch = faSearch;faHome = faHome;faUser = faUser;faEllipsisH = faEllipsisH;faFilePdf=faFilePdf;faFileInvoice=faFileInvoice;
   private currentModal: NgbActiveModal;
 
   private profiles: InvoiceProfile[];
