@@ -2,7 +2,7 @@ import { Period } from "./period.class";
 
 export class Item {
 
-    private id:number;
+    private id:string;
     private description:string;
     private unit:number;
 

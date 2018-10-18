@@ -16,7 +16,8 @@ export class DataService {
     this.http
       .post(environment.restApiUrl + '/invoice', invoice)
       .subscribe(() => {
-      }, (err) => alert(JSON.stringify(err)), () => callback());
+        callback();
+      }, (err) => alert(JSON.stringify(err)), () => {});
 
   }
 

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Invoice} from '../invoice/invoice.class';
-import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal, NgbDate, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Item} from '../item/item.class';
 import {Period} from '../item/period.class';
 import {faCoffee, faCopy, faEye, faPlus, faTrashAlt, faEllipsisH, faEdit} from '@fortawesome/free-solid-svg-icons';
@@ -22,7 +22,9 @@ export class ItemListComponent implements OnInit {
   public faCoffee = faCoffee;
   public faEye = faEye;
   public faTrashAlt = faTrashAlt;
-  public faCopy = faCopy;faEllipsisH=faEllipsisH;faEdit=faEdit;
+  public faCopy = faCopy;
+  faEllipsisH = faEllipsisH;
+  faEdit = faEdit;
 
   faPlus = faPlus;
 
@@ -36,6 +38,9 @@ export class ItemListComponent implements OnInit {
   addItem(content) {
     this.newItem = new Item();
     this.newItem.period = new Period();
+    const now: Date = new Date();
+    this.newItem.period.from = new NgbDate(now.getFullYear(), now.getMonth() + 1, now.getDate());
+    this.newItem.period.to = new NgbDate(now.getFullYear(), now.getMonth() + 1, now.getDate());
     this.currentModal = this.ngbModalService.open(content, {
       backdrop: 'static',
       keyboard: false
@@ -57,16 +62,20 @@ export class ItemListComponent implements OnInit {
   }
 
   updateItem() {
-    this.invoice.updateItem(this.currentIdx, this.currentItem);
     console.log(this.invoice);
-    this.ds.postInvoice(this.invoice,()=>{});
-    this.currentModal.close();
+    const that = this;
+    this.ds.postItem(this.invoice.id, this.currentItem, () => {
+      that.invoice.updateItem(that.currentIdx, that.currentItem);
+      that.currentModal.close();
+    });
   }
 
   saveItem() {
-    this.invoice.addItem(this.newItem);
-    this.ds.postInvoice(this.invoice,()=>{});
-    this.currentModal.close();
+    const that = this;
+    this.ds.postItem(this.invoice.id, this.newItem, () => {
+      that.invoice.addItem(that.newItem);
+      that.currentModal.close();
+    });
   }
 
   copyItem(item: Item) {
