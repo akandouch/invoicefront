@@ -79,7 +79,9 @@ export class ItemListComponent implements OnInit {
   }
 
   copyItem(item: Item) {
-    this.invoice.addItem(item);
+    let copy = item;
+    copy.id = null;
+    this.invoice.addItem(copy);
   }
 
   d(a) {

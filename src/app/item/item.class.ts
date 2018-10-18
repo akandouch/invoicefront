@@ -1,25 +1,27 @@
-import { Period } from "./period.class";
+import {Period} from './period.class';
 
 export class Item {
 
-    private id:string;
-    private description:string;
-    private unit:number;
+  public id: string;
+  public description: string;
+  public unit: number;
 
-    private project:string;
-    public period:Period;
-    private nature:string;
-    private days:number = 0;
-    private rate:number = 0;
-    private amount:number = this.days * this.rate;
-    
-    public setDescription(description:string){
-        this.description = description;
-    }
-    public setAmount(amount:number){
-        this.amount = amount;
-    }
-    public setUnit(unit:number){
-        this.unit = unit;
-    }
+  public project: string;
+  public period: Period;
+  public nature: string;
+  public days: number = 0;
+  public rate: number = 0;
+  public amount: number = this.days * this.rate;
+
+  public setDescription(description: string) {
+    this.description = description;
+  }
+
+  public setAmount(amount: number) {
+    this.amount = amount;
+  }
+
+  public setUnit(unit: number) {
+    this.unit = unit;
+  }
 }
