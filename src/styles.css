@@ -274,9 +274,13 @@ input{
     color: #787676;
     margin-right: 15px;
 }
+.dropdown-menu > div:first-child{
+border-radius: 3px 3px 0px 0px;
+}
 
 .dropdown-menu > div:last-child{
     border-bottom: none;
+    border-radius: 0px 0px 3px 3px;
 }
 .dropdown-menu > div:hover {
     background-color: #a8a8a8;
