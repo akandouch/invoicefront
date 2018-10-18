@@ -8,7 +8,8 @@ html {
     height: 100%;
   }
   body {
-    min-height: 100%;
+    min-height: 100%;    
+    font-size: 14px;
     font-family: 'Karla', sans-serif;
   }
 .container {
@@ -233,4 +234,10 @@ input{
 
 .table-items:hover {
     background-color: #ebebeb;
+}
+label{
+    margin-bottom: 0px;
+}
+input{
+    margin-bottom: 5px;
 }

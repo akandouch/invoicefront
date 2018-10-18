@@ -1,7 +1,7 @@
 <p *ngIf="period.from && period.to">{{period.from.day}}/{{period.from.month}}/{{period.from.year}} ->
 {{period.to.day}}/{{period.to.month}}/{{period.to.year}}
 </p>
-<ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"></ngb-datepicker>
+<ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" [startDate]="{year: period.from.year, month: period.from.month}"></ngb-datepicker>
 <ng-template #t let-date="date" let-focused="focused">
     <span class="custom-day"
           [class.focused]="focused"
