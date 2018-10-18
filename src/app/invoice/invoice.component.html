@@ -11,21 +11,27 @@
           <div class="container-table-items col-lg-12">
             <div class="row new-items table-header">
               <div class="col-lg-1">#</div>
-              <div class="col-lg-3">Period</div>
-              <div class="col-lg-3">Customer</div>
-              <div class="col-lg-3">vat</div>
+              <div class="col-lg-4">Invoicer</div>
+              <div class="col-lg-4">Customer</div>
+              <div class="col-lg-2">vat</div>
               <div class="col-lg-2"></div>
             </div>
             <div *ngFor="let i of history; let idx = index" class="row add-items table-items">
-              <div class="col-lg-1">{{idx}}</div>
-              <!--<div class="col-lg-3">{{i.date}}</div>-->
-              <div class="col-lg-3">{{i.invoiced.firstname}}</div>
-              <div class="col-lg-3">{{i.invoiced.vat}}</div>
-              <div class="col-lg-2">
-                <fa-icon [icon]="faFolderOpen" class="btn btn-warning" (click)="openInvoice(i)"></fa-icon>&nbsp;
-                <fa-icon [icon]="faEye" class="btn btn-warning" (click)="openModal(content, i)"></fa-icon>&nbsp;
-                <fa-icon [icon]="faFileDownload" class="btn btn-warning" (click)="generatePdf(i)"></fa-icon>&nbsp;
-                <fa-icon [icon]="faTrashAlt" class="btn btn-warning" (click)="deleteInvoice(i)"></fa-icon>
+              <div class="col-lg-1">{{idx +1 }}</div>
+              <div class="col-lg-4">{{i.invoicer.firstname}} {{i.invoicer.lastname}}</div>
+              <div class="col-lg-4">{{i.invoiced.firstname}}</div>
+              <div class="col-lg-2">{{i.invoiced.vat}}</div>
+              <div class="col-lg-1">
+                <div ngbDropdown class="d-inline-block">
+                  <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
+                  
+                  <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+                    <div (click)="openInvoice(i)"><fa-icon [icon]="faFolderOpen"></fa-icon> Open</div>
+                    <div (click)="openModal(content, i)"><fa-icon [icon]="faEye"></fa-icon> Preview</div>
+                    <div (click)="generatePdf(i)"><fa-icon [icon]="faFileDownload"></fa-icon> Items</div>
+                    <div (click)="deleteInvoice(i)"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>    
@@ -98,4 +104,11 @@
     <div class="modal-footer col-lg-12">
       <button  (click)="save()" type="button" class="btn btn-outline-secondary  new-invoice">Create invoice</button>
     </div>
+</ng-template>
+<ng-template #menu>
+  <ul>
+    <li>test</li>
+    <li>test</li>
+    <li>test</li>
+  </ul>
 </ng-template>

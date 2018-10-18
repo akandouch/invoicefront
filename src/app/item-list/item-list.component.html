@@ -6,25 +6,31 @@
   <div class="container-table-items col-lg-12">
   <div class="row new-items table-header {{invoice.items.length>0?'':'hide'}}" style="background-color: #b0fdd9">
     <div class="col-lg-2">Project</div>
-    <div class="col-lg-2">Period</div>
+    <div class="col-lg-3">Period</div>
     <div class="col-lg-2">Nature</div>
     <div class="col-lg-2">Days</div>
     <div class="col-lg-2">Rate</div>
-    <div class="col-lg-2"></div>
+    <div class="col-lg-1"></div>
   </div>
   <div *ngFor="let i of invoice.items; let idx = index" class="row add-items table-items">
       <div class="col-lg-2">{{i.project}}</div>
-      <div class="col-lg-2">
+      <div class="col-lg-3">
         {{i.period.from.day}}/{{i.period.from.month}}/{{i.period.from.year}} -
         {{i.period.to.day}}/{{i.period.to.month}}/{{i.period.to.year}}
       </div>
       <div class="col-lg-2">{{i.nature}}</div>
       <div class="col-lg-2">{{i.days}}</div>
       <div class="col-lg-2">{{i.rate}}</div>
-      <div class="col-lg-2">
-        <fa-icon [icon]="faEye" class="btn btn-warning" (click)="editItem(contentEdit,i,idx)"></fa-icon>&nbsp;
-        <fa-icon [icon]="faCopy" class="btn btn-warning" (click)="copyItem(i)"></fa-icon>&nbsp;
-        <fa-icon [icon]="faTrashAlt" class="btn btn-warning" (click)="removeItem(idx)"></fa-icon>        
+      <div class="col-lg-1">
+        <div ngbDropdown class="d-inline-block">
+          <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
+          
+          <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+            <div (click)="editItem(contentEdit,i,idx)"><fa-icon [icon]="faEye"></fa-icon> Open</div>
+            <div (click)="copyItem(i)"><fa-icon [icon]="faCopy"></fa-icon> Copy</div>
+            <div (click)="removeItem(idx)"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
+          </div>
+        </div>       
       </div>
   </div>
   </div>

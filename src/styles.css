@@ -176,9 +176,9 @@ input{
 }
 .add-items.table-items > div {
     padding: 5px;
-    height: 48px;
-    /*padding: 15px;
-    border-right:solid 1px #ddd;*/
+    /* height: 48px; */
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .add-items.table-items > div > fa-icon.btn {
     background-color:#ffeebb !important;
@@ -240,4 +240,47 @@ label{
 }
 input{
     margin-bottom: 5px;
+}
+
+
+.option-list-button { 
+     background-color: #ededed;
+     color: #808080;
+     padding: 5px;
+     cursor: pointer;
+     padding: 5px 10px 5px 10px;
+ }
+ .option-list-button:hover {
+     
+     background-color: #a8a8a8;
+     color: #ededed;
+     box-shadow: 1px 1px 1px #787676;     
+ }
+.dropdown-menu {
+    padding: 0;
+}
+.dropdown-menu > div {
+
+    padding: 5px;
+    cursor: pointer;
+    border-bottom: solid 1px #ededed;
+    font-size: 12px;
+}
+
+.dropdown-menu > div > fa-icon {
+
+    color: #787676;
+    margin-right: 15px;
+}
+
+.dropdown-menu > div:last-child{
+    border-bottom: none;
+}
+.dropdown-menu > div:hover {
+    background-color: #a8a8a8;
+    color: #ededed;
+}
+
+.dropdown-menu > div:hover > fa-icon {
+    color: #ededed;
 }

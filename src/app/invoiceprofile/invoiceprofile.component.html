@@ -11,20 +11,25 @@
     -->
     <div class="container-table-items col-lg-12">
         <div class="row new-items table-header">
-          <div class="col-lg-3">Firsname</div>
-          <div class="col-lg-3">Lastname</div>
+          <div class="col-lg-4">Firsname</div>
+          <div class="col-lg-4">Lastname</div>
           <div class="col-lg-3">VAT</div>
-          <div class="col-lg-3"></div>
+          <div class="col-lg-1"></div>
         </div>
         <div *ngFor="let i of profiles; let idx = index" class="row add-items table-items">
-            <div class="col-lg-3">{{i.firstname}}</div>
-            <div class="col-lg-3">{{i.lastname}}</div>
+            <div class="col-lg-4">{{i.firstname}}</div>
+            <div class="col-lg-4">{{i.lastname}}</div>
             <div class="col-lg-3">{{i.vat}}</div>
-            <div class="col-lg-3">
-                <fa-icon [icon]="faEye" class="btn btn-warning" (click)="editItem(contentEdit,i,idx)"></fa-icon>&nbsp;
-                <fa-icon [icon]="faCopy" class="btn btn-warning" (click)="copyItem(i)"></fa-icon>&nbsp;
-                <fa-icon [icon]="faTrashAlt" class="btn btn-warning" (click)="removeItem(i)"></fa-icon>
-              
+            <div class="col-lg-1">
+              <div ngbDropdown class="d-inline-block">
+                <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
+                
+                <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+                  <div (click)="editItem(contentEdit,i,idx)"><fa-icon [icon]="faEye"></fa-icon> Open</div>
+                  <div (click)="copyItem(i)"><fa-icon [icon]="faCopy"></fa-icon> Copy</div>
+                  <div (click)="removeItem(i)"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
+                </div>
+              </div>
             </div>
         </div>
         </div>    
