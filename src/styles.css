@@ -233,7 +233,8 @@ input{
 }
 
 .table-items:hover {
-    background-color: #ebebeb;
+    background-color: #ebebeb;    
+    box-shadow: 1px 1px 1px 1px #d0d0d0;
 }
 label{
     margin-bottom: 0px;
