@@ -263,7 +263,8 @@ input{
 
     padding: 5px;
     cursor: pointer;
-    border-bottom: solid 1px #ededed;
+    /*border-bottom: solid 1px #ededed;*/
+    border-bottom: dashed 1px #dcdcdc;
     font-size: 12px;
 }
 
