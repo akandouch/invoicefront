@@ -66,6 +66,7 @@ export class InvoiceComponent implements OnInit {
     this.invoice.title = 'No title yet';
     //ewInvoice.fillInvoice(this.invoice);
     this.ds.postInvoice(this.invoice, () => {
+      this.invoice = new Invoice();
       this.getAll();
       this.closeModal();
     });
