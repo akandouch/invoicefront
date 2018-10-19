@@ -36,14 +36,18 @@ export class ItemListComponent implements OnInit {
   }
 
   addItem(content) {
-    this.newItem = new Item();
-    this.newItem.period = new Period();
-    const now: Date = new Date();
-    this.newItem.period.from = new NgbDate(now.getFullYear(), now.getMonth() + 1, now.getDate());
-    this.newItem.period.to = new NgbDate(now.getFullYear(), now.getMonth() + 1, now.getDate());
-    this.currentModal = this.ngbModalService.open(content, {
-      backdrop: 'static',
-      keyboard: false
+    this.ds.getSettings().subscribe(settings => {
+      this.newItem = new Item();
+      this.newItem.rate = settings.currentRate;
+      this.newItem.vatRate = settings.currentVatRate;
+      this.newItem.period = new Period();
+      const now: Date = new Date();
+      this.newItem.period.from = new NgbDate(now.getFullYear(), now.getMonth() + 1, now.getDate());
+      this.newItem.period.to = new NgbDate(now.getFullYear(), now.getMonth() + 1, now.getDate());
+      this.currentModal = this.ngbModalService.open(content, {
+        backdrop: 'static',
+        keyboard: false
+      });
     });
 
   }
