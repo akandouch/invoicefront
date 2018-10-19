@@ -6,16 +6,21 @@
           <div class="container-table-items col-lg-12">
             <div class="row new-items table-header">
               <div class="col-lg-1">#</div>
-              <div class="col-lg-4">Invoicer</div>
-              <div class="col-lg-4">Customer</div>
+              <div class="col-lg-3">Invoicer</div>
+              <div class="col-lg-3">Customer</div>
               <div class="col-lg-2">vat</div>
+              <div class="col-lg-2">Status</div>
               <div class="col-lg-2"></div>
             </div>
             <div *ngFor="let i of history; let idx = index" class="row add-items table-items">
               <div class="col-lg-1">{{idx +1 }}</div>
-              <div class="col-lg-4">{{i.invoicer.firstname}} {{i.invoicer.lastname}}</div>
-              <div class="col-lg-4">{{i.invoiced.firstname}}</div>
+              <div class="col-lg-3">{{i.invoicer.firstname}} {{i.invoicer.lastname}}</div>
+              <div class="col-lg-3">{{i.invoiced.firstname}}</div>
               <div class="col-lg-2">{{i.invoiced.vat}}</div>
+              <div class="col-lg-2" *ngIf="!i.status && i.status != 0"></div>
+              <div class="col-lg-2" *ngIf="i.status == 0"><span class="inv-status open-status">open</span></div>              
+              <div class="col-lg-2" *ngIf="i.status == 1"><span class="inv-status ready-status">ready</span></div>
+              <div class="col-lg-2" *ngIf="i.status == 2"><span class="inv-status close-status">closed</span></div>
               <div class="col-lg-1">
                 <div ngbDropdown class="d-inline-block">
                   <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
@@ -24,7 +29,7 @@
                     <div (click)="openInvoice(i)"><fa-icon [icon]="faFolderOpen"></fa-icon> Open</div>
                     <div (click)="openModal(content, i)"><fa-icon [icon]="faEye"></fa-icon> Preview</div>
                     <div (click)="generatePdf(i)"><fa-icon [icon]="faFilePdf"></fa-icon> Download PDF</div>
-                    <div (click)="deleteInvoice(i)"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
+                    <div (click)="deleteInvoice(i)" *ngIf="i.status != 2"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
                   </div>
                 </div>
               </div>

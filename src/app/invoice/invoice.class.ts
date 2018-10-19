@@ -1,5 +1,6 @@
 import {Item} from '../item/item.class';
 import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
+import { StatusEnum } from './status.enum';
 
 export class Invoice {
   public title: string = '';
@@ -8,6 +9,8 @@ export class Invoice {
 
   public invoicer: InvoiceProfile = new InvoiceProfile();
   public invoiced: InvoiceProfile = new InvoiceProfile();
+
+  public status:StatusEnum = StatusEnum.OPEN;
 
   constructor() {
   }
@@ -42,6 +45,7 @@ export class Invoice {
     this.title = invoice.title;
     this.invoicer = invoice.invoicer;
     this.invoiced = invoice.invoiced;
+    this.status = invoice.status;
   }
 
   public removeItem(idx: number) {
@@ -59,26 +63,4 @@ export class Invoice {
   public setId(id: string) {
     this.id = id;
   }
-
-  /*
-      get id():string{
-          return this._id;
-      }
-
-      set id(id:string){
-          this._id = id;
-      }*/
-  /*get invoicer(){
-      return this._invoicer;
-  }
-  set invoicer(invoicer:InvoiceProfile){
-      this._invoicer = invoicer;
-  }
-
-  get invoiced(){
-      return this._invoiced;
-  }
-  set invoiced(invoiced:InvoiceProfile){
-      this._invoiced = invoiced;
-  }*/
 }

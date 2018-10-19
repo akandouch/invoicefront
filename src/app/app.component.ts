@@ -1,5 +1,5 @@
 import { Component,Type, OnChanges, OnInit } from '@angular/core';
-import {faHome, faHistory, faFileInvoice, faAddressBook, faCogs, IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import {faHome, faHistory, faFileInvoice, faAddressBook, faCogs, IconDefinition, faChartLine} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +16,8 @@ export class AppComponent {
   constructor(){
     console.log('heere')
     this.menu = [];
+    
+    this.menu.push({color:"#ff84ff", route:"/dashboard", label:"Dashboard", icon:faChartLine});
     this.menu.push({color:"#5cc664", route:"/invoice", label:"Invoices", icon:faFileInvoice,selected:true});
     this.menu.push({color:"#848dff", route:"/invoiceprofile", label:"Profiles", icon:faAddressBook});
     this.menu.push({color:"#ff8484", route:"/settings", label:"Settings", icon:faCogs});

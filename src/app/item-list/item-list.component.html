@@ -1,19 +1,21 @@
 <div class="form-group">
   <h5>
-    <fa-icon [icon]="faPlus" class="btn btn-secondary" (click)="addItem(content)"></fa-icon>&nbsp;
-    Items
+      <fa-icon [icon]="faListAlt" class="header-icon" style="background-color: #ffa785"></fa-icon> 
+      Items
   </h5>
-  <div class="container-table-items col-lg-12">
-  <div class="row new-items table-header {{invoice.items.length>0?'':'hide'}}" style="background-color: #b0fdd9">
-    <div class="col-lg-2">Project</div>
+  <button *ngIf="invoice.status != 2" class="btn btn-outline-secondary" (click)="addItem(content)"><fa-icon [icon]="faPlus"></fa-icon> Add</button>
+  <div class="container-table-items col-lg-12" *ngIf="invoice.items.length > 0">
+  <div class="row new-items table-header {{invoice.items.length>0?'':'hide'}}">
+    <div class="col-lg-3">Project</div>
     <div class="col-lg-3">Period</div>
     <div class="col-lg-2">Nature</div>
-    <div class="col-lg-2">Days</div>
-    <div class="col-lg-2">Rate</div>
+    <div class="col-lg-1">Days</div>
+    <div class="col-lg-1">Rate</div>
+    <div class="col-lg-1">VAT%</div>
     <div class="col-lg-1"></div>
   </div>
   <div *ngFor="let i of invoice.items; let idx = index" class="row add-items table-items">
-      <div class="col-lg-2">{{i.project}}</div>
+      <div class="col-lg-3">{{i.project}}</div>
       <div class="col-lg-3" *ngIf="i.period && i.period.from && i.period.to">
         {{i.period.from.day}}/{{i.period.from.month}}/{{i.period.from.year}} -
         {{i.period.to.day}}/{{i.period.to.month}}/{{i.period.to.year}}
@@ -22,16 +24,18 @@
         BUG WITH THE DATE. TODO FIX THAT!
       </div>
       <div class="col-lg-2">{{i.nature}}</div>
-      <div class="col-lg-2">{{i.days}}</div>
-      <div class="col-lg-2">{{i.rate}}</div>
+      <div class="col-lg-1">{{i.days}}</div>
+      <div class="col-lg-1">{{i.rate}}</div>
+      <div class="col-lg-1">{{i.vatRate}}</div>
       <div class="col-lg-1">
         <div ngbDropdown class="d-inline-block">
           <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
           
           <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-            <div (click)="editItem(contentEdit,i,idx)"><fa-icon [icon]="faEdit"></fa-icon> Edit</div>
-            <div (click)="copyItem(i)"><fa-icon [icon]="faCopy"></fa-icon> Copy</div>
-            <div (click)="removeItem(idx)"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
+            <div (click)="editItem(contentEdit,i,idx)" *ngIf="invoice.status == 2"><fa-icon [icon]="faEye"></fa-icon> Consult</div> 
+            <div (click)="editItem(contentEdit,i,idx)" *ngIf="invoice.status != 2"><fa-icon [icon]="faEdit"></fa-icon> Edit</div>
+            <div (click)="copyItem(i)" *ngIf="invoice.status != 2"><fa-icon [icon]="faCopy"></fa-icon> Copy</div>
+            <div (click)="removeItem(idx)" *ngIf="invoice.status != 2"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
           </div>
         </div>       
       </div>
@@ -86,7 +90,7 @@
     <div class="modal-body col-lg-12 row">
       <div class="col-lg-12">
         <label>Project</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.project"/>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.project" [readonly]="invoice.status == 2"/>
       </div>
       <div class="col-lg-12">
         <label>Period</label>
@@ -94,22 +98,22 @@
       </div>
       <div class="col-lg-12">
         <label>Natur</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.nature"/>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.nature" [readonly]="invoice.status == 2"/>
       </div>
       <div class="col-lg-4">
         <label># Days</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.days"/>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.days" [readonly]="invoice.status == 2"/>
       </div>
       <div class="col-lg-4">
         <label>Rate</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.rate"/>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.rate"  [readonly]="invoice.status == 2"/>
       </div>
       <div class="col-lg-4">
         <label>Vat Rate</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.vatRate"/>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.vatRate" [readonly]="invoice.status == 2"/>
       </div>
     </div>
     <div class="modal-footer col-lg-12">
-      <button type="button" class="btn btn-outline-dark" (click)="updateItem()">Save</button>
+      <button type="button" class="btn btn-outline-dark" (click)="updateItem()" *ngIf="invoice.status != 2">Save</button>
     </div>
 </ng-template>
