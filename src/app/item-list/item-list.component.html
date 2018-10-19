@@ -6,16 +6,16 @@
   <button *ngIf="invoice.status != 2" class="btn btn-outline-secondary" (click)="addItem(content)"><fa-icon [icon]="faPlus"></fa-icon> Add</button>
   <div class="container-table-items col-lg-12" *ngIf="invoice.items.length > 0">
   <div class="row new-items table-header {{invoice.items.length>0?'':'hide'}}">
-    <div class="col-lg-2">Project</div>
+    <div class="col-lg-3">Project</div>
     <div class="col-lg-3">Period</div>
     <div class="col-lg-2">Nature</div>
     <div class="col-lg-1">Days</div>
-    <div class="col-lg-2">Rate</div>
+    <div class="col-lg-1">Rate</div>
     <div class="col-lg-1">VAT%</div>
     <div class="col-lg-1"></div>
   </div>
   <div *ngFor="let i of invoice.items; let idx = index" class="row add-items table-items">
-      <div class="col-lg-2">{{i.project}}</div>
+      <div class="col-lg-3">{{i.project}}</div>
       <div class="col-lg-3" *ngIf="i.period && i.period.from && i.period.to">
         {{i.period.from.day}}/{{i.period.from.month}}/{{i.period.from.year}} -
         {{i.period.to.day}}/{{i.period.to.month}}/{{i.period.to.year}}
@@ -25,7 +25,7 @@
       </div>
       <div class="col-lg-2">{{i.nature}}</div>
       <div class="col-lg-1">{{i.days}}</div>
-      <div class="col-lg-2">{{i.rate}}</div>
+      <div class="col-lg-1">{{i.rate}}</div>
       <div class="col-lg-1">{{i.vatRate}}</div>
       <div class="col-lg-1">
         <div ngbDropdown class="d-inline-block">
