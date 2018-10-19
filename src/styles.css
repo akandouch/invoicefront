@@ -184,6 +184,9 @@ input{
     margin-top: 5px;
     margin-bottom: 5px;
 }
+.add-items.table-items:nth-child(2n) {
+    background-color: #f9f9f9;
+}
 .add-items.table-items > div > fa-icon.btn {
     background-color:#ffeebb !important;
 }
