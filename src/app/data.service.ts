@@ -4,6 +4,7 @@ import {Invoice} from './invoice/invoice.class';
 import {InvoiceProfile} from './invoiceprofile/invoiceprofile.class';
 import {environment} from '../environments/environment';
 import {Item} from './item/item.class';
+import {Settings} from './settings/settings.class';
 
 @Injectable(
   {providedIn: 'root'}
@@ -31,6 +32,17 @@ export class DataService {
   getInvoices() {
     return this.http.get<Invoice[]>(environment.restApiUrl + '/invoice');
   }
+  getSettings() {
+    return this.http.get<Settings>(environment.restApiUrl + '/settings');
+  }
+
+  postSettings(settings: Settings, callback?) {
+    this.http
+      .post(environment.restApiUrl + '/settings', settings)
+      .subscribe(() => {
+        }, (err) => alert(JSON.stringify(err))
+        , () => callback());
+  }
 
   postInvoiceProfile(invoiceProfile: InvoiceProfile, callback?) {
     this.http
@@ -38,7 +50,6 @@ export class DataService {
       .subscribe(() => {
         }, (err) => alert(JSON.stringify(err))
         , () => callback());
-    ;
   }
 
   getInvoiceProfiles() {
