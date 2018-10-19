@@ -1,15 +1,17 @@
 <div class="form-group">
   <h5>
-    <fa-icon [icon]="faPlus" class="btn btn-secondary" (click)="addItem(content)"></fa-icon>&nbsp;
-    Items
+      <fa-icon [icon]="faListAlt" class="header-icon" style="background-color: #ffa785"></fa-icon> 
+      Items
   </h5>
-  <div class="container-table-items col-lg-12">
-  <div class="row new-items table-header {{invoice.items.length>0?'':'hide'}}" style="background-color: #b0fdd9">
+  <button *ngIf="invoice.status != 2" class="btn btn-outline-secondary" (click)="addItem(content)"><fa-icon [icon]="faPlus"></fa-icon> Add</button>
+  <div class="container-table-items col-lg-12" *ngIf="invoice.items.length > 0">
+  <div class="row new-items table-header {{invoice.items.length>0?'':'hide'}}">
     <div class="col-lg-2">Project</div>
     <div class="col-lg-3">Period</div>
     <div class="col-lg-2">Nature</div>
-    <div class="col-lg-2">Days</div>
+    <div class="col-lg-1">Days</div>
     <div class="col-lg-2">Rate</div>
+    <div class="col-lg-1">VAT%</div>
     <div class="col-lg-1"></div>
   </div>
   <div *ngFor="let i of invoice.items; let idx = index" class="row add-items table-items">
@@ -22,8 +24,9 @@
         BUG WITH THE DATE. TODO FIX THAT!
       </div>
       <div class="col-lg-2">{{i.nature}}</div>
-      <div class="col-lg-2">{{i.days}}</div>
+      <div class="col-lg-1">{{i.days}}</div>
       <div class="col-lg-2">{{i.rate}}</div>
+      <div class="col-lg-1">{{i.vatRate}}</div>
       <div class="col-lg-1">
         <div ngbDropdown class="d-inline-block">
           <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>

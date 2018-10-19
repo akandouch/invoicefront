@@ -45,6 +45,7 @@ export class Invoice {
     this.title = invoice.title;
     this.invoicer = invoice.invoicer;
     this.invoiced = invoice.invoiced;
+    this.status = invoice.status;
   }
 
   public removeItem(idx: number) {

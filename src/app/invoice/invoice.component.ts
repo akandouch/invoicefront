@@ -75,10 +75,11 @@ export class InvoiceComponent implements OnInit {
   }
 
   openInvoice(invoice: Invoice) {
-    /*console.log(invoice);
+    console.log(invoice);
     let i: Invoice = new Invoice();
-    i.fillInvoice(invoice);*/
-    this.current = invoice;
+
+    i.fillInvoice(invoice);
+    this.current = i;
   }
 
   newInvoice() {
