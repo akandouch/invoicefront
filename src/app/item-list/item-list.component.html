@@ -29,8 +29,9 @@
           <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
           
           <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-            <div (click)="editItem(contentEdit,i,idx)"><fa-icon [icon]="faEdit"></fa-icon> Edit</div>
-            <div (click)="copyItem(i)"><fa-icon [icon]="faCopy"></fa-icon> Copy</div>
+            <div (click)="editItem(contentEdit,i,idx)" *ngIf="invoice.status == 2"><fa-icon [icon]="faEye"></fa-icon> Consult</div> 
+            <div (click)="editItem(contentEdit,i,idx)" *ngIf="invoice.status != 2"><fa-icon [icon]="faEdit"></fa-icon> Edit</div>
+            <div (click)="copyItem(i)" *ngIf="invoice.status != 2"><fa-icon [icon]="faCopy"></fa-icon> Copy</div>
             <div (click)="removeItem(idx)" *ngIf="invoice.status != 2"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
           </div>
         </div>       
