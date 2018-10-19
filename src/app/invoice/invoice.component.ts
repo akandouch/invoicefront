@@ -74,11 +74,11 @@ export class InvoiceComponent implements OnInit {
     this.invoice.addItem(item);
   }
 
-  openInvoice(invoice: any) {
-    console.log(invoice);
+  openInvoice(invoice: Invoice) {
+    /*console.log(invoice);
     let i: Invoice = new Invoice();
-    i.fillInvoice(invoice);
-    this.current = i;
+    i.fillInvoice(invoice);*/
+    this.current = invoice;
   }
 
   newInvoice() {
