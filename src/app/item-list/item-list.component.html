@@ -59,13 +59,17 @@
         <label>Natur</label>
         <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.nature"/>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <label># Days</label>
         <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.days"/>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <label>Rate</label>
         <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.rate"/>
+      </div>
+      <div class="col-lg-4">
+        <label>Vat Rate</label>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.vatRate"/>
       </div>
     </div>
     <div class="modal-footer">
@@ -92,13 +96,17 @@
         <label>Natur</label>
         <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.nature"/>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <label># Days</label>
         <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.days"/>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <label>Rate</label>
         <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.rate"/>
+      </div>
+      <div class="col-lg-4">
+        <label>Vat Rate</label>
+        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.vatRate"/>
       </div>
     </div>
     <div class="modal-footer col-lg-12">

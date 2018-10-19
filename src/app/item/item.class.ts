@@ -5,6 +5,7 @@ export class Item {
   public id: string;
   public description: string;
   public unit: number;
+  public vatRate: number;
 
   public project: string;
   public period: Period;
