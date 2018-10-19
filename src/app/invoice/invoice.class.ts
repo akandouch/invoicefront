@@ -5,6 +5,7 @@ import { StatusEnum } from './status.enum';
 export class Invoice {
   public title: string = '';
   public id: string;
+  public invoiceNumber: string;
   public items: Item[] = [];
 
   public invoicer: InvoiceProfile = new InvoiceProfile();
@@ -46,6 +47,7 @@ export class Invoice {
     this.invoicer = invoice.invoicer;
     this.invoiced = invoice.invoiced;
     this.status = invoice.status;
+    this.invoiceNumber = invoice.invoiceNumber;
   }
 
   public removeItem(idx: number) {

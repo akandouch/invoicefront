@@ -50,22 +50,6 @@ export class InvoiceComponent implements OnInit {
     this.ds.getInvoices().subscribe((data: Invoice[]) => this.history = data);
   }
 
-  save() {
-    console.log('I will save this sheet');
-    console.log(this.invoice);
-    //let newInvoice:Invoice = new Invoice();
-
-    this.invoice.invoicer = this.currentProfile;
-    this.invoice.invoiced = this.currentCustomer;
-    this.invoice.title = 'No title yet';
-    //ewInvoice.fillInvoice(this.invoice);
-    this.ds.postInvoice(this.invoice, (response) => {
-      this.invoice = new Invoice();
-      this.getAll();
-      this.closeModal();
-    });
-  }
-
   addItem() {
     let item: Item = new Item();
     item.setDescription('dummy item');
@@ -82,8 +66,17 @@ export class InvoiceComponent implements OnInit {
     this.current = i;
   }
 
-  newInvoice() {
-    this.invoice = new Invoice();
+  save() {
+    this.ds.createNewInvoice().subscribe(invoice => {
+      this.invoice = invoice;
+      this.invoice.invoicer = this.currentProfile;
+      this.invoice.invoiced = this.currentCustomer;
+      this.ds.postInvoice(this.invoice, (response) => {
+        this.invoice = new Invoice();
+        this.getAll();
+        this.closeModal();
+      });
+    });
   }
 
   public captureScreen() {

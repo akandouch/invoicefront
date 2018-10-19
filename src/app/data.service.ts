@@ -35,6 +35,9 @@ export class DataService {
   getSettings() {
     return this.http.get<Settings>(environment.restApiUrl + '/settings');
   }
+  createNewInvoice() {
+    return this.http.get<Invoice>(environment.restApiUrl + '/invoice/create-new-invoice');
+  }
 
   postSettings(settings: Settings, callback?) {
     this.http
