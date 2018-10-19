@@ -20,14 +20,16 @@ import { NoopAnimationsModule,BrowserAnimationsModule } from '@angular/platform-
 import { InvoiceprofileComponent } from './invoiceprofile/invoiceprofile.component';
 import { RouterModule, Route } from '@angular/router';
 import { SettingsComponent } from './settings/settings.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
 const routes:Route[] = [
-  {path:"", component:InvoiceComponent},
+  {path:"", component:DashboardComponent},
   {path:"invoiceprofile",component:InvoiceprofileComponent},
   {path:"invoice", component:InvoiceComponent},
-  {path:"settings", component:SettingsComponent}
+  {path:"settings", component:SettingsComponent},
+  {path:"dashboard", component:DashboardComponent}
 ];
 
 @NgModule({
@@ -40,7 +42,8 @@ const routes:Route[] = [
     CalendarComponent,
     DataTableComponent,
     InvoiceprofileComponent,
-    SettingsComponent
+    SettingsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
