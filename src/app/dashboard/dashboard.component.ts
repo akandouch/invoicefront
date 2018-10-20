@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,20 +11,37 @@ export class DashboardComponent implements OnInit {
 
     chart=[];
 
-  constructor() { }
+  constructor(private dataService:DataService) { }
 
   
   ngAfterViewInit(){
 
+    this.initChartRatePerMonthForYear(2019);
+
+  }
+  ngOnInit() {
+  }
+
+  initChartRatePerMonthForYear(year:number){
+    var data = [];
+    var labels = ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+    this.dataService.getRatePerMonthForYear(year).subscribe(
+     d=>this.createLineChart("Rate per Month for "+ year ,d, labels)
+    );
 
     
+
+  }
+
+  createLineChart(label:string, data:any[], labels:any[]){
+
     this.chart = new Chart("canvas", {
-      type: 'bar',
+      type: 'line',
       data: {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          labels: labels,
           datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
+              label: label,
+              data: data,
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -42,21 +60,17 @@ export class DashboardComponent implements OnInit {
               ],
               borderWidth: 1
           }]
-      },
-      options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero:true
-                  }
-              }]
+          },
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero:true
+                      }
+                  }]
+              }
           }
-      }
-  });
-
-
-  }
-  ngOnInit() {
+      });
   }
 
 }

@@ -83,4 +83,8 @@ export class DataService {
       }
     );
   }
+
+  getRatePerMonthForYear(year:number){
+    return this.http.get<number[]>(environment.restApiUrl + '/statistics',{params:{year:""+year}});
+  }
 }
