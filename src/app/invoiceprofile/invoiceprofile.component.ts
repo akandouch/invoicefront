@@ -94,9 +94,9 @@ export class InvoiceprofileComponent implements OnInit {
       console.log('loading logo ...');
       profile.logo = new Upload();
       profile.logo.contentType = blob.type;
+      profile.logo.fileName = blob.name;
       profile.logo.newUpload = fileReader.result.split(',')[1];
       this.ds.postUpload(profile.logo, (u) => {
-        console.log(u);
         profile.logo = u;
         this.ds.postInvoiceProfile(profile, () => {
           this.loadingLogo = false;
