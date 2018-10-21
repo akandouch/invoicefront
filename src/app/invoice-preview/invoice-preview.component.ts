@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Invoice } from '../invoice/invoice.class';
+import {Upload} from '../upload/upload.class';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-invoice-preview',
@@ -9,7 +11,7 @@ import { Invoice } from '../invoice/invoice.class';
 export class InvoicePreviewComponent implements OnInit {
 
   @Input() invoice:Invoice;
-  constructor() { }
+  constructor(private ds: DataService) { }
 
   ngOnInit() {
   }
@@ -17,4 +19,8 @@ export class InvoicePreviewComponent implements OnInit {
     console.log('do nothing right now');
   }
 
+  getLogo(upload: Upload) {
+    const uploadUrl = this.ds.getUploadUrl(upload.id);
+    return uploadUrl;
+  }
 }
