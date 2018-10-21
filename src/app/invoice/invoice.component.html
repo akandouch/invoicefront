@@ -1,7 +1,7 @@
 <div class="main row">
   <div class="col-lg-12">
       <div class="col-lg-12 row">
-        <div class="col-lg-12">
+        <div *ngIf="!current" class="col-lg-12">
           <button class="btn btn-outline-secondary" (click)="openModal(invoiceContent)"><fa-icon [icon]="faPlus"></fa-icon> Add</button>
           <div class="container-table-items col-lg-12">
             <div class="row new-items table-header">
@@ -37,7 +37,33 @@
           </div>    
         </div>
         &nbsp;
-        <div class="col-lg-12">
+        <div class="col-lg-12" *ngIf="current">
+          <div class="row">
+            <div class="col-lg-12">
+              <button class="btn btn-dark text-white" (click)="current=null"><fa-icon [icon]="faArrowLeft"></fa-icon> Back</button>
+            </div>
+            &nbsp;
+            <div class="col-lg-12">
+              <label class="label" for="invoiceNumber">Invoice number</label>
+              <input class="form-control" id="invoiceNumber" type="text" [(ngModel)]="current.invoiceNumber">
+            </div>
+            <div class="col-lg-12">
+              <label class="label" for="invoiceTitle">Title:&nbsp;</label>
+              <input class="form-control" id="invoiceTitle" type="text" [(ngModel)]="current.title">
+            </div>
+            <div class="col-lg-12">
+              <label class="label" for="invoiceStatus">Status:&nbsp;</label>
+              <select id="invoiceStatus" class="custom-select " [(ngModel)]="current.status">
+                <option value="0">Open</option>
+                <option value="2">Closed</option>
+              </select>
+            </div>
+            &nbsp;
+            <div class="col-lg-12">
+              <button type="button" class="btn btn-outline-dark" (click)="update()">Update</button>
+            </div>
+          </div>
+          <hr>
           <app-item-list [invoice]="current" *ngIf="current"></app-item-list>
         </div>
       </div>
