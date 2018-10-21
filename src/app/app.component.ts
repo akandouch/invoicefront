@@ -17,8 +17,8 @@ export class AppComponent {
     console.log('heere')
     this.menu = [];
     
-    this.menu.push({color:"#ff84ff", route:"/dashboard", label:"Dashboard", icon:faChartLine});
-    this.menu.push({color:"#5cc664", route:"/invoice", label:"Invoices", icon:faFileInvoice,selected:true});
+    this.menu.push({color:"#ff84ff", route:"/dashboard", label:"Dashboard", icon:faChartLine, selected:true});
+    this.menu.push({color:"#5cc664", route:"/invoice", label:"Invoices", icon:faFileInvoice});
     this.menu.push({color:"#848dff", route:"/invoiceprofile", label:"Profiles", icon:faAddressBook});
     this.menu.push({color:"#ff8484", route:"/settings", label:"Settings", icon:faCogs});
 
