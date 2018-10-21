@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { DataService } from '../data.service';
+import { faSync } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +11,8 @@ import { DataService } from '../data.service';
 export class DashboardComponent implements OnInit {
 
     chart=[];
+    year:any;
+    faSync = faSync; 
 
   constructor(private dataService:DataService) { }
 
@@ -71,6 +74,11 @@ export class DashboardComponent implements OnInit {
               }
           }
       });
+  }
+  reloadChart(){
+    if(!isNaN(this.year)){
+      this.initChartRatePerMonthForYear(this.year);
+    }
   }
 
 }
