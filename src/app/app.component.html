@@ -2,8 +2,8 @@
 <div class="row col-sm-12">
     <div class="col-sm-2 sidebar">
         <ul>
-            <li><fa-icon [icon]="faHome"></fa-icon> Menu</li>
-            <li><fa-icon [icon]="faHistory"></fa-icon> History</li>
+            <!--<li><fa-icon [icon]="faHome"></fa-icon> Menu</li>
+            <li><fa-icon [icon]="faHistory"></fa-icon> History</li>-->
 
             <li *ngFor="let m of menu" routerLink="{{m.route}}" routerLinkActive="selected" [ngStyle]="{'color': m.selected ? m.color:''}" (click)="click(m);m.selected=true">
                 <fa-icon [icon]="m.icon" [ngStyle]="{color: m.color}" width="50px"></fa-icon>
@@ -13,8 +13,8 @@
         <hr class="recent-hr"/>
         <ul class="recent">
             recent
-            <li><fa-icon [icon]="faFileInvoice"></fa-icon> My Money</li>
-            <li><fa-icon [icon]="faFileInvoice"></fa-icon> Customer</li>
+            <li><fa-icon [icon]="faFileInvoice"></fa-icon> TODO</li>
+            <li><fa-icon [icon]="faFileInvoice"></fa-icon> TODO</li>
         </ul>
     </div>
     <div class="col-sm-10 routerContent">
