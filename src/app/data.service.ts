@@ -5,6 +5,7 @@ import {InvoiceProfile} from './invoiceprofile/invoiceprofile.class';
 import {environment} from '../environments/environment';
 import {Item} from './item/item.class';
 import {Settings} from './settings/settings.class';
+import {Upload} from './upload/upload.class';
 
 @Injectable(
   {providedIn: 'root'}
@@ -18,7 +19,8 @@ export class DataService {
       .post(environment.restApiUrl + '/invoice', invoice)
       .subscribe(() => {
         callback();
-      }, (err) => alert(JSON.stringify(err)), () => {});
+      }, (err) => alert(JSON.stringify(err)), () => {
+      });
 
   }
 
@@ -32,9 +34,11 @@ export class DataService {
   getInvoices() {
     return this.http.get<Invoice[]>(environment.restApiUrl + '/invoice');
   }
+
   getSettings() {
     return this.http.get<Settings>(environment.restApiUrl + '/settings');
   }
+
   createNewInvoice() {
     return this.http.get<Invoice>(environment.restApiUrl + '/invoice/create-new-invoice');
   }
@@ -84,7 +88,20 @@ export class DataService {
     );
   }
 
-  getRatePerMonthForYear(year:number){
-    return this.http.get<number[]>(environment.restApiUrl + '/statistics',{params:{year:""+year}});
+  getRatePerMonthForYear(year: number) {
+    return this.http.get<number[]>(environment.restApiUrl + '/statistics', {params: {year: '' + year}});
+  }
+
+  getUploadUrl(id: string): string {
+    return environment.restApiUrl + '/upload/' + id;
+  }
+
+  postUpload(upload: Upload, callback?) {
+    this.http
+      .post(environment.restApiUrl + '/upload', upload)
+      .subscribe((u) => {
+        callback(u);
+      }, (err) => alert(JSON.stringify(err)), () => {
+      });
   }
 }

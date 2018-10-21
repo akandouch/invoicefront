@@ -3,6 +3,7 @@ import {InvoiceProfile} from './invoiceprofile.class';
 import {DataService} from '../data.service';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {faCoffee, faCopy, faEdit, faEllipsisH, faEye, faPlus, faSave, faTrashAlt, faWindowClose} from '@fortawesome/free-solid-svg-icons';
+import {Upload} from '../upload/upload.class';
 
 
 @Component({
@@ -80,16 +81,28 @@ export class InvoiceprofileComponent implements OnInit {
     this.currentModal.close();
   }
 
+  getLogo(upload: Upload) {
+    const uploadUrl = this.ds.getUploadUrl(upload.id);
+    return uploadUrl;
+  }
+
   changeLogo(event: any, profile: InvoiceProfile) {
     this.loadingLogo = true;
+    const blob = event.srcElement.files[0];
     const fileReader = new FileReader();
     fileReader.addEventListener('load', () => {
       console.log('loading logo ...');
-      profile.logo = fileReader.result;
-      // setTimeout(()=>{},2000);
-      this.loadingLogo = false;
+      profile.logo = new Upload();
+      profile.logo.contentType = blob.type;
+      profile.logo.newUpload = fileReader.result.split(',')[1];
+      this.ds.postUpload(profile.logo, (u) => {
+        console.log(u);
+        profile.logo = u;
+        this.ds.postInvoiceProfile(profile, () => {
+          this.loadingLogo = false;
+        });
+      });
     });
-    const blob = event.srcElement.files[0];
     fileReader.readAsDataURL(blob);
   }
 
