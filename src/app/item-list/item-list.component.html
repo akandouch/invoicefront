@@ -53,7 +53,7 @@
     <div class="modal-body col-lg-12 row">
       <div class="col-lg-12">
         <label>Project</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.project"/>
+        <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.project"/>
       </div>
       <div class="col-lg-12">
         <label>Period</label>
@@ -61,19 +61,19 @@
       </div>
       <div class="col-lg-12">
         <label>Natur</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.nature"/>
+        <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.nature"/>
       </div>
       <div class="col-lg-4">
         <label># Days</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.days"/>
+        <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.days"/>
       </div>
       <div class="col-lg-4">
         <label>Rate</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.rate"/>
+        <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.rate"/>
       </div>
       <div class="col-lg-4">
         <label>Vat Rate</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.vatRate"/>
+        <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.vatRate"/>
       </div>
     </div>
     <div class="modal-footer">
@@ -90,7 +90,7 @@
     <div class="modal-body col-lg-12 row">
       <div class="col-lg-12">
         <label>Project</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.project" [readonly]="invoice.status == 2"/>
+        <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.project" [readonly]="invoice.status == 2"/>
       </div>
       <div class="col-lg-12">
         <label>Period</label>
@@ -98,19 +98,19 @@
       </div>
       <div class="col-lg-12">
         <label>Natur</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.nature" [readonly]="invoice.status == 2"/>
+        <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.nature" [readonly]="invoice.status == 2"/>
       </div>
       <div class="col-lg-4">
         <label># Days</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.days" [readonly]="invoice.status == 2"/>
+        <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.days" [readonly]="invoice.status == 2"/>
       </div>
       <div class="col-lg-4">
         <label>Rate</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.rate"  [readonly]="invoice.status == 2"/>
+        <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.rate"  [readonly]="invoice.status == 2"/>
       </div>
       <div class="col-lg-4">
         <label>Vat Rate</label>
-        <input class="col-lg-12" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.vatRate" [readonly]="invoice.status == 2"/>
+        <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.vatRate" [readonly]="invoice.status == 2"/>
       </div>
     </div>
     <div class="modal-footer col-lg-12">
