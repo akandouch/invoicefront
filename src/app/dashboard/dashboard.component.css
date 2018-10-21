@@ -11,4 +11,12 @@
     border-color: #c4c4c4;
     border-bottom: none;
     border-top: none;
+    color: rgb(73, 73, 73);
+}
+.chart {
+    border: solid 1px #dadada;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 3px;
+    background-color: #fdfdfd;
 }

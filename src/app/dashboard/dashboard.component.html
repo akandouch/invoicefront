@@ -1,8 +1,10 @@
-<div *ngIf="chart" class="col-lg-12">
-    
-    <div class="col-lg-6">
-      <label>Year <input type="text" [(ngModel)]="year" maxlength="4"></label>
-      <fa-icon  class="btn btn-outline-dark sync-btn" (click)="reloadChart()" [icon]="faSync"></fa-icon>
-      <canvas id="canvas">{{ chart }}</canvas>
-    </div>
+<div class="col-lg-12">
+<div *ngIf="chart" class="chart col-lg-6">
+  <div class="col-lg-12">
+    <label>Year <input type="text" [(ngModel)]="year" maxlength="4"></label>
+    <fa-icon  class="btn btn-outline-dark sync-btn" (click)="reloadChart()" [icon]="faSync"></fa-icon>
+    <canvas id="canvas">{{ chart }}</canvas>
+  </div>
 </div>
+</div>
+  
