@@ -98,9 +98,7 @@ export class InvoiceprofileComponent implements OnInit {
       profile.logo.newUpload = fileReader.result.split(',')[1];
       this.ds.postUpload(profile.logo, (u) => {
         profile.logo = u;
-        this.ds.postInvoiceProfile(profile, () => {
-          this.loadingLogo = false;
-        });
+        this.loadingLogo = false;
       });
     });
     fileReader.readAsDataURL(blob);
