@@ -2,10 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {InvoiceProfile} from './invoiceprofile.class';
 import {DataService} from '../data.service';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {faCoffee, faCopy, faEye, faPlus, faSave, faTrashAlt, faWindowClose, faEllipsisH, faEdit} from '@fortawesome/free-solid-svg-icons';
-import { Input } from '@angular/compiler/src/core';
-import { load } from '@angular/core/src/render3/instructions';
-import { Timeouts } from 'selenium-webdriver';
+import {faCoffee, faCopy, faEdit, faEllipsisH, faEye, faPlus, faSave, faTrashAlt, faWindowClose} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -24,11 +21,13 @@ export class InvoiceprofileComponent implements OnInit {
   faCoffee = faCoffee;
   faEye = faEye;
   faTrashAlt = faTrashAlt;
-  faCopy = faCopy;faEllipsisH = faEllipsisH;faEdit=faEdit;
+  faCopy = faCopy;
+  faEllipsisH = faEllipsisH;
+  faEdit = faEdit;
 
   public currentProfile: InvoiceProfile;
   public currentIdx: number;
-  public loadingLogo:boolean=false;
+  public loadingLogo: boolean = false;
 
   constructor(private ds: DataService, private ngbModalService: NgbModal) {
     this.newInvoiceProfile = new InvoiceProfile();
@@ -81,16 +80,16 @@ export class InvoiceprofileComponent implements OnInit {
     this.currentModal.close();
   }
 
-  changeLogo(event:any, profile:InvoiceProfile){
+  changeLogo(event: any, profile: InvoiceProfile) {
     this.loadingLogo = true;
-    var fileReader = new FileReader();
-    fileReader.addEventListener("load",()=>{
-      console.info("loading logo ...");
+    const fileReader = new FileReader();
+    fileReader.addEventListener('load', () => {
+      console.log('loading logo ...');
       profile.logo = fileReader.result;
-     // setTimeout(()=>{},2000);
-     this.loadingLogo = false
+      // setTimeout(()=>{},2000);
+      this.loadingLogo = false;
     });
-    var blob = event.srcElement.files[0];
+    const blob = event.srcElement.files[0];
     fileReader.readAsDataURL(blob);
   }
 
