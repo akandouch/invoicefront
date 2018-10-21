@@ -6,6 +6,7 @@ export class InvoiceProfile {
     public firstname:string;
     public lastname:string;
     public active:boolean;
+    public customer:boolean;
     public vat:string;
     public mail:string;
     public phoneNumber:string;
