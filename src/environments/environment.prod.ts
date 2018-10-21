@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  restApiUrl: 'https://invoiceapi.artcoded.tech'
+  restApiUrl: 'http://localhost:8080'
 };
