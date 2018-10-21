@@ -22,7 +22,7 @@ export class AppComponent {
     this.menu.push({color:"#848dff", route:"/invoiceprofile", label:"Profiles", icon:faAddressBook});
     this.menu.push({color:"#ff8484", route:"/settings", label:"Settings", icon:faCogs});
 
-    this.currentMenu = {color:"#5cc664", route:"/invoice", label:"Invoices", icon:faFileInvoice,selected:true};
+    this.currentMenu = {color:"#ff84ff", route:"/dashboard", label:"Dashboard", icon:faFileInvoice,selected:true};
   }
   click(item:MenuLink){
     this.menu.forEach(x=>x.selected=false);
