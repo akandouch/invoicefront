@@ -1,7 +1,9 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Chart } from 'chart.js';
-import { DataService } from '../data.service';
+import { DataService } from '../services/data.service';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
+import { DashboardChartRatePerMonthServiceImpl } from '../services/dashboardchartratepermonthrestserviceimple.class';
+import { RestService } from '../services/restservice.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,8 +15,10 @@ export class DashboardComponent implements OnInit {
     chart=[];
     year:number = (new Date()).getFullYear();
     faSync = faSync; 
+    ratePerMonthService:RestService;
 
-  constructor(private dataService:DataService) { }
+  constructor(private dataService:DataService<any>) {
+   }
 
   
   ngAfterViewInit(){
@@ -28,9 +32,13 @@ export class DashboardComponent implements OnInit {
   initChartRatePerMonthForYear(year:number){
     var data = [];
     var labels = ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-    this.dataService.getRatePerMonthForYear(year).subscribe(
-     d=>this.createLineChart("Rate per Month for "+ year ,d, labels)
-    );
+   
+    this.ratePerMonthService = new DashboardChartRatePerMonthServiceImpl();
+    this.dataService.setService(this.ratePerMonthService);
+    this.dataService.get({year:year},(data)=>{
+        this.createLineChart("Rate per Month for "+ year ,data, labels)
+    });
+    
   }
 
   createLineChart(label:string, data:any[], labels:any[]){

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Invoice } from '../invoice/invoice.class';
 import {Upload} from '../upload/upload.class';
-import {DataService} from '../data.service';
+import {DataService} from '../services/data.service';
 
 @Component({
   selector: 'app-invoice-preview',
@@ -11,7 +11,7 @@ import {DataService} from '../data.service';
 export class InvoicePreviewComponent implements OnInit {
 
   @Input() invoice:Invoice;
-  constructor(private ds: DataService) { }
+  constructor(private ds: DataService<any>) { }
 
   ngOnInit() {
   }

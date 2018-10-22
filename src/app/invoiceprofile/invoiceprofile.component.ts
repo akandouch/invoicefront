@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {InvoiceProfile} from './invoiceprofile.class';
-import {DataService} from '../data.service';
+import {DataService} from '../services/data.service';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {faCoffee, faCopy, faEdit, faEllipsisH, faEye, faPlus, faSave, faTrashAlt, faWindowClose} from '@fortawesome/free-solid-svg-icons';
 import {Upload} from '../upload/upload.class';
@@ -30,7 +30,7 @@ export class InvoiceprofileComponent implements OnInit {
   public currentIdx: number;
   public loadingLogo: boolean = false;
 
-  constructor(private ds: DataService, private ngbModalService: NgbModal) {
+  constructor(private ds: DataService<any>, private ngbModalService: NgbModal) {
     this.newInvoiceProfile = new InvoiceProfile();
     this.getAll();
   }

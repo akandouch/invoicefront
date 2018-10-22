@@ -1,8 +1,9 @@
 import {Item} from '../item/item.class';
 import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 import { StatusEnum } from './status.enum';
+import { Entity } from '../entity.interface';
 
-export class Invoice {
+export class Invoice implements Entity {
   public title: string = '';
   public id: string;
   public invoiceNumber: string;

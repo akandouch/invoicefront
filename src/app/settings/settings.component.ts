@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {faCogs} from '@fortawesome/free-solid-svg-icons';
 import {Settings} from './settings.class';
-import {DataService} from '../data.service';
+import {DataService} from '../services/data.service';
 
 @Component({
   selector: 'app-settings',
@@ -12,9 +12,9 @@ export class SettingsComponent implements OnInit {
 
   faCogs = faCogs;
   settings: Settings;
-  ds: DataService;
+  ds: DataService<any>;
 
-  constructor(ds: DataService) {
+  constructor(ds: DataService<any>) {
     this.ds = ds;
     this.getSettings();
   }

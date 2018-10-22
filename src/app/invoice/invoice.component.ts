@@ -1,6 +1,6 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {Invoice} from './invoice.class';
-import {DataService} from '../data.service';
+import {DataService} from '../services/data.service';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Item} from '../item/item.class';
 import jspdf from 'jspdf';
@@ -20,7 +20,7 @@ import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 export class InvoiceComponent implements OnInit {
 
   invoice: Invoice;
-  ds: DataService;
+  ds: DataService<any>;
   history: Invoice[];
   current: Invoice;
   preview: Invoice;
@@ -34,7 +34,7 @@ export class InvoiceComponent implements OnInit {
   private currentProfile: InvoiceProfile;
   private currentCustomer: InvoiceProfile;
 
-  constructor(ds: DataService, private ngbModalService: NgbModal) {
+  constructor(ds: DataService<any>, private ngbModalService: NgbModal) {
     this.ds = ds;
     this.faEye = faEye;
     this.getAll();

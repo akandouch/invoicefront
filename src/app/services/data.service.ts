@@ -1,17 +1,73 @@
 import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {Invoice} from './invoice/invoice.class';
-import {InvoiceProfile} from './invoiceprofile/invoiceprofile.class';
-import {environment} from '../environments/environment';
-import {Item} from './item/item.class';
-import {Settings} from './settings/settings.class';
-import {Upload} from './upload/upload.class';
+import {Injectable, Inject} from '@angular/core';
+import {Invoice} from '../invoice/invoice.class';
+import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
+import {environment} from '../../environments/environment';
+import {Item} from '../item/item.class';
+import {Settings} from '../settings/settings.class';
+import {Upload} from '../upload/upload.class';
+import { RestService } from './restservice.interface';
+import { throwError } from 'rxjs';
+import { Entity } from '../entity.interface';
 
 @Injectable(
   {providedIn: 'root'}
 )
-export class DataService {
+export class DataService<T extends RestService> {
+
+  private service:RestService;
+  
   constructor(private http: HttpClient) {
+  }
+
+  setService(service:RestService){
+    this.service = service;
+  }
+
+  get(params?:any,callBackNext?:any,callbackError?:any, callbackComplete?:any){
+    this.http.get<any[]>(environment.restApiUrl + '/' + this.service.path, {params:params} ).subscribe(
+      (datas)=> {
+        if(callBackNext)callBackNext(datas);
+        },
+      (err) => {
+        if(callbackError)callbackError(err);
+        },
+      ()=> {
+        if(callbackComplete)callbackComplete();
+        },
+    );
+  }
+
+  post(data:any, callBackNext?:any,callbackError?:any, callbackComplete?:any){
+    this.http.post(environment.restApiUrl + '/' + this.service.path , data).subscribe(
+      (datas)=> {
+        if(callBackNext)callBackNext(datas);
+        },
+      (err) => {
+        if(callbackError)callbackError(err);
+        },
+      ()=> {
+        if(callbackComplete)callbackComplete();
+        },
+    );
+  }
+
+  put(){
+    throwError("to implement");
+  }
+
+  delete(entity:any, callBackNext?:any,callbackError?:any, callbackComplete?:any){
+    this.http.delete(environment.restApiUrl + "/" + this.service.path, {params: {id: entity.id}}).subscribe(
+      (datas)=> {
+        if(callBackNext)callBackNext(datas);
+      },
+      (err) => {
+        if(callbackError)callbackError(err);
+      },
+      ()=> {
+        if(callbackComplete)callbackComplete();
+      },
+    );
   }
 
   postInvoice(invoice: Invoice, callback?) {
