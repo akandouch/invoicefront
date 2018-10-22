@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
   initChartRatePerMonthForYear(year:number){
     var data = [];
     var labels = ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-   
+    this.ratePerMonthService.path = DashboardChartRatePerMonthServiceImpl.path;
     this.ratePerMonthService.get({year:year},(data)=>{
         this.createLineChart("Rate per Month for "+ year ,data, labels)
     });

@@ -50,8 +50,9 @@ export class InvoiceComponent implements OnInit {
   }
 
   getAll() {
-   this.invoiceService.get({},(data:Invoice[])=>{
-     this.history = data;
+    this.invoiceService.path = InvoiceRestServiceImpl.path;
+    this.invoiceService.get({},(data:Invoice[])=>{
+    this.history = data;
    });
   }
 
