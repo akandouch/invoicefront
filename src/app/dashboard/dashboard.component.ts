@@ -14,10 +14,9 @@ export class DashboardComponent implements OnInit {
 
     chart=[];
     year:number = (new Date()).getFullYear();
-    faSync = faSync; 
-    ratePerMonthService:RestService;
+    faSync = faSync;
 
-  constructor(private dataService:DataService<any>) {
+  constructor(private ratePerMonthService:DashboardChartRatePerMonthServiceImpl) {
    }
 
   
@@ -33,9 +32,7 @@ export class DashboardComponent implements OnInit {
     var data = [];
     var labels = ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
    
-    this.ratePerMonthService = new DashboardChartRatePerMonthServiceImpl();
-    this.dataService.setService(this.ratePerMonthService);
-    this.dataService.get({year:year},(data)=>{
+    this.ratePerMonthService.get({year:year},(data)=>{
         this.createLineChart("Rate per Month for "+ year ,data, labels)
     });
     

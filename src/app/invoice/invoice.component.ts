@@ -36,7 +36,7 @@ export class InvoiceComponent implements OnInit {
   private currentProfile: InvoiceProfile;
   private currentCustomer: InvoiceProfile;
 
-  constructor(ds: DataService<any>, private ngbModalService: NgbModal) {
+  constructor(ds: DataService<any>, private ngbModalService: NgbModal, private invoiceService:InvoiceRestServiceImpl) {
     this.ds = ds;
     this.faEye = faEye;
     this.getAll();
@@ -50,13 +50,9 @@ export class InvoiceComponent implements OnInit {
   }
 
   getAll() {
-   // this.ds.getInvoices().subscribe((data: Invoice[]) => this.history = data);
-   var service:RestService = new InvoiceRestServiceImpl();
-   this.ds.setService(service);
-
-   this.ds.get({},(data:Invoice[])=>{
+   this.invoiceService.get({},(data:Invoice[])=>{
      this.history = data;
-   })
+   });
   }
 
   addItem() {

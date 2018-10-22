@@ -5,9 +5,10 @@ export interface RestService {
     path:string;
     //dataService:DataService<RestService>;
 
-    /* HTTP GET *//*
-    getNext(t:U[]);
-    getError(error:any);
+    /* HTTP GET */
+    get(params?:any,callBackNext?:any,callbackError?:any, callbackComplete?:any);
+    post(data:any, callBackNext?:any,callbackError?:any, callbackComplete?:any);
+    /*getError(error:any);
     getComplete();*/
 
     /* HTTP POST *//*
