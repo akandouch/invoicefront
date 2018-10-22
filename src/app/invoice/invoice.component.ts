@@ -7,6 +7,8 @@ import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import {faEye,faArrowLeft, faFileDownload, faFolderOpen, faPlus, faSearch, faTrashAlt, faHome, faUser, faEllipsisH, faFilePdf, faFileInvoice} from '@fortawesome/free-solid-svg-icons';
 import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
+import { InvoiceRestServiceImpl } from '../services/invoicerestserviceimpl.class';
+import { RestService } from '../services/restservice.interface';
 
 @Component({
   selector: 'app-invoice',
@@ -48,7 +50,13 @@ export class InvoiceComponent implements OnInit {
   }
 
   getAll() {
-    this.ds.getInvoices().subscribe((data: Invoice[]) => this.history = data);
+   // this.ds.getInvoices().subscribe((data: Invoice[]) => this.history = data);
+   var service:RestService = new InvoiceRestServiceImpl();
+   this.ds.setService(service);
+
+   this.ds.get({},(data:Invoice[])=>{
+     this.history = data;
+   })
   }
 
   addItem() {
