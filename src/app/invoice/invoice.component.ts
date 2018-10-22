@@ -5,10 +5,23 @@ import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Item} from '../item/item.class';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-import {faEye,faArrowLeft, faFileDownload, faFolderOpen, faPlus, faSearch, faTrashAlt, faHome, faUser, faEllipsisH, faFilePdf, faFileInvoice} from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowLeft,
+  faEllipsisH,
+  faEye,
+  faFileDownload,
+  faFileInvoice,
+  faFilePdf,
+  faFolderOpen,
+  faHome,
+  faPlus,
+  faSearch,
+  faTrashAlt,
+  faUser
+} from '@fortawesome/free-solid-svg-icons';
 import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
-import { InvoiceRestServiceImpl } from '../services/invoicerestserviceimpl.class';
-import { RestService } from '../services/restservice.interface';
+import {InvoiceRestServiceImpl} from '../services/invoicerestserviceimpl.class';
+import {Upload} from '../upload/upload.class';
 
 @Component({
   selector: 'app-invoice',
@@ -26,9 +39,19 @@ export class InvoiceComponent implements OnInit {
   history: Invoice[];
   current: Invoice;
   preview: Invoice;
-  faEye = faEye;faPlus = faPlus;faFolderOpen = faFolderOpen;faTrashAlt = faTrashAlt;faFileDownload = faFileDownload; faArrowLeft=faArrowLeft;
+  faEye = faEye;
+  faPlus = faPlus;
+  faFolderOpen = faFolderOpen;
+  faTrashAlt = faTrashAlt;
+  faFileDownload = faFileDownload;
+  faArrowLeft = faArrowLeft;
 
-  faSearch = faSearch;faHome = faHome;faUser = faUser;faEllipsisH = faEllipsisH;faFilePdf=faFilePdf;faFileInvoice=faFileInvoice;
+  faSearch = faSearch;
+  faHome = faHome;
+  faUser = faUser;
+  faEllipsisH = faEllipsisH;
+  faFilePdf = faFilePdf;
+  faFileInvoice = faFileInvoice;
   private currentModal: NgbActiveModal;
 
   private profiles: InvoiceProfile[];
@@ -36,7 +59,7 @@ export class InvoiceComponent implements OnInit {
   private currentProfile: InvoiceProfile;
   private currentCustomer: InvoiceProfile;
 
-  constructor(ds: DataService<any>, private ngbModalService: NgbModal, private invoiceService:InvoiceRestServiceImpl) {
+  constructor(ds: DataService<any>, private ngbModalService: NgbModal, private invoiceService: InvoiceRestServiceImpl) {
     this.ds = ds;
     this.faEye = faEye;
     this.getAll();
@@ -50,9 +73,9 @@ export class InvoiceComponent implements OnInit {
   }
 
   getAll() {
-   this.invoiceService.get({},(data:Invoice[])=>{
-     this.history = data;
-   });
+    this.invoiceService.get({}, (data: Invoice[]) => {
+      this.history = data;
+    });
   }
 
   addItem() {
@@ -64,18 +87,21 @@ export class InvoiceComponent implements OnInit {
   }
 
   openInvoice(invoice: Invoice) {
-    console.log(invoice);
     let i: Invoice = new Invoice();
 
     i.fillInvoice(invoice);
     this.current = i;
   }
 
+  getAttachments(upload: Upload) {
+    return this.ds.getUploadUrl(upload.id);
+  }
+
   update() {
     this.ds.postInvoice(this.current, () => {
       this.getAll();
       this.current = null;
-      alert("Invoice updated");
+      alert('Invoice updated');
     });
   }
 
