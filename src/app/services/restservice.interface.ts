@@ -7,7 +7,8 @@ export interface RestService {
 
     /* HTTP GET */
     get(params?:any,callBackNext?:any,callbackError?:any, callbackComplete?:any);
-    post(data:any, callBackNext?:any,callbackError?:any, callbackComplete?:any);
+    post<T extends Entity>(data:T, callBackNext?:any,callbackError?:any, callbackComplete?:any);
+    delete<T extends Entity>(entity:Entity, callBackNext?:any,callbackError?:any, callbackComplete?:any);
     /*getError(error:any);
     getComplete();*/
 

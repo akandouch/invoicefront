@@ -12,7 +12,10 @@ export class DashboardChartRatePerMonthServiceImpl implements RestService {
         this.dataService.get(this.path, params, callBackNext, callbackError, callbackComplete);
     }
     post(data: any, callBackNext?: any, callbackError?: any, callbackComplete?: any) {
-        this.dataService.post(this.path,data,callBackNext,callbackError,callbackComplete);
+        return;
+    }
+    delete(entity: any, callBackNext?:any,callbackError?:any, callbackComplete?:any){
+        return;
     }
     
 }

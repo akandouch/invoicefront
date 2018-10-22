@@ -50,7 +50,7 @@ export class DataService<T extends Entity> {
     throwError("to implement");
   }
 
-  delete(path:string, entity:any, callBackNext?:any,callbackError?:any, callbackComplete?:any){
+  delete(path:string, entity:T, callBackNext?:any,callbackError?:any, callbackComplete?:any){
     this.http.delete(environment.restApiUrl + "/" + path, {params: {id: entity.id}}).subscribe(
       (datas)=> {
         if(callBackNext)callBackNext(datas);
