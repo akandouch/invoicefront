@@ -30,12 +30,12 @@ export class DataService<T extends Entity> {
       },
     );
   }
+  post(path:string, data:T, callBackNext?:any,callbackError?:any, callbackComplete?:any){
+    this.http.post(environment.restApiUrl + '/' + path , data).subscribe(
+      (datas)=> {
+        if(callBackNext)callBackNext(datas);
+        },
 
-  post(path: string, data: any, callBackNext?: any, callbackError?: any, callbackComplete?: any) {
-    this.http.post(environment.restApiUrl + '/' + path, data).subscribe(
-      (datas) => {
-        if (callBackNext) callBackNext(datas);
-      },
       (err) => {
         if (callbackError) callbackError(err);
       },
@@ -45,8 +45,9 @@ export class DataService<T extends Entity> {
     );
   }
 
-  put() {
-    throwError('to implement');
+  put(){
+    throw new Error("to implement");
+
   }
 
   delete(path: string, entity: T, callBackNext?: any, callbackError?: any, callbackComplete?: any) {

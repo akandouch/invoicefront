@@ -14,7 +14,6 @@ export class AppComponent {
   currentMenu:MenuLink;
 
   constructor(){
-    console.log('heere')
     this.menu = [];
     
     this.menu.push({color:"#ff84ff", route:"/dashboard", label:"Dashboard", icon:faChartLine, selected:true});
