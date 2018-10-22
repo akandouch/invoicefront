@@ -11,7 +11,7 @@ import { faSync } from '@fortawesome/free-solid-svg-icons';
 export class DashboardComponent implements OnInit {
 
     chart=[];
-    year:any;
+    year:number = (new Date()).getFullYear();
     faSync = faSync; 
 
   constructor(private dataService:DataService) { }
@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   
   ngAfterViewInit(){
 
-    this.initChartRatePerMonthForYear(2019);
+    this.initChartRatePerMonthForYear(this.year);
 
   }
   ngOnInit() {
@@ -31,9 +31,6 @@ export class DashboardComponent implements OnInit {
     this.dataService.getRatePerMonthForYear(year).subscribe(
      d=>this.createLineChart("Rate per Month for "+ year ,d, labels)
     );
-
-    
-
   }
 
   createLineChart(label:string, data:any[], labels:any[]){
@@ -80,5 +77,4 @@ export class DashboardComponent implements OnInit {
       this.initChartRatePerMonthForYear(this.year);
     }
   }
-
 }
