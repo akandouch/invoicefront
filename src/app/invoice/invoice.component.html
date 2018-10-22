@@ -94,13 +94,16 @@
                 </tr>
                 </thead>
                 <tbody>
+                <tr *ngIf="!current.attachments || !current.attachments.length">
+                  <td colspan="3" class="bg-dark text-white">No attachment</td>
+                </tr>
                 <tr *ngFor="let a of current.attachments">
                   <td>{{a.fileName}}</td>
                   <td>{{a.contentType}}</td>
                   <td>
                     <div class="btn-group">
                       <a class="btn btn-success" [href]="getAttachments(a)">Download</a>
-                      <button class="btn btn-danger">Delete</button>
+                      <button class="btn btn-danger" (click)="removeAttachment(a)">Delete</button>
                     </div>
                   </td>
                 </tr>
