@@ -97,6 +97,20 @@ export class InvoiceComponent implements OnInit {
     return this.ds.getUploadUrl(upload.id);
   }
 
+  addAttachment(event: any, invoice: Invoice) {
+    const blob = event.srcElement.files[0];
+    const fileReader = new FileReader();
+    fileReader.addEventListener('load', () => {
+      const upl = new Upload();
+      upl.contentType = blob.type;
+      upl.fileName = blob.name;
+      upl.newUpload = fileReader.result.split(',')[1];
+      this.ds.postUpload(upl, (u) => {
+        invoice.attachments.push(upl);
+      });
+    });
+    fileReader.readAsDataURL(blob);
+  }
   update() {
     this.ds.postInvoice(this.current, () => {
       this.getAll();

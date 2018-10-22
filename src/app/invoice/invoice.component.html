@@ -1,163 +1,190 @@
 <div class="main row">
   <div class="col-lg-12">
-      <div class="col-lg-12 row">
-        <div *ngIf="!current" class="col-lg-12">
-          <button class="btn btn-outline-secondary" (click)="openModal(invoiceContent)"><fa-icon [icon]="faPlus"></fa-icon> Add</button>
-          <div class="container-table-items col-lg-12">
-            <div class="row new-items table-header">
-              <div class="col-lg-1">#</div>
-              <div class="col-lg-3">Invoicer</div>
-              <div class="col-lg-3">Customer</div>
-              <div class="col-lg-2">vat</div>
-              <div class="col-lg-2">Status</div>
-              <div class="col-lg-2"></div>
-            </div>
-            <div *ngFor="let i of history; let idx = index" class="row add-items table-items">
-              <div class="col-lg-1">{{ i.invoiceNumber }}</div>
-              <div class="col-lg-3">{{i.invoicer.firstname}} {{i.invoicer.lastname}}</div>
-              <div class="col-lg-3">{{i.invoiced.firstname}}</div>
-              <div class="col-lg-2">{{i.invoiced.vat}}</div>
-              <div class="col-lg-2" *ngIf="!i.status && i.status != 0"></div>
-              <div class="col-lg-2" *ngIf="i.status == 0"><span class="inv-status open-status">open</span></div>
-              <div class="col-lg-2" *ngIf="i.status == 1"><span class="inv-status ready-status">ready</span></div>
-              <div class="col-lg-2" *ngIf="i.status == 2"><span class="inv-status close-status">closed</span></div>
-              <div class="col-lg-1">
-                <div ngbDropdown class="d-inline-block">
-                  <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
-                  
-                  <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-                    <div (click)="openInvoice(i)"><fa-icon [icon]="faFolderOpen"></fa-icon> Open</div>
-                    <div (click)="openModal(content, i)"><fa-icon [icon]="faEye"></fa-icon> Preview</div>
-                    <div (click)="generatePdf(i)"><fa-icon [icon]="faFilePdf"></fa-icon> Download PDF</div>
-                    <div (click)="deleteInvoice(i)" *ngIf="i.status != 2"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
+    <div class="col-lg-12 row">
+      <div *ngIf="!current" class="col-lg-12">
+        <button class="btn btn-outline-secondary" (click)="openModal(invoiceContent)">
+          <fa-icon [icon]="faPlus"></fa-icon>
+          Add
+        </button>
+        <div class="container-table-items col-lg-12">
+          <div class="row new-items table-header">
+            <div class="col-lg-1">#</div>
+            <div class="col-lg-3">Invoicer</div>
+            <div class="col-lg-3">Customer</div>
+            <div class="col-lg-2">vat</div>
+            <div class="col-lg-2">Status</div>
+            <div class="col-lg-2"></div>
+          </div>
+          <div *ngFor="let i of history; let idx = index" class="row add-items table-items">
+            <div class="col-lg-1">{{ i.invoiceNumber }}</div>
+            <div class="col-lg-3">{{i.invoicer.firstname}} {{i.invoicer.lastname}}</div>
+            <div class="col-lg-3">{{i.invoiced.firstname}}</div>
+            <div class="col-lg-2">{{i.invoiced.vat}}</div>
+            <div class="col-lg-2" *ngIf="!i.status && i.status != 0"></div>
+            <div class="col-lg-2" *ngIf="i.status == 0"><span class="inv-status open-status">open</span></div>
+            <div class="col-lg-2" *ngIf="i.status == 1"><span class="inv-status ready-status">ready</span></div>
+            <div class="col-lg-2" *ngIf="i.status == 2"><span class="inv-status close-status">closed</span></div>
+            <div class="col-lg-1">
+              <div ngbDropdown class="d-inline-block">
+                <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
+
+                <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+                  <div (click)="openInvoice(i)">
+                    <fa-icon [icon]="faFolderOpen"></fa-icon>
+                    Open
+                  </div>
+                  <div (click)="openModal(content, i)">
+                    <fa-icon [icon]="faEye"></fa-icon>
+                    Preview
+                  </div>
+                  <div (click)="generatePdf(i)">
+                    <fa-icon [icon]="faFilePdf"></fa-icon>
+                    Download PDF
+                  </div>
+                  <div (click)="deleteInvoice(i)" *ngIf="i.status != 2">
+                    <fa-icon [icon]="faTrashAlt"></fa-icon>
+                    Delete
                   </div>
                 </div>
               </div>
             </div>
-          </div>    
-        </div>
-        &nbsp;
-        <div class="col-lg-12" *ngIf="current">
-          <div class="row">
-            <div class="col-lg-12">
-              <button class="btn btn-dark text-white" (click)="current=null"><fa-icon [icon]="faArrowLeft"></fa-icon> Back</button>
-            </div>
-            &nbsp;
-            <div class="col-lg-12">
-              <label class="label" for="invoiceNumber">Invoice number</label>
-              <input class="form-control" id="invoiceNumber" type="text" [(ngModel)]="current.invoiceNumber">
-            </div>
-            <div class="col-lg-12">
-              <label class="label" for="invoiceTitle">Title:&nbsp;</label>
-              <input class="form-control" id="invoiceTitle" type="text" [(ngModel)]="current.title">
-            </div>
-            <div class="col-lg-12">
-              <label class="label" for="invoiceStatus">Status:&nbsp;</label>
-              <select id="invoiceStatus" class="custom-select " [(ngModel)]="current.status">
-                <option value="0">Open</option>
-                <option value="2">Closed</option>
-              </select>
-            </div>
-            <div class="col-lg-12">
-              <h4>Attachments</h4>
-              <div class="table-responsive">
-                <table class="table table-bordered table-light">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>fileName</th>
-                      <th>contentType</th>
-                      <th>action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  <tr *ngFor="let a of current.attachments">
-                    <td>{{a.id}}</td>
-                    <td>{{a.fileName}}</td>
-                    <td>{{a.contentType}}</td>
-                    <td>
-                      <div class="btn-group">
-                        <a class="btn btn-success" [href]="getAttachments(a)">Download</a>
-                        <button class="btn btn-danger">Delete</button>
-                      </div>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            &nbsp;
-            <div class="col-lg-12">
-              <button type="button" class="btn btn-outline-dark" (click)="update()">Update</button>
-            </div>
           </div>
-          <hr>
-          <app-item-list [invoice]="current" *ngIf="current"></app-item-list>
         </div>
       </div>
+      &nbsp;
+      <div class="col-lg-12" *ngIf="current">
+        <div class="row">
+          <div class="col-lg-12">
+            <button class="btn btn-dark text-white" (click)="current=null">
+              <fa-icon [icon]="faArrowLeft"></fa-icon>
+              Back
+            </button>
+          </div>
+          &nbsp;
+          <div class="col-lg-12">
+            <label class="label" for="invoiceNumber">Invoice number</label>
+            <input class="form-control" id="invoiceNumber" type="text" [(ngModel)]="current.invoiceNumber">
+          </div>
+          <div class="col-lg-12">
+            <label class="label" for="invoiceTitle">Title:&nbsp;</label>
+            <input class="form-control" id="invoiceTitle" type="text" [(ngModel)]="current.title">
+          </div>
+          <div class="col-lg-12">
+            <label class="label" for="invoiceStatus">Status:&nbsp;</label>
+            <select id="invoiceStatus" class="custom-select " [(ngModel)]="current.status">
+              <option value="0">Open</option>
+              <option value="2">Closed</option>
+            </select>
+          </div>
+          <div class="col-lg-12">
+            <h4>Attachments</h4>
+            <label class="file-handler">
+              <div class="btn btn-outline-success mb-2">
+                <span><fa-icon [icon]="faPlus"></fa-icon>Add Upload</span>
+              </div>
+              <input type="file" (change)="addAttachment($event,current)">
+            </label>
+            <div class="table-responsive">
+              <table class="table table-bordered table-light">
+                <thead>
+                <tr>
+                  <th>fileName</th>
+                  <th>contentType</th>
+                  <th>action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let a of current.attachments">
+                  <td>{{a.fileName}}</td>
+                  <td>{{a.contentType}}</td>
+                  <td>
+                    <div class="btn-group">
+                      <a class="btn btn-success" [href]="getAttachments(a)">Download</a>
+                      <button class="btn btn-danger">Delete</button>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          &nbsp;
+          <div class="col-lg-12">
+            <button type="button" class="btn btn-outline-dark" (click)="update()">Update</button>
+          </div>
+        </div>
+        <hr>
+        <app-item-list [invoice]="current" *ngIf="current"></app-item-list>
+      </div>
     </div>
+  </div>
 </div>
 
 
-
 <ng-template #content let-c="close" let-d="dismiss" class="col-lg-12">
-    <div class="modal-header col-lg-12">
-        <h4 class="modal-title" id="modal-basic-title">Invoice preview</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+  <div class="modal-header col-lg-12">
+    <h4 class="modal-title" id="modal-basic-title">Invoice preview</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <app-invoice-preview [invoice]="preview"></app-invoice-preview>
 </ng-template>
 
 <ng-template #invoiceContent let-c="close" let-d="dismiss" class="col-lg-12">
-    <div class="modal-header col-lg-12">
-        <h4 class="modal-title" id="modal-basic-title">New Invoice</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    
-    <div class="col-lg-12 row">
+  <div class="modal-header col-lg-12">
+    <h4 class="modal-title" id="modal-basic-title">New Invoice</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 
-      <div class="col-lg-6 current-profile">
-        <h5>My current profile</h5>
-        <div>
+  <div class="col-lg-12 row">
+
+    <div class="col-lg-6 current-profile">
+      <h5>My current profile</h5>
+      <div>
         <p>{{currentProfile.firstname}}, {{currentProfile.lastname}}</p>
         <p>{{currentProfile.vat}}</p>
         <p>{{currentProfile.accountNumber}}</p>
         <p>{{currentProfile.address.street}}, {{currentProfile.address.streetNumber}}</p>
         <p>{{currentProfile.address.city}} {{currentProfile.address.postcode}}, {{currentProfile.address.country}}</p>
-        </div>
       </div>
+    </div>
 
-      <div class="col-lg-6 customer-profile" *ngIf="currentCustomer">
-          <h5>Customer to invoice</h5>
-          <div>
-            <p>{{currentCustomer.firstname}}, {{currentCustomer.lastname}}</p>
-            <p>{{currentCustomer.vat}}</p>
-            <p>{{currentProfile.accountNumber}}</p>
-            <p>{{currentCustomer.address.street}}, {{currentCustomer.address.streetNumber}}</p>
-            <p>{{currentCustomer.address.city}} {{currentCustomer.address.postcode}}, {{currentCustomer.address.country}}</p>
-          </div>
+    <div class="col-lg-6 customer-profile" *ngIf="currentCustomer">
+      <h5>Customer to invoice</h5>
+      <div>
+        <p>{{currentCustomer.firstname}}, {{currentCustomer.lastname}}</p>
+        <p>{{currentCustomer.vat}}</p>
+        <p>{{currentProfile.accountNumber}}</p>
+        <p>{{currentCustomer.address.street}}, {{currentCustomer.address.streetNumber}}</p>
+        <p>{{currentCustomer.address.city}} {{currentCustomer.address.postcode}},
+          {{currentCustomer.address.country}}</p>
       </div>
+    </div>
 
-      <div class="col-lg-12 ">
-        <table class="col-lg-12">
+    <div class="col-lg-12 ">
+      <table class="col-lg-12">
         <tbody>
-        <tr><td colspan="3" class="search"><input type="text" (keyup)="searchProfiles($event)" class="offset-lg-6 col-lg-5"><fa-icon [icon]="faSearch"></fa-icon></td></tr>
+        <tr>
+          <td colspan="3" class="search"><input type="text" (keyup)="searchProfiles($event)"
+                                                class="offset-lg-6 col-lg-5">
+            <fa-icon [icon]="faSearch"></fa-icon>
+          </td>
+        </tr>
         <tr *ngFor="let i of profilesFound" class="new-invoice-profiles" (click)="selectCustomer(i)">
           <td>{{i.firstname}}</td>
           <td>{{i.lastname}}</td>
           <td>{{i.vat}}</td>
         </tr>
         </tbody>
-        </table>
-      </div>
+      </table>
     </div>
-    <div class="modal-footer col-lg-12">
-      <button  (click)="save()" type="button" class="btn btn-outline-secondary  new-invoice">Create invoice</button>
-    </div>
+  </div>
+  <div class="modal-footer col-lg-12">
+    <button (click)="save()" type="button" class="btn btn-outline-secondary  new-invoice">Create invoice</button>
+  </div>
 </ng-template>
 <ng-template #menu>
   <ul>

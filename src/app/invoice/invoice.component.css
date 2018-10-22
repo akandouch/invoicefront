@@ -65,3 +65,9 @@
 .ready-status {
     background-color: #669cff;
 }
+.file-handler > input[type="file"] {
+  display: none;
+}
+i{
+  vertical-align: middle;
+}
