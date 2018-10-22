@@ -126,6 +126,10 @@ export class InvoiceComponent implements OnInit {
         });
       });
   }
+  invoiceBack() {
+    this.current = null;
+    this.getAll();
+  }
 
   update() {
     this.ds.postInvoice(this.current, () => {
