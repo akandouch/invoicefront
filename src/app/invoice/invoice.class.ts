@@ -2,12 +2,14 @@ import {Item} from '../item/item.class';
 import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 import { StatusEnum } from './status.enum';
 import { Entity } from '../entity.interface';
+import {Upload} from '../upload/upload.class';
 
 export class Invoice implements Entity {
   public title: string = '';
   public id: string;
   public invoiceNumber: string;
   public items: Item[] = [];
+  public attachments: Upload[] = [];
 
   public invoicer: InvoiceProfile = new InvoiceProfile();
   public invoiced: InvoiceProfile = new InvoiceProfile();
@@ -49,6 +51,7 @@ export class Invoice implements Entity {
     this.invoiced = invoice.invoiced;
     this.status = invoice.status;
     this.invoiceNumber = invoice.invoiceNumber;
+    this.attachments = invoice.attachments;
   }
 
   public removeItem(idx: number) {
