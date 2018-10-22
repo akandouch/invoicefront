@@ -74,9 +74,9 @@ export class InvoiceComponent implements OnInit {
 
   getAll() {
     this.invoiceService.path = InvoiceRestServiceImpl.path;
-    this.invoiceService.get({},(data:Invoice[])=>{
-    this.history = data;
-   });
+    this.invoiceService.get({}, (data: Invoice[]) => {
+      this.history = data;
+    });
 
   }
 
@@ -99,7 +99,7 @@ export class InvoiceComponent implements OnInit {
     return this.ds.getUploadUrl(upload.id);
   }
 
-  addAttachment(event: any, invoice: Invoice) {
+  addAttachment(event: any) {
     const blob = event.srcElement.files[0];
     const fileReader = new FileReader();
     fileReader.addEventListener('load', () => {
@@ -107,12 +107,14 @@ export class InvoiceComponent implements OnInit {
       upl.contentType = blob.type;
       upl.fileName = blob.name;
       upl.newUpload = fileReader.result.split(',')[1];
-      this.ds.postUpload(upl, (u) => {
-        invoice.attachments.push(upl);
+      this.ds.post('/upload', upl, (u) => {
+        this.current.attachments.push(u);
+        alert('attachment added');
       });
     });
     fileReader.readAsDataURL(blob);
   }
+
   update() {
     this.ds.postInvoice(this.current, () => {
       this.getAll();
