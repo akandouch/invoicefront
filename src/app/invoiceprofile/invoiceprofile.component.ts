@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {InvoiceProfile} from './invoiceprofile.class';
 import {DataService} from '../services/data.service';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {faCoffee, faCopy, faEdit, faEllipsisH, faEye, faPlus, faSave, faTrashAlt, faWindowClose} from '@fortawesome/free-solid-svg-icons';
 import {Upload} from '../upload/upload.class';
+import { RestService } from '../services/restservice.interface';
+import { UploadRestServiceImpl } from '../services/uploadrestserviceimpl.class';
 
 
 @Component({
@@ -30,7 +32,7 @@ export class InvoiceprofileComponent implements OnInit {
   public currentIdx: number;
   public loadingLogo: boolean = false;
 
-  constructor(private ds: DataService<any>, private ngbModalService: NgbModal) {
+  constructor(private ds: DataService<any>, private ngbModalService: NgbModal, @Inject(UploadRestServiceImpl) private uploadService:RestService) {
     this.newInvoiceProfile = new InvoiceProfile();
     this.getAll();
   }
@@ -82,7 +84,7 @@ export class InvoiceprofileComponent implements OnInit {
   }
 
   getLogo(upload: Upload) {
-    const uploadUrl = this.ds.getUploadUrl(upload.id);
+    const uploadUrl = this.uploadService.getResourcePath(upload);//this.ds.getUploadUrl(upload.id);
     return uploadUrl;
   }
 

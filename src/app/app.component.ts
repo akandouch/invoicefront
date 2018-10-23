@@ -1,5 +1,6 @@
-import { Component,Type, OnChanges, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {faHome, faHistory, faFileInvoice, faAddressBook, faCogs, IconDefinition, faChartLine} from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   menu:MenuLink[];
   currentMenu:MenuLink;
 
-  constructor(){
+  constructor(private router:Router){
     this.menu = [];
     
     this.menu.push({color:"#ff84ff", route:"/dashboard", label:"Dashboard", icon:faChartLine, selected:true});
@@ -21,7 +22,7 @@ export class AppComponent {
     this.menu.push({color:"#848dff", route:"/invoiceprofile", label:"Profiles", icon:faAddressBook});
     this.menu.push({color:"#ff8484", route:"/settings", label:"Settings", icon:faCogs});
 
-    this.currentMenu = {color:"#ff84ff", route:"/dashboard", label:"Dashboard", icon:faFileInvoice,selected:true};
+    this.currentMenu = {color:"#ff84ff", route:"/dashboard", label:"Dashboard", icon:faChartLine,selected:true};
   }
   click(item:MenuLink){
     this.menu.forEach(x=>x.selected=false);
