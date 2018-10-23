@@ -19,15 +19,15 @@ import {
   faTrashAlt,
   faUser,
   faListAlt,
-  faPaperclip
+  faPaperclip, faMailBulk
 } from '@fortawesome/free-solid-svg-icons';
 import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 import {InvoiceRestServiceImpl} from '../services/invoicerestserviceimpl.class';
 import {Upload} from '../upload/upload.class';
-import { RestService } from '../services/restservice.interface';
-import { UploadRestServiceImpl } from '../services/uploadrestserviceimpl.class';
-import { ItemComponent } from '../item/item.component';
-import { ItemListComponent } from '../item-list/item-list.component';
+import {RestService} from '../services/restservice.interface';
+import {UploadRestServiceImpl} from '../services/uploadrestserviceimpl.class';
+import {ItemComponent} from '../item/item.component';
+import {ItemListComponent} from '../item-list/item-list.component';
 
 @Component({
   selector: 'app-invoice',
@@ -46,6 +46,7 @@ export class InvoiceComponent implements OnInit {
   current: Invoice;
   preview: Invoice;
   faEye = faEye;
+  faMailBulk = faMailBulk;
   faPlus = faPlus;
   faFolderOpen = faFolderOpen;
   faTrashAlt = faTrashAlt;
@@ -66,15 +67,14 @@ export class InvoiceComponent implements OnInit {
   private currentProfile: InvoiceProfile;
   private currentCustomer: InvoiceProfile;
 
-  private listOpened:string = "items";
+  private listOpened: string = 'items';
 
   constructor(
-    ds: DataService<any>, 
-    private ngbModalService: NgbModal, 
-    @Inject(InvoiceRestServiceImpl)private invoiceService: RestService,
-    @Inject(UploadRestServiceImpl)private uploadService:RestService
-  ) 
-  {
+    ds: DataService<any>,
+    private ngbModalService: NgbModal,
+    @Inject(InvoiceRestServiceImpl) private invoiceService: InvoiceRestServiceImpl,
+    @Inject(UploadRestServiceImpl) private uploadService: RestService
+  ) {
 
     this.ds = ds;
     this.getAll();
@@ -89,7 +89,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   getAll() {
-    
+
     this.invoiceService.get({}, (data: Invoice[]) => {
       this.history = data;
     });
@@ -109,7 +109,8 @@ export class InvoiceComponent implements OnInit {
     i.fillInvoice(invoice);
     this.current = i;
   }
-  /* THIS IS REMOVED TO ATTACHEMENT-LIST COMPONENT 
+
+  /* THIS IS REMOVED TO ATTACHEMENT-LIST COMPONENT
   getAttachments(upload: Upload) {
     return this.uploadService.getResourcePath(upload);
   }
@@ -144,9 +145,10 @@ export class InvoiceComponent implements OnInit {
     });
   } */
 
-  downloadAttachment(attachment:Upload){
+  downloadAttachment(attachment: Upload) {
     return this.uploadService.getResourcePath(attachment);
   }
+
   invoiceBack() {
     this.current = null;
     this.getAll();
@@ -190,6 +192,12 @@ export class InvoiceComponent implements OnInit {
     });
   }
 
+  sendMail(id: string) {
+    console.log('send mail with id ' + id);
+    this.invoiceService.sendMail(id, (resp) => alert('email sent'),
+      (resp) => alert('error: ' + JSON.stringify(resp)));
+  }
+
   closeModal() {
     this.currentModal.close();
   }
@@ -224,7 +232,7 @@ export class InvoiceComponent implements OnInit {
     this.currentCustomer = profile;
   }
 
-  openList(list:string){
+  openList(list: string) {
     this.listOpened = list;
   }
 }

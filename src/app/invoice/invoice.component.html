@@ -52,6 +52,10 @@
                     <fa-icon [icon]="faFilePdf"></fa-icon>
                     Download PDF
                   </div>
+                  <div (click)="sendMail(i.id)">
+                    <fa-icon [icon]="faMailBulk"></fa-icon>
+                    Send MAIL
+                  </div>
                   <div (click)="deleteInvoice(i)" *ngIf="i.status != 2">
                     <fa-icon [icon]="faTrashAlt"></fa-icon>
                     Delete
