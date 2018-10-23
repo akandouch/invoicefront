@@ -15,9 +15,6 @@ export class InvoicePreviewComponent implements OnInit {
 
   ngOnInit() {
   }
-  public captureScreen(){
-    console.log('do nothing right now');
-  }
 
   getLogo(upload: Upload) {
     const uploadUrl = this.ds.getUploadUrl(upload.id);
