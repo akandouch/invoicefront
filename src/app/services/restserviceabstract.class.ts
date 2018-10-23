@@ -2,6 +2,8 @@ import { DataService } from "./data.service";
 import { RestService } from "./restservice.interface";
 import { Injectable } from "@angular/core";
 import { RestPath } from "./restpath.class";
+import { Entity } from "../entity.interface";
+import { environment } from "../../environments/environment.prod";
 
 @Injectable({providedIn:"root"})
 export abstract class RestServiceAbstract implements RestService{
@@ -17,5 +19,8 @@ export abstract class RestServiceAbstract implements RestService{
     }
     delete(entity:any, callBackNext?:any,callbackError?:any, callbackComplete?:any){
         this.dataService.delete(this.path, entity, callBackNext, callbackError, callbackComplete);
+    }
+    getResourcePath(entity:Entity){
+        return environment.restApiUrl + "/" + this.path + "/" + entity.id;
     }
 }

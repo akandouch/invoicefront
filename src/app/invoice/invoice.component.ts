@@ -105,7 +105,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   getAttachments(upload: Upload) {
-    return this.ds.getUploadUrl(upload.id);
+    return this.uploadService.getResourcePath(upload);
   }
 
   addAttachment(event: any) {
