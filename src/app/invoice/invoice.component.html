@@ -25,7 +25,14 @@
             <div class="col-lg-2" *ngIf="i.status == 0"><span class="inv-status open-status">open</span></div>
             <div class="col-lg-2" *ngIf="i.status == 1"><span class="inv-status ready-status">ready</span></div>
             <div class="col-lg-2" *ngIf="i.status == 2"><span class="inv-status close-status">closed</span></div>
-            <div class="col-lg-1">{{i.attachments.length}}</div>
+            <div class="col-lg-1">
+                <div ngbDropdown class="d-inline-block">
+                  <span ngbDropdownToggle>{{i.attachments.length}}</span>
+                  <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+                    <div *ngFor="let a of i.attachments">{{a.fileName}}</div>
+                  </div>
+                </div>
+            </div>
             <div class="col-lg-1">
               <div ngbDropdown class="d-inline-block">
                 <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
