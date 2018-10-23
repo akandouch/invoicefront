@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Invoice } from '../invoice/invoice.class';
 import {Upload} from '../upload/upload.class';
 import {DataService} from '../services/data.service';
+import { RestService } from '../services/restservice.interface';
+import { UploadRestServiceImpl } from '../services/uploadrestserviceimpl.class';
 
 @Component({
   selector: 'app-invoice-preview',
@@ -11,13 +13,13 @@ import {DataService} from '../services/data.service';
 export class InvoicePreviewComponent implements OnInit {
 
   @Input() invoice:Invoice;
-  constructor(private ds: DataService<any>) { }
+  constructor(@Inject(UploadRestServiceImpl) private uploadService: RestService) { }
 
   ngOnInit() {
   }
 
   getLogo(upload: Upload) {
-    const uploadUrl = this.ds.getUploadUrl(upload.id);
+    const uploadUrl = this.uploadService.getResourcePath(upload);
     return uploadUrl;
   }
 }

@@ -142,10 +142,6 @@ export class DataService<T extends Entity> {
     return this.http.get<number[]>(environment.restApiUrl + '/statistics', {params: {year: '' + year}});
   }
 
-  getUploadUrl(id: string): string {
-    return environment.restApiUrl + '/upload/' + id;
-  }
-
   postUpload(upload: Upload, callback?) {
     this.http
       .post(environment.restApiUrl + '/upload', upload)
