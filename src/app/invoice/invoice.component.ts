@@ -116,12 +116,14 @@ export class InvoiceComponent implements OnInit {
       upl.contentType = blob.type;
       upl.fileName = blob.name;
       upl.newUpload = fileReader.result.split(',')[1];
-      this.ds.post('upload', upl, (u) => {
+      this.uploadService.post(upl, (u) => {
         this.current.attachments.push(u);
-        this.ds.post('invoice', this.current, (invoiceUpdated) => {
+        this.invoiceService.post(this.current, (invoiceUpdated)=> {
           this.current = invoiceUpdated;
-          alert('attachment added');
+          alert('attachment added successfully');
         });
+      }, (err)=>{
+        alert('error adding the attachment');
       });
     });
     fileReader.readAsDataURL(blob);
