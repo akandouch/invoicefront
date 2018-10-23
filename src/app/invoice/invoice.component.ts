@@ -77,7 +77,6 @@ export class InvoiceComponent implements OnInit {
   {
 
     this.ds = ds;
-    this.faEye = faEye;
     this.getAll();
     ds.getInvoiceProfiles().subscribe(x => this.profiles = x);
     this.currentProfile = new InvoiceProfile();
@@ -107,7 +106,6 @@ export class InvoiceComponent implements OnInit {
 
   openInvoice(invoice: Invoice) {
     let i: Invoice = new Invoice();
-
     i.fillInvoice(invoice);
     this.current = i;
   }

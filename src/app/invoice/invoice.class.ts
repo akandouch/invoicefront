@@ -52,6 +52,9 @@ export class Invoice implements Entity {
     this.status = invoice.status;
     this.invoiceNumber = invoice.invoiceNumber;
     this.attachments = invoice.attachments;
+    if( !this.attachments){
+      this.attachments = [];
+    }
   }
 
   public removeItem(idx: number) {
