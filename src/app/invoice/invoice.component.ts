@@ -129,7 +129,7 @@ export class InvoiceComponent implements OnInit {
   removeAttachment(attachment: Upload) {
     this.uploadService.delete(attachment,(deletedUpload) => {
       this.current.attachments = this.current.attachments.filter(u => u.id !== attachment.id);
-      this.ds.post('invoice', this.current, (invoiceUpdated) => {
+      this.invoiceService.post(this.current,  (invoiceUpdated) => {
         this.current = invoiceUpdated;
         alert('attachment removed');
       });
