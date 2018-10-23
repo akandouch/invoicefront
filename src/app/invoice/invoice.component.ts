@@ -17,13 +17,17 @@ import {
   faPlus,
   faSearch,
   faTrashAlt,
-  faUser
+  faUser,
+  faListAlt,
+  faPaperclip
 } from '@fortawesome/free-solid-svg-icons';
 import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 import {InvoiceRestServiceImpl} from '../services/invoicerestserviceimpl.class';
 import {Upload} from '../upload/upload.class';
 import { RestService } from '../services/restservice.interface';
 import { UploadRestServiceImpl } from '../services/uploadrestserviceimpl.class';
+import { ItemComponent } from '../item/item.component';
+import { ItemListComponent } from '../item-list/item-list.component';
 
 @Component({
   selector: 'app-invoice',
@@ -47,19 +51,22 @@ export class InvoiceComponent implements OnInit {
   faTrashAlt = faTrashAlt;
   faFileDownload = faFileDownload;
   faArrowLeft = faArrowLeft;
-
+  faListAlt = faListAlt;
   faSearch = faSearch;
   faHome = faHome;
   faUser = faUser;
   faEllipsisH = faEllipsisH;
   faFilePdf = faFilePdf;
   faFileInvoice = faFileInvoice;
+  faPaperclip = faPaperclip;
   private currentModal: NgbActiveModal;
 
   private profiles: InvoiceProfile[];
   private profilesFound: InvoiceProfile[];
   private currentProfile: InvoiceProfile;
   private currentCustomer: InvoiceProfile;
+
+  private listOpened:string = "items";
 
   constructor(
     ds: DataService<any>, 
@@ -76,6 +83,7 @@ export class InvoiceComponent implements OnInit {
     this.currentProfile = new InvoiceProfile();
     this.currentCustomer = new InvoiceProfile();
     this.invoice = new Invoice();
+
   }
 
   ngOnInit() {
@@ -212,5 +220,9 @@ export class InvoiceComponent implements OnInit {
 
   selectCustomer(profile: InvoiceProfile) {
     this.currentCustomer = profile;
+  }
+
+  openList(list:string){
+    this.listOpened = list;
   }
 }

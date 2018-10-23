@@ -1,8 +1,10 @@
 <div class="form-group">
+  <!--
   <h5>
       <fa-icon [icon]="faListAlt" class="header-icon" style="background-color: #ffa785"></fa-icon> 
       Items
   </h5>
+  -->
   <button *ngIf="invoice.status != 2" class="btn btn-outline-secondary" (click)="addItem(content)"><fa-icon [icon]="faPlus"></fa-icon> Add</button>
   <div class="container-table-items col-lg-12" *ngIf="invoice.items.length > 0">
   <div class="row new-items table-header {{invoice.items.length>0?'':'hide'}}">

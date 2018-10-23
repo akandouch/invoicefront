@@ -117,8 +117,12 @@
           </div>
         </div>
         <hr>
-        <app-attachment-list [invoice]="current" *ngIf="current"></app-attachment-list>
-        <app-item-list [invoice]="current" *ngIf="current"></app-item-list>
+        <div class="onglet col-lg-12 row">
+          <div class="col-lg-2 header-icon {{listOpened == 'items'? 'open':''}}" (click)="openList('items')"><fa-icon [icon]="faListAlt"></fa-icon> Items</div>
+          <div class="col-lg-2 header-icon {{listOpened == 'attachments'?'open':''}}" (click)="openList('attachments')"><fa-icon [icon]="faPaperclip"></fa-icon> Attachments</div>
+        </div>
+        <app-attachment-list [invoice]="current" *ngIf="current && listOpened == 'attachments'"></app-attachment-list>
+        <app-item-list [invoice]="current" *ngIf="current && listOpened == 'items'"></app-item-list>
       </div>
     </div>
   </div>

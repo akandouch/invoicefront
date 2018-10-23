@@ -312,3 +312,14 @@ border-radius: 3px 3px 0px 0px;
     white-space: nowrap;
     vertical-align: middle;
 }
+
+.onglet > div {
+    border: solid 1px #ededed;
+    padding-left: 0px;
+    cursor: pointer;
+    background-color: #a8a8a8;
+}
+
+.onglet > div.open {
+    background-color: #ff8484;
+}
