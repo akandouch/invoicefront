@@ -103,7 +103,7 @@ export class InvoiceComponent implements OnInit {
     i.fillInvoice(invoice);
     this.current = i;
   }
-
+  /* THIS IS REMOVED TO ATTACHEMENT-LIST COMPONENT 
   getAttachments(upload: Upload) {
     return this.uploadService.getResourcePath(upload);
   }
@@ -136,7 +136,7 @@ export class InvoiceComponent implements OnInit {
         alert('attachment removed');
       });
     });
-  }
+  } */
   invoiceBack() {
     this.current = null;
     this.getAll();

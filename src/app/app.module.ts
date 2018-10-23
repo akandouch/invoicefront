@@ -24,6 +24,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { InvoiceRestServiceImpl } from './services/invoicerestserviceimpl.class';
 import { DashboardChartRatePerMonthServiceImpl } from './services/dashboardchartratepermonthrestserviceimple.class';
 import { UploadRestServiceImpl } from './services/uploadrestserviceimpl.class';
+import { AttachmentListComponent } from './attachment-list/attachment-list.component';
 
 
 
@@ -46,7 +47,8 @@ const routes:Route[] = [
     DataTableComponent,
     InvoiceprofileComponent,
     SettingsComponent,
-    DashboardComponent
+    DashboardComponent,
+    AttachmentListComponent
   ],
   imports: [
     BrowserModule,

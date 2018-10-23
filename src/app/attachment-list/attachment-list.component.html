@@ -1,0 +1,32 @@
+<div class="form-group">
+  <h5>
+      <fa-icon [icon]="faPaperclip" class="header-icon" style="background-color: #61ca41"></fa-icon> 
+      Attachments
+  </h5>
+  <label *ngIf="invoice.status != 2" class="btn btn-outline-secondary" for="file">
+    <fa-icon [icon]="faPlus"></fa-icon> 
+    Add
+  </label>
+  <input type="file" (change)="addAttachment($event)" id="file" style="visibility: hidden">
+  <div class="container-table-items col-lg-12">
+  <div class="row new-items table-header">
+    <div class="col-lg-7">Name</div>
+    <div class="col-lg-4">Content type</div>
+    <div class="col-lg-1"></div>
+  </div>
+  <div *ngFor="let a of invoice.attachments; let idx = index" class="row add-items table-items">
+      <div class="col-lg-7">{{a.fileName}}</div>
+      <div class="col-lg-4">{{a.contentType}}</div>
+      <div class="col-lg-1">
+        <div ngbDropdown class="d-inline-block">
+          <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
+          
+          <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+            <div (click)="getAttachments(a)"><fa-icon [icon]="faEye"></fa-icon>Download</div>
+            <div (click)="removeAttachment(a)"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
+          </div>
+        </div>       
+      </div>
+  </div>
+  </div>
+</div>
