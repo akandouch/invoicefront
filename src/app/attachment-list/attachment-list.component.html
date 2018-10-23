@@ -9,7 +9,6 @@
     <fa-icon [icon]="faPlus"></fa-icon> 
     Add
   </label>
-  <input type="file" (change)="addAttachment($event)" id="file" style="visibility: hidden">
   <div class="container-table-items col-lg-12">
   <div class="row new-items table-header">
     <div class="col-lg-7">Name</div>
@@ -32,3 +31,4 @@
   </div>
   </div>
 </div>
+<input type="file" (change)="addAttachment($event)" id="file" style="visibility: hidden">
