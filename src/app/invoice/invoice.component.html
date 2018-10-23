@@ -10,20 +10,22 @@
           <div class="row new-items table-header">
             <div class="col-lg-1">#</div>
             <div class="col-lg-3">Invoicer</div>
-            <div class="col-lg-3">Customer</div>
+            <div class="col-lg-2">Customer</div>
             <div class="col-lg-2">vat</div>
             <div class="col-lg-2">Status</div>
+            <div class="col-lg-1"><fa-icon [icon]="faPaperclip"></fa-icon></div>
             <div class="col-lg-2"></div>
           </div>
           <div *ngFor="let i of history; let idx = index" class="row add-items table-items">
             <div class="col-lg-1">{{ i.invoiceNumber }}</div>
             <div class="col-lg-3">{{i.invoicer.firstname}} {{i.invoicer.lastname}}</div>
-            <div class="col-lg-3">{{i.invoiced.firstname}}</div>
+            <div class="col-lg-2">{{i.invoiced.firstname}}</div>
             <div class="col-lg-2">{{i.invoiced.vat}}</div>
             <div class="col-lg-2" *ngIf="!i.status && i.status != 0"></div>
             <div class="col-lg-2" *ngIf="i.status == 0"><span class="inv-status open-status">open</span></div>
             <div class="col-lg-2" *ngIf="i.status == 1"><span class="inv-status ready-status">ready</span></div>
             <div class="col-lg-2" *ngIf="i.status == 2"><span class="inv-status close-status">closed</span></div>
+            <div class="col-lg-1">{{i.attachments.length}}</div>
             <div class="col-lg-1">
               <div ngbDropdown class="d-inline-block">
                 <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
