@@ -23,6 +23,7 @@ import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 import {InvoiceRestServiceImpl} from '../services/invoicerestserviceimpl.class';
 import {Upload} from '../upload/upload.class';
 import { RestService } from '../services/restservice.interface';
+import { UploadRestServiceImpl } from '../services/uploadrestserviceimpl.class';
 
 @Component({
   selector: 'app-invoice',
@@ -60,7 +61,14 @@ export class InvoiceComponent implements OnInit {
   private currentProfile: InvoiceProfile;
   private currentCustomer: InvoiceProfile;
 
-  constructor(ds: DataService<any>, private ngbModalService: NgbModal, @Inject(InvoiceRestServiceImpl)private invoiceService: RestService) {
+  constructor(
+    ds: DataService<any>, 
+    private ngbModalService: NgbModal, 
+    @Inject(InvoiceRestServiceImpl)private invoiceService: RestService,
+    @Inject(UploadRestServiceImpl)private uploadService:RestService
+  ) 
+  {
+
     this.ds = ds;
     this.faEye = faEye;
     this.getAll();
@@ -75,7 +83,6 @@ export class InvoiceComponent implements OnInit {
 
   getAll() {
     
-    console.log(<InvoiceRestServiceImpl>this.invoiceService);
     this.invoiceService.get({}, (data: Invoice[]) => {
       this.history = data;
     });
@@ -120,13 +127,13 @@ export class InvoiceComponent implements OnInit {
     fileReader.readAsDataURL(blob);
   }
   removeAttachment(attachment: Upload) {
-      this.ds.delete('upload', attachment, (deletedUpload) => {
-        this.current.attachments = this.current.attachments.filter(u => u.id !== attachment.id);
-        this.ds.post('invoice', this.current, (invoiceUpdated) => {
-          this.current = invoiceUpdated;
-          alert('attachment removed');
-        });
+    this.uploadService.delete(attachment,(deletedUpload) => {
+      this.current.attachments = this.current.attachments.filter(u => u.id !== attachment.id);
+      this.ds.post('invoice', this.current, (invoiceUpdated) => {
+        this.current = invoiceUpdated;
+        alert('attachment removed');
       });
+    });
   }
   invoiceBack() {
     this.current = null;

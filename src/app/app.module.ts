@@ -23,6 +23,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InvoiceRestServiceImpl } from './services/invoicerestserviceimpl.class';
 import { DashboardChartRatePerMonthServiceImpl } from './services/dashboardchartratepermonthrestserviceimple.class';
+import { UploadRestServiceImpl } from './services/uploadrestserviceimpl.class';
 
 
 
@@ -64,7 +65,8 @@ const routes:Route[] = [
   ],
   providers: [
     {provide:InvoiceRestServiceImpl, useClass:InvoiceRestServiceImpl},
-    {provide:DashboardChartRatePerMonthServiceImpl, useClass:DashboardChartRatePerMonthServiceImpl}
+    {provide:DashboardChartRatePerMonthServiceImpl, useClass:DashboardChartRatePerMonthServiceImpl},
+    {provide:UploadRestServiceImpl, useClass:UploadRestServiceImpl}
   ],
   bootstrap: [AppComponent]
 })
