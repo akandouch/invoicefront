@@ -143,6 +143,10 @@ export class InvoiceComponent implements OnInit {
       });
     });
   } */
+
+  downloadAttachment(attachment:Upload){
+    return this.uploadService.getResourcePath(attachment);
+  }
   invoiceBack() {
     this.current = null;
     this.getAll();

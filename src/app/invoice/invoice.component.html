@@ -29,7 +29,9 @@
                 <div ngbDropdown class="d-inline-block" style="cursor: pointer;">
                   <span ngbDropdownToggle>{{i.attachments.length}}</span>
                   <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-                    <div *ngFor="let a of i.attachments">{{a.fileName}}</div>
+                    <div *ngFor="let a of i.attachments">
+                      <a [href]="downloadAttachment(a)">{{a.fileName}}</a>
+                    </div>
                   </div>
                 </div>
             </div>
