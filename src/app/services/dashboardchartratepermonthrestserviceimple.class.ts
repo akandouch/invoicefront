@@ -6,5 +6,5 @@ import { RestPath } from "./restpath.class";
 
 @Injectable({providedIn:"root"})
 export class DashboardChartRatePerMonthServiceImpl extends RestServiceAbstract {
-    static path: string = "statistics/ratePerMonthForYear";
+    path: string = "statistics/ratePerMonthForYear";
 }

@@ -4,5 +4,5 @@ import { RestPath } from "./restpath.class";
 
 @Injectable({providedIn: 'root'})
 export class InvoiceRestServiceImpl extends RestServiceAbstract {
-    static path:string = "invoice";
+    path:string = "invoice";
 }

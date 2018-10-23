@@ -21,6 +21,8 @@ import { InvoiceprofileComponent } from './invoiceprofile/invoiceprofile.compone
 import { RouterModule, Route } from '@angular/router';
 import { SettingsComponent } from './settings/settings.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { InvoiceRestServiceImpl } from './services/invoicerestserviceimpl.class';
+import { DashboardChartRatePerMonthServiceImpl } from './services/dashboardchartratepermonthrestserviceimple.class';
 
 
 
@@ -60,7 +62,10 @@ const routes:Route[] = [
     MatSortModule,
     RouterModule.forRoot(routes,{enableTracing:false})
   ],
-  providers: [],
+  providers: [
+    {provide:InvoiceRestServiceImpl, useClass:InvoiceRestServiceImpl},
+    {provide:DashboardChartRatePerMonthServiceImpl, useClass:DashboardChartRatePerMonthServiceImpl}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

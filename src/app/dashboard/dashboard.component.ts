@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Inject } from '@angular/core';
 import { Chart } from 'chart.js';
 import { DataService } from '../services/data.service';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
     year:number = (new Date()).getFullYear();
     faSync = faSync;
 
-  constructor(private ratePerMonthService:DashboardChartRatePerMonthServiceImpl) {
+  constructor(@Inject(DashboardChartRatePerMonthServiceImpl)private ratePerMonthService:RestService) {
    }
 
   
@@ -31,7 +31,6 @@ export class DashboardComponent implements OnInit {
   initChartRatePerMonthForYear(year:number){
     var data = [];
     var labels = ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-    this.ratePerMonthService.path = DashboardChartRatePerMonthServiceImpl.path;
     this.ratePerMonthService.get({year:year},(data)=>{
         this.createLineChart("Rate per Month for "+ year ,data, labels)
     });

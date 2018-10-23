@@ -1,4 +1,4 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import {Component, Injectable, OnInit, Inject} from '@angular/core';
 import {Invoice} from './invoice.class';
 import {DataService} from '../services/data.service';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -22,6 +22,7 @@ import {
 import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 import {InvoiceRestServiceImpl} from '../services/invoicerestserviceimpl.class';
 import {Upload} from '../upload/upload.class';
+import { RestService } from '../services/restservice.interface';
 
 @Component({
   selector: 'app-invoice',
@@ -59,7 +60,7 @@ export class InvoiceComponent implements OnInit {
   private currentProfile: InvoiceProfile;
   private currentCustomer: InvoiceProfile;
 
-  constructor(ds: DataService<any>, private ngbModalService: NgbModal, private invoiceService: InvoiceRestServiceImpl) {
+  constructor(ds: DataService<any>, private ngbModalService: NgbModal, @Inject(InvoiceRestServiceImpl)private invoiceService: RestService) {
     this.ds = ds;
     this.faEye = faEye;
     this.getAll();
@@ -73,7 +74,8 @@ export class InvoiceComponent implements OnInit {
   }
 
   getAll() {
-    this.invoiceService.path = InvoiceRestServiceImpl.path;
+    
+    console.log(<InvoiceRestServiceImpl>this.invoiceService);
     this.invoiceService.get({}, (data: Invoice[]) => {
       this.history = data;
     });
