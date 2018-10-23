@@ -118,8 +118,14 @@
         </div>
         <hr>
         <div class="onglet col-lg-12 row">
-          <div class="col-lg-2 header-icon {{listOpened == 'items'? 'open':''}}" (click)="openList('items')"><fa-icon [icon]="faListAlt"></fa-icon> Items</div>
-          <div class="col-lg-2 header-icon {{listOpened == 'attachments'?'open':''}}" (click)="openList('attachments')"><fa-icon [icon]="faPaperclip"></fa-icon> Attachments</div>
+          <div class="col-lg-1 header-icon {{listOpened == 'items'? 'open':''}}" (click)="openList('items')">
+            <div class="col-lg-3"><fa-icon [icon]="faListAlt"></fa-icon></div>
+            <div class="col-lg-9">Items</div>
+          </div>
+          <div class="col-lg-1 header-icon {{listOpened == 'attachments'?'open':''}}" (click)="openList('attachments')">
+            <div class="col-lg-3"><fa-icon [icon]="faPaperclip"></fa-icon></div>
+            <div class="col-lg-9">Attachments</div>
+          </div>
         </div>
         <app-attachment-list [invoice]="current" *ngIf="current && listOpened == 'attachments'"></app-attachment-list>
         <app-item-list [invoice]="current" *ngIf="current && listOpened == 'items'"></app-item-list>

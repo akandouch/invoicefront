@@ -320,8 +320,10 @@ border-radius: 3px 3px 0px 0px;
     background-color: #a8a8a8;
     border: none;
     border-radius: 0;
+    font-size: 12px;
+    margin-bottom: 15px;
 }
-
+/*
 .onglet > div.open:first-child {
     border-radius: 5px 0px 0px 0px;
 }
@@ -329,8 +331,8 @@ border-radius: 3px 3px 0px 0px;
 .onglet > div.open:last-child {
     border-radius: 0px 5px 0px 0px;
 }
-
+*/
 .onglet > div.open {
     background-color: #ff8484;
-    border-radius: 5px 5px 0px 0px;
+    /*border-radius: 5px 5px 0px 0px;*/
 }
