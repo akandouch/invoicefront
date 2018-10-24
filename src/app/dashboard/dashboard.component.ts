@@ -4,6 +4,10 @@ import { DataService } from '../services/data.service';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
 import { DashboardChartRatePerMonthServiceImpl } from '../services/dashboardchartratepermonthrestserviceimple.class';
 import { RestService } from '../services/restservice.interface';
+import { InvoiceRestServiceImpl } from '../services/invoicerestserviceimpl.class';
+import { RatePerMonth } from '../services/statisticsrestserviceimpl.class';
+import { strictEqual } from 'assert';
+import { stringify } from '@angular/core/src/util';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +20,7 @@ export class DashboardComponent implements OnInit {
     year:number = (new Date()).getFullYear();
     faSync = faSync;
 
-  constructor(@Inject(DashboardChartRatePerMonthServiceImpl)private ratePerMonthService:RestService) {
+  constructor(@Inject(RatePerMonth)private ratePerMonthService:RestService) {
    }
 
   
@@ -29,49 +33,61 @@ export class DashboardComponent implements OnInit {
   }
 
   initChartRatePerMonthForYear(year:number){
-    var data = [];
+    var dataset = [{
+        label:"rate",
+        yAxesId:"r",
+        data:[]
+    }];
     var labels = ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
     this.ratePerMonthService.get({year:year},(data)=>{
-        this.createLineChart("Rate per Month for "+ year ,data, labels)
+        console.log(data);
+
+
+        this.createLineChart("Rate per Month" ,"Days per Month" ,data[0],data[1], labels)
     });
     
   }
 
-  createLineChart(label:string, data:any[], labels:any[]){
+  createLineChart(label1:string,label2:string, line1:any[], line2:any[], labels:any[]){
 
     this.chart = new Chart("canvas", {
-      type: 'line',
+      type: 'bar',
       data: {
           labels: labels,
           datasets: [{
-              label: label,
-              data: data,
+              label: label1,
+              data: line1,
+              type: 'line',
+              yAxisID: '1',
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
+                  'transparent'
               ],
               borderColor: [
-                  'rgba(255,99,132,1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
+                  'rgba(255,99,132,1)'
               ],
               borderWidth: 1
-          }]
+          },
+          {
+            label: label2,
+            data: line2,
+            yAxisID : '2',
+            borderWidth: 1
+        }]
           },
           options: {
               scales: {
                   yAxes: [{
+                      id:'1',
                       ticks: {
                           beginAtZero:true
                       }
-                  }]
+                  },{
+                    id:'2',
+                    ticks: {
+                        beginAtZero:true
+                    },
+                    gridLines:{display:false}
+                }]
               }
           }
       });
