@@ -1,15 +1,11 @@
 <div class="menu-top"><div class="brand">Invoicer</div></div>
 <div class="row col-sm-12">
     <div class="col-sm-2 sidebar">
-        <ul>
-            <!--<li><fa-icon [icon]="faHome"></fa-icon> Menu</li>
-            <li><fa-icon [icon]="faHistory"></fa-icon> History</li>-->
-
-            <li *ngFor="let m of menu" routerLink="{{m.route}}" routerLinkActive="selected" [ngStyle]="{'color': m.selected ? m.color:''}" (click)="click(m);m.selected=true">
-                <fa-icon [icon]="m.icon" [ngStyle]="{color: m.color}" width="50px"></fa-icon>
-                {{m.label}}
-            </li>
-        </ul>
+       
+        <div class="col-sm-12 row" *ngFor="let m of menu" routerLink="{{m.route}}" routerLinkActive="selected" [ngStyle]="{'color': m.selected ? m.color:''}" (click)="click(m);m.selected=true">
+            <div class="col-sm-2"><fa-icon [icon]="m.icon" [ngStyle]="{color: m.color}" width="50px"></fa-icon></div>
+            <div class="col-lg-10">{{m.label}}</div>
+        </div>
         <hr class="recent-hr"/>
         <ul class="recent">
             recent

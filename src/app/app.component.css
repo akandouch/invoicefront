@@ -4,31 +4,31 @@
     padding-right: 0px;
     min-height: 91vh;
 }
-.sidebar > ul {
+.sidebar > div {
     padding-left: 0px;
     margin-top: 15px;
 }
-ul.recent > li {
-    margin-top: 15px;
+ul.recent > div > div {
+    /*margin-top: 15px;*/
     padding-left: 15px !important;
 }
 ul.recent {
     padding-left: 0px !important;
 }
-.sidebar > ul > li {
-    padding: 5px 0px 5px 20px;
+.sidebar > div {
+    /*padding: 5px 0px 5px 20px;
     list-style-type: none;
-    color: rgb(70, 70, 70);
+    color: rgb(70, 70, 70);*/
     font-weight: 500;
     outline:none;
 }
-.sidebar > ul > li > fa-icon {
+.sidebar > div > div > fa-icon {
     margin-right:25px;
 }
 
-.sidebar > ul > li:hover {
+.sidebar > div:hover {
     cursor: pointer;
-    background-color: #ededed;
+    font-weight: bold;
 }
 .menu-top {
     background-color: rgb(87, 87, 87);
