@@ -69,7 +69,7 @@ export class InvoiceComponent implements OnInit {
   private currentCustomer: InvoiceProfile;
 
   private listOpened: string = 'items';
-  private newVersion:boolean = false;
+  public newVersion:boolean = false;
   constructor(
     ds: DataService<any>,
     private ngbModalService: NgbModal,
