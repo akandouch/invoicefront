@@ -11,7 +11,7 @@
 }
 .new-table-invoice > .status.open{
     background-color: #66ff7a;
-    max-width: 5px;
+    max-width: 7px;
     padding: 0;
 }
 .new-table-invoice > div  {
