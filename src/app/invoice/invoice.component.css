@@ -6,7 +6,7 @@
 
 .new-table-invoice > .status.close{
     background-color: #ff1e00;
-    max-width: 5px;
+    max-width: 7px;
     padding: 0;
 }
 .new-table-invoice > .status.open{
