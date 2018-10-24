@@ -25,6 +25,7 @@ import { InvoiceRestServiceImpl } from './services/invoicerestserviceimpl.class'
 import { DashboardChartRatePerMonthServiceImpl } from './services/dashboardchartratepermonthrestserviceimple.class';
 import { UploadRestServiceImpl } from './services/uploadrestserviceimpl.class';
 import { AttachmentListComponent } from './attachment-list/attachment-list.component';
+import { InvoiceSendMailRestServiceImpl } from './services/invoicesendmailrestserviceimpl.class';
 
 
 
@@ -68,7 +69,8 @@ const routes:Route[] = [
   providers: [
     {provide:InvoiceRestServiceImpl, useClass:InvoiceRestServiceImpl},
     {provide:DashboardChartRatePerMonthServiceImpl, useClass:DashboardChartRatePerMonthServiceImpl},
-    {provide:UploadRestServiceImpl, useClass:UploadRestServiceImpl}
+    {provide:UploadRestServiceImpl, useClass:UploadRestServiceImpl},
+    {provide:InvoiceSendMailRestServiceImpl, useClass:InvoiceSendMailRestServiceImpl}
   ],
   bootstrap: [AppComponent]
 })

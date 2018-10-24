@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {RestServiceAbstract} from './restserviceabstract.class';
 import {RestPath} from './restpath.class';
+import { _MatTabHeaderMixinBase } from '@angular/material/tabs/typings/tab-header';
 
 @Injectable({providedIn: 'root'})
 export class InvoiceRestServiceImpl extends RestServiceAbstract {

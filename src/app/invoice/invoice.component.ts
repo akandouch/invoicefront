@@ -28,6 +28,7 @@ import {RestService} from '../services/restservice.interface';
 import {UploadRestServiceImpl} from '../services/uploadrestserviceimpl.class';
 import {ItemComponent} from '../item/item.component';
 import {ItemListComponent} from '../item-list/item-list.component';
+import { InvoiceSendMailRestServiceImpl } from '../services/invoicesendmailrestserviceimpl.class';
 
 @Component({
   selector: 'app-invoice',
@@ -73,7 +74,8 @@ export class InvoiceComponent implements OnInit {
     ds: DataService<any>,
     private ngbModalService: NgbModal,
     @Inject(InvoiceRestServiceImpl) private invoiceService: InvoiceRestServiceImpl,
-    @Inject(UploadRestServiceImpl) private uploadService: RestService
+    @Inject(UploadRestServiceImpl) private uploadService: RestService,
+    @Inject(InvoiceSendMailRestServiceImpl) private invoiceSendMailService
   ) {
 
     this.ds = ds;
@@ -109,41 +111,6 @@ export class InvoiceComponent implements OnInit {
     i.fillInvoice(invoice);
     this.current = i;
   }
-
-  /* THIS IS REMOVED TO ATTACHEMENT-LIST COMPONENT
-  getAttachments(upload: Upload) {
-    return this.uploadService.getResourcePath(upload);
-  }
-
-  addAttachment(event: any) {
-    const blob = event.srcElement.files[0];
-    const fileReader = new FileReader();
-    fileReader.addEventListener('load', () => {
-      const upl = new Upload();
-      upl.contentType = blob.type;
-      upl.fileName = blob.name;
-      upl.newUpload = fileReader.result.split(',')[1];
-      this.uploadService.post(upl, (u) => {
-        this.current.attachments.push(u);
-        this.invoiceService.post(this.current, (invoiceUpdated)=> {
-          this.current = invoiceUpdated;
-          alert('attachment added successfully');
-        });
-      }, (err)=>{
-        alert('error adding the attachment');
-      });
-    });
-    fileReader.readAsDataURL(blob);
-  }
-  removeAttachment(attachment: Upload) {
-    this.uploadService.delete(attachment,(deletedUpload) => {
-      this.current.attachments = this.current.attachments.filter(u => u.id !== attachment.id);
-      this.invoiceService.post(this.current,  (invoiceUpdated) => {
-        this.current = invoiceUpdated;
-        alert('attachment removed');
-      });
-    });
-  } */
 
   downloadAttachment(attachment: Upload) {
     return this.uploadService.getResourcePath(attachment);
@@ -195,6 +162,12 @@ export class InvoiceComponent implements OnInit {
 
   sendMail(id: string) {
     console.log('send mail with id ' + id);
+    /* TO TEST AND ADAPT
+    this.invoiceSendMailService.post({id:id}, 
+      (resp) => alert('email sent'),
+      (resp) => alert('error: ' + JSON.stringify(resp)
+    ));*/
+
     this.invoiceService.sendMail(id, (resp) => alert('email sent'),
       (resp) => alert('error: ' + JSON.stringify(resp)));
   }
