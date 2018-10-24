@@ -29,7 +29,8 @@
             <div class="col-lg-2" *ngIf="i.status == 1"><span class="inv-status ready-status">ready</span></div>
             <div class="col-lg-2" *ngIf="i.status == 2"><span class="inv-status close-status">closed</span></div>
             <div class="col-lg-1">
-                <div ngbDropdown class="d-inline-block" style="cursor: pointer;">
+              <span  *ngIf="!i.attachments || !i.attachments.length">{{i.attachments.length}}</span>
+              <div  *ngIf="i.attachments && i.attachments.length" ngbDropdown class="d-inline-block" style="cursor: pointer;">
                   <span ngbDropdownToggle>{{i.attachments.length}}</span>
                   <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
                     <div *ngFor="let a of i.attachments">
