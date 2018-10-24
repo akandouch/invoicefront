@@ -1,12 +1,15 @@
 <div class="main row">
   <div class="col-lg-12">
     <div class="col-lg-12 row">
-      <div *ngIf="!current" class="col-lg-12">
+      <div *ngIf="!current " class="col-lg-12">
         <button class="btn btn-outline-secondary" (click)="openModal(invoiceContent)">
           <fa-icon [icon]="faPlus"></fa-icon>
           Add
-        </button>
-        <div class="container-table-items col-lg-12">
+        </button><br/>
+        <label class="btn btn-outline-success">Check new version here 
+          <input class="boolean" type="checkbox" [(ngModel)]="newVersion" style="display:none">
+        </label>
+        <div class="container-table-items col-lg-12" *ngIf="!newVersion">
           <div class="row new-items table-header">
             <div class="col-lg-1">#</div>
             <div class="col-lg-3">Invoicer</div>
@@ -84,41 +87,7 @@
               <option value="2">Closed</option>
             </select>
           </div>
-          <div class="col-lg-12" *ngIf="0">
-            <h4>Attachments</h4>
-            <label class="file-handler">
-              <div class="btn btn-outline-success mb-2">
-                <span><fa-icon [icon]="faPlus"></fa-icon>Add Upload</span>
-              </div>
-              <input type="file" (change)="addAttachment($event)">
-            </label>
-            <div class="table-responsive">
-              <table class="table table-bordered table-light">
-                <thead>
-                <tr>
-                  <th>fileName</th>
-                  <th>contentType</th>
-                  <th>action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngIf="!current.attachments || !current.attachments.length">
-                  <td colspan="3" class="bg-dark text-white">No attachment</td>
-                </tr>
-                <tr *ngFor="let a of current.attachments">
-                  <td>{{a.fileName}}</td>
-                  <td>{{a.contentType}}</td>
-                  <td>
-                    <div class="btn-group">
-                      <a class="btn btn-success" [href]="getAttachments(a)">Download</a>
-                      <button class="btn btn-danger" (click)="removeAttachment(a)">Delete</button>
-                    </div>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+          
           &nbsp;
           <div class="col-lg-2">
             <button class="btn btn-dark text-white" (click)="invoiceBack()"><fa-icon [icon]="faArrowLeft"></fa-icon>
@@ -144,8 +113,67 @@
     </div>
   </div>
 </div>
+<div class="col-lg-12" *ngIf="!current && newVersion">
+<div *ngFor="let i of history" class="col-lg-6 new-table-invoice row" >
+    <div class="col-lg-1 status {{i.status==0?'open':'close'}}">&nbsp;</div>
+    <div class="col-lg-11 row">
+      <div class="col-lg-10">
+        <div class="col-lg-12 title">{{i.title}}</div>
+        <div class="col-lg-12 number">{{i.invoiceNumber}}</div>
+        <div class="col-lg-12 row">
+          <div class="col-lg-6 row">
+            <div class="col-lg-12">{{i.invoicer.firstname}}</div>
+            <div class="col-lg-12 number">{{i.invoicer.vat}}</div>
+          </div>
+          <div class="col-lg-6 row">
+            <div class="col-lg-12">{{i.invoiced.firstname}}</div>
+            <div class="col-lg-12 number">{{i.invoiced.vat}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2">
+          <div class="col-lg-12 number"><fa-icon [icon]="faPaperclip"></fa-icon>
+          <div ngbDropdown class="d-inline-block" style="cursor: pointer;">
+              <span ngbDropdownToggle>{{i.attachments.length}}</span>
+              <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+                <div *ngFor="let a of i.attachments">
+                  <a [href]="downloadAttachment(a)">{{a.fileName}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-lg-1" style="padding:0">
+        <div ngbDropdown class="d-inline-block">
+          <i class="btn" id="dropdown" ngbDropdownToggle></i>
 
-
+          <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+            <div (click)="openInvoice(i)">
+              <fa-icon [icon]="faFolderOpen"></fa-icon>
+              Open
+            </div>
+            <div (click)="openModal(content, i)">
+              <fa-icon [icon]="faEye"></fa-icon>
+              Preview
+            </div>
+            <div (click)="generatePdf(i)">
+              <fa-icon [icon]="faFilePdf"></fa-icon>
+              Download PDF
+            </div>
+            <div (click)="sendMail(i.id)">
+              <fa-icon [icon]="faMailBulk"></fa-icon>
+              Send MAIL
+            </div>
+            <div (click)="deleteInvoice(i)" *ngIf="i.status != 2">
+              <fa-icon [icon]="faTrashAlt"></fa-icon>
+              Delete
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+</div>
 <ng-template #content let-c="close" let-d="dismiss" class="col-lg-12">
   <div class="modal-header col-lg-12">
     <h4 class="modal-title" id="modal-basic-title">Invoice preview</h4>
