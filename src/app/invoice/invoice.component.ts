@@ -155,7 +155,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   update() {
-    this.ds.postInvoice(this.current, () => {
+    this.invoiceService.post(this.current, () => {
       this.getAll();
       this.current = null;
       alert('Invoice updated');
@@ -167,7 +167,8 @@ export class InvoiceComponent implements OnInit {
       this.invoice = invoice;
       this.invoice.invoicer = this.currentProfile;
       this.invoice.invoiced = this.currentCustomer;
-      this.ds.postInvoice(this.invoice, (response) => {
+
+      this.invoiceService.post(this.invoice,(response) => {
         this.invoice = new Invoice();
         this.getAll();
         this.closeModal();

@@ -64,16 +64,6 @@ export class DataService<T extends Entity> {
     );
   }
 
-  postInvoice(invoice: Invoice, callback?) {
-    this.http
-      .post(environment.restApiUrl + '/invoice', invoice)
-      .subscribe(() => {
-        callback();
-      }, (err) => alert(JSON.stringify(err)), () => {
-      });
-
-  }
-
   postItem(invoiceId: string, item: Item, callback?) {
     this.http
       .post(environment.restApiUrl + '/invoice/' + invoiceId + '/item', item)
