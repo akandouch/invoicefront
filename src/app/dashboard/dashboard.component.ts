@@ -41,9 +41,11 @@ export class DashboardComponent implements OnInit {
       var datas=[];
 
       this.totalPerCustomer.get({},(data:{key:any,value:number})=>{
-       datas = Object.values(data);
-       labels = Object.keys(data);
-       this.chartTotalPerCustomer = this.createOneLineChart("totalPerCustomer","Total per customer",datas,labels );
+       datas = Object.values(data[0]);
+       //datas.push(Object.values(data[1]));
+       labels = Object.keys(data[0]);
+       //labels.push(Object.keys(data[1]));
+       this.chartTotalPerCustomer = this.createOneLineChart("totalPerCustomer",["Total invoiced"],datas,labels );
       });
   }
   initChartRatePerMonthForYear(year:number){
@@ -57,7 +59,7 @@ export class DashboardComponent implements OnInit {
     });
     
   }
-  createOneLineChart(chartId:string,label:string, line:any[], labels:any[]){
+  createOneLineChart(chartId:string,label:string[], line:any[], labels:any[]){
 
     return new Chart(chartId, {
       type: 'bar',
