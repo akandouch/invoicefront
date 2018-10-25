@@ -4,14 +4,22 @@
     padding: 0;
     border-radius: 0;
 }
-
-.new-table-invoice > .status.close{
-    background-color: #ff1e00;
+.new-table-invoice:hover > .status{
+    max-width: 15px !important;
+}
+.new-table-invoice.invoice-close {
+    border-color: var(--invoice-close-color);
+}
+.new-table-invoice.invoice-close > .status{
+    background-color: var(--invoice-close-color);
     max-width: 7px;
     padding: 0;
 }
-.new-table-invoice > .status.open{
-    background-color: #66ff7a;
+.new-table-invoice.invoice-open {
+    border-color: var(--invoice-open-color);
+}
+.new-table-invoice.invoice-open > .status{
+    background-color: var(--invoice-open-color);
     max-width: 7px;
     padding: 0;
 }

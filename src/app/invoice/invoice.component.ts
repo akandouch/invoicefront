@@ -213,6 +213,7 @@ export class InvoiceComponent implements OnInit {
   calculateTotalRate(invoice:Invoice):number{
     var total = 0;
     invoice.items.forEach(x=>total +=x.rate);
+    total = parseFloat(Number(total).toFixed(2));
     return total
   }
   calculateTotalVatRate(invoice:Invoice):number{

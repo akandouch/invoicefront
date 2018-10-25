@@ -4,6 +4,11 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/css?family=Karla');
 /*@import '../vendor/bootstrap-4.0.0-dist/css/bootstrap.min.css';*/
+
+:root {
+    --invoice-close-color: #ffb1a6;
+    --invoice-open-color: #aeffb8;
+}
 html {
     height: 100%;
   }
