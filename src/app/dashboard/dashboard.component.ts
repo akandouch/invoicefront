@@ -67,12 +67,8 @@ export class DashboardComponent implements OnInit {
               label: label,
               data: line,
               yAxisID: '1',
-              backgroundColor: [
-                'rgba(255,99,132,1)'
-              ],
-              borderColor: [
-                  'rgba(255,99,132,1)'
-              ],
+              backgroundColor:'rgba(255,99,132,1)',
+              borderColor: 'rgba(255,99,132,1)',
               borderWidth: 1
           }]
           },

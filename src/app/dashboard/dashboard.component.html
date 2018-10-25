@@ -8,10 +8,13 @@
 </div>
 <div *ngIf="chartTotalPerCustomer" class="chart col-lg-6">
   <div class="col-lg-12">
+    
+    <label style="visibility:hidden">Year <input type="text" [(ngModel)]="year" maxlength="4"></label>
+    <fa-icon style="visibility:hidden"  class="btn btn-outline-dark sync-btn" (click)="reloadChart()" [icon]="faSync"></fa-icon>
     <canvas id="totalPerCustomer">{{ chartTotalPerCustomer }}</canvas>
   </div>
 </div>
-<div class="chart offset-lg-1 col-lg-5 row">
+<div class="offset-lg-1 col-lg-5 row">
   <div class="col-lg-6">Current Profile</div><div class="col-lg-6">My profile</div>
   <div class="col-lg-6">Number of invoice</div><div class="col-lg-6">25</div>
   <div class="col-lg-6">Total revenu invoiced</div><div class="col-lg-6">$10.000</div>
