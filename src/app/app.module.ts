@@ -26,7 +26,7 @@ import { DashboardChartRatePerMonthServiceImpl } from './services/dashboardchart
 import { UploadRestServiceImpl } from './services/uploadrestserviceimpl.class';
 import { AttachmentListComponent } from './attachment-list/attachment-list.component';
 import { InvoiceSendMailRestServiceImpl } from './services/invoicesendmailrestserviceimpl.class';
-import { RatePerMonth, DaysPerMonth } from './services/statisticsrestserviceimpl.class';
+import { RatePerMonth, DaysPerMonth, TotalPerCustomer } from './services/statisticsrestserviceimpl.class';
 
 
 
@@ -73,7 +73,8 @@ const routes:Route[] = [
     {provide:UploadRestServiceImpl, useClass:UploadRestServiceImpl},
     {provide:InvoiceSendMailRestServiceImpl, useClass:InvoiceSendMailRestServiceImpl},
     {provide:RatePerMonth, useClass:RatePerMonth},
-    {provide:DaysPerMonth, useClass:DaysPerMonth}
+    {provide:DaysPerMonth, useClass:DaysPerMonth},
+    {provide:TotalPerCustomer, useClass:TotalPerCustomer}
   ],
   bootstrap: [AppComponent]
 })

@@ -115,7 +115,7 @@
   </div>
 </div>
 <div class="col-lg-12" *ngIf="!current && newVersion">
-<div *ngFor="let i of history" class="col-lg-6 new-table-invoice {{i.status==0?'invoice-open':'invoice-close'}} row" >
+<div *ngFor="let i of history" class="col-lg-6 col-sm-12 new-table-invoice {{i.status==0?'invoice-open':'invoice-close'}} row" >
     <div class="col-lg-1 status">&nbsp;</div>
     <div class="col-lg-11 row">
       <div class="col-lg-7">

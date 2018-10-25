@@ -1,9 +1,14 @@
 <div class="col-lg-12 row">
-<div *ngIf="chart" class="chart col-lg-6">
+<div *ngIf="chartRatePerMonth" class="chart col-lg-6">
   <div class="col-lg-12">
     <label>Year <input type="text" [(ngModel)]="year" maxlength="4"></label>
     <fa-icon  class="btn btn-outline-dark sync-btn" (click)="reloadChart()" [icon]="faSync"></fa-icon>
-    <canvas id="canvas">{{ chart }}</canvas>
+    <canvas id="ratePerMonth">{{ chartRatePerMonth }}</canvas>
+  </div>
+</div>
+<div *ngIf="chartTotalPerCustomer" class="chart col-lg-6">
+  <div class="col-lg-12">
+    <canvas id="totalPerCustomer">{{ chartTotalPerCustomer }}</canvas>
   </div>
 </div>
 <div class="chart offset-lg-1 col-lg-5 row">

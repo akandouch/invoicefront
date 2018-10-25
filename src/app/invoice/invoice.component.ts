@@ -69,7 +69,7 @@ export class InvoiceComponent implements OnInit {
   private currentCustomer: InvoiceProfile;
 
   private listOpened: string = 'items';
-  public newVersion:boolean = false;
+  public newVersion:boolean = true;
   constructor(
     ds: DataService<any>,
     private ngbModalService: NgbModal,
@@ -212,13 +212,13 @@ export class InvoiceComponent implements OnInit {
 
   calculateTotalRate(invoice:Invoice):number{
     var total = 0;
-    invoice.items.forEach(x=>total +=x.rate);
+    invoice.items.forEach(x=>total +=x.rate * x.days);
     total = parseFloat(Number(total).toFixed(2));
     return total
   }
   calculateTotalVatRate(invoice:Invoice):number{
     var total = 0;
-    invoice.items.forEach(x=>total += x.rate - (x.rate*x.vatRate));
+    invoice.items.forEach(x=>total += (x.rate*x.days) - ((x.rate*x.days)*x.vatRate));
     total = parseFloat(Number(total).toFixed(2));
     console.log(total);
     return total;

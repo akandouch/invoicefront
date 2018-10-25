@@ -10,3 +10,6 @@ export class RatePerMonth extends StatisticsRestServiceImpl{
 export class DaysPerMonth extends StatisticsRestServiceImpl {
     path:string = this.path + "/daysPerMonth";
 }
+export class TotalPerCustomer extends StatisticsRestServiceImpl {
+    path:string = this.path + "/totalPerCustomer";
+}

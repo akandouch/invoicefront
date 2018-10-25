@@ -5,7 +5,7 @@ import { faSync } from '@fortawesome/free-solid-svg-icons';
 import { DashboardChartRatePerMonthServiceImpl } from '../services/dashboardchartratepermonthrestserviceimple.class';
 import { RestService } from '../services/restservice.interface';
 import { InvoiceRestServiceImpl } from '../services/invoicerestserviceimpl.class';
-import { RatePerMonth } from '../services/statisticsrestserviceimpl.class';
+import { RatePerMonth, TotalPerCustomer } from '../services/statisticsrestserviceimpl.class';
 import { strictEqual } from 'assert';
 import { stringify } from '@angular/core/src/util';
 
@@ -16,41 +16,87 @@ import { stringify } from '@angular/core/src/util';
 })
 export class DashboardComponent implements OnInit {
 
-    chart=[];
+    chartRatePerMonth=[];
+    chartTotalPerCustomer=[];
     year:number = (new Date()).getFullYear();
     faSync = faSync;
 
-  constructor(@Inject(RatePerMonth)private ratePerMonthService:RestService) {
+  constructor(
+      @Inject(RatePerMonth) private ratePerMonthService:RestService,
+      @Inject(TotalPerCustomer) private totalPerCustomer:RestService) {
    }
 
   
   ngAfterViewInit(){
 
     this.initChartRatePerMonthForYear(this.year);
+    this.initChartTotalPerCustomer();
 
   }
   ngOnInit() {
   }
 
+  initChartTotalPerCustomer(){
+      var labels=[];
+      var datas=[];
+
+      this.totalPerCustomer.get({},(data:{key:any,value:number})=>{
+          let arr=[];
+          arr.push(data);
+        console.log(arr);
+        arr.forEach((k,v)=>{
+            labels.push(v[0]);
+            datas.push(v[1]);
+        })
+       this.chartTotalPerCustomer = this.createOneLineChart("totalPerCustomer","Total per customer",datas,labels );
+      });
+  }
   initChartRatePerMonthForYear(year:number){
-    var dataset = [{
-        label:"rate",
-        yAxesId:"r",
-        data:[]
-    }];
+    
     var labels = ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
     this.ratePerMonthService.get({year:year},(data)=>{
         console.log(data);
 
 
-        this.createLineChart("Rate per Month" ,"Days per Month" ,data[0],data[1], labels)
+       this.chartRatePerMonth = this.createTwoLineChart("ratePerMonth","Rate per Month" ,"Days per Month" ,data[0],data[1], labels)
     });
     
   }
+  createOneLineChart(chartId:string,label:string, line:any[], labels:any[]){
 
-  createLineChart(label1:string,label2:string, line1:any[], line2:any[], labels:any[]){
+    return new Chart(chartId, {
+      type: 'bar',
+      data: {
+          labels: labels,
+          datasets: [{
+              label: label,
+              data: line,
+              type: 'line',
+              yAxisID: '1',
+              backgroundColor: [
+                  'transparent'
+              ],
+              borderColor: [
+                  'rgba(255,99,132,1)'
+              ],
+              borderWidth: 1
+          }]
+          },
+          options: {
+              scales: {
+                  yAxes: [{
+                      id:'1',
+                      ticks: {
+                          beginAtZero:true
+                      }
+                  }]
+              }
+          }
+      });
+  }
+  createTwoLineChart(chartId:string,label1:string,label2:string, line1:any[], line2:any[], labels:any[]){
 
-    this.chart = new Chart("canvas", {
+    return new Chart(chartId, {
       type: 'bar',
       data: {
           labels: labels,
