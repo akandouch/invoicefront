@@ -41,13 +41,8 @@ export class DashboardComponent implements OnInit {
       var datas=[];
 
       this.totalPerCustomer.get({},(data:{key:any,value:number})=>{
-          let arr=[];
-          arr.push(data);
-        console.log(arr);
-        arr.forEach((k,v)=>{
-            labels.push(v[0]);
-            datas.push(v[1]);
-        })
+       datas = Object.values(data);
+       labels = Object.keys(data);
        this.chartTotalPerCustomer = this.createOneLineChart("totalPerCustomer","Total per customer",datas,labels );
       });
   }
@@ -71,10 +66,9 @@ export class DashboardComponent implements OnInit {
           datasets: [{
               label: label,
               data: line,
-              type: 'line',
               yAxisID: '1',
               backgroundColor: [
-                  'transparent'
+                'rgba(255,99,132,1)'
               ],
               borderColor: [
                   'rgba(255,99,132,1)'
