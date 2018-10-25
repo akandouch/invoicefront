@@ -22,6 +22,7 @@ export class AppComponent {
     this.menu.push({color:"#848dff", route:"/invoiceprofile", label:"Profiles", icon:faAddressBook});
     this.menu.push({color:"#ff8484", route:"/settings", label:"Settings", icon:faCogs});
 
+    console.log(router);
     this.currentMenu = {color:"#ff84ff", route:"/dashboard", label:"Dashboard", icon:faChartLine,selected:true};
   }
   click(item:MenuLink){

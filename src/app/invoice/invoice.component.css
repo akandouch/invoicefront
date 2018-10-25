@@ -1,7 +1,8 @@
 .new-table-invoice{
-    border: solid 1px #ededed;
+    border: solid 1px #c5c5c5;
     margin-bottom: 2px;
     padding: 0;
+    border-radius: 0;
 }
 
 .new-table-invoice > .status.close{
@@ -18,7 +19,18 @@
     
     padding-top: 10px;
     padding-bottom: 10px;
+}/*
+.new-table-invoice {
+    transition: border-radius 0.3s linear;
+    transition: box-shadow 0.3s linear;
 }
+  
+.new-table-invoice:hover { 
+    border-radius: 0px 10px 0px 0px;
+    box-shadow: 1px 1px 1px 1px #858585;
+}*/
+
+
 .new-table-invoice > div > div > .title {
 
     font-size: 16px;

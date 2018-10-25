@@ -117,7 +117,7 @@
 <div *ngFor="let i of history" class="col-lg-6 new-table-invoice row" >
     <div class="col-lg-1 status {{i.status==0?'open':'close'}}">&nbsp;</div>
     <div class="col-lg-11 row">
-      <div class="col-lg-10">
+      <div class="col-lg-9">
         <div class="col-lg-12 title">{{i.title}}</div>
         <div class="col-lg-12 number">{{i.invoiceNumber}}</div>
         <div class="col-lg-12 row">
@@ -143,35 +143,36 @@
             </div>
           </div>
       </div>
-    </div>
-    <div class="col-lg-1" style="padding:0">
-        <div ngbDropdown class="d-inline-block">
-          <i class="btn" id="dropdown" ngbDropdownToggle></i>
+      
+      <div class="col-lg-1">
+          <div ngbDropdown class="d-inline-block">
+            <i class="btn" id="dropdown" ngbDropdownToggle></i>
 
-          <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-            <div (click)="openInvoice(i)">
-              <fa-icon [icon]="faFolderOpen"></fa-icon>
-              Open
-            </div>
-            <div (click)="openModal(content, i)">
-              <fa-icon [icon]="faEye"></fa-icon>
-              Preview
-            </div>
-            <div (click)="generatePdf(i)">
-              <fa-icon [icon]="faFilePdf"></fa-icon>
-              Download PDF
-            </div>
-            <div (click)="sendMail(i.id)">
-              <fa-icon [icon]="faMailBulk"></fa-icon>
-              Send MAIL
-            </div>
-            <div (click)="deleteInvoice(i)" *ngIf="i.status != 2">
-              <fa-icon [icon]="faTrashAlt"></fa-icon>
-              Delete
+            <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+              <div (click)="openInvoice(i)">
+                <fa-icon [icon]="faFolderOpen"></fa-icon>
+                Open
+              </div>
+              <div (click)="openModal(content, i)">
+                <fa-icon [icon]="faEye"></fa-icon>
+                Preview
+              </div>
+              <div (click)="generatePdf(i)">
+                <fa-icon [icon]="faFilePdf"></fa-icon>
+                Download PDF
+              </div>
+              <div (click)="sendMail(i.id)">
+                <fa-icon [icon]="faMailBulk"></fa-icon>
+                Send MAIL
+              </div>
+              <div (click)="deleteInvoice(i)" *ngIf="i.status != 2">
+                <fa-icon [icon]="faTrashAlt"></fa-icon>
+                Delete
+              </div>
             </div>
           </div>
-        </div>
-  </div>
+    </div>
+    </div>
 </div>
 </div>
 <ng-template #content let-c="close" let-d="dismiss" class="col-lg-12">
