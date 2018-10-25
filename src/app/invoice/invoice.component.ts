@@ -209,4 +209,17 @@ export class InvoiceComponent implements OnInit {
   openList(list: string) {
     this.listOpened = list;
   }
+
+  calculateTotalRate(invoice:Invoice):number{
+    var total = 0;
+    invoice.items.forEach(x=>total +=x.rate);
+    return total
+  }
+  calculateTotalVatRate(invoice:Invoice):number{
+    var total = 0;
+    invoice.items.forEach(x=>total += x.rate - (x.rate*x.vatRate));
+    total = parseFloat(Number(total).toFixed(2));
+    console.log(total);
+    return total;
+  }
 }

@@ -19,7 +19,13 @@
     
     padding-top: 10px;
     padding-bottom: 10px;
-}/*
+}
+.total-invoice {
+    font-weight: 600;
+    font-size: 18px;
+
+}
+/*
 .new-table-invoice {
     transition: border-radius 0.3s linear;
     transition: box-shadow 0.3s linear;
