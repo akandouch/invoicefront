@@ -15,8 +15,8 @@
     </div>
     <div class="col-sm-10 routerContent">
         <div class="col-lg-12">
+            <fa-icon [icon]="currentMenu.icon" class="header-icon" [ngStyle]="{'border-color': currentMenu.color, 'color': currentMenu.color}"></fa-icon>  
             <h5>
-                <fa-icon [icon]="currentMenu.icon" class="header-icon" [ngStyle]="{'border-color': currentMenu.color, 'color': currentMenu.color}"></fa-icon> 
                 {{currentMenu.label}}
             </h5>
         </div>

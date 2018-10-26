@@ -70,6 +70,11 @@ ul.recent>li:hover {
 .routerContent {
     margin-top: 25px;
 }
+
+.routerContent > div > h5 {
+    font-size: 2.25rem;
+    font-weight: 600;
+}
 /*
 .sidebar > ul > li > fa-icon {
     width: 50px;
