@@ -96,7 +96,7 @@
       </div>
       <div class="col-lg-12">
         <label>Period</label>
-        <app-calendar [period]="currentItem.period"></app-calendar>
+        <app-calendar [period]="currentItem.period" (dateSelected)="updateDays($event)"></app-calendar>
       </div>
       <div class="col-lg-12">
         <label>Natur</label>

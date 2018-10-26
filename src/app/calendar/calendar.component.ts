@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { Period } from '../item/period.class';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
@@ -8,13 +8,18 @@ import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+ 
 
   @Input()
   public period:Period;
-  
+
+  @Output()
+  public dateSelected = new EventEmitter<number>();
+
   constructor() { 
     this.period=new Period();
   }
+
 
   ngOnInit() {
   }
@@ -28,6 +33,10 @@ export class CalendarComponent implements OnInit {
       this.period.to = null;
       this.period.from = date;
     }
+    //if(this.period.from && this.period.to){
+      
+      this.dateSelected.emit(this.period.from.day);
+    //}
   }
 
   isHovered(date: NgbDate) {

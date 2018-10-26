@@ -1,5 +1,9 @@
+.container-new-version {
+    margin-top: 15px;
+}
 .new-table-invoice{
     border: solid 1px #c5c5c5;
+    border-left: none;
     margin-bottom: 2px;
     padding: 0;
     border-radius: 0;

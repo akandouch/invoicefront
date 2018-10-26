@@ -69,6 +69,87 @@
             </div>
           </div>
         </div>
+
+
+
+
+        <!-- NEW VERSION -->
+
+        <div class="container-new-version col-lg-12 row">
+          <div class="col-lg-6" *ngIf="!current && newVersion">
+          <div *ngFor="let i of history" class="col-lg-12 col-sm-12 new-table-invoice {{i.status==0?'invoice-open':'invoice-close'}} row" >
+              <div class="col-lg-1 status">&nbsp;</div>
+              <div class="col-lg-11 row">
+                <div class="col-lg-7">
+                  <div class="col-lg-12 title">{{i.title}}</div>
+                  <div class="col-lg-12 number">{{i.invoiceNumber}}</div>
+                  <div class="col-lg-12 row">
+                    <div class="col-lg-6 row">
+                      <div class="col-lg-12">{{i.invoicer.firstname}}</div>
+                      <div class="col-lg-12 number">{{i.invoicer.vat}}</div>
+                    </div>
+                    <div class="col-lg-6 row">
+                      <div class="col-lg-12">{{i.invoiced.firstname}}</div>
+                      <div class="col-lg-12 number">{{i.invoiced.vat}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="number">
+                    <div ngbDropdown class="d-inline-block" style="cursor: pointer;">
+                        <span ngbDropdownToggle><fa-icon [icon]="faPaperclip"></fa-icon> {{i.attachments.length}}</span>
+                        <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+                          <div *ngFor="let a of i.attachments">
+                            <a [href]="downloadAttachment(a)">{{a.fileName}}</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                  <span class="total-invoice">{{calculateTotalRate(i)}}</span> €<br/>
+                  <span class="number">{{calculateTotalVatRate(i)}} €</span>
+                </div>
+              </div>
+              
+              <div class="col-lg-1">
+                <div class="number">
+                <div ngbDropdown class="d-inline-block" style="cursor: pointer;">
+                  <span ngbDropdownToggle></span>
+                  <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+                    <div (click)="openInvoice(i)">
+                      <fa-icon [icon]="faFolderOpen"></fa-icon>
+                      Open
+                    </div>
+                    <div (click)="openModal(content, i)">
+                      <fa-icon [icon]="faEye"></fa-icon>
+                      Preview
+                    </div>
+                    <div (click)="generatePdf(i)">
+                      <fa-icon [icon]="faFilePdf"></fa-icon>
+                      Download PDF
+                    </div>
+                    <div (click)="sendMail(i.id)">
+                      <fa-icon [icon]="faMailBulk"></fa-icon>
+                      Send MAIL
+                    </div>
+                    <div (click)="deleteInvoice(i)" *ngIf="i.status != 2">
+                      <fa-icon [icon]="faTrashAlt"></fa-icon>
+                      Delete
+                    </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+          </div>
+          </div>
+          <div class="col-lg-6">
+            {{i.current}}
+          </div>
+        </div>
+        <!-- NEW VERSION -->
+
+
       </div>
       &nbsp;
       <div class="col-lg-12" *ngIf="current">
@@ -114,73 +195,7 @@
     </div>
   </div>
 </div>
-<div class="col-lg-12" *ngIf="!current && newVersion">
-<div *ngFor="let i of history" class="col-lg-6 col-sm-12 new-table-invoice {{i.status==0?'invoice-open':'invoice-close'}} row" >
-    <div class="col-lg-1 status">&nbsp;</div>
-    <div class="col-lg-11 row">
-      <div class="col-lg-7">
-        <div class="col-lg-12 title">{{i.title}}</div>
-        <div class="col-lg-12 number">{{i.invoiceNumber}}</div>
-        <div class="col-lg-12 row">
-          <div class="col-lg-6 row">
-            <div class="col-lg-12">{{i.invoicer.firstname}}</div>
-            <div class="col-lg-12 number">{{i.invoicer.vat}}</div>
-          </div>
-          <div class="col-lg-6 row">
-            <div class="col-lg-12">{{i.invoiced.firstname}}</div>
-            <div class="col-lg-12 number">{{i.invoiced.vat}}</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-2">
-          <div class="number">
-          <div ngbDropdown class="d-inline-block" style="cursor: pointer;">
-              <span ngbDropdownToggle><fa-icon [icon]="faPaperclip"></fa-icon> {{i.attachments.length}}</span>
-              <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-                <div *ngFor="let a of i.attachments">
-                  <a [href]="downloadAttachment(a)">{{a.fileName}}</a>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-      <div class="col-lg-3">
-        <span class="total-invoice">{{calculateTotalRate(i)}}</span> €<br/>
-        <span class="number">{{calculateTotalVatRate(i)}} €</span>
-      </div>
-    </div>
-    
-    <div class="col-lg-1">
-      <div class="number">
-      <div ngbDropdown class="d-inline-block" style="cursor: pointer;">
-        <span ngbDropdownToggle></span>
-        <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-          <div (click)="openInvoice(i)">
-            <fa-icon [icon]="faFolderOpen"></fa-icon>
-            Open
-          </div>
-          <div (click)="openModal(content, i)">
-            <fa-icon [icon]="faEye"></fa-icon>
-            Preview
-          </div>
-          <div (click)="generatePdf(i)">
-            <fa-icon [icon]="faFilePdf"></fa-icon>
-            Download PDF
-          </div>
-          <div (click)="sendMail(i.id)">
-            <fa-icon [icon]="faMailBulk"></fa-icon>
-            Send MAIL
-          </div>
-          <div (click)="deleteInvoice(i)" *ngIf="i.status != 2">
-            <fa-icon [icon]="faTrashAlt"></fa-icon>
-            Delete
-          </div>
-        </div>
-      </div>
-  </div>
-  </div>
-</div>
-</div>
+
 <ng-template #content let-c="close" let-d="dismiss" class="col-lg-12">
   <div class="modal-header col-lg-12">
     <h4 class="modal-title" id="modal-basic-title">Invoice preview</h4>

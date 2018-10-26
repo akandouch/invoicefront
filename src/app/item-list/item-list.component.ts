@@ -91,4 +91,7 @@ export class ItemListComponent implements OnInit {
   d(a) {
     this.currentModal.dismiss(a);
   }
+  updateDays(days:number){
+    this.currentItem.days = days;
+  }
 }
