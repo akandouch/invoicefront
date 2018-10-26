@@ -148,6 +148,7 @@
               <div class="col-lg-6 details-logo" *ngIf="details.invoicer.logo"><img [src]="uploadService.getResourcePath(details.invoicer.logo)" height="75"></div>
               <div class="col-lg-6 details-logo" *ngIf="details.invoiced.logo"><img [src]="uploadService.getResourcePath(details.invoiced.logo)" height="75"></div>
             </div>
+            <div class="col-lg-12" *ngIf="details.items.length == 0"><h5>No items</h5></div>
             <div class="col-lg-12 row details-row" *ngFor="let d of details.items">
               
               <div class="col-lg-4 row">
