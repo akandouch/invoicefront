@@ -148,15 +148,13 @@
             <div class="col-lg-12" *ngIf="details.items.length == 0"><h5>No items</h5></div>
             <div class="col-lg-12 row details-row" *ngFor="let d of details.items">
               
-              <div class="col-lg-4 row">
+              <div class="col-lg-8 row">
                 <div class="col-lg-12">
                   {{d.project}}
                 </div>
                 <div class="col-lg-12 number">
                   {{d.nature}}
                 </div>
-              </div>
-              <div class="col-lg-3">
               </div>
               <div class="col-lg-4 title">
                 <div class="col-lg-12 detail-total-item">{{d.rate * d.days}} €</div>
