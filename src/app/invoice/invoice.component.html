@@ -5,10 +5,11 @@
         <button class="btn btn-outline-secondary" (click)="openModal(invoiceContent)">
           <fa-icon [icon]="faPlus"></fa-icon>
           Add
-        </button><br/>
-        <label class="btn btn-outline-success">Check new version here 
-          <input class="boolean" type="checkbox" [(ngModel)]="newVersion" style="display:none">
-        </label>
+        </button>&nbsp;        
+        <button class="btn btn-outline-secondary" (click)="newVersion = !newVersion">
+          <fa-icon [icon]="faList"></fa-icon>
+        </button>
+
         <div class="container-table-items col-lg-12" *ngIf="!newVersion">
           <div class="row new-items table-header">
             <div class="col-lg-1">#</div>
@@ -144,7 +145,7 @@
             </div>
           </div>
           </div>
-          <div class="col-lg-4 details-container" *ngIf="details">
+          <div class="col-lg-4 details-container" *ngIf="details && newVersion">
             <div class="col-lg-12" *ngIf="details.items.length == 0"><h5>No items</h5></div>
             <div class="col-lg-12 row details-row" *ngFor="let d of details.items">
               

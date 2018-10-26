@@ -19,7 +19,7 @@ import {
   faTrashAlt,
   faUser,
   faListAlt,
-  faPaperclip, faMailBulk
+  faPaperclip, faMailBulk, faList
 } from '@fortawesome/free-solid-svg-icons';
 import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 import {InvoiceRestServiceImpl} from '../services/invoicerestserviceimpl.class';
@@ -61,6 +61,7 @@ export class InvoiceComponent implements OnInit {
   faFilePdf = faFilePdf;
   faFileInvoice = faFileInvoice;
   faPaperclip = faPaperclip;
+  faList = faList;
   private currentModal: NgbActiveModal;
 
   private profiles: InvoiceProfile[];
