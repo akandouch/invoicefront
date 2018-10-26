@@ -29,12 +29,23 @@
 }
 .new-table-invoice{
     border: solid 1px #c5c5c5;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
     padding: 0;
     border-radius: 0;
 }
 .new-table-invoice:hover > .status{
     max-width: 15px !important;
+}
+
+.new-table-invoice.selected > .status{
+    max-width: 15px !important;
+}
+.new-table-invoice.selected.invoice-close{
+    background-color: var(--invoice-close-color-bck);
+}
+
+.new-table-invoice.selected.invoice-open{
+    background-color: var(--invoice-open-color-bck);
 }
 .new-table-invoice.invoice-close {
     border-color: var(--invoice-close-color);

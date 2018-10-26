@@ -73,6 +73,7 @@ export class InvoiceComponent implements OnInit {
   public newVersion:boolean = true;
 
   public details:Invoice=new Invoice();
+  public idDetailsSelected:string;
 
   constructor(
     ds: DataService<any>,
@@ -101,6 +102,7 @@ export class InvoiceComponent implements OnInit {
       let d:Invoice = new Invoice();
       d.fillInvoice(this.history[0]);
       this.details = d;
+      this.idDetailsSelected = d.id;
     });
 
   }
@@ -233,5 +235,6 @@ export class InvoiceComponent implements OnInit {
 
   openDetails(invoice:Invoice){
     this.details.fillInvoice(invoice);
+    this.idDetailsSelected = invoice.id;
   }
 }

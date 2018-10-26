@@ -8,6 +8,8 @@
 :root {
     --invoice-close-color: #ffb1a6;
     --invoice-open-color: #aeffb8;
+    --invoice-open-color-bck:#e6ffe9;
+    --invoice-close-color-bck:#ffeae7;
 }
 html {
     height: 100%;
