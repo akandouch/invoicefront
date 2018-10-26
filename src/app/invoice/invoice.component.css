@@ -1,3 +1,24 @@
+.details-logo > img{
+    margin-top: 15px;
+    background-color: #fff;
+    border-radius: 50px;
+    border: solid 1px #c5c5c5;
+}
+
+.detail-total-item {
+    font-weight: 600;
+}
+.details-container {
+
+    background-color: #e0e0e0;
+
+}
+.details-row {
+    border-bottom: dashed 1px #c5c5c5;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .container-new-version {
     margin-top: 15px;
 }

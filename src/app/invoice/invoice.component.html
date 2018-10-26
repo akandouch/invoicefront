@@ -77,7 +77,7 @@
 
         <div class="container-new-version col-lg-12 row">
           <div class="col-lg-6" *ngIf="!current && newVersion">
-          <div *ngFor="let i of history" class="col-lg-12 col-sm-12 new-table-invoice {{i.status==0?'invoice-open':'invoice-close'}} row" >
+          <div *ngFor="let i of history" class="col-lg-12 col-sm-12 new-table-invoice {{i.status==0?'invoice-open':'invoice-close'}} row" (click)="openDetails(i)" style="cursor: pointer;" >
               <div class="col-lg-1 status">&nbsp;</div>
               <div class="col-lg-11 row">
                 <div class="col-lg-7">
@@ -143,8 +143,28 @@
             </div>
           </div>
           </div>
-          <div class="col-lg-6">
-            {{i.current}}
+          <div class="col-lg-6 details-container" *ngIf="details">
+            <div class="col-lg-12 row">
+              <div class="col-lg-6 details-logo" *ngIf="details.invoicer.logo"><img [src]="uploadService.getResourcePath(details.invoicer.logo)" height="75"></div>
+              <div class="col-lg-6 details-logo" *ngIf="details.invoiced.logo"><img [src]="uploadService.getResourcePath(details.invoiced.logo)" height="75"></div>
+            </div>
+            <div class="col-lg-12 row details-row" *ngFor="let d of details.items">
+              
+              <div class="col-lg-4 row">
+                <div class="col-lg-12">
+                  {{d.project}}
+                </div>
+                <div class="col-lg-12 number">
+                  {{d.nature}}
+                </div>
+              </div>
+              <div class="col-lg-3">
+              </div>
+              <div class="col-lg-4 title">
+                <div class="col-lg-12 detail-total-item">{{d.rate * d.days}} €</div>
+                <div class="col-lg-12 number">{{d.rate}} € X {{d.days}} days</div>
+              </div>
+            </div>
           </div>
         </div>
         <!-- NEW VERSION -->

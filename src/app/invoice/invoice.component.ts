@@ -70,6 +70,9 @@ export class InvoiceComponent implements OnInit {
 
   private listOpened: string = 'items';
   public newVersion:boolean = true;
+
+  public details:Invoice=new Invoice();
+
   constructor(
     ds: DataService<any>,
     private ngbModalService: NgbModal,
@@ -94,6 +97,9 @@ export class InvoiceComponent implements OnInit {
 
     this.invoiceService.get({}, (data: Invoice[]) => {
       this.history = data;
+      let d:Invoice = new Invoice();
+      d.fillInvoice(this.history[0]);
+      this.details = d;
     });
 
   }
@@ -222,5 +228,9 @@ export class InvoiceComponent implements OnInit {
     total = parseFloat(Number(total).toFixed(2));
     console.log(total);
     return total;
+  }
+
+  openDetails(invoice:Invoice){
+    this.details.fillInvoice(invoice);
   }
 }
