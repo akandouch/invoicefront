@@ -6,7 +6,7 @@
           <fa-icon [icon]="faPlus"></fa-icon>
           Add
         </button>&nbsp;        
-        <button class="btn btn-outline-secondary" (click)="newVersion = !newVersion">
+        <button class="btn btn-outline-success {{newVersion?'active':''}}" (click)="newVersion = !newVersion">
           <fa-icon [icon]="faList"></fa-icon>
         </button>
 
