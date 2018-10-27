@@ -5,7 +5,7 @@
         <button class="btn btn-outline-secondary" (click)="openModal(invoiceContent)">
           <fa-icon [icon]="faPlus"></fa-icon>
           Add
-        </button>&nbsp;        
+        </button>&nbsp;
         <button class="btn btn-outline-success {{newVersion?'active':''}}" (click)="newVersion = !newVersion">
           <fa-icon [icon]="faList"></fa-icon>
         </button>
@@ -113,8 +113,8 @@
                   <span class="number">{{calculateTotalVatRate(i)}} €</span>
                 </div>
               </div>
-              
-              <div class="col-lg-1">
+
+            <div class="col-lg-1">
                 <div class="number">
                 <div ngbDropdown class="d-inline-block" style="cursor: pointer;">
                   <span ngbDropdownToggle></span>
@@ -148,7 +148,7 @@
           <div class="col-lg-4 details-container" *ngIf="details && newVersion">
             <div class="col-lg-12" *ngIf="details.items.length == 0"><h5>No items</h5></div>
             <div class="col-lg-12 row details-row" *ngFor="let d of details.items">
-              
+
               <div class="col-lg-6 row">
                 <div class="col-lg-12">
                   {{d.project}}
@@ -186,7 +186,7 @@
               <option value="2">Closed</option>
             </select>
           </div>
-          
+
           &nbsp;
           <div class="col-lg-2">
             <button class="btn btn-dark text-white" (click)="invoiceBack()"><fa-icon [icon]="faArrowLeft"></fa-icon>

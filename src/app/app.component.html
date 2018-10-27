@@ -1,5 +1,26 @@
-<div class="menu-top"><div class="brand">Invoicer</div></div>
-<div class="row col-sm-12">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand" href="#">Invoicer</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    </ul>
+    <div *ngIf="!isLoggedIn()" class="form-inline my-2 my-lg-0">
+      <input [(ngModel)]="username" name="username" class="form-control mr-sm-2" type="text" placeholder="username"
+             aria-label="Username">
+      <input [(ngModel)]="password" name="password" class="form-control mr-sm-2" type="password" placeholder="password"
+             aria-label="Password">
+      <button class="btn btn-outline-info text-white my-2 my-sm-0" type="button" (click)="login()">Sign in</button>
+    </div>
+    <div *ngIf="isLoggedIn()" class="form-inline my-2 my-lg-0">
+      <span class="text-white">Welcome {{getUser().username}}</span>
+      <button class="btn btn-outline-danger text-white my-2 my-sm-0" type="button" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>
+<div class="row col-sm-12" *ngIf="isLoggedIn()">
     <div class="col-sm-2 sidebar">
        
         <div class="col-sm-12 row" *ngFor="let m of menu" routerLink="{{m.route}}" routerLinkActive="selected" [ngStyle]="{'color': m.selected ? m.color:''}" (click)="click(m);m.selected=true">
@@ -23,4 +44,12 @@
         <router-outlet></router-outlet>
     </div>
 </div>
-
+<div class="row col-sm-12" *ngIf="!isLoggedIn()">
+  <div class="container">
+    <div class="alert alert-danger">
+      <p>Forbidden. Please log in</p>
+      <p>User: user, password: user</p>
+      <p>User: admin, password: admin</p>
+    </div>
+  </div>
+</div>

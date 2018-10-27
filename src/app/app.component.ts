@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import {faHome, faHistory, faFileInvoice, faAddressBook, faCogs, IconDefinition, faChartLine} from '@fortawesome/free-solid-svg-icons';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component} from '@angular/core';
+import {faAddressBook, faChartLine, faCogs, faFileInvoice, faHistory, faHome, IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthenticationService} from './authenticationservice';
 
 @Component({
   selector: 'app-root',
@@ -9,36 +10,62 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AppComponent {
   title = 'invoicecfront';
-  faHome = faHome;faHistory = faHistory;faFileInvoice = faFileInvoice;faProfile=faAddressBook;faCogs=faCogs;
+  faHome = faHome;
+  faHistory = faHistory;
+  faFileInvoice = faFileInvoice;
+  faProfile = faAddressBook;
+  faCogs = faCogs;
+  public username: string;
+  public password: string;
 
-  menu:MenuLink[];
-  currentMenu:MenuLink;
+  menu: MenuLink[];
+  currentMenu: MenuLink;
 
-  constructor(private router:Router, private actRoute:ActivatedRoute){
+  constructor(private router: Router, private actRoute: ActivatedRoute, private authenticationService: AuthenticationService) {
     this.menu = [];
-    
-    this.menu.push({color:"#ff84ff", route:"/dashboard", label:"Dashboard", icon:faChartLine, selected:true});
-    this.menu.push({color:"#5cc664", route:"/invoice", label:"Invoices", icon:faFileInvoice});
-    this.menu.push({color:"#848dff", route:"/invoiceprofile", label:"Profiles", icon:faAddressBook});
-    this.menu.push({color:"#ff8484", route:"/settings", label:"Settings", icon:faCogs});
 
-    this.currentMenu = {color:"#ff84ff", route:"/dashboard", label:"Dashboard", icon:faChartLine,selected:true};
+    this.menu.push({color: '#ff84ff', route: '/dashboard', label: 'Dashboard', icon: faChartLine, selected: true});
+    this.menu.push({color: '#5cc664', route: '/invoice', label: 'Invoices', icon: faFileInvoice});
+    this.menu.push({color: '#848dff', route: '/invoiceprofile', label: 'Profiles', icon: faAddressBook});
+    this.menu.push({color: '#ff8484', route: '/settings', label: 'Settings', icon: faCogs});
+
+    this.currentMenu = {color: '#ff84ff', route: '/dashboard', label: 'Dashboard', icon: faChartLine, selected: true};
 
     console.log(this.actRoute);
   }
-  click(item:MenuLink){
-    this.menu.forEach(x=>x.selected=false);
+
+  login() {
+    console.log(`Username : ${this.username}, password : ${this.password}`);
+    this.authenticationService.login(this.username, this.password, (resp) => {
+    });
+  }
+
+  isLoggedIn() {
+    return this.getUser() !== null;
+  }
+
+  getUser() {
+    return this.authenticationService.getUser();
+  }
+
+  logout() {
+    this.authenticationService.logout();
+  }
+
+  click(item: MenuLink) {
+    this.menu.forEach(x => x.selected = false);
     this.currentMenu = item;
   }
 
 
 }
+
 class MenuLink {
-  color?:string;
-  route?:string;
-  label:string;
-  icon?:IconDefinition;
-  active?:string="active";
-  public selected?:boolean=false;
+  color?: string;
+  route?: string;
+  label: string;
+  icon?: IconDefinition;
+  active?: string = 'active';
+  public selected?: boolean = false;
 }
 

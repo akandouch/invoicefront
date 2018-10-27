@@ -6,7 +6,6 @@ import {environment} from '../../environments/environment';
 import {Item} from '../item/item.class';
 import {Settings} from '../settings/settings.class';
 import {Upload} from '../upload/upload.class';
-import {throwError} from 'rxjs';
 import {Entity} from '../entity.interface';
 
 @Injectable(
