@@ -46,8 +46,9 @@
          </ul>
      </div>-->
   <div class="container-fluid routerContent">
-        <div class="col-lg-12">
-            <fa-icon [icon]="currentMenu.icon" class="header-icon" [ngStyle]="{'border-color': currentMenu.color, 'color': currentMenu.color}"></fa-icon>  
+    <div *ngIf="currentMenu" class="col-lg-12">
+      <fa-icon [icon]="currentMenu.icon" class="header-icon"
+               [ngStyle]="{'border-color': currentMenu.color, 'color': currentMenu.color}"></fa-icon>
             <h5>
                 {{currentMenu.label}}
             </h5>
