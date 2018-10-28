@@ -14,8 +14,6 @@ export class AuthInterceptor implements HttpInterceptor {
         }
       });
     }
-    console.log('no token');
-
     return next.handle(request);
   }
 }
