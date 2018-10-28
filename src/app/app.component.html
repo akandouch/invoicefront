@@ -21,7 +21,8 @@
     <div *ngIf="!isLoggedIn()" class="form-inline my-2 my-lg-0">
       <input [(ngModel)]="username" name="username" class="form-control mr-sm-2" type="text" placeholder="username"
              aria-label="Username">
-      <input [(ngModel)]="password" name="password" class="form-control mr-sm-2" type="password" placeholder="password"
+      <input (keydown.enter)="login()" [(ngModel)]="password" name="password" class="form-control mr-sm-2"
+             type="password" placeholder="password"
              aria-label="Password">
       <button class="btn btn-outline-info text-white my-2 my-sm-0" type="button" (click)="login()">Sign in</button>
     </div>
