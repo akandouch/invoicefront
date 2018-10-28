@@ -51,5 +51,15 @@
       <p>User: user, password: user</p>
       <p>User: admin, password: admin</p>
     </div>
+    <div class="col-lg-12">
+      <div class="form-group">
+        <input [(ngModel)]="username" name="username" class="form-control mr-sm-2" type="text" placeholder="username"
+               aria-label="Username">
+        <input [(ngModel)]="password" name="password" class="form-control mr-sm-2" type="password"
+               placeholder="password"
+               aria-label="Password">
+        <button class="btn btn-info btn-block text-white my-2 my-sm-0" type="button" (click)="login()">Sign in</button>
+      </div>
+    </div>
   </div>
 </div>
