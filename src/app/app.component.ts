@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {faAddressBook, faChartLine, faCogs, faFileInvoice, faHistory, faHome, IconDefinition} from '@fortawesome/free-solid-svg-icons';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationStart, Router} from '@angular/router';
 import {AuthenticationService} from './authenticationservice';
 
 @Component({
@@ -29,10 +29,16 @@ export class AppComponent {
     this.menu.push({color: '#5cc664', route: '/invoice', label: 'Invoices', icon: faFileInvoice});
     this.menu.push({color: '#848dff', route: '/invoiceprofile', label: 'Profiles', icon: faAddressBook});
     this.menu.push({color: '#ff8484', route: '/settings', label: 'Settings', icon: faCogs});
-
     this.currentMenu = {color: '#ff84ff', route: '/dashboard', label: 'Dashboard', icon: faChartLine, selected: true};
-
-    console.log(this.actRoute);
+    console.log(this.router.events.subscribe(e => {
+      if (e instanceof NavigationStart) {
+        const currentMenuList = this.menu.filter(r => r.route === e.url);
+        if (currentMenuList && currentMenuList.length > 0) {
+          this.currentMenu = currentMenuList[0];
+          this.currentMenu.selected = true;
+        }
+      }
+    }));
   }
 
   login() {
