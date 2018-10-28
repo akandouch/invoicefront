@@ -14,6 +14,7 @@ export class AppComponent {
   faHistory = faHistory;
   faFileInvoice = faFileInvoice;
   faProfile = faAddressBook;
+  toggleNavbarClass = false;
   faCogs = faCogs;
   public username: string;
   public password: string;
@@ -58,6 +59,16 @@ export class AppComponent {
   }
 
 
+  toggleNavbar() {
+    this.toggleNavbarClass = !this.toggleNavbarClass;
+  }
+
+  toggleNavbarShow() {
+    if (this.toggleNavbarClass) {
+      return 'collapse navbar-collapse show';
+    }
+    return 'collapse navbar-collapse';
+  }
 }
 
 class MenuLink {
