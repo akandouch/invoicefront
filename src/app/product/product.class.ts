@@ -1,6 +1,7 @@
 import { Upload } from "../upload/upload.class";
+import { Entity } from "../entity.interface";
 
-export class Product {
+export class Product implements Entity {
 
     public id:string;
     public name:string;

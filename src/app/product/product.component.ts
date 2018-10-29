@@ -27,28 +27,7 @@ export class ProductComponent implements OnInit {
   
   constructor(@Inject(ProductRestServiceImpl) private productRestService:RestService) { 
     this.products = new Array();
-    this.products.push({
-        id:"666",
-        description:"maintenance applicative",
-        name:"Prestation",
-        quantity: 20,
-        unitOfMeasure: UnitOfMeasure.DAYS,
-        unitPrice: 500,
-        vat: 0.21,
-        type: ProductType.SERVICE,
-        uploads:null
-    });
-    this.products.push({
-      id:"777",
-      description:"location serveur virtuel",
-      name:"Cloud Server",
-      quantity: 20,
-      unitOfMeasure: UnitOfMeasure.UNIT,
-      unitPrice: 35,
-      vat: 0.21,
-      type: ProductType.ITEM,
-      uploads:null
-  });
+    this.reload();
   }
 
   ngOnInit() {
@@ -83,8 +62,9 @@ export class ProductComponent implements OnInit {
       type: ProductType.ITEM,
       uploads:null
     }
+    console.log(product)
     this.productRestService.post(product,(data)=>{
-      console.log(data)
+      this.reload();
     },
     ()=>{
       alert("error")
@@ -93,6 +73,11 @@ export class ProductComponent implements OnInit {
       alert("product successfully added")
     })
 
+  }
+  reload(){
+    this.productRestService.get({},
+      (data)=>{ console.log(data);this.products = data
+    });
   }
 
 }
