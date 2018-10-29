@@ -216,6 +216,8 @@
 
         <div class="col-lg-12 row" *ngIf="current && listOpened == 'products'">
           <div class="col-lg-6">
+            <label>Products selected</label>
+            <span class="btn btn-outline-dark" (click)="current.products = []">Clear selection</span>
             <div  *ngFor="let p of current.products">
               <span>{{p.name}}</span>
               <span>{{p.unitPrice}}</span>
