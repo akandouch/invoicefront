@@ -13,7 +13,7 @@ export class Product {
 
     public vat:number;
 
-    public images:Upload[];
+    public uploads:Upload[];
 }
 
 export enum UnitOfMeasure{

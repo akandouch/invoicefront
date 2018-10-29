@@ -34,7 +34,7 @@ export class ProductComponent implements OnInit {
         unitPrice: 500,
         vat: 0.21,
         type: ProductType.SERVICE,
-        images:null
+        uploads:null
     });
     this.products.push({
       id:"777",
@@ -45,7 +45,7 @@ export class ProductComponent implements OnInit {
       unitPrice: 35,
       vat: 0.21,
       type: ProductType.ITEM,
-      images:null
+      uploads:null
   });
   }
 
