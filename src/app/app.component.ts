@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {faAddressBook, faChartLine, faCogs, faFileInvoice, faHistory, faHome, IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import {faAddressBook, faChartLine, faCogs, faFileInvoice, faHistory, faHome, IconDefinition, faListAlt} from '@fortawesome/free-solid-svg-icons';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {AuthenticationService} from './authenticationservice';
 
@@ -28,6 +28,7 @@ export class AppComponent {
     this.menu.push({color: '#ff84ff', route: '/dashboard', label: 'Dashboard', icon: faChartLine});
     this.menu.push({color: '#5cc664', route: '/invoice', label: 'Invoices', icon: faFileInvoice});
     this.menu.push({color: '#848dff', route: '/invoiceprofile', label: 'Profiles', icon: faAddressBook});
+    this.menu.push({color: '#ff8d64', route: '/product', label: 'Products', icon: faListAlt});
     this.menu.push({color: '#ff8484', route: '/settings', label: 'Settings', icon: faCogs});
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {

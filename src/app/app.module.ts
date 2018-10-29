@@ -30,6 +30,7 @@ import {DaysPerMonth, RatePerMonth, TotalPerCustomer} from './services/statistic
 import {AuthInterceptor} from './authinterceptor';
 import {ErrorInterceptor} from './errorinterceptor';
 import {AuthenticationService} from './authenticationservice';
+import { ProductComponent } from './product/product.component';
 
 
 const routes: Route[] = [
@@ -37,7 +38,8 @@ const routes: Route[] = [
   {path: 'invoiceprofile', component: InvoiceprofileComponent},
   {path: 'invoice', component: InvoiceComponent},
   {path: 'settings', component: SettingsComponent},
-  {path: 'dashboard', component: DashboardComponent}
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'product', component: ProductComponent}
 ];
 
 @NgModule({
@@ -52,7 +54,8 @@ const routes: Route[] = [
     InvoiceprofileComponent,
     SettingsComponent,
     DashboardComponent,
-    AttachmentListComponent
+    AttachmentListComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

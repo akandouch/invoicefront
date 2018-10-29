@@ -1,6 +1,7 @@
 import {Period} from './period.class';
 import { Entity } from '../entity.interface';
 
+
 export class Item implements Entity{
 
   public id: string;
