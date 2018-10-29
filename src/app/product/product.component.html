@@ -1,5 +1,5 @@
 <div class="form-group" *ngIf="!selectOnly">  
-  <button class="btn btn-outline-secondary"><fa-icon [icon]="faPlus"></fa-icon> Add</button>
+  <button class="btn btn-outline-secondary" (click)="newProduct()"><fa-icon [icon]="faPlus"></fa-icon> Add</button>
   <div class="container-table-items col-lg-12" *ngIf="products.length > 0">
     <div class="row new-items table-header">
       <div class="col-lg-1">Id</div>
@@ -50,15 +50,15 @@
   <div class="col-lg-12 table-product-selection">
     <div class="col-lg-12 row header">
       <div class="col-lg-2">Type</div>
-      <div class="col-lg-6">Name</div>
-      <div class="col-lg-2">Unit of Measure</div>
-      <div class="col-lg-2">Unit price</div>
+      <div class="col-lg-4">Name</div>
+      <div class="col-lg-3">Unit of Measure</div>
+      <div class="col-lg-3">Unit price</div>
     </div>
     <div class="col-lg-12 row content" *ngFor="let p of filteredProduct" (click)="select(p)">
       <div class="col-lg-2">{{p.type}}</div>
-      <div class="col-lg-6">{{p.name}}</div>
-      <div class="col-lg-2">{{p.unitOfMeasure}}</div>
-      <div class="col-lg-2">{{p.unitPrice}}€</div>
+      <div class="col-lg-4">{{p.name}}</div>
+      <div class="col-lg-3">{{p.unitOfMeasure}}</div>
+      <div class="col-lg-3">{{p.unitPrice}}€</div>
     </div>
   </div>
 </div>

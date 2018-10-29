@@ -1,5 +1,6 @@
 .table-product-selection > .content {
     /*background-color: #ededed;*/
+    border-top: dashed 1px #ccc;
     padding: 15px;
     cursor: pointer;
 }

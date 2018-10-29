@@ -31,6 +31,7 @@ import {AuthInterceptor} from './authinterceptor';
 import {ErrorInterceptor} from './errorinterceptor';
 import {AuthenticationService} from './authenticationservice';
 import { ProductComponent } from './product/product.component';
+import { ProductRestServiceImpl } from './services/productrestserviceimpl.class';
 
 
 const routes: Route[] = [
@@ -82,7 +83,8 @@ const routes: Route[] = [
     {provide: TotalPerCustomer, useClass: TotalPerCustomer},
     {provide: AuthenticationService, useClass: AuthenticationService},
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: ProductRestServiceImpl, useClass:ProductRestServiceImpl}
 
   ],
   bootstrap: [AppComponent]

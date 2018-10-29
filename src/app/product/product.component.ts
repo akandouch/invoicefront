@@ -1,6 +1,8 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, Inject } from '@angular/core';
 import { Product, ProductType, UnitOfMeasure } from './product.class';
 import { faPlus,faEllipsisH,faEye,faEdit,faCopy,faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { RestService } from '../services/restservice.interface';
+import { ProductRestServiceImpl } from '../services/productrestserviceimpl.class';
 
 @Component({
   selector: 'app-product',
@@ -23,7 +25,7 @@ export class ProductComponent implements OnInit {
   typeFilter:number;
   nameFilter:string;
   
-  constructor() { 
+  constructor(@Inject(ProductRestServiceImpl) private productRestService:RestService) { 
     this.products = new Array();
     this.products.push({
         id:"666",
@@ -66,6 +68,31 @@ export class ProductComponent implements OnInit {
     }
 
     return filteredList;
+  }
+
+  newProduct(){
+
+    var product:Product = {
+      id:""+Date.now(),
+      description:"test add",
+      name:"Test Rest Add Generic",
+      quantity: 20,
+      unitOfMeasure: UnitOfMeasure.UNIT,
+      unitPrice: 35,
+      vat: 0.21,
+      type: ProductType.ITEM,
+      uploads:null
+    }
+    this.productRestService.post(product,(data)=>{
+      console.log(data)
+    },
+    ()=>{
+      alert("error")
+    },
+    ()=>{
+      alert("product successfully added")
+    })
+
   }
 
 }
