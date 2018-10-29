@@ -1,0 +1,7 @@
+.table-product-selection > .content {
+    background-color: #ededed;
+    cursor: pointer;
+}
+.table-product-selection > .content:hover {
+    background-color: #ffe674;
+}

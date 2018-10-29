@@ -55,7 +55,7 @@ export class InvoiceComponent implements OnInit {
   private currentProfile: InvoiceProfile;
   private currentCustomer: InvoiceProfile;
 
-  private listOpened: string = 'items';
+  private listOpened: string = 'products';
   public newVersion:boolean = true;
 
   public details:Invoice=new Invoice();
