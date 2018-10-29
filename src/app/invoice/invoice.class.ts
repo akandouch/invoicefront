@@ -3,6 +3,7 @@ import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 import { StatusEnum } from './status.enum';
 import { Entity } from '../entity.interface';
 import {Upload} from '../upload/upload.class';
+import { Product } from '../product/product.class';
 
 export class Invoice implements Entity {
   public title: string = '';
@@ -15,6 +16,7 @@ export class Invoice implements Entity {
   public invoiced: InvoiceProfile = new InvoiceProfile();
 
   public status:StatusEnum = StatusEnum.OPEN;
+  public products:Product[] = [];
 
   constructor() {
   }

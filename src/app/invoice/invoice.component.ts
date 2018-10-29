@@ -29,6 +29,7 @@ import {UploadRestServiceImpl} from '../services/uploadrestserviceimpl.class';
 import {ItemComponent} from '../item/item.component';
 import {ItemListComponent} from '../item-list/item-list.component';
 import { InvoiceSendMailRestServiceImpl } from '../services/invoicesendmailrestserviceimpl.class';
+import { Product } from '../product/product.class';
 
 @Component({
   selector: 'app-invoice',
@@ -46,24 +47,9 @@ export class InvoiceComponent implements OnInit {
   history: Invoice[];
   current: Invoice;
   preview: Invoice;
-  faEye = faEye;
-  faMailBulk = faMailBulk;
-  faPlus = faPlus;
-  faFolderOpen = faFolderOpen;
-  faTrashAlt = faTrashAlt;
-  faFileDownload = faFileDownload;
-  faArrowLeft = faArrowLeft;
-  faListAlt = faListAlt;
-  faSearch = faSearch;
-  faHome = faHome;
-  faUser = faUser;
-  faEllipsisH = faEllipsisH;
-  faFilePdf = faFilePdf;
-  faFileInvoice = faFileInvoice;
-  faPaperclip = faPaperclip;
-  faList = faList;
+  faEye = faEye;faMailBulk = faMailBulk;faPlus = faPlus;faFolderOpen = faFolderOpen;faTrashAlt = faTrashAlt;faFileDownload = faFileDownload;faArrowLeft = faArrowLeft;faListAlt = faListAlt;faSearch = faSearch;faHome = faHome;faUser = faUser;faEllipsisH = faEllipsisH;faFilePdf = faFilePdf;faFileInvoice = faFileInvoice;faPaperclip = faPaperclip;faList = faList;
+  
   private currentModal: NgbActiveModal;
-
   private profiles: InvoiceProfile[];
   private profilesFound: InvoiceProfile[];
   private currentProfile: InvoiceProfile;
@@ -229,12 +215,16 @@ export class InvoiceComponent implements OnInit {
     var total = 0;
     invoice.items.forEach(x=>total += (x.rate*x.days) - ((x.rate*x.days)*x.vatRate));
     total = parseFloat(Number(total).toFixed(2));
-    console.log(total);
     return total;
   }
 
   openDetails(invoice:Invoice){
     this.details.fillInvoice(invoice);
     this.idDetailsSelected = invoice.id;
+  }
+
+  productSelected(product:Product){
+    console.log(product);
+    this.current.products.push(product);
   }
 }
