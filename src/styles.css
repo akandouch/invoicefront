@@ -328,7 +328,8 @@ border-radius: 3px 3px 0px 0px;
     border: none;
     border-radius: 0;
     font-size: 12px;
-    margin-bottom: 15px;
+    margin-bottom: 15px;    
+    margin-left: 1px;
 }
 /*
 .onglet > div.open:first-child {
