@@ -1,5 +1,6 @@
 .table-product-selection > .content {
-    background-color: #ededed;
+    /*background-color: #ededed;*/
+    padding: 15px;
     cursor: pointer;
 }
 .table-product-selection > .content:hover {
