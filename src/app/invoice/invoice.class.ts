@@ -57,6 +57,7 @@ export class Invoice implements Entity {
     if( !this.attachments){
       this.attachments = [];
     }
+    this.products = invoice.products;
   }
 
   public removeItem(idx: number) {

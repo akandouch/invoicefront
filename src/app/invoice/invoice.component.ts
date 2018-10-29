@@ -227,4 +227,9 @@ export class InvoiceComponent implements OnInit {
     console.log(product);
     this.current.products.push(product);
   }
+
+  removeProduct(i:number){
+    console.log(i)
+    this.current.products = this.current.products.slice(i);
+  }
 }

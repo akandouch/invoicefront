@@ -168,3 +168,10 @@
 i{
   vertical-align: middle;
 }
+.selected-product > input {
+    border: none;
+    border-bottom: solid 1px #EDEDED;
+    border-radius: 0;
+    outline: none;
+    width: 95%;
+}

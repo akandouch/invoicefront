@@ -53,7 +53,7 @@ export class ProductComponent implements OnInit {
   }
 
   select(product:Product){
-    this.productSelected.emit(product);
+    this.productSelected.emit(Object.assign(new Product,product));
   }
 
   get filteredProduct(){
