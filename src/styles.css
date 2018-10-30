@@ -201,7 +201,7 @@ input{
     border-right:none;
 }
 .new-items {
-   /* margin-top: 25px;*/
+   margin-top: 25px;
 }
 .new-items>div{
     padding:0;
@@ -245,9 +245,9 @@ input{
    /* box-shadow: 1px 1px 1px 1px #ddd;    
     border-radius: 5px 5px 0px 0px;   */
     border-bottom: solid 1px rgb(212, 212, 212); 
-    max-height: 250px;
+    /*max-height: 250px;
     min-height: 250px;
-    overflow-y: scroll;
+    overflow-y: scroll;*/
 }
 
 .table-items:hover {
