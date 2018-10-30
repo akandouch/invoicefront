@@ -9,8 +9,8 @@
         <button class="btn btn-outline-success {{newVersion?'active':''}}" (click)="newVersion = !newVersion">
           <fa-icon [icon]="faList"></fa-icon>
         </button>
-
-        <div class="container-table-items col-lg-12" *ngIf="!newVersion">
+        <div  *ngIf="!newVersion">
+        <div class="container-table-items col-lg-12">
           <div class="row new-items table-header">
             <div class="col-lg-1">#</div>
             <div class="col-lg-3">Invoicer</div>
@@ -68,6 +68,7 @@
                 </div>
               </div>
             </div>
+          </div>
           </div>
           <app-pagination [restService]="invoiceService" (newData)="refreshGrid($event)"></app-pagination>
         </div>
