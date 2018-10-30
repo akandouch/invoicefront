@@ -36,7 +36,7 @@ export class InvoiceprofileComponent implements OnInit {
   constructor(
     private ngbModalService: NgbModal, 
     @Inject(UploadRestServiceImpl) private uploadService:RestService,
-    @Inject(InvoiceProfileRestServiceImpl) private invoiceProfileService:RestService
+    @Inject(InvoiceProfileRestServiceImpl) public invoiceProfileService:RestService
     ) {
     this.newInvoiceProfile = new InvoiceProfile();
     this.getAll();

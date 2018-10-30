@@ -81,7 +81,7 @@
         <div class="container-new-version col-lg-12 row">
           <div class="col-lg-8" *ngIf="!current && newVersion">
           <div *ngFor="let i of history" class="col-lg-12 col-sm-12 new-table-invoice {{i.status==0?'invoice-open':'invoice-close'}} {{idDetailsSelected==i.id?'selected':''}} row" (click)="openDetails(i)" style="cursor: pointer;" >
-              <div class="col-lg-1 status">&nbsp;</div>
+              <div class="col-sm-12 col-lg-1 status">&nbsp;</div>
               <div class="col-lg-2" *ngIf="i.invoicer.logo" style="overflow: hidden"><img [src]="uploadService.getResourcePath(i.invoicer.logo)" height="75">&nbsp;</div>
               <div class="col-lg-9 row">
                 <div class="col-lg-7">
