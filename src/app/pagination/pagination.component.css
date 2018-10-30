@@ -7,6 +7,8 @@
     font-weight: 600;
 }
 .pagination {
+    font-size: 12px !important;
+    color: rgb(97, 97, 97) !important;
 }
 div {
     padding: 0 !important;
