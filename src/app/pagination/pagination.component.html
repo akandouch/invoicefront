@@ -1,0 +1,28 @@
+<div class="col-lg-12 row pagination">
+  <div class="col-lg-11">
+    <label>
+      <a *ngIf="pageNumber !==0 " (click)="pageNumber=0;get()"><fa-icon [icon]="faFastBackward"></fa-icon></a>&nbsp;
+      <a class="page {{i==pageNumber?'selected':''}}" *ngFor="let i of pages" (click)="pageNumber=i;get()">{{i}}</a>&nbsp;
+      <a *ngIf="!last" (click)="pageNumber=totalPages-1;get()"><fa-icon [icon]="faFastForward"></fa-icon></a>
+    </label>
+  </div>
+  <div class="col-lg-1">
+    <label>Total:
+      <select [(ngModel)]="pageSize" (change)="get()">
+        <option>1</option>
+        <option>5</option>
+        <option>10</option>
+        <option>25</option>
+        <option>50</option>
+        <option>100</option>
+      </select>
+    </label>
+  </div>
+</div>
+<!--<label>Page: <select [(ngModel)]="pageNumber" (change)="get()">
+  <option *ngFor="let i of pages">{{i}}</option>
+</select>
+</label>
+<label>Page :<input [(ngModel)]="pageNumber" (change)="get()"></label>
+<label>Size :<input [(ngModel)]="pageSize" (change)="get()"></label>
+-->

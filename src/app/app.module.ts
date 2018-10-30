@@ -32,6 +32,7 @@ import {ErrorInterceptor} from './errorinterceptor';
 import {AuthenticationService} from './authenticationservice';
 import { ProductComponent } from './product/product.component';
 import { ProductRestServiceImpl } from './services/productrestserviceimpl.class';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 const routes: Route[] = [
@@ -56,7 +57,8 @@ const routes: Route[] = [
     SettingsComponent,
     DashboardComponent,
     AttachmentListComponent,
-    ProductComponent
+    ProductComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

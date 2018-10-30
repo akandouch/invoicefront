@@ -1,6 +1,6 @@
 <div class="form-group" *ngIf="!selectOnly">  
   <button class="btn btn-outline-secondary" (click)="newProduct()"><fa-icon [icon]="faPlus"></fa-icon> Add</button>
-  <div class="container-table-items col-lg-12" *ngIf="products.length > 0">
+  <div class="container-table-items col-lg-12">
     <div class="row new-items table-header">
       <div class="col-lg-1">Id</div>
       <div class="col-lg-2">Name</div>
@@ -35,6 +35,7 @@
           </div>       
         </div>
     </div>
+    <app-pagination [restService]="productRestService" (newData)="refreshGrid($event)"></app-pagination>
   </div>
 </div>
 

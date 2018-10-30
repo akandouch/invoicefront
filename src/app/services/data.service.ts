@@ -16,7 +16,11 @@ export class DataService<T extends Entity> {
   constructor(private http: HttpClient) {
   }
 
+  
   get(path: string, params?: any, callBackNext?: any, callbackError?: any, callbackComplete?: any) {
+    if( params.pageSize !== null && params.pageNumber !== null){
+      path +="/page";
+    }
     this.http.get<any[]>(environment.restApiUrl + '/' + path, {params: params}).subscribe(
       (datas) => {
         if (callBackNext) callBackNext(datas);

@@ -75,9 +75,14 @@ export class ProductComponent implements OnInit {
 
   }
   reload(){
-    this.productRestService.get({},
-      (data)=>{ console.log(data);this.products = data
-    });
+    /*this.productRestService.get({},
+      (data)=>{ 
+        console.log(data);
+        this.products = data;
+    });*/
+  }
+  refreshGrid(data){
+    this.products = data;
   }
 
 }

@@ -1,0 +1,14 @@
+.page{
+    padding: 3px;
+    color: blue;
+    cursor: pointer;
+}
+.page.selected{
+    font-weight: 600;
+}
+.pagination {
+}
+div {
+    padding: 0 !important;
+    margin: 0 !important;
+}
