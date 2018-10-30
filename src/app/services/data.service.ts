@@ -18,7 +18,8 @@ export class DataService<T extends Entity> {
 
   
   get(path: string, params?: any, callBackNext?: any, callbackError?: any, callbackComplete?: any) {
-    if( params.pageSize !== null && params.pageNumber !== null){
+    if( params.pageSize != null && params.pageNumber != null){
+      console.log(params);
       path +="/page";
     }
     this.http.get<any[]>(environment.restApiUrl + '/' + path, {params: params}).subscribe(
