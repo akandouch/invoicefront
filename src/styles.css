@@ -243,7 +243,10 @@ input{
 
 .container-table-items {
     box-shadow: 1px 1px 1px 1px #ddd;    
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0px 0px;    
+    max-height: 250px;
+    min-height: 250px;
+    overflow-y: scroll;
 }
 
 .table-items:hover {

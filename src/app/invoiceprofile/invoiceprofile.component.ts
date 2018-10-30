@@ -123,11 +123,6 @@ export class InvoiceprofileComponent implements OnInit {
         profile.logo = u;
         this.loadingLogo = false;
       })
-      /*
-      this.ds.postUpload(profile.logo, (u) => {
-        profile.logo = u;
-        this.loadingLogo = false;
-      });*/
     });
     fileReader.readAsDataURL(blob);
   }
