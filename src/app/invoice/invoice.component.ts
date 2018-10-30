@@ -64,7 +64,7 @@ export class InvoiceComponent implements OnInit {
   constructor(
     ds: DataService<any>,
     private ngbModalService: NgbModal,
-    @Inject(InvoiceRestServiceImpl) private invoiceService: InvoiceRestServiceImpl,
+    @Inject(InvoiceRestServiceImpl) public invoiceService: InvoiceRestServiceImpl,
     @Inject(UploadRestServiceImpl) private uploadService: RestService,
     @Inject(InvoiceSendMailRestServiceImpl) private invoiceSendMailService
   ) {

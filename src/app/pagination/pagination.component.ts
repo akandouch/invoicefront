@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RestService } from '../services/restservice.interface';
-import { faFastBackward, faFastForward } from '@fortawesome/free-solid-svg-icons';
+import { faFastBackward, faFastForward, faStepForward, faStepBackward } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-pagination',
@@ -16,7 +16,7 @@ export class PaginationComponent implements OnInit {
   last:boolean;
   pages:number[];
 
-  faFastBackward=faFastBackward;faFastForward=faFastForward;
+  faFastBackward=faFastBackward;faFastForward=faFastForward;faStepForward=faStepForward;faStepBackward=faStepBackward;
 
   @Input()
   restService:RestService;
