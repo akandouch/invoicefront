@@ -242,8 +242,9 @@ input{
 }
 
 .container-table-items {
-    box-shadow: 1px 1px 1px 1px #ddd;    
-    border-radius: 5px 5px 0px 0px;    
+   /* box-shadow: 1px 1px 1px 1px #ddd;    
+    border-radius: 5px 5px 0px 0px;   */
+    border-bottom: solid 1px rgb(212, 212, 212); 
     max-height: 250px;
     min-height: 250px;
     overflow-y: scroll;
