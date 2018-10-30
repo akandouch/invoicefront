@@ -1,12 +1,14 @@
 <div class="col-lg-12 row pagination">
   <div class="col-lg-11">
     <label>Pages:<br/>
-      <a *ngIf="pageNumber !==0" (click)="pageNumber=0;get()"><fa-icon [icon]="faFastBackward"></fa-icon></a>&nbsp;
-      <a *ngIf="pageNumber !==0" (click)="pageNumber=pageNumber-1;get()"><fa-icon [icon]="faStepBackward"></fa-icon></a>&nbsp;
-      
+      <a *ngIf="pageNumber !==0" (click)="pageNumber=0;get()"><fa-icon [icon]="faFastBackward"></fa-icon>&nbsp;</a>
+      <a *ngIf="pageNumber !==0" (click)="pageNumber=pageNumber-1;get()"><fa-icon [icon]="faStepBackward"></fa-icon>&nbsp;</a>
+      <a *ngIf="pageNumber ==0" style="color:gray"><fa-icon [icon]="faFastBackward"></fa-icon>&nbsp;</a>
+      <a *ngIf="pageNumber ==0" style="color:gray"><fa-icon [icon]="faStepBackward"></fa-icon>&nbsp;</a>
       <a class="page {{i==pageNumber?'selected':''}}" *ngFor="let i of pages" (click)="pageNumber=i;get()">{{i}}</a>&nbsp;
-      
-      <a *ngIf="!last" (click)="pageNumber=pageNumber+1;get()"><fa-icon [icon]="faStepForward"></fa-icon></a>&nbsp;
+      <a *ngIf="last" style="color:gray"><fa-icon [icon]="faStepForward"></fa-icon>&nbsp;</a>
+      <a *ngIf="last" style="color:gray"><fa-icon [icon]="faFastForward"></fa-icon>&nbsp;</a>
+      <a *ngIf="!last" (click)="pageNumber=pageNumber+1;get()"><fa-icon [icon]="faStepForward"></fa-icon>&nbsp;</a>
       <a *ngIf="!last" (click)="pageNumber=totalPages-1;get()"><fa-icon [icon]="faFastForward"></fa-icon></a>
     </label>
   </div>
