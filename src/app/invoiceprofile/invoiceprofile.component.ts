@@ -6,6 +6,7 @@ import {faCoffee, faCopy, faEdit, faEllipsisH, faEye, faPlus, faSave, faTrashAlt
 import {Upload} from '../upload/upload.class';
 import { RestService } from '../services/restservice.interface';
 import { UploadRestServiceImpl } from '../services/uploadrestserviceimpl.class';
+import { InvoiceProfileRestServiceImpl } from '../services/invoiceprofilerestserviceimpl.class';
 
 
 @Component({
@@ -32,7 +33,12 @@ export class InvoiceprofileComponent implements OnInit {
   public currentIdx: number;
   public loadingLogo: boolean = false;
 
-  constructor(private ds: DataService<any>, private ngbModalService: NgbModal, @Inject(UploadRestServiceImpl) private uploadService:RestService) {
+  constructor(
+    private ds: DataService<any>, 
+    private ngbModalService: NgbModal, 
+    @Inject(UploadRestServiceImpl) private uploadService:RestService,
+    @Inject(InvoiceProfileRestServiceImpl) private invoiceProfileService:RestService
+    ) {
     this.newInvoiceProfile = new InvoiceProfile();
     this.getAll();
   }
@@ -104,6 +110,9 @@ export class InvoiceprofileComponent implements OnInit {
       });
     });
     fileReader.readAsDataURL(blob);
+  }
+  refreshGrid(data){
+    this.profiles = data;
   }
 
 }

@@ -28,6 +28,7 @@
             </div>
         </div>
         </div>    
+        <app-pagination [restService]="invoiceProfileService" (newData)="refreshGrid($event)"></app-pagination>
   </div>
 </div>
 

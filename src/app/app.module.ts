@@ -33,6 +33,7 @@ import {AuthenticationService} from './authenticationservice';
 import { ProductComponent } from './product/product.component';
 import { ProductRestServiceImpl } from './services/productrestserviceimpl.class';
 import { PaginationComponent } from './pagination/pagination.component';
+import { InvoiceProfileRestServiceImpl } from './services/invoiceprofilerestserviceimpl.class';
 
 
 const routes: Route[] = [
@@ -86,7 +87,8 @@ const routes: Route[] = [
     {provide: AuthenticationService, useClass: AuthenticationService},
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    {provide: ProductRestServiceImpl, useClass:ProductRestServiceImpl}
+    {provide: ProductRestServiceImpl, useClass:ProductRestServiceImpl},
+    {provide:InvoiceProfileRestServiceImpl, useClass:InvoiceProfileRestServiceImpl}
 
   ],
   bootstrap: [AppComponent]
