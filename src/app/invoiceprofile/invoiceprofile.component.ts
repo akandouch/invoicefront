@@ -34,7 +34,6 @@ export class InvoiceprofileComponent implements OnInit {
   public loadingLogo: boolean = false;
 
   constructor(
-    private ds: DataService<any>, 
     private ngbModalService: NgbModal, 
     @Inject(UploadRestServiceImpl) private uploadService:RestService,
     @Inject(InvoiceProfileRestServiceImpl) private invoiceProfileService:RestService
@@ -47,14 +46,22 @@ export class InvoiceprofileComponent implements OnInit {
   }
 
   getAll() {
-    this.ds.getInvoiceProfiles().subscribe(data => this.profiles = data);
+    this.invoiceProfileService.get({},(data)=>{
+      this.profiles = data;
+    })
   }
 
   save(invoiceProfile: InvoiceProfile) {
-    this.ds.postInvoiceProfile(invoiceProfile, () => {
+    this.invoiceProfileService.post(invoiceProfile,()=>{
       this.getAll();
       this.closeModal();
-    });
+    },
+    ()=>{
+      alert('error happens my frend')
+    },
+    ()=>{
+      alert('profile created successfully')
+    })
     this.newInvoiceProfile = new InvoiceProfile();
   }
 
@@ -67,9 +74,15 @@ export class InvoiceprofileComponent implements OnInit {
 
   copyItem(profile: InvoiceProfile) {
     profile.id = null;
-    this.ds.postInvoiceProfile(profile, () => {
+    this.invoiceProfileService.post(profile,()=>{
       this.getAll();
-    });
+    },
+    ()=>{
+      alert('error happens my frend')
+    },
+    ()=>{
+      alert('profile updated successfully')
+    })
   }
 
   editItem(content, invoiceProfile: InvoiceProfile, idx: number) {
@@ -82,7 +95,9 @@ export class InvoiceprofileComponent implements OnInit {
   }
 
   removeItem(invoiceProfile: InvoiceProfile) {
-    this.ds.deleteInvoiceProfile(invoiceProfile, () => this.getAll());
+    this.invoiceProfileService.delete(invoiceProfile,()=>{
+      this.getAll();
+    })
   }
 
   closeModal() {
@@ -104,10 +119,15 @@ export class InvoiceprofileComponent implements OnInit {
       profile.logo.contentType = blob.type;
       profile.logo.fileName = blob.name;
       profile.logo.newUpload = fileReader.result.split(',')[1];
+      this.uploadService.post(profile.logo,(u)=>{
+        profile.logo = u;
+        this.loadingLogo = false;
+      })
+      /*
       this.ds.postUpload(profile.logo, (u) => {
         profile.logo = u;
         this.loadingLogo = false;
-      });
+      });*/
     });
     fileReader.readAsDataURL(blob);
   }
