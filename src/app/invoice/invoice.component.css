@@ -33,15 +33,12 @@
     padding: 0;
     border-radius: 0;
 }
-@media only screen and (max-width: 600px) {
-
-    .new-table-invoice:hover > .status{
+ .new-table-invoice:hover > .status{
         max-width: 15px !important;
     }
 
-    .new-table-invoice.selected > .status{
-        max-width: 15px !important;
-    }
+.new-table-invoice.selected > .status{
+max-width: 15px !important;
 }
 .new-table-invoice.selected.invoice-close{
     background-color: var(--invoice-close-color-bck);
