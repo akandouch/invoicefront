@@ -30,10 +30,11 @@ import {DaysPerMonth, RatePerMonth, TotalPerCustomer} from './services/statistic
 import {AuthInterceptor} from './authinterceptor';
 import {ErrorInterceptor} from './errorinterceptor';
 import {AuthenticationService} from './authenticationservice';
-import { ProductComponent } from './product/product.component';
-import { ProductRestServiceImpl } from './services/productrestserviceimpl.class';
-import { PaginationComponent } from './pagination/pagination.component';
-import { InvoiceProfileRestServiceImpl } from './services/invoiceprofilerestserviceimpl.class';
+import {ProductComponent} from './product/product.component';
+import {ProductRestServiceImpl} from './services/productrestserviceimpl.class';
+import {PaginationComponent} from './pagination/pagination.component';
+import {InvoiceProfileRestServiceImpl} from './services/invoiceprofilerestserviceimpl.class';
+import {ImageLoaderComponent} from './image-loader/image-loader.component';
 
 
 const routes: Route[] = [
@@ -59,7 +60,8 @@ const routes: Route[] = [
     DashboardComponent,
     AttachmentListComponent,
     ProductComponent,
-    PaginationComponent
+    PaginationComponent,
+    ImageLoaderComponent
   ],
   imports: [
     BrowserModule,
