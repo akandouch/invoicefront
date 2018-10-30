@@ -1,6 +1,6 @@
 <div class="col-lg-12 row pagination">
   <div class="col-lg-11">
-    <label>
+    <label>Pages:<br/>
       <a *ngIf="pageNumber !==0 " (click)="pageNumber=0;get()"><fa-icon [icon]="faFastBackward"></fa-icon></a>&nbsp;
       <a class="page {{i==pageNumber?'selected':''}}" *ngFor="let i of pages" (click)="pageNumber=i;get()">{{i}}</a>&nbsp;
       <a *ngIf="!last" (click)="pageNumber=totalPages-1;get()"><fa-icon [icon]="faFastForward"></fa-icon></a>
