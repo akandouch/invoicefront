@@ -235,4 +235,8 @@ export class InvoiceComponent implements OnInit {
     console.log(i)
     this.current.products = this.current.products.slice(i);
   }
+  
+  refreshGrid(data){
+    this.history = data;
+  }
 }

@@ -69,6 +69,7 @@
               </div>
             </div>
           </div>
+          <app-pagination [restService]="invoiceService" (newData)="refreshGrid($event)"></app-pagination>
         </div>
 
 
@@ -144,6 +145,7 @@
             </div>
             </div>
           </div>
+          <app-pagination [restService]="invoiceService" (newData)="refreshGrid($event)"></app-pagination>
           </div>
           <div class="col-lg-4 details-container" *ngIf="details && newVersion">
             <div class="col-lg-12" *ngIf="details.items.length == 0"><h5>No items</h5></div>
