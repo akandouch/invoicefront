@@ -12,6 +12,10 @@ export class ImageLoaderComponent implements OnInit {
 
   @Input()
   public image: Upload;
+  @Input()
+  public width: string;
+  @Input()
+  public height: string;
 
   public imageBase64: string;
 

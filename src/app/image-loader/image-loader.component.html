@@ -1,5 +1,5 @@
 <div>
-  <img *ngIf="imageBase64" [src]="imageBase64" height="75">
+  <img *ngIf="imageBase64" [src]="imageBase64" [height]="height ? height : 75" [width]="width? width : height">
   <div *ngIf="!imageBase64" class="lds-ellipsis">
     <div></div>
     <div></div>
