@@ -201,7 +201,7 @@ input{
     border-right:none;
 }
 .new-items {
-    margin-top: 25px;
+   /* margin-top: 25px;*/
 }
 .new-items>div{
     padding:0;

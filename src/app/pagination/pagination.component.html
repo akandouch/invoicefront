@@ -1,8 +1,8 @@
 <div class="col-lg-12 row pagination">
   <div class="col-lg-11">
     <label>Pages:<br/>
-      <a *ngIf="pageNumber !==0 " (click)="pageNumber=0;get()"><fa-icon [icon]="faFastBackward"></fa-icon></a>&nbsp;
-      <a *ngIf="pageNumber !==0 " (click)="pageNumber=pageNumber-1;get()"><fa-icon [icon]="faStepBackward"></fa-icon></a>&nbsp;
+      <a *ngIf="pageNumber !==0" (click)="pageNumber=0;get()"><fa-icon [icon]="faFastBackward"></fa-icon></a>&nbsp;
+      <a *ngIf="pageNumber !==0" (click)="pageNumber=pageNumber-1;get()"><fa-icon [icon]="faStepBackward"></fa-icon></a>&nbsp;
       
       <a class="page {{i==pageNumber?'selected':''}}" *ngFor="let i of pages" (click)="pageNumber=i;get()">{{i}}</a>&nbsp;
       
