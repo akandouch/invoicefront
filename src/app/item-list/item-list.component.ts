@@ -25,7 +25,7 @@ export class ItemListComponent implements OnInit {
   /* for data table */
   public dataColumns:Array<DataColumn> = [
     {field:{name:"id"},label:"Id"},
-    {field:{name:"description"}, label:"Description"},
+    /*{field:{name:"description"}, label:"Description"},*/
     {field:{name:"project"}, label:"Project"},
     {field:{name:"unit"}, label:"Unit price"},
     {field:{name:"vatRate"}, label: "Vat Rate"},

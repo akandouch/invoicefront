@@ -17,12 +17,9 @@
       </div>
     </div>
 </div>
-<div class="table-pagination" *ngIf="!noPagination">
-    <app-pagination [restService]="dataSource" (newData)="refreshGrid($event)"></app-pagination>
-</div>
-<div class="table-pagination" *ngIf="noPagination">
-    <mat-paginator></mat-paginator>
-</div>
+<div class="table-pagination">
+    <app-pagination [dataSource]="dataSource" (newData)="refreshGrid($event)"></app-pagination>
+</div> 
 
 
 
@@ -69,5 +66,5 @@
         </div>   
         </div> -->    
     </div>
-  <app-pagination [restService]="dataSource" (newData)="refreshGrid($event)"></app-pagination>
+  <app-pagination [dataSource]="dataSource" (newData)="refreshGrid($event)"></app-pagination>
 </div>

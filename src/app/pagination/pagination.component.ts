@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RestService } from '../services/restservice.interface';
 import { faFastBackward, faFastForward, faStepForward, faStepBackward } from '@fortawesome/free-solid-svg-icons';
+import { Entity } from '../entity.interface';
+import { RestServiceAbstract } from '../services/restserviceabstract.class';
 
 @Component({
   selector: 'app-pagination',
@@ -19,7 +21,7 @@ export class PaginationComponent implements OnInit {
   faFastBackward=faFastBackward;faFastForward=faFastForward;faStepForward=faStepForward;faStepBackward=faStepBackward;
 
   @Input()
-  restService:RestService;
+  dataSource:RestService|Array<Entity>;
 
   @Output()
   newData:EventEmitter<any>=new EventEmitter();
@@ -32,23 +34,53 @@ export class PaginationComponent implements OnInit {
   }
 
   get(){
-    this.restService.get({pageNumber:this.pageNumber, pageSize:this.pageSize},(data)=>{
-      console.log(data);
+    if(this.dataSource instanceof RestServiceAbstract){
+      (<RestService>this.dataSource).get({pageNumber:this.pageNumber, pageSize:this.pageSize},(data)=>{
+        console.log(data);
 
-      this.newData.emit(data.content)
-      this.totalPages = data.totalPages;
-      this.totalElement = data.totalElement;
-      this.last = data.last;
-      this.pages = [];
+        this.newData.emit(data.content)
+        this.totalPages = data.totalPages;
+        this.totalElement = data.totalElement;
+        this.last = data.last;
+        this.pages = [];
 
-      for(let i=0;i<this.totalPages;i++){
-        
-        this.pages.push(i);
+        for(let i=0;i<this.totalPages;i++){
+          
+          this.pages.push(i);
+        }
+      },
+      (err)=>{
+        console.log('error' + err)
+      })
+    }else if(this.dataSource instanceof Array){
+      //parseInt()
+      console.log("front pagination")
+      var datas:Array<Entity> = this.dataSource;
+      this.pages = [0];
+      if(this.pageSize < this.dataSource.length ){
+        this.pages = [];
+        var max = this.dataSource.length;
+        var i = 0;
+        while( max > 0 ){
+          this.last = false;
+          this.pages.push(i);
+         // datas=this.dataSource.copyWithin(this.pageSize,j);
+          i++
+          max-=this.pageSize;
+        //  j+=this.pageSize;
+        }
+        var start = this.pageNumber*this.pageSize;
+        var end = +(this.pageNumber*this.pageSize).valueOf() + +this.pageSize.valueOf();
+        console.log(start +"  -- " +  end);
+
+        datas = this.dataSource.slice(start, end);
+        this.totalPages = this.pages.length;
       }
-    },
-    (err)=>{
-      console.log('error' + err)
-    })
+      if(this.pageSize* (+this.pageNumber + +1) >= this.dataSource.length){
+        this.last = true;
+      }
+      this.newData.emit(datas);
+    }
   }
 
 }

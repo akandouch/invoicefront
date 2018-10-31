@@ -10,7 +10,7 @@
           <fa-icon [icon]="faList"></fa-icon>
         </button>
 
-        
+
         <app-data-table *ngIf="!newVersion"
         [dataSource]="invoiceService"
         [dataColumns]="dataColumns"
@@ -156,7 +156,7 @@
             </div>
             </div>
           </div>
-          <app-pagination [restService]="invoiceService" (newData)="refreshGrid($event)"></app-pagination>
+          <app-pagination [dataSource]="invoiceService" (newData)="refreshGrid($event)"></app-pagination>
           </div>
           <div class="col-lg-4 details-container" *ngIf="details && newVersion">
             <div class="col-lg-12" *ngIf="details.items.length == 0"><h5>No items</h5></div>
