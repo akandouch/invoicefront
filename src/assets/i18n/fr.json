@@ -1,0 +1,24 @@
+{
+  "main": {
+    "title": "Invoicer V.0.0.3-SNAPSHOT FR"
+  },
+  "common": {
+    "action": {
+      "add": "Ajouter"
+    },
+    "language": "Langue",
+    "signin": "Connexion",
+    "logout": "Déconnexion",
+    "greeting": "Bienvenue"
+  },
+  "menu": {
+    "dashboard": "Tableau de bord",
+    "invoice": "Facturation",
+    "profile": "Gestion des profils",
+    "product": "Articles",
+    "setting": "Paramètres"
+  },
+  "error": {
+    "forbidden": "Vous n'êtes pas autorisé à accéder à cette page. Veuillez vous connecter."
+  }
+}

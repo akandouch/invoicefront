@@ -4,7 +4,7 @@
       <div *ngIf="!current " class="col-lg-12">
         <button class="btn btn-outline-secondary" (click)="openModal(invoiceContent)">
           <fa-icon [icon]="faPlus"></fa-icon>
-          Add
+          {{'common.action.add' | translate}}
         </button>&nbsp;
         <button class="btn btn-outline-success {{newVersion?'active':''}}" (click)="newVersion = !newVersion">
           <fa-icon [icon]="faList"></fa-icon>

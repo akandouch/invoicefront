@@ -1,6 +1,9 @@
 
 <div class="form-group">
-  <button *ngIf="invoice.status != 2" class="btn btn-outline-secondary" (click)="addItem(content)"><fa-icon [icon]="faPlus"></fa-icon> Add</button>
+  <button *ngIf="invoice.status != 2" class="btn btn-outline-secondary" (click)="addItem(content)">
+    <fa-icon [icon]="faPlus"></fa-icon>
+    {{'common.action.add' | translate}}
+  </button>
   <!--<div class="container-table-items col-lg-12" *ngIf="invoice.items.length > 0">
   <div class="row new-items table-header {{invoice.items.length>0?'':'hide'}}">
     <div class="col-lg-3">Project</div>

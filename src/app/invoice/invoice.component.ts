@@ -1,10 +1,8 @@
-import {Component, Injectable, OnInit, Inject} from '@angular/core';
+import {Component, Inject, Injectable, OnInit} from '@angular/core';
 import {Invoice} from './invoice.class';
 import {DataService} from '../services/data.service';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Item} from '../item/item.class';
-import jspdf from 'jspdf';
-import html2canvas from 'html2canvas';
 import {
   faArrowLeft,
   faEllipsisH,
@@ -14,23 +12,24 @@ import {
   faFilePdf,
   faFolderOpen,
   faHome,
+  faList,
+  faListAlt,
+  faMailBulk,
+  faPaperclip,
   faPlus,
   faSearch,
   faTrashAlt,
-  faUser,
-  faListAlt,
-  faPaperclip, faMailBulk, faList
+  faUser
 } from '@fortawesome/free-solid-svg-icons';
 import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 import {InvoiceRestServiceImpl} from '../services/invoicerestserviceimpl.class';
 import {Upload} from '../upload/upload.class';
 import {RestService} from '../services/restservice.interface';
 import {UploadRestServiceImpl} from '../services/uploadrestserviceimpl.class';
-import {ItemComponent} from '../item/item.component';
-import {ItemListComponent} from '../item-list/item-list.component';
-import { InvoiceSendMailRestServiceImpl } from '../services/invoicesendmailrestserviceimpl.class';
-import { Product } from '../product/product.class';
-import { DataColumn, FieldCondition } from '../data-table/data-table.component';
+import {InvoiceSendMailRestServiceImpl} from '../services/invoicesendmailrestserviceimpl.class';
+import {Product} from '../product/product.class';
+import {DataColumn, FieldCondition} from '../data-table/data-table.component';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-invoice',
@@ -77,6 +76,7 @@ export class InvoiceComponent implements OnInit {
   constructor(
     ds: DataService<any>,
     private ngbModalService: NgbModal,
+    private translate: TranslateService,
     @Inject(InvoiceRestServiceImpl) public invoiceService: InvoiceRestServiceImpl,
     @Inject(UploadRestServiceImpl) private uploadService: RestService,
     @Inject(InvoiceSendMailRestServiceImpl) private invoiceSendMailService
@@ -88,7 +88,6 @@ export class InvoiceComponent implements OnInit {
     this.currentProfile = new InvoiceProfile();
     this.currentCustomer = new InvoiceProfile();
     this.invoice = new Invoice();
-
   }
 
   ngOnInit() {
