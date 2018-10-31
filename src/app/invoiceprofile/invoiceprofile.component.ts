@@ -35,10 +35,10 @@ export class InvoiceprofileComponent implements OnInit {
   public loadingLogo: boolean = false;
 
   public dataColumns:Array<DataColumn> = [
-    {field:"firstname", label:"Firstname"},
-    {field:"lastname", label:"Lastname"},
-    {field:"mail", label:"Mail"},
-    {field:"vat", label:"Vat"}
+    {field:{name:"firstname"}, label:"Firstname"},
+    {field:{name:"lastname"}, label:"Lastname"},
+    {field:{name:"mail"}, label:"Mail"},
+    {field:{name:"vat"}, label:"Vat"}
   ]
 
   constructor(

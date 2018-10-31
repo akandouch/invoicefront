@@ -56,11 +56,23 @@ export class DataTableComponent implements OnInit, OnChanges {
   delete(entity:Entity){
     this.deleteEvent.emit(entity);
   }
+  getdata(data:any, field:NestedField){
+    var value=data[field.name];
+
+    if(field.child){
+      return this.getdata(value,field.child);
+    }
+    return value;
+  }
 
 }
 export class DataColumn{
   label:string;
-  field:string;
+  field:NestedField;
   sortable?:boolean;
   searcheable?:boolean;
+}
+export class NestedField{
+  name:string;
+  child?:NestedField;
 }

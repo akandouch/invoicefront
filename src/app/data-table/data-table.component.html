@@ -1,7 +1,7 @@
 <div class="table-wrapper">    
     <div class="table-column" *ngFor="let row of dataColumns">
       <div class="table-header">{{row.label}}</div>
-      <div class="table-content row-{{i}}" *ngFor="let data of datas;let i = index">{{data[row.field]}}</div>
+      <div class="table-content row-{{i}}" *ngFor="let data of datas;let i = index">{{getdata(data, row.field)}}</div>
     </div>
     <div class="table-action">
       <div class="table-header">&nbsp;</div>

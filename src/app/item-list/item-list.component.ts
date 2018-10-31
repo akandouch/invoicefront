@@ -24,12 +24,12 @@ export class ItemListComponent implements OnInit {
 
   /* for data table */
   public dataColumns:Array<DataColumn> = [
-    {field:"id",label:"Id"},
-    {field:"description", label:"Description"},
-    {field:"project", label:"Project"},
-    {field:"unit", label:"Unit price"},
-    {field:"vatRate", label: "Vat Rate"},
-    {field:"period", label:"Period"}
+    {field:{name:"id"},label:"Id"},
+    {field:{name:"description"}, label:"Description"},
+    {field:{name:"project"}, label:"Project"},
+    {field:{name:"unit"}, label:"Unit price"},
+    {field:{name:"vatRate"}, label: "Vat Rate"},
+    {field:{name:"period"}, label:"Period"}
   ];
   constructor(private ds: DataService<any>, private ngbModalService: NgbModal) {
     // this.invoice = invoice;

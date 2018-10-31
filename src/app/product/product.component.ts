@@ -29,14 +29,14 @@ export class ProductComponent implements OnInit {
 
   /* for data table */
   public dataColumns:Array<DataColumn> = [
-    {field:"id",label:"Id"},
-    {field:"name", label:"Name"},
-    {field:"description", label:"Description"},
-    {field:"quantity", label:"Quantity"},
-    {field:"unitOfMeasure", label:"Unif of measure"},
-    {field:"unitPrice", label:"Unit price"},
-    {field:"vat", label: "Vat"},
-    {field:"type", label:"Type"}
+    {field:{name:"id"},label:"Id"},
+    {field:{name:"name"}, label:"Name"},
+    {field:{name:"description"}, label:"Description"},
+    {field:{name:"quantity"}, label:"Quantity"},
+    {field:{name:"unitOfMeasure"}, label:"Unif of measure"},
+    {field:{name:"unitPrice"}, label:"Unit price"},
+    {field:{name:"vat"}, label: "Vat"},
+    {field:{name:"type"}, label:"Type"}
   ];
   
   constructor(@Inject(ProductRestServiceImpl) private productRestService:RestService) { 

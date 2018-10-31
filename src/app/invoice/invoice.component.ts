@@ -30,6 +30,7 @@ import {ItemComponent} from '../item/item.component';
 import {ItemListComponent} from '../item-list/item-list.component';
 import { InvoiceSendMailRestServiceImpl } from '../services/invoicesendmailrestserviceimpl.class';
 import { Product } from '../product/product.class';
+import { DataColumn } from '../data-table/data-table.component';
 
 @Component({
   selector: 'app-invoice',
@@ -60,7 +61,13 @@ export class InvoiceComponent implements OnInit {
 
   public details:Invoice=new Invoice();
   public idDetailsSelected:string;
-
+  public dataColumns:Array<DataColumn> = [
+    {field:{name:'invoiceNumber'},label:'Invoice id'},
+    {field:{name:'invoicer', child:{name:"firstname"}}, label:'Invoicer'},
+    {field:{name:'invoiced', child:{name:"firstname"}}, label:'Customer'},
+    {field:{name:'invoiced', child:{name:"vat"}}, label:'Vat'},
+    {field:{name:'status'}, label:'Status'}
+    ]
   constructor(
     ds: DataService<any>,
     private ngbModalService: NgbModal,
