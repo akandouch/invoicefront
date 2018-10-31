@@ -5,6 +5,7 @@ import {Item} from '../item/item.class';
 import {Period} from '../item/period.class';
 import {faCoffee, faCopy, faEye, faPlus, faTrashAlt, faEllipsisH, faEdit, faListAlt} from '@fortawesome/free-solid-svg-icons';
 import {DataService} from '../services/data.service';
+import { DataColumn } from '../data-table/data-table.component';
 
 @Component({
   selector: 'app-item-list',
@@ -19,15 +20,17 @@ export class ItemListComponent implements OnInit {
   public currentItem: Item;
   public currentIdx: number;
   public currentModal: NgbActiveModal;
-  public faCoffee = faCoffee;
-  public faEye = faEye;
-  public faTrashAlt = faTrashAlt;
-  public faCopy = faCopy;
-  faEllipsisH = faEllipsisH;
-  faEdit = faEdit;
-  faListAlt = faListAlt;
-  faPlus = faPlus;
+  public faCoffee = faCoffee;faEye = faEye; faTrashAlt = faTrashAlt;faCopy = faCopy;faEllipsisH = faEllipsisH;faEdit = faEdit;faListAlt = faListAlt;faPlus = faPlus;
 
+  /* for data table */
+  public dataColumns:Array<DataColumn> = [
+    {field:"id",label:"Id"},
+    {field:"description", label:"Description"},
+    {field:"project", label:"Project"},
+    {field:"unit", label:"Unit price"},
+    {field:"vatRate", label: "Vat Rate"},
+    {field:"period", label:"Period"}
+  ];
   constructor(private ds: DataService<any>, private ngbModalService: NgbModal) {
     // this.invoice = invoice;
   }

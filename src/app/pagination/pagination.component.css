@@ -1,7 +1,9 @@
 .page{
     padding: 3px;
-    color: blue;
     cursor: pointer;
+}
+.page:hover{
+    color: #ffe000 !important;
 }
 .page.selected{
     font-weight: 600;

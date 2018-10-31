@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angu
 import { faEye, faEdit, faCopy, faTrashAlt, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { RestService } from '../services/restservice.interface';
 import { Entity } from '../entity.interface';
+import { RestServiceAbstract } from '../services/restserviceabstract.class';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Entity } from '../entity.interface';
 export class DataTableComponent implements OnInit, OnChanges {
 
   @Input()
-  public dataSource:RestService;
+  public dataSource:RestService|Array<Entity>;
   @Input()
   public dataColumns:Array<DataColumn>;
 
@@ -26,6 +27,8 @@ export class DataTableComponent implements OnInit, OnChanges {
   public deleteEvent:EventEmitter<Entity> = new EventEmitter();
 
   public datas:Array<Entity> = new Array();
+
+  public noPagination:boolean = false;
   
   faEye=faEye;faEdit=faEdit;faCopy=faCopy;faTrashAlt=faTrashAlt;faEllipsisH=faEllipsisH;
 
@@ -33,6 +36,10 @@ export class DataTableComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    if(this.dataSource instanceof RestServiceAbstract == false){
+      this.datas = <Array<Entity>>this.dataSource;
+      this.noPagination = true;
+    }
   }
   ngOnChanges(){
   }
