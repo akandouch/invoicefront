@@ -348,3 +348,22 @@ border-radius: 3px 3px 0px 0px;
     background-color: #ff8484;
     /*border-radius: 5px 5px 0px 0px;*/
 }
+
+
+
+.inv-status {
+    padding: 7px 10px 7px 10px;
+    border-radius: 3px;
+    color: #fff !important;
+    text-align: center;
+    min-width: 60px;
+}
+.open-status {
+    background-color: #66ff7a !important;
+}
+.close-status {
+    background-color: #ff7866 !important;
+}
+.ready-status {
+    background-color: #669cff !important;
+}

@@ -64,6 +64,23 @@ export class DataTableComponent implements OnInit, OnChanges {
     }
     return value;
   }
+  getdataclass(data:any, column:DataColumn){
+    var cssClass="";
+    if(column.rules){
+      column.rules.forEach(x=>{
+
+       // TODO : implement other condition with switch case
+
+        if(x.condition == FieldCondition.EQ && this.getdata(data,column.field) == x.value){
+            cssClass += x.cssClass;
+        }
+
+      });
+      console.log("getdataclass");
+      console.log(data);
+    }
+    return cssClass;
+  }
 
 }
 export class DataColumn{
@@ -71,8 +88,23 @@ export class DataColumn{
   field:NestedField;
   sortable?:boolean;
   searcheable?:boolean;
+  rules?:FieldRule[];
+  cssClass?:string;
 }
 export class NestedField{
   name:string;
   child?:NestedField;
+}
+export class FieldRule{
+  condition:FieldCondition;
+  value:string;
+  cssClass:string;
+}
+export enum FieldCondition{
+  GT,
+  LT,
+  EQ,
+  EQGT,
+  EQLT,
+  DIFF
 }

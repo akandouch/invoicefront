@@ -30,7 +30,7 @@ import {ItemComponent} from '../item/item.component';
 import {ItemListComponent} from '../item-list/item-list.component';
 import { InvoiceSendMailRestServiceImpl } from '../services/invoicesendmailrestserviceimpl.class';
 import { Product } from '../product/product.class';
-import { DataColumn } from '../data-table/data-table.component';
+import { DataColumn, FieldCondition } from '../data-table/data-table.component';
 
 @Component({
   selector: 'app-invoice',
@@ -66,8 +66,11 @@ export class InvoiceComponent implements OnInit {
     {field:{name:'invoicer', child:{name:"firstname"}}, label:'Invoicer'},
     {field:{name:'invoiced', child:{name:"firstname"}}, label:'Customer'},
     {field:{name:'invoiced', child:{name:"vat"}}, label:'Vat'},
-    {field:{name:'status'}, label:'Status'}
-    ]
+    {field:{name:'status'},rules:[
+      {condition:FieldCondition.EQ,value:"0",cssClass:"open-status"},
+      {condition:FieldCondition.EQ,value:"2",cssClass:"close-status"}
+    ], label:'Status', cssClass:"inv-status"}];
+     
   constructor(
     ds: DataService<any>,
     private ngbModalService: NgbModal,
