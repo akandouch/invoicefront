@@ -69,7 +69,7 @@ export class InvoiceComponent implements OnInit {
     {
       field:{name:'status'},
       rules:[
-      {condition:FieldCondition.EQ,value:"0",cssClass:"open-status",label:"<b>open</b>"},
+      {condition:FieldCondition.EQ,value:"0",cssClass:"open-status",label:"open"},
       {condition:FieldCondition.EQ,value:"2",cssClass:"close-status",label:"close"}],
       label:'Status', cssClass:"inv-status"
     }];
