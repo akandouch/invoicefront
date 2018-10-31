@@ -6,8 +6,8 @@ import {InvoiceComponent} from './invoice/invoice.component';
 import {ItemComponent} from './item/item.component';
 
 import {FormsModule} from '@angular/forms';
-
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ItemListComponent} from './item-list/item-list.component';
@@ -35,7 +35,8 @@ import {ProductRestServiceImpl} from './services/productrestserviceimpl.class';
 import {PaginationComponent} from './pagination/pagination.component';
 import {InvoiceProfileRestServiceImpl} from './services/invoiceprofilerestserviceimpl.class';
 import {ImageLoaderComponent} from './image-loader/image-loader.component';
-
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 const routes: Route[] = [
   {path: '', component: DashboardComponent},
@@ -76,6 +77,14 @@ const routes: Route[] = [
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    BsDropdownModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     RouterModule.forRoot(routes, {enableTracing: false})
   ],
   providers: [
@@ -89,11 +98,16 @@ const routes: Route[] = [
     {provide: AuthenticationService, useClass: AuthenticationService},
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    {provide: ProductRestServiceImpl, useClass:ProductRestServiceImpl},
-    {provide:InvoiceProfileRestServiceImpl, useClass:InvoiceProfileRestServiceImpl}
+    {provide: ProductRestServiceImpl, useClass: ProductRestServiceImpl},
+    {provide: InvoiceProfileRestServiceImpl, useClass: InvoiceProfileRestServiceImpl}
 
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
+}
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
 }

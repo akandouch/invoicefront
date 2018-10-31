@@ -1,6 +1,9 @@
 <div class="col-lg-12 row">
   <div class="col-lg-12">
-    <button class="btn btn-outline-secondary" (click)="openModal(content)"><fa-icon [icon]="faPlus"></fa-icon> Add</button>    
+    <button class="btn btn-outline-secondary" (click)="openModal(content)">
+      <fa-icon [icon]="faPlus"></fa-icon>
+      {{'common.action.add' | translate}}
+    </button>
     <app-data-table 
     [dataSource]="invoiceProfileService"
     [dataColumns]="dataColumns"

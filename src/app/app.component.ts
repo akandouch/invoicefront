@@ -1,7 +1,18 @@
 import {Component} from '@angular/core';
-import {faAddressBook, faChartLine, faCogs, faFileInvoice, faHistory, faHome, IconDefinition, faListAlt} from '@fortawesome/free-solid-svg-icons';
+import {
+  faAddressBook,
+  faChartLine,
+  faCogs,
+  faFileInvoice,
+  faHistory,
+  faHome,
+  faListAlt,
+  faSignLanguage,
+  IconDefinition
+} from '@fortawesome/free-solid-svg-icons';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {AuthenticationService} from './authenticationservice';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -16,20 +27,23 @@ export class AppComponent {
   faProfile = faAddressBook;
   toggleNavbarClass = false;
   faCogs = faCogs;
+  faLanguage = faSignLanguage;
   public username: string;
   public password: string;
 
   menu: MenuLink[];
   currentMenu: MenuLink;
 
-  constructor(private router: Router, private actRoute: ActivatedRoute, private authenticationService: AuthenticationService) {
+  constructor(private router: Router, private actRoute: ActivatedRoute, private authenticationService: AuthenticationService,
+              private translate: TranslateService) {
+    translate.setDefaultLang('fr');
     this.menu = [];
 
-    this.menu.push({color: '#ff84ff', route: '/dashboard', label: 'Dashboard', icon: faChartLine});
-    this.menu.push({color: '#5cc664', route: '/invoice', label: 'Invoices', icon: faFileInvoice});
-    this.menu.push({color: '#848dff', route: '/invoiceprofile', label: 'Profiles', icon: faAddressBook});
-    this.menu.push({color: '#ff8d64', route: '/product', label: 'Products', icon: faListAlt});
-    this.menu.push({color: '#ff8484', route: '/settings', label: 'Settings', icon: faCogs});
+    this.menu.push({color: '#ff84ff', route: '/dashboard', label: 'menu.dashboard', icon: faChartLine});
+    this.menu.push({color: '#5cc664', route: '/invoice', label: 'menu.invoice', icon: faFileInvoice});
+    this.menu.push({color: '#848dff', route: '/invoiceprofile', label: 'menu.profile', icon: faAddressBook});
+    this.menu.push({color: '#ff8d64', route: '/product', label: 'menu.product', icon: faListAlt});
+    this.menu.push({color: '#ff8484', route: '/settings', label: 'menu.setting', icon: faCogs});
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
         let url = e.url;
@@ -52,6 +66,9 @@ export class AppComponent {
     });
   }
 
+  useLanguage(language: string) {
+    this.translate.use(language);
+  }
   isLoggedIn() {
     return this.getUser() !== null;
   }

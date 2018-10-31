@@ -1,5 +1,10 @@
-<div class="form-group" *ngIf="!selectOnly">  
-  <button class="btn btn-outline-secondary" (click)="newProduct()"><fa-icon [icon]="faPlus"></fa-icon> Add</button>
+<div class="form-group" *ngIf="!selectOnly">
+  <button class="btn btn-outline-secondary" (click)="newProduct()">
+    <fa-icon [icon]="faPlus">
+
+    </fa-icon>
+    {{'common.action.add' | translate}}
+  </button>
   <app-data-table 
   [dataSource]="productRestService" 
   [dataColumns]="dataColumns"

@@ -3,14 +3,27 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div [ngClass]="toggleNavbarShow()" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#">Invoicer</a>
+    <a class="navbar-brand" href="#">{{'main.title' | translate}}</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item" *ngFor="let m of menu" (click)="click(m);m.selected=true;">
         <a routerLink="{{m.route}}" class="nav-link text-white">
           <fa-icon [icon]="m.icon" [ngStyle]="{color: m.color}" width="50px"></fa-icon>
-          <span [ngStyle]="{'color': m.selected ? m.color:''}">&nbsp;{{m.label}}</span>
+          <span [ngStyle]="{'color': m.selected ? m.color:''}">&nbsp;{{m.label | translate}}</span>
         </a>
-      </li><!--
+
+      </li>
+      <li class="dropdown nav-item" dropdown>
+        <div ngbDropdown class="d-inline-block">
+          <a class="nav-link dropdown-toggle text-white " href="#" id="dropLang" ngbDropdownToggle>
+            <fa-icon [icon]="faLanguage" width="50px"></fa-icon>&nbsp;{{'common.language'| translate}}</a>
+          <div ngbDropdownMenu aria-labelledby="dropLang">
+            <button class="dropdown-item" (click)="useLanguage('fr')">FR</button>
+            <button class="dropdown-item" (click)="useLanguage('en')">EN</button>
+            <!-- todo <button class="dropdown-item" (click)="useLanguage('nl')">NL</button>-->
+          </div>
+        </div>
+      </li>
+      <!--
       <hr class="recent-hr"/>
       <ul class="recent">
         recent
@@ -24,11 +37,15 @@
       <input (keydown.enter)="login()" [(ngModel)]="password" name="password" class="form-control mr-sm-2"
              type="password" placeholder="password"
              aria-label="Password">
-      <button class="btn btn-outline-info text-white my-2 my-sm-0" type="button" (click)="login()">Sign in</button>
+      <button class="btn btn-outline-info text-white my-2 my-sm-0" type="button" (click)="login()">{{'common.signin' |
+        translate}}
+      </button>
     </div>
     <div *ngIf="isLoggedIn()" class="form-inline my-2 my-lg-0">
-      <span class="text-white">Welcome {{getUser().username}}</span>&nbsp;
-      <button class="btn btn-outline-danger text-white my-2 my-sm-0" type="button" (click)="logout()">Logout</button>
+      <span class="text-white">{{'common.greeting' | translate}} {{getUser().username}}</span>&nbsp;
+      <button class="btn btn-outline-danger text-white my-2 my-sm-0" type="button" (click)="logout()">{{'common.logout'
+        | translate}}
+      </button>
     </div>
   </div>
 </nav>
@@ -51,7 +68,7 @@
       <fa-icon [icon]="currentMenu.icon" class="header-icon"
                [ngStyle]="{'border-color': currentMenu.color, 'color': currentMenu.color}"></fa-icon>
             <h5>
-                {{currentMenu.label}}
+              {{currentMenu.label | translate}}
             </h5>
         </div>
         <router-outlet></router-outlet>
@@ -60,9 +77,7 @@
 <div class="row col-sm-12" *ngIf="!isLoggedIn()">
   <div class="container">
     <div class="alert alert-danger">
-      <p>Forbidden. Please log in</p>
-      <p>User: user, password: user</p>
-      <p>User: admin, password: admin</p>
+      <p>{{'error.forbidden' | translate}}</p>
     </div>
   </div>
 </div>

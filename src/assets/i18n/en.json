@@ -1,0 +1,24 @@
+{
+  "main": {
+    "title": "Invoicer V.0.0.3-SNAPSHOT EN"
+  },
+  "common": {
+    "action": {
+      "add": "Add"
+    },
+    "language": "Language",
+    "signin": "Sign in",
+    "logout": "Logout",
+    "greeting": "Welcome"
+  },
+  "menu": {
+    "dashboard": "Dashboard",
+    "invoice": "Invoice",
+    "profile": "Profiles",
+    "product": "Products",
+    "setting": "Settings"
+  },
+  "error": {
+    "forbidden": "Forbidden. You are not allowed to access this resource. Please login with the right accesses."
+  }
+}
