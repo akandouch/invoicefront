@@ -1,52 +1,13 @@
-<app-data-table 
-[dataSource]="productRestService" 
-[dataColumns]="dataColumns"
-(editEvent)="tableEdit($event)"
-(consultEvent)="tableConsult($event)"
-(deleteEvent)="tableDelete($event)"
-></app-data-table>
-
-
-
-<div class="form-group" *ngIf="!selectOnly && 0">  
+<div class="form-group" *ngIf="!selectOnly">  
   <button class="btn btn-outline-secondary" (click)="newProduct()"><fa-icon [icon]="faPlus"></fa-icon> Add</button>
-  <div class="container-table-items col-lg-12">
-    <div class="row new-items table-header">
-      <div class="col-lg-1">Id</div>
-      <div class="col-lg-2">Name</div>
-      <div class="col-lg-3">Description</div>
-      <div class="col-lg-1">Unit of measure</div>
-      <div class="col-lg-1">Type</div>
-      <div class="col-lg-1">Unit Price</div>
-      <div class="col-lg-1">Quantity</div>
-      <div class="col-lg-1">VAT</div>      
-      <div class="col-lg-1">VAT</div>
-    </div>
-
-    <div class="row add-items table-items" *ngFor="let p of products" (click)="select(p)">
-        <div class="col-lg-1">{{p.id}}</div>
-        <div class="col-lg-2">{{p.name}}</div>
-        <div class="col-lg-3">{{p.description}}</div>
-        <div class="col-lg-1">{{p.unitOfMeasure}}</div>
-        <div class="col-lg-1">{{p.type}}</div>
-        <div class="col-lg-1">{{p.unitPrice}}</div>
-        <div class="col-lg-1">{{p.quantity}}</div>
-        <div class="col-lg-1">{{p.vat}}</div>
-        <div class="col-lg-1">
-          <div ngbDropdown class="d-inline-block">
-            <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
-            
-            <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-              <div><fa-icon [icon]="faEye"></fa-icon> Consult</div> 
-              <div><fa-icon [icon]="faEdit"></fa-icon> Edit</div>
-              <div><fa-icon [icon]="faCopy"></fa-icon> Copy</div>
-              <div><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
-            </div>
-          </div>       
-        </div>
-    </div>
-  </div>
-    <app-pagination [restService]="productRestService" (newData)="refreshGrid($event)"></app-pagination>
+  <app-data-table 
+  [dataSource]="productRestService" 
+  [dataColumns]="dataColumns"
+  (editEvent)="tableEdit($event)"
+  (consultEvent)="tableConsult($event)"
+  (deleteEvent)="tableDelete($event)"
+  *ngIf="!selectOnly"
+  ></app-data-table>
 </div>
 
 <div class="" *ngIf="selectOnly">
