@@ -7,6 +7,7 @@ import {Upload} from '../upload/upload.class';
 import { RestService } from '../services/restservice.interface';
 import { UploadRestServiceImpl } from '../services/uploadrestserviceimpl.class';
 import { InvoiceProfileRestServiceImpl } from '../services/invoiceprofilerestserviceimpl.class';
+import { DataColumn } from '../data-table/data-table.component';
 
 
 @Component({
@@ -32,6 +33,13 @@ export class InvoiceprofileComponent implements OnInit {
   public currentProfile: InvoiceProfile;
   public currentIdx: number;
   public loadingLogo: boolean = false;
+
+  public dataColumns:Array<DataColumn> = [
+    {field:"firstname", label:"Firstname"},
+    {field:"lastname", label:"Lastname"},
+    {field:"mail", label:"Mail"},
+    {field:"vat", label:"Vat"}
+  ]
 
   constructor(
     private ngbModalService: NgbModal, 
@@ -85,9 +93,9 @@ export class InvoiceprofileComponent implements OnInit {
     })
   }
 
-  editItem(content, invoiceProfile: InvoiceProfile, idx: number) {
+  editItem(content, invoiceProfile: InvoiceProfile, idx?: number) {
     this.currentProfile = invoiceProfile;
-    this.currentIdx = idx;
+    //this.currentIdx = idx;
     this.currentModal = this.ngbModalService.open(content, {
       backdrop: 'static',
       keyboard: false

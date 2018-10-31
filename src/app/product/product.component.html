@@ -1,4 +1,14 @@
-<div class="form-group" *ngIf="!selectOnly">  
+<app-data-table 
+[dataSource]="productRestService" 
+[dataColumns]="dataColumns"
+(editEvent)="tableEdit($event)"
+(consultEvent)="tableConsult($event)"
+(deleteEvent)="tableDelete($event)"
+></app-data-table>
+
+
+
+<div class="form-group" *ngIf="!selectOnly && 0">  
   <button class="btn btn-outline-secondary" (click)="newProduct()"><fa-icon [icon]="faPlus"></fa-icon> Add</button>
   <div class="container-table-items col-lg-12">
     <div class="row new-items table-header">

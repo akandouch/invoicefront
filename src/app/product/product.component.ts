@@ -3,6 +3,8 @@ import { Product, ProductType, UnitOfMeasure } from './product.class';
 import { faPlus,faEllipsisH,faEye,faEdit,faCopy,faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { RestService } from '../services/restservice.interface';
 import { ProductRestServiceImpl } from '../services/productrestserviceimpl.class';
+import { DataColumn } from '../data-table/data-table.component';
+import { Entity } from '../entity.interface';
 
 @Component({
   selector: 'app-product',
@@ -24,6 +26,18 @@ export class ProductComponent implements OnInit {
 
   typeFilter:number;
   nameFilter:string;
+
+  /* for data table */
+  public dataColumns:Array<DataColumn> = [
+    {field:"id",label:"Id"},
+    {field:"name", label:"Name"},
+    {field:"description", label:"Description"},
+    {field:"quantity", label:"Quantity"},
+    {field:"unitOfMeasure", label:"Unif of measure"},
+    {field:"unitPrice", label:"Unit price"},
+    {field:"vat", label: "Vat"},
+    {field:"type", label:"Type"}
+  ];
   
   constructor(@Inject(ProductRestServiceImpl) private productRestService:RestService) { 
     this.products = new Array();
@@ -47,6 +61,16 @@ export class ProductComponent implements OnInit {
     }
 
     return filteredList;
+  }
+
+  tableConsult(data:Product){
+    console.log("consult : " + data.id);
+  }
+  tableEdit(data:Product){
+    console.log("edit : " + data.id);
+  }
+  tableDelete(data:Product){
+    console.log("delete : " + data.id);
   }
 
   newProduct(){

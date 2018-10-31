@@ -1,12 +1,7 @@
-import { Component, OnInit, Input, ViewChild, OnChanges } from '@angular/core';
-import { MatSort, MatTableDataSource } from '@angular/material';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
-
-
-export interface Food {
-  value: string;
-  viewValue: string;
-}
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { faEye, faEdit, faCopy, faTrashAlt, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { RestService } from '../services/restservice.interface';
+import { Entity } from '../entity.interface';
 
 
 @Component({
@@ -17,26 +12,48 @@ export interface Food {
 export class DataTableComponent implements OnInit, OnChanges {
 
   @Input()
-  public  dataSource;
-
+  public dataSource:RestService;
   @Input()
-  public  dataColumns:Array<string>;
+  public dataColumns:Array<DataColumn>;
 
-  @ViewChild(MatSort) sort:MatSort;
+  @Output()
+  public editEvent:EventEmitter<Entity> = new EventEmitter();
+  
+  @Output()
+  public consultEvent:EventEmitter<Entity> = new EventEmitter();
 
-  public  matDataSource;
-  faOpen=faEye;
+  @Output()
+  public deleteEvent:EventEmitter<Entity> = new EventEmitter();
+
+  public datas:Array<Entity> = new Array();
+  
+  faEye=faEye;faEdit=faEdit;faCopy=faCopy;faTrashAlt=faTrashAlt;faEllipsisH=faEllipsisH;
 
   constructor() {
   }
 
   ngOnInit() {
-    this.matDataSource = new MatTableDataSource(this.dataSource);
-    this.matDataSource.sort = this.sort;
   }
   ngOnChanges(){
-    this.matDataSource = new MatTableDataSource(this.dataSource);
-    this.matDataSource.sort = this.sort;
+  }
+  refreshGrid(data){
+    this.datas = data;
   }
 
+  consult(entity:Entity){
+    this.consultEvent.emit(entity);
+  }
+  edit(entity:Entity){
+    this.editEvent.emit(entity);
+  }
+  delete(entity:Entity){
+    this.deleteEvent.emit(entity);
+  }
+
+}
+export class DataColumn{
+  label:string;
+  field:string;
+  sortable?:boolean;
+  searcheable?:boolean;
 }

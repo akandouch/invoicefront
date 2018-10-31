@@ -1,25 +1,70 @@
-<!--<p>
-  {{dataSource.length}}
-</p>
-<div *ngFor="let i of dataSource">
-  <div class="data-table-column">
-    <div class="data-table-row data-column" *ngFor="let c of dataColumns" height="columnsHeight">{{i[c]}}</div>
-  </div>
+<div class="table-wrapper">    
+    <div class="table-column" *ngFor="let row of dataColumns">
+      <div class="table-header">{{row.label}}</div>
+      <div class="table-content row-{{i}}" *ngFor="let data of datas;let i = index">{{data[row.field]}}</div>
+    </div>
+    <div class="table-action">
+      <div class="table-header">&nbsp;</div>
+      <div class="table-content row-{{data['id']}}" *ngFor="let data of datas">
+        <div ngbDropdown class="d-inline-block">
+          <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
+          <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+            <div (click)="consult(data)"><fa-icon [icon]="faEye"></fa-icon> Consult</div> 
+            <div (click)="edit(data)"><fa-icon [icon]="faEdit"></fa-icon> Edit</div>
+            <div (click)="delete(data)"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
+          </div>
+        </div>  
+      </div>
+    </div>
 </div>
--->
-<table mat-table matSort [dataSource]="matDataSource" class="mat-elevation-z8" width="100%">
-  <span *ngFor="let c of dataColumns">
-    <ng-container matColumnDef={{c}} *ngIf="c === 'open'">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> actions </th>
-        <td mat-cell *matCellDef="let element" (click)="open(element.id)"><fa-icon [icon]="faOpen"></fa-icon></td>
-    </ng-container>
-    <ng-container matColumnDef={{c}} *ngIf="c !== 'open'">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{c}} </th>
-      <td mat-cell *matCellDef="let element"> {{element[c]}} </td>
-    </ng-container>
-  </span>
+<div class="table-pagination">
+    <app-pagination [restService]="dataSource" (newData)="refreshGrid($event)"></app-pagination>
+</div>
 
-  <tr mat-header-row *matHeaderRowDef="dataColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: dataColumns;"></tr>
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-table-items col-lg-12" *ngIf="0">    
+    <div class="row new-items table-header">
+      <div *ngFor="let row of dataColumns" class="col-lg-{{row.size}}" >{{row.label}}</div>
+    </div>
+
+    <div class="row add-items table-items" *ngFor="let data of datas">
+      <div *ngFor="let row of dataColumns" class="col-lg-{{row.size}}">{{data[row.field]}}</div>
+        <!--
+        <div ngbDropdown class="d-inline-block">
+          <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
+          
+          <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+            <div><fa-icon [icon]="faEye"></fa-icon> Consult</div> 
+            <div><fa-icon [icon]="faEdit"></fa-icon> Edit</div>
+            <div><fa-icon [icon]="faCopy"></fa-icon> Copy</div>
+            <div><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
+          </div>
+        </div>   
+        </div> -->    
+    </div>
+  <app-pagination [restService]="dataSource" (newData)="refreshGrid($event)"></app-pagination>
+</div>

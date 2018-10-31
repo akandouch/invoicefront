@@ -1,34 +1,12 @@
 <div class="col-lg-12 row">
   <div class="col-lg-12">
-    <!--
-    <app-data-table [dataSource]="profiles" [dataColumns]="['firstname','lastname','vat','active','open']"></app-data-table>
-    -->
     <button class="btn btn-outline-secondary" (click)="openModal(content)"><fa-icon [icon]="faPlus"></fa-icon> Add</button>    
-    <div class="container-table-items col-lg-12">
-        <div class="row new-items table-header">
-          <div class="col-lg-4">Firsname</div>
-          <div class="col-lg-4">Lastname</div>
-          <div class="col-lg-3">VAT</div>
-          <div class="col-lg-1"></div>
-        </div>
-        <div *ngFor="let i of profiles; let idx = index" class="row add-items table-items">
-            <div class="col-lg-4">{{i.firstname}}</div>
-            <div class="col-lg-4">{{i.lastname}}</div>
-            <div class="col-lg-3">{{i.vat}}</div>
-            <div class="col-lg-1">
-              <div ngbDropdown class="d-inline-block">
-                <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
-                
-                <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-                  <div (click)="editItem(contentEdit,i,idx)"><fa-icon [icon]="faEdit"></fa-icon> Edit</div>
-                  <div (click)="copyItem(i)"><fa-icon [icon]="faCopy"></fa-icon> Copy</div>
-                  <div (click)="removeItem(i)"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
-                </div>
-              </div>
-            </div>
-        </div>
-        </div>    
-        <app-pagination [restService]="invoiceProfileService" (newData)="refreshGrid($event)"></app-pagination>
+    <app-data-table 
+    [dataSource]="invoiceProfileService"
+    [dataColumns]="dataColumns"
+    (editEvent)="editItem(contentEdit, $event)"
+    (deleteEvent)="removeItem($event)"
+    ></app-data-table>
   </div>
 </div>
 
