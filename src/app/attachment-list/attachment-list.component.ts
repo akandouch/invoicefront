@@ -5,6 +5,7 @@ import { UploadRestServiceImpl } from '../services/uploadrestserviceimpl.class';
 import { RestService } from '../services/restservice.interface';
 import { InvoiceRestServiceImpl } from '../services/invoicerestserviceimpl.class';
 import { Upload } from '../upload/upload.class';
+import { DataColumn } from '../data-table/data-table.component';
 
 @Component({
   selector: 'app-attachment-list',
@@ -16,6 +17,11 @@ export class AttachmentListComponent implements OnInit {
   @Input()
   invoice:Invoice;
   faPaperclip=faPaperclip;faEllipsisH=faEllipsisH;faPlus=faPlus;faEye=faEye;faTrashAlt=faTrashAlt;
+
+  dataColumns:DataColumn[] = [
+    {field:{name:"fileName"},label:"Name"},
+    {field:{name:"contentType"},label:"Content type"}
+  ];
 
   constructor(
     @Inject(UploadRestServiceImpl)private uploadService:RestService,
