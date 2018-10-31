@@ -9,10 +9,14 @@
         <button class="btn btn-outline-success {{newVersion?'active':''}}" (click)="newVersion = !newVersion">
           <fa-icon [icon]="faList"></fa-icon>
         </button>
+
+        
         <app-data-table *ngIf="!newVersion"
         [dataSource]="invoiceService"
         [dataColumns]="dataColumns"
         ></app-data-table>
+
+<!--
         <div  *ngIf="!newVersion && 0">
         <div class="container-table-items col-lg-12">
           <div class="row new-items table-header">
@@ -77,7 +81,7 @@
           <app-pagination [restService]="invoiceService" (newData)="refreshGrid($event)"></app-pagination>
         </div>
 
-
+      -->
 
 
         <!-- NEW VERSION -->
