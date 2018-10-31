@@ -44,6 +44,9 @@
   <app-data-table 
   [dataSource]="invoice.items" 
   [dataColumns]="dataColumns"
+  (consultEvent)="editItem(contentEdit, $event)"
+  (editEvent)="editItem(contentEdit, $event)"
+  (deleteEvent)="removeItem($event)"
   ></app-data-table>
 </div>
 

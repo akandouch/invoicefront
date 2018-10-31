@@ -64,7 +64,10 @@ export class ItemListComponent implements OnInit {
     });
   }
 
-  removeItem(idx: number) {
+  removeItem(item: Item) {
+    var idx = this.invoice.items.findIndex(x=>{
+      return x.id == item.id;
+    })
     this.invoice.removeItem(idx);
   }
 
