@@ -36,11 +36,14 @@
 .table-content {
     color: rgb(122, 122, 122);
     padding: 5px 10px 5px 10px;
-    border-bottom: solid 1px #ededed;
+    border-bottom: solid 1px #ededed;    
+    max-height: 32px;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
+.table-content.actions {
+    overflow: visible;
+}
+
 .table-content:nth-child(2n){
     background-color: #f8f8f8;
 }

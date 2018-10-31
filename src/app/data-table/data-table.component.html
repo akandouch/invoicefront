@@ -5,7 +5,7 @@
     </div>
     <div class="table-action">
       <div class="table-header">&nbsp;</div>
-      <div class="table-content row-{{data['id']}}" *ngFor="let data of datas">
+      <div class="table-content row-{{data['id']}} actions" *ngFor="let data of datas">
         <div ngbDropdown class="d-inline-block">
           <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
           <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
@@ -53,18 +53,6 @@
 
     <div class="row add-items table-items" *ngFor="let data of datas">
       <div *ngFor="let row of dataColumns" class="col-lg-{{row.size}}">{{data[row.field]}}</div>
-        <!--
-        <div ngbDropdown class="d-inline-block">
-          <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
-          
-          <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-            <div><fa-icon [icon]="faEye"></fa-icon> Consult</div> 
-            <div><fa-icon [icon]="faEdit"></fa-icon> Edit</div>
-            <div><fa-icon [icon]="faCopy"></fa-icon> Copy</div>
-            <div><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
-          </div>
-        </div>   
-        </div> -->    
     </div>
   <app-pagination [dataSource]="dataSource" (newData)="refreshGrid($event)"></app-pagination>
 </div>
