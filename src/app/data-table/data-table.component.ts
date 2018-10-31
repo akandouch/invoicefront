@@ -3,6 +3,7 @@ import { faEye, faEdit, faCopy, faTrashAlt, faEllipsisH } from '@fortawesome/fre
 import { RestService } from '../services/restservice.interface';
 import { Entity } from '../entity.interface';
 import { RestServiceAbstract } from '../services/restserviceabstract.class';
+import { findLocaleData } from '@angular/common/src/i18n/locale_data_api';
 
 
 @Component({
@@ -56,11 +57,25 @@ export class DataTableComponent implements OnInit, OnChanges {
   delete(entity:Entity){
     this.deleteEvent.emit(entity);
   }
-  getdata(data:any, field:NestedField){
+  getdata(data:any, column:DataColumn){
+
+    var value = this.finddata(data,column.field);
+    if(column.rules){
+      column.rules.forEach(x=>{
+        // TODO : implement other condition with switch case
+        if(x.condition == FieldCondition.EQ && this.finddata(data,column.field) == x.value){
+          
+          if(x.label)value= x.label;
+        }
+      });
+    }
+    return value;
+  }
+  finddata(data:any, field:NestedField){
     var value=data[field.name];
 
     if(field.child){
-      return this.getdata(value,field.child);
+      return this.finddata(value,field.child);
     }
     return value;
   }
@@ -71,7 +86,7 @@ export class DataTableComponent implements OnInit, OnChanges {
 
        // TODO : implement other condition with switch case
 
-        if(x.condition == FieldCondition.EQ && this.getdata(data,column.field) == x.value){
+        if(x.condition == FieldCondition.EQ && this.finddata(data,column.field) == x.value){
             cssClass += x.cssClass;
         }
 
@@ -98,7 +113,8 @@ export class NestedField{
 export class FieldRule{
   condition:FieldCondition;
   value:string;
-  cssClass:string;
+  cssClass?:string;
+  label?:string;
 }
 export enum FieldCondition{
   GT,

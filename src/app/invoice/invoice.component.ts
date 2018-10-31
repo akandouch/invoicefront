@@ -66,11 +66,14 @@ export class InvoiceComponent implements OnInit {
     {field:{name:'invoicer', child:{name:"firstname"}}, label:'Invoicer'},
     {field:{name:'invoiced', child:{name:"firstname"}}, label:'Customer'},
     {field:{name:'invoiced', child:{name:"vat"}}, label:'Vat'},
-    {field:{name:'status'},rules:[
-      {condition:FieldCondition.EQ,value:"0",cssClass:"open-status"},
-      {condition:FieldCondition.EQ,value:"2",cssClass:"close-status"}
-    ], label:'Status', cssClass:"inv-status"}];
-     
+    {
+      field:{name:'status'},
+      rules:[
+      {condition:FieldCondition.EQ,value:"0",cssClass:"open-status",label:"open"},
+      {condition:FieldCondition.EQ,value:"2",cssClass:"close-status",label:"close"}],
+      label:'Status', cssClass:"inv-status"
+    }];
+
   constructor(
     ds: DataService<any>,
     private ngbModalService: NgbModal,

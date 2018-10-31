@@ -9,7 +9,7 @@
         <button class="btn btn-outline-success {{newVersion?'active':''}}" (click)="newVersion = !newVersion">
           <fa-icon [icon]="faList"></fa-icon>
         </button>
-        <app-data-table
+        <app-data-table *ngIf="!newVersion"
         [dataSource]="invoiceService"
         [dataColumns]="dataColumns"
         ></app-data-table>
