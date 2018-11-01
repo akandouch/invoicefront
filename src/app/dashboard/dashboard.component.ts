@@ -1,21 +1,27 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {Chart} from 'chart.js';
 import {faSync} from '@fortawesome/free-solid-svg-icons';
 import {RestService} from '../services/restservice.interface';
 import {RatePerMonth, TotalPerCustomer} from '../services/statisticsrestserviceimpl.class';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import {untilComponentDestroyed} from '@w11k/ngx-componentdestroyed';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   chartRatePerMonth = [];
   chartTotalPerCustomer = [];
   year: number = (new Date()).getFullYear();
   faSync = faSync;
+
+  labelTotalInvoiced: string [];
+  labelRatePerMonth: string;
+  labelDayPerMonth: string;
+
 
   constructor(
     @Inject(RatePerMonth) private ratePerMonthService: RestService,
@@ -24,18 +30,31 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  ngAfterViewInit() {
+  loadLabels() {
+    this.labelTotalInvoiced = [this.translate.instant('page.dashboard.legend.totalInvoiced')];
+    this.labelRatePerMonth = this.translate.instant('page.dashboard.legend.ratePerMonth');
+    this.labelDayPerMonth = this.translate.instant('page.dashboard.legend.daysPerMonth');
+  }
+
+  loadCharts() {
+    this.loadLabels();
     this.initChartRatePerMonthForYear(this.year);
     this.initChartTotalPerCustomer();
-    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.translate.use(event.lang);
-      this.initChartRatePerMonthForYear(this.year);
-      this.initChartTotalPerCustomer();
-    });
-
   }
 
   ngOnInit() {
+    this.translate.use(this.translate.currentLang || this.translate.getBrowserLang());
+    this.loadCharts();
+    this.translate.onLangChange
+      .pipe(untilComponentDestroyed(this))
+      .subscribe((event: LangChangeEvent) => {
+        this.translate.use(event.lang);
+        this.loadCharts();
+      });
+  }
+
+  ngOnDestroy() {
+    console.log('destroyed');
   }
 
   initChartTotalPerCustomer() {
@@ -49,20 +68,19 @@ export class DashboardComponent implements OnInit {
       console.log(labels);
       //labels.push(Object.keys(data[1]));
       this.chartTotalPerCustomer = this.createOneLineChart('totalPerCustomer',
-        [this.translate.instant('page.dashboard.legend.totalInvoiced')],
+        this.labelTotalInvoiced,
         datas, labels);
     });
   }
 
   initChartRatePerMonthForYear(year: number) {
-
     this.translate.get('common.calendar.labels')
       .subscribe(calendarLabels => {
         this.ratePerMonthService.get({year: year}, (data) => {
           console.log(data);
           this.chartRatePerMonth = this.createTwoLineChart('ratePerMonth',
-            this.translate.instant('page.dashboard.legend.ratePerMonth'),
-            this.translate.instant('page.dashboard.legend.daysPerMonth'), data[0], data[1], calendarLabels);
+            this.labelRatePerMonth,
+            this.labelDayPerMonth, data[0], data[1], calendarLabels);
         });
       });
   }
