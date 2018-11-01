@@ -1,7 +1,9 @@
 <div class="table-wrapper">    
     <div class="table-column" *ngFor="let row of dataColumns">
-      <div class="table-header">{{row.label}}</div>
-      <div class="table-content row-{{i}} {{row.cssClass}} {{getdataclass(data,row)}}" *ngFor="let data of datas;let i = index">{{getdata(data, row)}}</div>
+      <div class="table-header">{{row.label | translate}}</div>
+      <div class="table-content row-{{i}} {{row.cssClass}} {{getdataclass(data,row)}}"
+           *ngFor="let data of datas;let i = index">{{getdata(data, row) }}
+      </div>
     </div>
     <div class="table-action">
       <div class="table-header">&nbsp;</div>
@@ -9,9 +11,18 @@
         <div ngbDropdown class="d-inline-block">
           <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
           <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-            <div (click)="consult(data)"><fa-icon [icon]="faEye"></fa-icon> Consult</div> 
-            <div (click)="edit(data)"><fa-icon [icon]="faEdit"></fa-icon> Edit</div>
-            <div (click)="delete(data)"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</div>
+            <div (click)="consult(data)">
+              <fa-icon [icon]="faEye"></fa-icon>
+              {{'common.action.consult' | translate}}
+            </div>
+            <div (click)="edit(data)">
+              <fa-icon [icon]="faEdit"></fa-icon>
+              {{'common.action.edit' | translate}}
+            </div>
+            <div (click)="delete(data)">
+              <fa-icon [icon]="faTrashAlt"></fa-icon>
+              {{'common.action.delete' | translate}}
+            </div>
           </div>
         </div>  
       </div>
@@ -19,36 +30,12 @@
 </div>
 <div class="table-pagination">
     <app-pagination [dataSource]="dataSource" (newData)="refreshGrid($event)"></app-pagination>
-</div> 
+</div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container-table-items col-lg-12" *ngIf="0">    
+<div class="container-table-items col-lg-12" *ngIf="0">
     <div class="row new-items table-header">
-      <div *ngFor="let row of dataColumns" class="col-lg-{{row.size}}" >{{row.label}}</div>
+      <div *ngFor="let row of dataColumns" class="col-lg-{{row.size}}">{{row.label |translate}}</div>
     </div>
 
     <div class="row add-items table-items" *ngFor="let data of datas">

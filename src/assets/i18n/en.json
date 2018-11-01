@@ -4,8 +4,17 @@
   },
   "common": {
     "action": {
-      "add": "Add"
+      "add": "Add",
+      "edit": "Edit",
+      "delete": "Delete",
+      "consult": "Contult"
     },
+    "open": "Open",
+    "close": "Close",
+    "status": "Status",
+    "invoicer": "Invoicer",
+    "customer": "Customer",
+    "vat": "VAT",
     "username": "Username",
     "password": "Password",
     "language": "Language",
@@ -49,6 +58,9 @@
         "daysPerMonth": "Days per Month",
         "totalInvoiced": "Total invoiced"
       }
+    },
+    "invoice": {
+      "invoiceId": "Invoice id"
     }
   },
   "error": {

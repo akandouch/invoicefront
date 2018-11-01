@@ -36,7 +36,9 @@ export class AppComponent {
 
   constructor(private router: Router, private actRoute: ActivatedRoute, private authenticationService: AuthenticationService,
               private translate: TranslateService) {
-    translate.setDefaultLang('fr');
+    this.translate.setDefaultLang(this.translate.currentLang || this.translate.getBrowserLang());
+
+
     this.menu = [];
 
     this.menu.push({color: '#ff84ff', route: '/dashboard', label: 'menu.dashboard', icon: faChartLine});

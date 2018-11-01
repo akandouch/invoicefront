@@ -4,8 +4,17 @@
   },
   "common": {
     "action": {
-      "add": "Ajouter"
+      "add": "Ajouter",
+      "edit": "Editer",
+      "delete": "Supprimer",
+      "consult": "Consulter"
     },
+    "open": "Ouvrir",
+    "close": "Fermer",
+    "status": "Statut",
+    "invoicer": "Vendeur",
+    "customer": "Client",
+    "vat": "TVA",
     "username": "Nom d'utilisateur",
     "password": "Mot de passe",
     "language": "Langue",
@@ -49,6 +58,9 @@
         "daysPerMonth": "Jours par mois",
         "totalInvoiced": "Total facturé"
       }
+    },
+    "invoice": {
+      "invoiceId": "N° Facture"
     }
   },
   "error": {

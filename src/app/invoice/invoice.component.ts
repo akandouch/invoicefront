@@ -47,8 +47,23 @@ export class InvoiceComponent implements OnInit {
   history: Invoice[];
   current: Invoice;
   preview: Invoice;
-  faEye = faEye;faMailBulk = faMailBulk;faPlus = faPlus;faFolderOpen = faFolderOpen;faTrashAlt = faTrashAlt;faFileDownload = faFileDownload;faArrowLeft = faArrowLeft;faListAlt = faListAlt;faSearch = faSearch;faHome = faHome;faUser = faUser;faEllipsisH = faEllipsisH;faFilePdf = faFilePdf;faFileInvoice = faFileInvoice;faPaperclip = faPaperclip;faList = faList;
-  
+  faEye = faEye;
+  faMailBulk = faMailBulk;
+  faPlus = faPlus;
+  faFolderOpen = faFolderOpen;
+  faTrashAlt = faTrashAlt;
+  faFileDownload = faFileDownload;
+  faArrowLeft = faArrowLeft;
+  faListAlt = faListAlt;
+  faSearch = faSearch;
+  faHome = faHome;
+  faUser = faUser;
+  faEllipsisH = faEllipsisH;
+  faFilePdf = faFilePdf;
+  faFileInvoice = faFileInvoice;
+  faPaperclip = faPaperclip;
+  faList = faList;
+
   private currentModal: NgbActiveModal;
   private profiles: InvoiceProfile[];
   private profilesFound: InvoiceProfile[];
@@ -56,21 +71,21 @@ export class InvoiceComponent implements OnInit {
   private currentCustomer: InvoiceProfile;
 
   private listOpened: string = 'items';
-  public newVersion:boolean = true;
+  public newVersion: boolean = true;
 
-  public details:Invoice=new Invoice();
-  public idDetailsSelected:string;
-  public dataColumns:Array<DataColumn> = [
-    {field:{name:'invoiceNumber'},label:'Invoice id'},
-    {field:{name:'invoicer', child:{name:"firstname"}}, label:'Invoicer'},
-    {field:{name:'invoiced', child:{name:"firstname"}}, label:'Customer'},
-    {field:{name:'invoiced', child:{name:"vat"}}, label:'Vat'},
+  public details: Invoice = new Invoice();
+  public idDetailsSelected: string;
+  public dataColumns: Array<DataColumn> = [
+    {field: {name: 'invoiceNumber'}, label: 'page.invoice.invoiceId'},
+    {field: {name: 'invoicer', child: {name: 'firstname'}}, label: 'common.invoicer'},
+    {field: {name: 'invoiced', child: {name: 'firstname'}}, label: 'common.customer'},
+    {field: {name: 'invoiced', child: {name: 'vat'}}, label: 'common.vat'},
     {
-      field:{name:'status'},
-      rules:[
-      {condition:FieldCondition.EQ,value:"0",cssClass:"open-status",label:"open"},
-      {condition:FieldCondition.EQ,value:"2",cssClass:"close-status",label:"close"}],
-      label:'Status', cssClass:"inv-status"
+      field: {name: 'status'},
+      rules: [
+        {condition: FieldCondition.EQ, value: '0', cssClass: 'open-status', label: 'common.open'},
+        {condition: FieldCondition.EQ, value: '2', cssClass: 'close-status', label: 'common.close'}],
+      label: 'common.status', cssClass: 'inv-status'
     }];
 
   constructor(
@@ -96,7 +111,7 @@ export class InvoiceComponent implements OnInit {
   getAll() {
     this.invoiceService.get({}, (data: Invoice[]) => {
       this.history = data;
-      let d:Invoice = new Invoice();
+      let d: Invoice = new Invoice();
       d.fillInvoice(this.history[0]);
       this.details = d;
       this.idDetailsSelected = d.id;
@@ -141,7 +156,7 @@ export class InvoiceComponent implements OnInit {
       this.invoice.invoicer = this.currentProfile;
       this.invoice.invoiced = this.currentCustomer;
 
-      this.invoiceService.post(this.invoice,(response) => {
+      this.invoiceService.post(this.invoice, (response) => {
         this.invoice = new Invoice();
         this.getAll();
         this.closeModal();
@@ -214,38 +229,39 @@ export class InvoiceComponent implements OnInit {
     this.listOpened = list;
   }
 
-  calculateTotalRate(invoice:Invoice):number{
+  calculateTotalRate(invoice: Invoice): number {
     var total = 0;
-    invoice.items.forEach(x=>total +=x.rate * x.days);
-    total = parseFloat(Number(total).toFixed(2));
-    return total
-  }
-  calculateTotalVatRate(invoice:Invoice):number{
-    var total = 0;
-    invoice.items.forEach(x=>total += (x.rate*x.days) - ((x.rate*x.days)*x.vatRate));
+    invoice.items.forEach(x => total += x.rate * x.days);
     total = parseFloat(Number(total).toFixed(2));
     return total;
   }
 
-  openDetails(invoice:Invoice){
+  calculateTotalVatRate(invoice: Invoice): number {
+    var total = 0;
+    invoice.items.forEach(x => total += (x.rate * x.days) - ((x.rate * x.days) * x.vatRate));
+    total = parseFloat(Number(total).toFixed(2));
+    return total;
+  }
+
+  openDetails(invoice: Invoice) {
     this.details.fillInvoice(invoice);
     this.idDetailsSelected = invoice.id;
   }
 
-  productSelected(product:Product){
+  productSelected(product: Product) {
     console.log(product);
-    if( !this.current.products ){
+    if (!this.current.products) {
       this.current.products = [];
     }
     this.current.products.push(product);
   }
 
-  removeProduct(i:number){
-    console.log(i)
+  removeProduct(i: number) {
+    console.log(i);
     this.current.products = this.current.products.slice(i);
   }
-  
-  refreshGrid(data){
+
+  refreshGrid(data) {
     this.history = data;
   }
 }
