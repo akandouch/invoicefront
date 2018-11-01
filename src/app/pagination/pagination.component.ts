@@ -47,7 +47,7 @@ export class PaginationComponent implements OnInit, OnChanges {
         this.get();
       })
       .on("get", ()=>{
-        this.get();
+        //this.get();
       });
     }else if( this.dataSource instanceof Array){
     }
