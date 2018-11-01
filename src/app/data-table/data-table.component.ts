@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { faEye, faEdit, faCopy, faTrashAlt, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
-import { RestService } from '../services/restservice.interface';
-import { Entity } from '../entity.interface';
-import { RestServiceAbstract } from '../services/restserviceabstract.class';
-import { findLocaleData } from '@angular/common/src/i18n/locale_data_api';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {faCopy, faEdit, faEllipsisH, faEye, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {RestService} from '../services/restservice.interface';
+import {Entity} from '../entity.interface';
+import {RestServiceAbstract} from '../services/restserviceabstract.class';
+import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
@@ -14,86 +14,97 @@ import { findLocaleData } from '@angular/common/src/i18n/locale_data_api';
 export class DataTableComponent implements OnInit, OnChanges {
 
   @Input()
-  public dataSource:RestService|Array<Entity>;
+  public dataSource: RestService | Array<Entity>;
   @Input()
-  public dataColumns:Array<DataColumn>;
+  public dataColumns: Array<DataColumn>;
 
   @Output()
-  public editEvent:EventEmitter<Entity> = new EventEmitter();
-  
-  @Output()
-  public consultEvent:EventEmitter<Entity> = new EventEmitter();
+  public editEvent: EventEmitter<Entity> = new EventEmitter();
 
   @Output()
-  public deleteEvent:EventEmitter<Entity> = new EventEmitter();
+  public consultEvent: EventEmitter<Entity> = new EventEmitter();
 
-  public datas:Array<Entity> = new Array();
+  @Output()
+  public deleteEvent: EventEmitter<Entity> = new EventEmitter();
 
-  public noPagination:boolean = false;
-  
-  faEye=faEye;faEdit=faEdit;faCopy=faCopy;faTrashAlt=faTrashAlt;faEllipsisH=faEllipsisH;
+  public datas: Array<Entity> = new Array();
 
-  constructor() {
+  public noPagination: boolean = false;
+
+  faEye = faEye;
+  faEdit = faEdit;
+  faCopy = faCopy;
+  faTrashAlt = faTrashAlt;
+  faEllipsisH = faEllipsisH;
+
+  constructor(private translate: TranslateService) {
   }
 
   ngOnInit() {
-    if(this.dataSource instanceof RestServiceAbstract == false){
+    if (this.dataSource instanceof RestServiceAbstract == false) {
       this.datas = <Array<Entity>>this.dataSource;
       this.noPagination = true;
     }
   }
-  ngOnChanges(){
+
+  ngOnChanges() {
   }
-  refreshGrid(data){
+
+  refreshGrid(data) {
     this.datas = data;
   }
 
-  consult(entity:Entity){
+  consult(entity: Entity) {
     this.consultEvent.emit(entity);
   }
-  edit(entity:Entity){
+
+  edit(entity: Entity) {
     this.editEvent.emit(entity);
   }
-  delete(entity:Entity){
-    this.deleteEvent.subscribe((valid)=>{
-      
-        console.log('refresh grid');
-      
-    })
-    
+
+  delete(entity: Entity) {
+    this.deleteEvent.subscribe((valid) => {
+
+      console.log('refresh grid');
+
+    });
+
     this.deleteEvent.emit(entity);
   }
-  getdata(data:any, column:DataColumn){
 
-    var value = this.finddata(data,column.field);
-    if(column.rules){
-      column.rules.forEach(x=>{
+  getdata(data: any, column: DataColumn) {
+
+    var value = this.finddata(data, column.field);
+    if (column.rules) {
+      column.rules.forEach(x => {
         // TODO : implement other condition with switch case
-        if(x.condition == FieldCondition.EQ && this.finddata(data,column.field) == x.value){
-          
-          if(x.label)value= x.label;
+        if (x.condition == FieldCondition.EQ && this.finddata(data, column.field) == x.value) {
+
+          if (x.label) value = this.translate.instant(x.label);
         }
       });
     }
     return value;
   }
-  finddata(data:any, field:NestedField){
-    var value=data[field.name];
 
-    if(field.child){
-      return this.finddata(value,field.child);
+  finddata(data: any, field: NestedField) {
+    var value = data[field.name];
+
+    if (field.child) {
+      return this.finddata(value, field.child);
     }
     return value;
   }
-  getdataclass(data:any, column:DataColumn){
-    var cssClass="";
-    if(column.rules){
-      column.rules.forEach(x=>{
 
-       // TODO : implement other condition with switch case
+  getdataclass(data: any, column: DataColumn) {
+    var cssClass = '';
+    if (column.rules) {
+      column.rules.forEach(x => {
 
-        if(x.condition == FieldCondition.EQ && this.finddata(data,column.field) == x.value){
-            cssClass += x.cssClass;
+        // TODO : implement other condition with switch case
+
+        if (x.condition == FieldCondition.EQ && this.finddata(data, column.field) == x.value) {
+          cssClass += x.cssClass;
         }
 
       });
@@ -102,25 +113,29 @@ export class DataTableComponent implements OnInit, OnChanges {
   }
 
 }
-export class DataColumn{
-  label:string;
-  field:NestedField;
-  sortable?:boolean;
-  searcheable?:boolean;
-  rules?:FieldRule[];
-  cssClass?:string;
+
+export class DataColumn {
+  label: string;
+  field: NestedField;
+  sortable?: boolean;
+  searcheable?: boolean;
+  rules?: FieldRule[];
+  cssClass?: string;
 }
-export class NestedField{
-  name:string;
-  child?:NestedField;
+
+export class NestedField {
+  name: string;
+  child?: NestedField;
 }
-export class FieldRule{
-  condition:FieldCondition;
-  value:string;
-  cssClass?:string;
-  label?:string;
+
+export class FieldRule {
+  condition: FieldCondition;
+  value: string;
+  cssClass?: string;
+  label?: string;
 }
-export enum FieldCondition{
+
+export enum FieldCondition {
   GT,
   LT,
   EQ,
