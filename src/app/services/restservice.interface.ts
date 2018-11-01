@@ -12,4 +12,6 @@ export interface RestService {
   getResourcePath(entity: Entity);
 
   getImage(entity: Entity, callBackNext?: any, callbackError?: any, callbackComplete?: any);
+
+  on(method:string, callback:any):RestService;
 }

@@ -43,6 +43,7 @@ export class DataTableComponent implements OnInit, OnChanges {
     }
   }
   ngOnChanges(){
+    console.log("table change")
   }
   refreshGrid(data){
     this.datas = data;
@@ -55,9 +56,11 @@ export class DataTableComponent implements OnInit, OnChanges {
     this.editEvent.emit(entity);
   }
   delete(entity:Entity){
+    console.log(this.datas);
     this.deleteEvent.subscribe((valid)=>{
       
         console.log('refresh grid');
+        console.log(this.datas);
       
     })
     

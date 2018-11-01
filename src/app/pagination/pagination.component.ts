@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { RestService } from '../services/restservice.interface';
 import { faFastBackward, faFastForward, faStepForward, faStepBackward } from '@fortawesome/free-solid-svg-icons';
 import { Entity } from '../entity.interface';
@@ -9,7 +9,7 @@ import { RestServiceAbstract } from '../services/restserviceabstract.class';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.css']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent implements OnInit, OnChanges {
 
   pageNumber:number = 0;
   pageSize:number = 10;
@@ -26,18 +26,36 @@ export class PaginationComponent implements OnInit {
   @Output()
   newData:EventEmitter<any>=new EventEmitter();
 
-  constructor() {
-   }
 
-  ngOnInit() {
+  copyDataSource:Array<Entity>;
+
+  constructor() {
+  }
+
+  ngOnChanges(){
     this.get();
+  }
+  ngOnInit() {
+    
+    this.get();
+    if( this.dataSource instanceof RestServiceAbstract ){
+      (<RestService>this.dataSource)
+      .on("post",()=>{
+        this.get();
+      })
+      .on("delete", ()=>{
+        this.get();
+      })
+      .on("get", ()=>{
+        this.get();
+      });
+    }else if( this.dataSource instanceof Array){
+    }
   }
 
   get(){
     if(this.dataSource instanceof RestServiceAbstract){
       (<RestService>this.dataSource).get({pageNumber:this.pageNumber, pageSize:this.pageSize},(data)=>{
-        console.log(data);
-
         this.newData.emit(data.content)
         this.totalPages = data.totalPages;
         this.totalElement = data.totalElement;

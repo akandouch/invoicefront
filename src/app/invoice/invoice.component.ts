@@ -94,7 +94,6 @@ export class InvoiceComponent implements OnInit {
   }
 
   getAll() {
-
     this.invoiceService.get({}, (data: Invoice[]) => {
       this.history = data;
       let d:Invoice = new Invoice();
@@ -188,9 +187,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   deleteInvoice(invoice: Invoice) {
-    this.ds.deleteInvoice(invoice, () => {
-      this.getAll();
-    });
+    this.invoiceService.delete(invoice);
   }
 
   generatePdf(invoice: Invoice) {

@@ -17,7 +17,7 @@ export class DataService<T extends Entity> {
   }
 
   
-  get(path: string, params?: any, callBackNext?: any, callbackError?: any, callbackComplete?: any) {
+  get(path: string, params?: any, callBackNext?: any, callbackError?: any, callbackComplete?: any, onGet?:any) {
     if( params.pageSize != null && params.pageNumber != null){
       console.log(params);
       path +="/page";
@@ -31,10 +31,11 @@ export class DataService<T extends Entity> {
       },
       () => {
         if (callbackComplete) callbackComplete();
+        if (onGet) onGet();
       },
     );
   }
-  post(path:string, data:T, callBackNext?:any,callbackError?:any, callbackComplete?:any){
+  post(path:string, data:T, callBackNext?:any,callbackError?:any, callbackComplete?:any, onPost?:any){
     this.http.post(environment.restApiUrl + '/' + path , data).subscribe(
       (datas)=> {
         if(callBackNext)callBackNext(datas);
@@ -45,16 +46,15 @@ export class DataService<T extends Entity> {
       },
       () => {
         if (callbackComplete) callbackComplete();
+        if (onPost) onPost();
       },
     );
   }
-
   put(){
     throw new Error("to implement");
 
   }
-
-  delete(path: string, entity: T, callBackNext?: any, callbackError?: any, callbackComplete?: any) {
+  delete(path: string, entity: T, callBackNext?: any, callbackError?: any, callbackComplete?: any, onDelete?:any) {
     this.http.delete(environment.restApiUrl + '/' + path, {params: {id: entity.id}}).subscribe(
       (datas) => {
         if (callBackNext) callBackNext(datas);
@@ -64,6 +64,7 @@ export class DataService<T extends Entity> {
       },
       () => {
         if (callbackComplete) callbackComplete();
+        if (onDelete)onDelete();
       },
     );
   }
