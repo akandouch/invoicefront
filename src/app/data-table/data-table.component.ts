@@ -46,13 +46,9 @@ export class DataTableComponent implements OnInit, OnChanges {
       this.noPagination = true;
     }
   }
-<<<<<<< HEAD
+  
   ngOnChanges(){
     console.log("table change")
-=======
-
-  ngOnChanges() {
->>>>>>> 6fdb2ab5ea4bf5f753019fc95cba20b1e217a6f9
   }
 
   refreshGrid(data) {
@@ -66,17 +62,6 @@ export class DataTableComponent implements OnInit, OnChanges {
   edit(entity: Entity) {
     this.editEvent.emit(entity);
   }
-<<<<<<< HEAD
-  delete(entity:Entity){
-    console.log(this.datas);
-    this.deleteEvent.subscribe((valid)=>{
-      
-        console.log('refresh grid');
-        console.log(this.datas);
-      
-    })
-    
-=======
 
   delete(entity: Entity) {
     this.deleteEvent.subscribe((valid) => {
@@ -85,7 +70,6 @@ export class DataTableComponent implements OnInit, OnChanges {
 
     });
 
->>>>>>> 6fdb2ab5ea4bf5f753019fc95cba20b1e217a6f9
     this.deleteEvent.emit(entity);
   }
 
