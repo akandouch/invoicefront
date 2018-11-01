@@ -55,6 +55,12 @@ export class DataTableComponent implements OnInit, OnChanges {
     this.editEvent.emit(entity);
   }
   delete(entity:Entity){
+    this.deleteEvent.subscribe((valid)=>{
+      
+        console.log('refresh grid');
+      
+    })
+    
     this.deleteEvent.emit(entity);
   }
   getdata(data:any, column:DataColumn){
@@ -91,8 +97,6 @@ export class DataTableComponent implements OnInit, OnChanges {
         }
 
       });
-      console.log("getdataclass");
-      console.log(data);
     }
     return cssClass;
   }

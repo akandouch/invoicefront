@@ -55,7 +55,7 @@ export class ItemListComponent implements OnInit {
 
   }
 
-  editItem(content, item: Item, idx: number) {
+  editItem(content, item: Item, idx?: number) {
     this.currentItem = item;
     this.currentIdx = idx;
     this.currentModal = this.ngbModalService.open(content, {
