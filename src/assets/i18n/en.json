@@ -6,10 +6,30 @@
     "action": {
       "add": "Add"
     },
+    "username": "Username",
+    "password": "Password",
     "language": "Language",
     "signin": "Sign in",
     "logout": "Logout",
-    "greeting": "Welcome"
+    "greeting": "Welcome",
+    "currentProfile": "Current Profile",
+    "calendar": {
+      "year": "Year",
+      "labels": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ]
+    }
   },
   "menu": {
     "dashboard": "Dashboard",
@@ -17,6 +37,19 @@
     "profile": "Profiles",
     "product": "Products",
     "setting": "Settings"
+  },
+  "page": {
+    "dashboard": {
+      "nbInvoice": "Number of invoices",
+      "totalRevenueInvoiced": "Total revenue invoiced",
+      "totalRevenueWaitingForInvoice": "Total revenue waiting for invoice",
+      "avgRate": "Average rate",
+      "legend": {
+        "ratePerMonth": "Rate per Month",
+        "daysPerMonth": "Days per Month",
+        "totalInvoiced": "Total invoiced"
+      }
+    }
   },
   "error": {
     "forbidden": "Forbidden. You are not allowed to access this resource. Please login with the right accesses."

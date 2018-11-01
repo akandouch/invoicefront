@@ -14,7 +14,7 @@
       </li>
       <li class="dropdown nav-item" dropdown>
         <div ngbDropdown class="d-inline-block">
-          <a class="nav-link dropdown-toggle text-white " href="#" id="dropLang" ngbDropdownToggle>
+          <a class="nav-link text-white " href="#" (click)="$event.preventDefault()" id="dropLang" ngbDropdownToggle>
             <fa-icon [icon]="faLanguage" width="50px"></fa-icon>&nbsp;{{'common.language'| translate}}</a>
           <div ngbDropdownMenu aria-labelledby="dropLang">
             <button class="dropdown-item" (click)="useLanguage('fr')">FR</button>
@@ -32,10 +32,10 @@
       </ul>-->
     </ul>
     <div *ngIf="!isLoggedIn()" class="form-inline my-2 my-lg-0">
-      <input [(ngModel)]="username" name="username" class="form-control mr-sm-2" type="text" placeholder="username"
-             aria-label="Username">
+      <input [(ngModel)]="username" name="username" class="form-control mr-sm-2" type="text"
+             [placeholder]="'common.username' | translate" aria-label="Username">
       <input (keydown.enter)="login()" [(ngModel)]="password" name="password" class="form-control mr-sm-2"
-             type="password" placeholder="password"
+             type="password" [placeholder]="'common.password' | translate"
              aria-label="Password">
       <button class="btn btn-outline-info text-white my-2 my-sm-0" type="button" (click)="login()">{{'common.signin' |
         translate}}

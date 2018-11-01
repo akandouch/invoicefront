@@ -1,16 +1,23 @@
 <div class="container-fluid">
   <div class="summary-info ">
     <div class="row ml-1">
-      <div class="col-lg-3"><label style="font-weight: 600">Current Profile</label></div><div class="col-lg-9">My profile</div>
-      <div class="col-lg-3"><label style="font-weight: 600">Number of invoice</label></div><div class="col-lg-9">25</div>
-      <div class="col-lg-3"><label style="font-weight: 600">Total revenu invoiced</label></div><div class="col-lg-9">$10.000</div>
-      <div class="col-lg-3"><label style="font-weight: 600">Total revenu waiting for invoice</label></div><div class="col-lg-9">$100.000</div>
-      <div class="col-lg-3"><label style="font-weight: 600">Average rate</label></div><div class="col-lg-9">$1500</div>
+      <div class="col-lg-3"><label style="font-weight: 600">{{'common.currentProfile' | translate}}</label></div>
+      <div class="col-lg-9">My profile</div>
+      <div class="col-lg-3"><label style="font-weight: 600">{{'page.dashboard.nbInvoice' | translate}}</label></div>
+      <div class="col-lg-9">25</div>
+      <div class="col-lg-3"><label style="font-weight: 600">{{'page.dashboard.totalRevenueInvoiced' |
+        translate}}</label></div>
+      <div class="col-lg-9">$10.000</div>
+      <div class="col-lg-3"><label style="font-weight: 600">{{'page.dashboard.totalRevenueWaitingForInvoice' |
+        translate}}</label></div>
+      <div class="col-lg-9">$100.000</div>
+      <div class="col-lg-3"><label style="font-weight: 600">{{'page.dashboard.avgRate' | translate}}</label></div>
+      <div class="col-lg-9">$1500</div>
     </div>
   </div>
 <div *ngIf="chartRatePerMonth" class="chart col-lg-6">
   <div class="col-lg-12">
-    <label>Year <input type="text" [(ngModel)]="year" maxlength="4"></label>
+    <label>{{'common.calendar.year' | translate}} <input type="text" [(ngModel)]="year" maxlength="4"></label>
     <fa-icon  class="btn btn-outline-dark sync-btn" (click)="reloadChart()" [icon]="faSync"></fa-icon>
     <canvas id="ratePerMonth">{{ chartRatePerMonth }}</canvas>
   </div>

@@ -6,10 +6,30 @@
     "action": {
       "add": "Ajouter"
     },
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
     "language": "Langue",
     "signin": "Connexion",
     "logout": "Déconnexion",
-    "greeting": "Bienvenue"
+    "greeting": "Bienvenue",
+    "currentProfile": "Profil courant",
+    "calendar": {
+      "year": "Année",
+      "labels": [
+        "Jan",
+        "Fév",
+        "Mar",
+        "Avr",
+        "Mai",
+        "Juin",
+        "Juil",
+        "Aout",
+        "Sept",
+        "Oct",
+        "Nov",
+        "Déc"
+      ]
+    }
   },
   "menu": {
     "dashboard": "Tableau de bord",
@@ -17,6 +37,19 @@
     "profile": "Gestion des profils",
     "product": "Articles",
     "setting": "Paramètres"
+  },
+  "page": {
+    "dashboard": {
+      "nbInvoice": "Nombre de factures",
+      "totalRevenueInvoiced": "Revenu total facturé",
+      "totalRevenueWaitingForInvoice": "Revenu total en attente d'être facturé",
+      "avgRate": "Moyenne tarif journalier",
+      "legend": {
+        "ratePerMonth": "Tarif par mois",
+        "daysPerMonth": "Jours par mois",
+        "totalInvoiced": "Total facturé"
+      }
+    }
   },
   "error": {
     "forbidden": "Vous n'êtes pas autorisé à accéder à cette page. Veuillez vous connecter."
