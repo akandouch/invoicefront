@@ -10,11 +10,13 @@
       "update": "Update",
       "back": "Back",
       "delete": "Delete",
+      "save": "Save",
       "consult": "Contult",
       "preview": "Preview",
       "downloadpdf": "Download PDF",
       "sendmail": "Send MAIL"
     },
+    "days": "Days",
     "type": "Type",
     "description": "Description",
     "name": "Name",
@@ -77,10 +79,13 @@
       "newInvoice": "New Invoice"
     },
     "items": {
+      "new": "New article",
+      "nature": "Nature",
       "id": "Item Id",
       "project": "Project",
       "priceUnit": "Price per unit",
       "vatRate": "VAT Rate",
+      "rate": "Rate",
       "period": "Period",
       "qty": "Quantity",
       "unitOfMeasure": "Unit of measure"

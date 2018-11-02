@@ -10,11 +10,13 @@
       "update": "Mettre à jour",
       "back": "Retour",
       "delete": "Supprimer",
+      "save": "Sauvegarder",
       "consult": "Consulter",
       "preview": "Aperçu",
       "downloadpdf": "Télécharger PDF",
       "sendmail": "Envoi Email"
     },
+    "days": "Jours",
     "type": "Type",
     "description": "Description",
     "name": "Nom",
@@ -77,7 +79,10 @@
       "newInvoice": "Nouvelle facture"
     },
     "items": {
+      "new": "Nouvel article",
+      "nature": "Nature",
       "id": "Id Article",
+      "rate": "Tarif",
       "project": "Projet",
       "priceUnit": "Prix unitaire",
       "vatRate": "% TVA",
