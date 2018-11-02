@@ -14,6 +14,8 @@
       "downloadpdf": "Télécharger PDF",
       "sendmail": "Envoi Email"
     },
+    "attachments": "Pièces jointes",
+    "items": "Articles",
     "open": "En cours",
     "close": "Clôturée",
     "status": "Statut",
@@ -49,7 +51,7 @@
     "dashboard": "Tableau de bord",
     "invoice": "Facturation",
     "profile": "Gestion des profils",
-    "product": "Articles",
+    "product": "Produits",
     "setting": "Paramètres"
   },
   "page": {
@@ -65,7 +67,8 @@
       }
     },
     "invoice": {
-      "invoiceId": "N° Facture"
+      "invoiceId": "N° Facture",
+      "newInvoice": "Nouvelle facture"
     }
   },
   "error": {
