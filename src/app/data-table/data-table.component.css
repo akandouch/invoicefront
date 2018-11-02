@@ -93,6 +93,9 @@
     font-weight: 600;
     cursor: auto;
 }
+.gridHeaders > .gridRow {
+    border-bottom:solid 1px #d6d6d6;
+}
 .gridHeaders:hover{
     color: #636363;
 }

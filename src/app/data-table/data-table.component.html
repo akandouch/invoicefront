@@ -31,6 +31,7 @@
 <div class="mainGrid">
   <div class="gridCol gridHeaders">
       <div class="gridRow" *ngFor="let row of dataColumns" title="{{row.label | translate}}">{{row.label | translate}}</div>
+      <div class="gridRow" *ngIf="enableConsult || enableDelete || enableEdit">&nbsp;</div>
   </div>
   <div class="gridCol" *ngFor="let data of datas; let i=index">
     
