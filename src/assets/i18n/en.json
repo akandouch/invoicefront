@@ -14,6 +14,7 @@
       "downloadpdf": "Download PDF",
       "sendmail": "Send MAIL"
     },
+    "title": "Title",
     "attachments": "Attachments",
     "items": "Items",
     "open": "Open",
@@ -69,6 +70,13 @@
     "invoice": {
       "invoiceId": "Invoice id",
       "newInvoice": "New Invoice"
+    },
+    "items": {
+      "id": "Item Id",
+      "project": "Project",
+      "priceUnit": "Price unit",
+      "vatRate": "VAT Rate",
+      "period": "Period"
     }
   },
   "error": {

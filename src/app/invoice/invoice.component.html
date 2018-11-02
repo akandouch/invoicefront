@@ -191,15 +191,15 @@
       <div class="col-lg-12" *ngIf="current">
         <div class="row">
           <div class="col-lg-4">
-            <label class="label" for="invoiceNumber">Invoice number</label>
+            <label class="label" for="invoiceNumber">{{'page.invoice.invoiceId'|translate}}</label>
             <input class="form-control" id="invoiceNumber" type="text" [(ngModel)]="current.invoiceNumber">
           </div>
           <div class="col-lg-4">
-            <label class="label" for="invoiceTitle">Title:&nbsp;</label>
+            <label class="label" for="invoiceTitle">{{'common.title'|translate}}:&nbsp;</label>
             <input class="form-control" id="invoiceTitle" type="text" [(ngModel)]="current.title">
           </div>
           <div class="col-lg-2">
-            <label class="label" for="invoiceStatus">Status:&nbsp;</label>
+            <label class="label" for="invoiceStatus">{{'common.status'|translate}}:&nbsp;</label>
             <select id="invoiceStatus" class="custom-select " [(ngModel)]="current.status">
               <option value="0">{{'common.open'| translate}}</option>
               <option value="2">{{'common.close' | translate}}</option>

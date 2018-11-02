@@ -3,9 +3,9 @@ import {Invoice} from '../invoice/invoice.class';
 import {NgbActiveModal, NgbDate, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Item} from '../item/item.class';
 import {Period} from '../item/period.class';
-import {faCoffee, faCopy, faEye, faPlus, faTrashAlt, faEllipsisH, faEdit, faListAlt} from '@fortawesome/free-solid-svg-icons';
+import {faCoffee, faCopy, faEdit, faEllipsisH, faEye, faListAlt, faPlus, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {DataService} from '../services/data.service';
-import { DataColumn } from '../data-table/data-table.component';
+import {DataColumn} from '../data-table/data-table.component';
 
 @Component({
   selector: 'app-item-list',
@@ -24,12 +24,12 @@ export class ItemListComponent implements OnInit {
 
   /* for data table */
   public dataColumns:Array<DataColumn> = [
-    {field:{name:"id"},label:"Id"},
+    {field: {name: 'id'}, label: 'page.items.id'},
     /*{field:{name:"description"}, label:"Description"},*/
-    {field:{name:"project"}, label:"Project"},
-    {field:{name:"unit"}, label:"Unit price"},
-    {field:{name:"vatRate"}, label: "Vat Rate"},
-    {field:{name:"period"}, label:"Period"}
+    {field: {name: 'project'}, label: 'page.items.project'},
+    {field: {name: 'unit'}, label: 'page.items.priceUnit'},
+    {field: {name: 'vatRate'}, label: 'page.items.vatRate'},
+    {field: {name: 'period'}, label: 'page.items.period'}
   ];
   constructor(private ds: DataService<any>, private ngbModalService: NgbModal) {
     // this.invoice = invoice;
