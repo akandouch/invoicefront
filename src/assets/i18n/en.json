@@ -4,6 +4,7 @@
   },
   "common": {
     "action": {
+      "clearselection": "Clear selection",
       "add": "Add",
       "edit": "Edit",
       "update": "Update",
@@ -76,9 +77,11 @@
     "items": {
       "id": "Item Id",
       "project": "Project",
-      "priceUnit": "Price unit",
+      "priceUnit": "Price per unit",
       "vatRate": "VAT Rate",
-      "period": "Period"
+      "period": "Period",
+      "qty": "Quantity",
+      "unitOfMeasure": "Unit of measure"
     }
   },
   "error": {
