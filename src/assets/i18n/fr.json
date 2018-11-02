@@ -16,6 +16,9 @@
       "downloadpdf": "Télécharger PDF",
       "sendmail": "Envoi Email"
     },
+    "firstname": "Prénom",
+    "lastname": "Nom",
+    "mail": "Email",
     "days": "Jours",
     "type": "Type",
     "description": "Description",

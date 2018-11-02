@@ -16,6 +16,9 @@
       "downloadpdf": "Download PDF",
       "sendmail": "Send MAIL"
     },
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "mail": "Mail",
     "days": "Days",
     "type": "Type",
     "description": "Description",
