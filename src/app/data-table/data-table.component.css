@@ -56,8 +56,43 @@
 .table-action {
     flex: 1 1 0px;
 }
-/*
-.table-content[class*="row-"]:hover ~ .table-content[class*="row-"]{
-
-    background-color: red;
-}*/
+.mainGrid{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    color: #636363;
+    border: solid 1px #ebebeb;
+    border-bottom: none;
+}
+.gridRow{
+    display: table-cell;
+    border-bottom: solid 1px #ebebeb;
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.gridRow.actions{
+    overflow: visible !important;
+}
+.gridRow.actions > * > .dropdown-toggle::after{
+    display: none;
+}
+.gridCol{
+    display: table-row;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+.gridCol:hover{
+    font-weight: 600;
+    color: #5b5b5b;
+}
+.gridCol:nth-child(2n){
+    background-color: #f7f7f7;
+}
+.gridHeaders {
+    font-weight: 600;
+    cursor: auto;
+}
+.gridHeaders:hover{
+    color: #636363;
+}

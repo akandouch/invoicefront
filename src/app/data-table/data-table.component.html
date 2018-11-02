@@ -1,4 +1,4 @@
-<div class="table-wrapper">    
+<div class="table-wrapper" *ngIf="0">    
     <div class="table-column" *ngFor="let row of dataColumns">
       <div class="table-header">{{row.label | translate}}</div>
       <div class="table-content row-{{i}} {{row.cssClass}} {{getdataclass(data,row)}}"
@@ -27,6 +27,37 @@
         </div>  
       </div>
     </div>
+</div>
+<div class="mainGrid">
+  <div class="gridCol gridHeaders">
+      <div class="gridRow" *ngFor="let row of dataColumns" title="{{row.label | translate}}">{{row.label | translate}}</div>
+  </div>
+  <div class="gridCol" *ngFor="let data of datas; let i=index">
+    
+    <div class="gridRow {{col.cssClass}} {{getdataclass(data,col)}}" *ngFor="let col of dataColumns" title="{{getdata(data, col) }}">{{getdata(data, col) }}</div>
+
+    <div class="gridRow actions" *ngIf="enableConsult || enableDelete || enableEdit">
+        <div ngbDropdown class="d-inline-block">
+          <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
+          <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+            <div (click)="consult(data)" *ngIf="enableConsult">
+              <fa-icon [icon]="faEye"></fa-icon>
+              {{'common.action.consult' | translate}}
+            </div>
+            <div (click)="edit(data)" *ngIf="enableEdit">
+              <fa-icon [icon]="faEdit"></fa-icon>
+              {{'common.action.edit' | translate}}
+            </div>
+            <div (click)="delete(data)" *ngIf="enableDelete">
+              <fa-icon [icon]="faTrashAlt"></fa-icon>
+              {{'common.action.delete' | translate}}
+            </div>
+          </div>
+        </div>  
+      </div>
+    
+  </div>
+
 </div>
 <div class="table-pagination">
     <app-pagination [dataSource]="dataSource" (newData)="refreshGrid($event)"></app-pagination>
