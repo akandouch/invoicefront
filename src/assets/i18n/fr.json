@@ -98,6 +98,11 @@
     "product": {
       "searchProduct": "Rechercher un produit",
       "id": "Id"
+    },
+    "profile": {
+      "new": "Nouveau Profil",
+      "address": "Adresse",
+      "general": "Géneral"
     }
   },
   "error": {
