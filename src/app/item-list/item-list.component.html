@@ -55,44 +55,45 @@
 
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Edit New</h4>
+      <h4 class="modal-title" id="modal-basic-title">{{'page.items.new'|translate}}</h4>
       <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body col-lg-12 row">
       <div class="col-lg-12">
-        <label>Project</label>
+        <label>{{'page.items.project'|translate}}</label>
         <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.project"/>
       </div>
       <div class="col-lg-12">
-        <label>Period</label>
+        <label>{{'page.items.period'|translate}}</label>
         <app-calendar [period]="newItem.period"></app-calendar>
       </div>
       <div class="col-lg-12">
-        <label>Natur</label>
+        <label>{{'page.items.nature'|translate}}</label>
         <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.nature"/>
       </div>
       <div class="col-lg-4">
-        <label># Days</label>
+        <label># {{'common.days'|translate}}</label>
         <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.days"/>
       </div>
       <div class="col-lg-4">
-        <label>Rate</label>
+        <label>{{'page.items.rate'|translate}}</label>
         <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.rate"/>
       </div>
       <div class="col-lg-4">
-        <label>Vat Rate</label>
+        <label>{{'page.items.vatRate'|translate}}</label>
         <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="newItem.vatRate"/>
       </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="saveItem()">Save</button>
+      <button type="button" class="btn btn-outline-dark" (click)="saveItem()">{{'common.action.save'|translate}}
+      </button>
     </div>
 </ng-template>
 <ng-template #contentEdit let-c="close" let-d="dismiss" class="col-lg-12">
     <div class="modal-header col-lg-12">
-      <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+      <h4 class="modal-title" id="modal-basic-title">{{'common.action.edit'|translate}}</h4>
       <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -103,27 +104,29 @@
         <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.project" [readonly]="invoice.status == 2"/>
       </div>
       <div class="col-lg-12">
-        <label>Period</label>
+        <label>{{'page.items.period'|translate}}</label>
         <app-calendar [period]="currentItem.period" (dateSelected)="updateDays($event)"></app-calendar>
       </div>
       <div class="col-lg-12">
-        <label>Natur</label>
+        <label>{{'page.items.nature'|translate}}</label>
         <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.nature" [readonly]="invoice.status == 2"/>
       </div>
       <div class="col-lg-4">
-        <label># Days</label>
+        <label># {{'common.days'|translate}}</label>
         <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.days" [readonly]="invoice.status == 2"/>
       </div>
       <div class="col-lg-4">
-        <label>Rate</label>
+        <label>{{'page.items.rate'|translate}}</label>
         <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.rate"  [readonly]="invoice.status == 2"/>
       </div>
       <div class="col-lg-4">
-        <label>Vat Rate</label>
+        <label>{{'page.items.vatRate'|translate}}</label>
         <input class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentItem.vatRate" [readonly]="invoice.status == 2"/>
       </div>
     </div>
     <div class="modal-footer col-lg-12">
-      <button type="button" class="btn btn-outline-dark" (click)="updateItem()" *ngIf="invoice.status != 2">Update</button>
+      <button type="button" class="btn btn-outline-dark" (click)="updateItem()" *ngIf="invoice.status != 2">
+        {{'common.action.edit'|translate}}
+      </button>
     </div>
 </ng-template>

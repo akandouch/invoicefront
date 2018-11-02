@@ -1,13 +1,12 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {InvoiceProfile} from './invoiceprofile.class';
-import {DataService} from '../services/data.service';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {faCoffee, faCopy, faEdit, faEllipsisH, faEye, faPlus, faSave, faTrashAlt, faWindowClose} from '@fortawesome/free-solid-svg-icons';
 import {Upload} from '../upload/upload.class';
-import { RestService } from '../services/restservice.interface';
-import { UploadRestServiceImpl } from '../services/uploadrestserviceimpl.class';
-import { InvoiceProfileRestServiceImpl } from '../services/invoiceprofilerestserviceimpl.class';
-import { DataColumn } from '../data-table/data-table.component';
+import {RestService} from '../services/restservice.interface';
+import {UploadRestServiceImpl} from '../services/uploadrestserviceimpl.class';
+import {InvoiceProfileRestServiceImpl} from '../services/invoiceprofilerestserviceimpl.class';
+import {DataColumn} from '../data-table/data-table.component';
 
 
 @Component({
@@ -35,10 +34,10 @@ export class InvoiceprofileComponent implements OnInit {
   public loadingLogo: boolean = false;
 
   public dataColumns:Array<DataColumn> = [
-    {field:{name:"firstname"}, label:"Firstname"},
-    {field:{name:"lastname"}, label:"Lastname"},
-    {field:{name:"mail"}, label:"Mail"},
-    {field:{name:"vat"}, label:"Vat"}
+    {field: {name: 'firstname'}, label: 'common.firstname'},
+    {field: {name: 'lastname'}, label: 'common.lastname'},
+    {field: {name: 'mail'}, label: 'common.mail'},
+    {field: {name: 'vat'}, label: 'common.vat'}
   ]
 
   constructor(

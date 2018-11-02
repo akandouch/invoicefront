@@ -15,13 +15,13 @@
 </div>
 
 <div *ngIf="selectOnly">
-  <h5>Search for a product</h5>
+  <h5>{{'page.product.searchProduct'|translate}}</h5>
   Type: <select [(ngModel)]="typeFilter">
     <option value="-1">All</option>
     <option value="0">Service</option>
     <option value="1">Article</option>
   </select>
-  Name: <input [(ngModel)]="nameFilter">
+  {{'common.name'| translate}}: <input [(ngModel)]="nameFilter">
 
   
   <app-data-table

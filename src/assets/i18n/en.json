@@ -10,11 +10,27 @@
       "update": "Update",
       "back": "Back",
       "delete": "Delete",
+      "save": "Save",
+      "change": "Change",
       "consult": "Contult",
       "preview": "Preview",
       "downloadpdf": "Download PDF",
       "sendmail": "Send MAIL"
     },
+    "yourLogo": "Your logo",
+    "street": "Street",
+    "streetNumber": "N°",
+    "city": "City",
+    "postcode": "Postcode",
+    "country": "Country",
+    "accountNumber": "Account N°",
+    "phone": "Phone",
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "mail": "Mail",
+    "days": "Days",
+    "type": "Type",
+    "description": "Description",
     "name": "Name",
     "contentType": "Content-Type",
     "title": "Title",
@@ -72,16 +88,37 @@
     },
     "invoice": {
       "invoiceId": "Invoice id",
-      "newInvoice": "New Invoice"
+      "newInvoice": "New Invoice",
+      "currentProfile": "My current profile",
+      "customerToInvoice": "Customer to invoice"
     },
     "items": {
+      "new": "New article",
+      "nature": "Nature",
       "id": "Item Id",
       "project": "Project",
       "priceUnit": "Price per unit",
       "vatRate": "VAT Rate",
+      "rate": "Rate",
       "period": "Period",
       "qty": "Quantity",
       "unitOfMeasure": "Unit of measure"
+    },
+    "product": {
+      "searchProduct": "Search for a product",
+      "id": "Id"
+    },
+    "settings": {
+      "currentInvoiceNumber": "Current invoice number",
+      "currentRate": "Current rate",
+      "currentVatRate": "Current VAT Rate"
+    },
+    "profile": {
+      "new": "New Profile",
+      "address": "Address",
+      "general": "General",
+      "active": "active profile?",
+      "customer": "customer profile?"
     }
   },
   "error": {

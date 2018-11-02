@@ -10,11 +10,27 @@
       "update": "Mettre à jour",
       "back": "Retour",
       "delete": "Supprimer",
+      "change": "Changer",
+      "save": "Sauvegarder",
       "consult": "Consulter",
       "preview": "Aperçu",
       "downloadpdf": "Télécharger PDF",
       "sendmail": "Envoi Email"
     },
+    "yourLogo": "Votre logo",
+    "street": "Rue",
+    "streetNumber": "N°",
+    "city": "Ville",
+    "postcode": "Code Postal",
+    "country": "Pays",
+    "accountNumber": "N° de compte",
+    "phone": "Téléphone",
+    "firstname": "Prénom",
+    "lastname": "Nom",
+    "mail": "Email",
+    "days": "Jours",
+    "type": "Type",
+    "description": "Description",
     "name": "Nom",
     "contentType": "Content-Type",
     "title": "Titre",
@@ -72,16 +88,37 @@
     },
     "invoice": {
       "invoiceId": "N° Facture",
-      "newInvoice": "Nouvelle facture"
+      "newInvoice": "Nouvelle facture",
+      "currentProfile": "Mon profil courant",
+      "customerToInvoice": "Client à facturer"
     },
     "items": {
+      "new": "Nouvel article",
+      "nature": "Nature",
       "id": "Id Article",
+      "rate": "Tarif",
       "project": "Projet",
       "priceUnit": "Prix unitaire",
       "vatRate": "% TVA",
       "period": "Période",
       "qty": "Quantité",
       "unitOfMeasure": "Mesure d'unité"
+    },
+    "product": {
+      "searchProduct": "Rechercher un produit",
+      "id": "Id"
+    },
+    "settings": {
+      "currentInvoiceNumber": "N° Facture courante",
+      "currentRate": "Tarif courant",
+      "currentVatRate": "% TVA actuel"
+    },
+    "profile": {
+      "new": "Nouveau Profil",
+      "address": "Adresse",
+      "general": "Géneral",
+      "active": "profil actif?",
+      "customer": "profil client?"
     }
   },
   "error": {
