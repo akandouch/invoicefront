@@ -39,7 +39,7 @@
     color: rgb(122, 122, 122);
     padding: 5px 10px 5px 10px;
     border-bottom: solid 1px #ededed;    
-    max-height: 32px;
+    max-height: 31px;
     overflow: hidden;
 }
 .table-content.actions {
