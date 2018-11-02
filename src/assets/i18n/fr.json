@@ -10,12 +10,21 @@
       "update": "Mettre à jour",
       "back": "Retour",
       "delete": "Supprimer",
+      "change": "Changer",
       "save": "Sauvegarder",
       "consult": "Consulter",
       "preview": "Aperçu",
       "downloadpdf": "Télécharger PDF",
       "sendmail": "Envoi Email"
     },
+    "yourLogo": "Votre logo",
+    "street": "Rue",
+    "streetNumber": "N°",
+    "city": "Ville",
+    "postcode": "Code Postal",
+    "country": "Pays",
+    "accountNumber": "N° de compte",
+    "phone": "Téléphone",
     "firstname": "Prénom",
     "lastname": "Nom",
     "mail": "Email",
@@ -102,7 +111,9 @@
     "profile": {
       "new": "Nouveau Profil",
       "address": "Adresse",
-      "general": "Géneral"
+      "general": "Géneral",
+      "active": "profil actif?",
+      "customer": "profil client?"
     }
   },
   "error": {

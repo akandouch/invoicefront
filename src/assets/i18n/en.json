@@ -11,11 +11,20 @@
       "back": "Back",
       "delete": "Delete",
       "save": "Save",
+      "change": "Change",
       "consult": "Contult",
       "preview": "Preview",
       "downloadpdf": "Download PDF",
       "sendmail": "Send MAIL"
     },
+    "yourLogo": "Your logo",
+    "street": "Street",
+    "streetNumber": "N°",
+    "city": "City",
+    "postcode": "Postcode",
+    "country": "Country",
+    "accountNumber": "Account N°",
+    "phone": "Phone",
     "firstname": "Firstname",
     "lastname": "Lastname",
     "mail": "Mail",
@@ -102,7 +111,9 @@
     "profile": {
       "new": "New Profile",
       "address": "Address",
-      "general": "General"
+      "general": "General",
+      "active": "active profile?",
+      "customer": "customer profile?"
     }
   },
   "error": {
