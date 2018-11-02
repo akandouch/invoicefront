@@ -14,6 +14,8 @@
       "downloadpdf": "Download PDF",
       "sendmail": "Send MAIL"
     },
+    "name": "Name",
+    "contentType": "Content-Type",
     "title": "Title",
     "attachments": "Attachments",
     "items": "Items",

@@ -14,6 +14,8 @@
       "downloadpdf": "Télécharger PDF",
       "sendmail": "Envoi Email"
     },
+    "name": "Nom",
+    "contentType": "Content-Type",
     "title": "Titre",
     "attachments": "Pièces jointes",
     "items": "Articles",
