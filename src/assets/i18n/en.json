@@ -108,6 +108,11 @@
       "searchProduct": "Search for a product",
       "id": "Id"
     },
+    "settings": {
+      "currentInvoiceNumber": "Current invoice number",
+      "currentRate": "Current rate",
+      "currentVatRate": "Current VAT Rate"
+    },
     "profile": {
       "new": "New Profile",
       "address": "Address",

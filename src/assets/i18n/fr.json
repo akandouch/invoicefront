@@ -108,6 +108,11 @@
       "searchProduct": "Rechercher un produit",
       "id": "Id"
     },
+    "settings": {
+      "currentInvoiceNumber": "N° Facture courante",
+      "currentRate": "Tarif courant",
+      "currentVatRate": "% TVA actuel"
+    },
     "profile": {
       "new": "Nouveau Profil",
       "address": "Adresse",
