@@ -18,6 +18,15 @@ export class DataTableComponent implements OnInit, OnChanges {
   @Input()
   public dataColumns: Array<DataColumn>;
 
+  @Input()
+  enableConsult:boolean = false;
+  
+  @Input()
+  enableDelete:boolean = false;
+  
+  @Input()
+  enableEdit:boolean = false;
+
   @Output()
   public editEvent: EventEmitter<Entity> = new EventEmitter();
 

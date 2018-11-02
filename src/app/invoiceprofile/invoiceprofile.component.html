@@ -7,6 +7,8 @@
     <app-data-table 
     [dataSource]="invoiceProfileService"
     [dataColumns]="dataColumns"
+    [enableEdit]="true"
+    [enableDelete]="true"
     (editEvent)="editItem(contentEdit, $event)"
     (deleteEvent)="removeItem($event)"
     ></app-data-table>

@@ -52,6 +52,7 @@ export class ProductComponent implements OnInit {
   }
 
   get filteredProduct(){
+    console.log('test')
     var filteredList= this.products;
     if(this.typeFilter && this.typeFilter != -1){
       filteredList = filteredList.filter(p=>p.type == this.typeFilter);
@@ -60,6 +61,7 @@ export class ProductComponent implements OnInit {
       filteredList = filteredList.filter(p=>p.name.toLowerCase().includes(this.nameFilter));
     }
 
+    console.log(filteredList);
     return filteredList;
   }
 
@@ -99,11 +101,11 @@ export class ProductComponent implements OnInit {
 
   }
   reload(){
-    /*this.productRestService.get({},
+    this.productRestService.get({},
       (data)=>{ 
         console.log(data);
         this.products = data;
-    });*/
+    });
   }
   refreshGrid(data){
     this.products = data;

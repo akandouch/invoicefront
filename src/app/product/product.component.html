@@ -1,4 +1,4 @@
-<div class="form-group" *ngIf="!selectOnly">
+<div class="form-group"  *ngIf="!selectOnly">
   <button class="btn btn-outline-secondary" (click)="newProduct()">
     <fa-icon [icon]="faPlus">
 
@@ -11,11 +11,10 @@
   (editEvent)="tableEdit($event)"
   (consultEvent)="tableConsult($event)"
   (deleteEvent)="tableDelete($event)"
-  *ngIf="!selectOnly"
   ></app-data-table>
 </div>
 
-<div class="" *ngIf="selectOnly">
+<div *ngIf="selectOnly">
   <h5>Search for a product</h5>
   Type: <select [(ngModel)]="typeFilter">
     <option value="-1">All</option>
@@ -24,6 +23,12 @@
   </select>
   Name: <input [(ngModel)]="nameFilter">
 
+  
+  <app-data-table
+    [dataSource]="filteredProduct"
+    [dataColumns]="dataColumns"
+  ></app-data-table>
+  <!--
   <div class="col-lg-12 table-product-selection">
     <div class="col-lg-12 row header">
       <div class="col-lg-2">Type</div>
@@ -38,4 +43,5 @@
       <div class="col-lg-3">{{p.unitPrice}}€</div>
     </div>
   </div>
+  -->
 </div>

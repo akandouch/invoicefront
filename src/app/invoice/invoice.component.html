@@ -14,78 +14,12 @@
         <app-data-table *ngIf="!newVersion"
         [dataSource]="invoiceService"
         [dataColumns]="dataColumns"
+        [enableDelete]="true"
+        [enableEdit]="true"
         (editEvent)="openInvoice($event)"
         (consultEvent)="openInvoice($event)"
         (deleteEvent)="deleteInvoice($event)"
         ></app-data-table>
-
-<!--
-        <div  *ngIf="!newVersion && 0">
-        <div class="container-table-items col-lg-12">
-          <div class="row new-items table-header">
-            <div class="col-lg-1">#</div>
-            <div class="col-lg-3">Invoicer</div>
-            <div class="col-lg-2">Customer</div>
-            <div class="col-lg-2">vat</div>
-            <div class="col-lg-2">Status</div>
-            <div class="col-lg-1"><fa-icon [icon]="faPaperclip"></fa-icon></div>
-            <div class="col-lg-2"></div>
-          </div>
-          <div *ngFor="let i of history; let idx = index" class="row add-items table-items">
-            <div class="col-lg-1">{{ i.invoiceNumber }}</div>
-            <div class="col-lg-3">{{i.invoicer.firstname}} {{i.invoicer.lastname}}</div>
-            <div class="col-lg-2">{{i.invoiced.firstname}}</div>
-            <div class="col-lg-2">{{i.invoiced.vat}}</div>
-            <div class="col-lg-2" *ngIf="!i.status && i.status != 0"></div>
-            <div class="col-lg-2" *ngIf="i.status == 0"><span class="inv-status open-status">open</span></div>
-            <div class="col-lg-2" *ngIf="i.status == 1"><span class="inv-status ready-status">ready</span></div>
-            <div class="col-lg-2" *ngIf="i.status == 2"><span class="inv-status close-status">closed</span></div>
-            <div class="col-lg-1">
-              <span  *ngIf="!i.attachments || !i.attachments.length">{{i.attachments.length}}</span>
-              <div  *ngIf="i.attachments && i.attachments.length" ngbDropdown class="d-inline-block" style="cursor: pointer;">
-                  <span ngbDropdownToggle>{{i.attachments.length}}</span>
-                  <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-                    <div *ngFor="let a of i.attachments">
-                      <a [href]="downloadAttachment(a)">{{a.fileName}}</a>
-                    </div>
-                  </div>
-                </div>
-            </div>
-            <div class="col-lg-1">
-              <div ngbDropdown class="d-inline-block">
-                <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
-
-                <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-                  <div (click)="openInvoice(i)">
-                    <fa-icon [icon]="faFolderOpen"></fa-icon>
-                    Open
-                  </div>
-                  <div (click)="openModal(content, i)">
-                    <fa-icon [icon]="faEye"></fa-icon>
-                    Preview
-                  </div>
-                  <div (click)="generatePdf(i)">
-                    <fa-icon [icon]="faFilePdf"></fa-icon>
-                    Download PDF
-                  </div>
-                  <div (click)="sendMail(i.id)">
-                    <fa-icon [icon]="faMailBulk"></fa-icon>
-                    Send MAIL
-                  </div>
-                  <div (click)="deleteInvoice(i)" *ngIf="i.status != 2">
-                    <fa-icon [icon]="faTrashAlt"></fa-icon>
-                    Delete
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-          <app-pagination [restService]="invoiceService" (newData)="refreshGrid($event)"></app-pagination>
-        </div>
-
-      -->
-
 
         <!-- NEW VERSION -->
 
@@ -251,7 +185,7 @@
               <!--<button (click)="removeProduct(i)">-</button>-->
             </div>
           </div>
-          <div class="col-lg-5" style="background-color:#fffbdf">
+          <div class="col-lg-5">
             <app-product (productSelected)="productSelected($event)" [selectOnly]="true"></app-product>
           </div>
         </div>

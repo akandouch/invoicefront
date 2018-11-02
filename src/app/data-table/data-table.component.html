@@ -5,21 +5,21 @@
            *ngFor="let data of datas;let i = index">{{getdata(data, row) }}
       </div>
     </div>
-    <div class="table-action">
+    <div class="table-action" *ngIf="enableConsult || enableDelete || enableEdit">
       <div class="table-header">&nbsp;</div>
       <div class="table-content row-{{data['id']}} actions" *ngFor="let data of datas">
         <div ngbDropdown class="d-inline-block">
           <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
           <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-            <div (click)="consult(data)">
+            <div (click)="consult(data)" *ngIf="enableConsult">
               <fa-icon [icon]="faEye"></fa-icon>
               {{'common.action.consult' | translate}}
             </div>
-            <div (click)="edit(data)">
+            <div (click)="edit(data)" *ngIf="enableEdit">
               <fa-icon [icon]="faEdit"></fa-icon>
               {{'common.action.edit' | translate}}
             </div>
-            <div (click)="delete(data)">
+            <div (click)="delete(data)" *ngIf="enableDelete">
               <fa-icon [icon]="faTrashAlt"></fa-icon>
               {{'common.action.delete' | translate}}
             </div>
