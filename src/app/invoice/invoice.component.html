@@ -220,7 +220,7 @@
   <div class="col-lg-12 row">
 
     <div class="col-lg-6 current-profile">
-      <h5>My current profile</h5>
+      <h5>{{'page.invoice.currentProfile'|translate}}</h5>
       <div>
         <p>{{currentProfile.firstname}}, {{currentProfile.lastname}}</p>
         <p>{{currentProfile.vat}}</p>
@@ -231,7 +231,7 @@
     </div>
 
     <div class="col-lg-6 customer-profile" *ngIf="currentCustomer">
-      <h5>Customer to invoice</h5>
+      <h5>{{'page.invoice.customerToInvoice'|translate}}</h5>
       <div>
         <p>{{currentCustomer.firstname}}, {{currentCustomer.lastname}}</p>
         <p>{{currentCustomer.vat}}</p>

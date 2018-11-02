@@ -76,7 +76,9 @@
     },
     "invoice": {
       "invoiceId": "N° Facture",
-      "newInvoice": "Nouvelle facture"
+      "newInvoice": "Nouvelle facture",
+      "currentProfile": "Mon profil courant",
+      "customerToInvoice": "Client à facturer"
     },
     "items": {
       "new": "Nouvel article",

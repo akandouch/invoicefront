@@ -76,7 +76,9 @@
     },
     "invoice": {
       "invoiceId": "Invoice id",
-      "newInvoice": "New Invoice"
+      "newInvoice": "New Invoice",
+      "currentProfile": "My current profile",
+      "customerToInvoice": "Customer to invoice"
     },
     "items": {
       "new": "New article",
