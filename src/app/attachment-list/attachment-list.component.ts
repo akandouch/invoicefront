@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-import { Invoice } from '../invoice/invoice.class';
-import { faPaperclip, faEllipsisH,faPlus, faEye, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { UploadRestServiceImpl } from '../services/uploadrestserviceimpl.class';
-import { RestService } from '../services/restservice.interface';
-import { InvoiceRestServiceImpl } from '../services/invoicerestserviceimpl.class';
-import { Upload } from '../upload/upload.class';
-import { DataColumn } from '../data-table/data-table.component';
+import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Invoice} from '../invoice/invoice.class';
+import {faEllipsisH, faEye, faPaperclip, faPlus, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {UploadRestServiceImpl} from '../services/uploadrestserviceimpl.class';
+import {RestService} from '../services/restservice.interface';
+import {InvoiceRestServiceImpl} from '../services/invoicerestserviceimpl.class';
+import {Upload} from '../upload/upload.class';
+import {DataColumn} from '../data-table/data-table.component';
 
 @Component({
   selector: 'app-attachment-list',
@@ -15,25 +15,31 @@ import { DataColumn } from '../data-table/data-table.component';
 export class AttachmentListComponent implements OnInit {
 
   @Input()
-  invoice:Invoice;
-  faPaperclip=faPaperclip;faEllipsisH=faEllipsisH;faPlus=faPlus;faEye=faEye;faTrashAlt=faTrashAlt;
+  invoice: Invoice;
+  faPaperclip = faPaperclip;
+  faEllipsisH = faEllipsisH;
+  faPlus = faPlus;
+  faEye = faEye;
+  faTrashAlt = faTrashAlt;
 
-  dataColumns:DataColumn[] = [
-    {field:{name:"fileName"},label:"Name"},
-    {field:{name:"contentType"},label:"Content type"}
+  dataColumns: DataColumn[] = [
+    {field: {name: 'fileName'}, label: 'common.name'},
+    {field: {name: 'contentType'}, label: 'common.contentType'}
   ];
 
   constructor(
-    @Inject(UploadRestServiceImpl)private uploadService:RestService,
-    @Inject(InvoiceRestServiceImpl)private invoiceService:RestService
-  
-  ) { }
+    @Inject(UploadRestServiceImpl) private uploadService: RestService,
+    @Inject(InvoiceRestServiceImpl) private invoiceService: RestService
+  ) {
+  }
 
   ngOnInit() {
   }
-  getAttachments(attachment:Upload){
+
+  getAttachments(attachment: Upload) {
     window.open(this.uploadService.getResourcePath(attachment));
   }
+
   addAttachment(event: any) {
     const blob = event.srcElement.files[0];
     const fileReader = new FileReader();
@@ -44,20 +50,21 @@ export class AttachmentListComponent implements OnInit {
       upl.newUpload = fileReader.result.split(',')[1];
       this.uploadService.post(upl, (u) => {
         this.invoice.attachments.push(u);
-        this.invoiceService.post(this.invoice, (invoiceUpdated)=> {
+        this.invoiceService.post(this.invoice, (invoiceUpdated) => {
           this.invoice = invoiceUpdated;
           alert('attachment added successfully');
         });
-      }, (err)=>{
+      }, (err) => {
         alert('error adding the attachment');
       });
     });
     fileReader.readAsDataURL(blob);
   }
+
   removeAttachment(attachment: Upload) {
-    this.uploadService.delete(attachment,(deletedUpload) => {
+    this.uploadService.delete(attachment, (deletedUpload) => {
       this.invoice.attachments = this.invoice.attachments.filter(u => u.id !== attachment.id);
-      this.invoiceService.post(this.invoice,  (invoiceUpdated) => {
+      this.invoiceService.post(this.invoice, (invoiceUpdated) => {
         this.invoice = invoiceUpdated;
         alert('attachment removed');
       });

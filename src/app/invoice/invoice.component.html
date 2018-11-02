@@ -25,7 +25,9 @@
 
         <div class="container-new-version col-lg-12 row">
           <div class="col-lg-8" *ngIf="!current && newVersion">
-          <div *ngFor="let i of history" class="col-lg-12 col-sm-12 new-table-invoice {{i.status==0?'invoice-open':'invoice-close'}} {{idDetailsSelected==i.id?'selected':''}} row" (click)="openDetails(i)" style="cursor: pointer;" >
+            <div *ngFor="let i of history"
+                 class="col-lg-12 col-sm-12 new-table-invoice {{i.status==0?'invoice-open':'invoice-close'}} {{idDetailsSelected==i.id?'selected':''}} row"
+                 (click)="openDetails(i)" style="cursor: pointer;">
               <div class="col-sm-12 col-lg-1 status">&nbsp;</div>
             <div class="col-lg-2" *ngIf="i.invoicer.logo" style="overflow: hidden">
               <app-image-loader [height]="75" [image]="i.invoicer.logo"></app-image-loader>
@@ -70,23 +72,24 @@
                   <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
                     <div (click)="openInvoice(i)">
                       <fa-icon [icon]="faFolderOpen"></fa-icon>
-                      Open
+                      {{'common.action.consult' | translate}}
                     </div>
                     <div (click)="openModal(content, i)">
                       <fa-icon [icon]="faEye"></fa-icon>
-                      Preview
+                      {{'common.action.preview' | translate}}
                     </div>
                     <div (click)="generatePdf(i)">
                       <fa-icon [icon]="faFilePdf"></fa-icon>
-                      Download PDF
+                      {{'common.action.downloadpdf' | translate}}
                     </div>
                     <div (click)="sendMail(i.id)">
                       <fa-icon [icon]="faMailBulk"></fa-icon>
-                      Send MAIL
+                      {{'common.action.sendmail' | translate}}
                     </div>
                     <div (click)="deleteInvoice(i)" *ngIf="i.status != 2">
                       <fa-icon [icon]="faTrashAlt"></fa-icon>
-                      Delete
+                      {{'common.action.delete' | translate}}
+
                     </div>
                   </div>
                 </div>
@@ -122,43 +125,45 @@
       <div class="col-lg-12" *ngIf="current">
         <div class="row">
           <div class="col-lg-4">
-            <label class="label" for="invoiceNumber">Invoice number</label>
+            <label class="label" for="invoiceNumber">{{'page.invoice.invoiceId'|translate}}</label>
             <input class="form-control" id="invoiceNumber" type="text" [(ngModel)]="current.invoiceNumber">
           </div>
           <div class="col-lg-4">
-            <label class="label" for="invoiceTitle">Title:&nbsp;</label>
+            <label class="label" for="invoiceTitle">{{'common.title'|translate}}:&nbsp;</label>
             <input class="form-control" id="invoiceTitle" type="text" [(ngModel)]="current.title">
           </div>
           <div class="col-lg-2">
-            <label class="label" for="invoiceStatus">Status:&nbsp;</label>
+            <label class="label" for="invoiceStatus">{{'common.status'|translate}}:&nbsp;</label>
             <select id="invoiceStatus" class="custom-select " [(ngModel)]="current.status">
-              <option value="0">Open</option>
-              <option value="2">Closed</option>
+              <option value="0">{{'common.open'| translate}}</option>
+              <option value="2">{{'common.close' | translate}}</option>
             </select>
           </div>
 
           &nbsp;
           <div class="col-lg-2">
             <button class="btn btn-dark text-white" (click)="invoiceBack()"><fa-icon [icon]="faArrowLeft"></fa-icon>
-                Back
+              {{'common.action.back'|translate}}
             </button>&nbsp;
-            <button type="button" class="btn btn-outline-dark" (click)="update()">Update</button>
+            <button type="button" class="btn btn-outline-dark" (click)="update()">
+              {{'common.action.update'|translate}}
+            </button>
           </div>
         </div>
         <hr>
         <div class="onglet col-lg-12 row">
           <div class="col-lg-1 header-icon {{listOpened == 'items'? 'open':''}}" (click)="openList('items')">
             <div class="col-lg-3"><fa-icon [icon]="faListAlt"></fa-icon></div>
-            <div class="col-lg-9">Items</div>
+            <div class="col-lg-9">{{'common.items' | translate}}</div>
           </div>
           <div class="col-lg-1 header-icon {{listOpened == 'attachments'?'open':''}}" (click)="openList('attachments')">
             <div class="col-lg-3"><fa-icon [icon]="faPaperclip"></fa-icon></div>
-            <div class="col-lg-9">Attachments</div>
+            <div class="col-lg-9">{{'common.attachments'| translate}}</div>
           </div>
 
           <div class="col-lg-1 header-icon {{listOpened == 'products'?'open':''}}" (click)="openList('products')">
             <div class="col-lg-3"><fa-icon [icon]="faListAlt"></fa-icon></div>
-            <div class="col-lg-9">Products</div>
+            <div class="col-lg-9">{{'menu.product'|translate}}</div>
           </div>
         </div>
         <app-attachment-list [invoice]="current" *ngIf="current && listOpened == 'attachments'"></app-attachment-list>
@@ -167,13 +172,13 @@
         <div class="col-lg-12 row" *ngIf="current && listOpened == 'products'">
           <div class="col-lg-7">
             <h5>Products</h5>
-            <span class="btn btn-outline-dark" (click)="current.products = []">Clear selection</span>
+            <span class="btn btn-outline-dark" (click)="current.products = []">{{'common.action.clearselection'|translate}}</span>
             <div class="col-lg-12 row selected-product-header">
                 <div class="col-lg-1"></div>
-                <div class="col-lg-3">Name</div>
-                <div class="col-lg-3">Unit price</div>
-                <div class="col-lg-2">Quantity</div>
-                <div class="col-lg-3">Unit of measure</div>
+              <div class="col-lg-3">{{'common.name'|translate}}</div>
+              <div class="col-lg-3">{{'page.items.priceUnit'|translate}}</div>
+              <div class="col-lg-2">{{'page.items.qty'| translate}}</div>
+              <div class="col-lg-3">{{'page.items.unitOfMeasure'| translate}}</div>
             </div>
             <div  class="col-lg-12 row selected-product-content" *ngFor="let p of current.products;let i = index">
               <div class="col-lg-1"><span click="remove">-</span></div>
@@ -196,7 +201,7 @@
 
 <ng-template #content let-c="close" let-d="dismiss" class="col-lg-12">
   <div class="modal-header col-lg-12">
-    <h4 class="modal-title" id="modal-basic-title">Invoice preview</h4>
+    <h4 class="modal-title" id="modal-basic-title">{{'common.action.preview'|translate}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -206,7 +211,7 @@
 
 <ng-template #invoiceContent let-c="close" let-d="dismiss" class="col-lg-12">
   <div class="modal-header col-lg-12">
-    <h4 class="modal-title" id="modal-basic-title">New Invoice</h4>
+    <h4 class="modal-title" id="modal-basic-title">{{'page.invoice.newInvoice'|translate}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -256,7 +261,9 @@
     </div>
   </div>
   <div class="modal-footer col-lg-12">
-    <button (click)="save()" type="button" class="btn btn-outline-secondary  new-invoice">Create invoice</button>
+    <button (click)="save()" type="button" class="btn btn-outline-secondary  new-invoice">{{'common.action.add'
+      |translate}}
+    </button>
   </div>
 </ng-template>
 <ng-template #menu>

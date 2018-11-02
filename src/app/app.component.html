@@ -17,8 +17,12 @@
           <a class="nav-link text-white " href="#" (click)="$event.preventDefault()" id="dropLang" ngbDropdownToggle>
             <fa-icon [icon]="faLanguage" width="50px"></fa-icon>&nbsp;{{'common.language'| translate}}</a>
           <div ngbDropdownMenu aria-labelledby="dropLang">
-            <button class="dropdown-item" (click)="useLanguage('fr')">FR</button>
-            <button class="dropdown-item" (click)="useLanguage('en')">EN</button>
+            <button class="dropdown-item" (click)="useLanguage('fr')">
+              <span class="flag-icon flag-icon-fr "></span>&nbsp;FR
+            </button>
+            <button class="dropdown-item" (click)="useLanguage('en')">
+              <span class="flag-icon flag-icon-gb"></span>&nbsp;EN
+            </button>
             <!-- todo <button class="dropdown-item" (click)="useLanguage('nl')">NL</button>-->
           </div>
         </div>

@@ -4,13 +4,24 @@
   },
   "common": {
     "action": {
+      "clearselection": "Clear selection",
       "add": "Add",
       "edit": "Edit",
+      "update": "Update",
+      "back": "Back",
       "delete": "Delete",
-      "consult": "Contult"
+      "consult": "Contult",
+      "preview": "Preview",
+      "downloadpdf": "Download PDF",
+      "sendmail": "Send MAIL"
     },
+    "name": "Name",
+    "contentType": "Content-Type",
+    "title": "Title",
+    "attachments": "Attachments",
+    "items": "Items",
     "open": "Open",
-    "close": "Close",
+    "close": "Closed",
     "status": "Status",
     "invoicer": "Invoicer",
     "customer": "Customer",
@@ -60,7 +71,17 @@
       }
     },
     "invoice": {
-      "invoiceId": "Invoice id"
+      "invoiceId": "Invoice id",
+      "newInvoice": "New Invoice"
+    },
+    "items": {
+      "id": "Item Id",
+      "project": "Project",
+      "priceUnit": "Price per unit",
+      "vatRate": "VAT Rate",
+      "period": "Period",
+      "qty": "Quantity",
+      "unitOfMeasure": "Unit of measure"
     }
   },
   "error": {
