@@ -6,11 +6,16 @@
     "action": {
       "add": "Add",
       "edit": "Edit",
+      "update": "Update",
+      "back": "Back",
       "delete": "Delete",
-      "consult": "Contult"
+      "consult": "Contult",
+      "preview": "Preview",
+      "downloadpdf": "Download PDF",
+      "sendmail": "Send MAIL"
     },
     "open": "Open",
-    "close": "Close",
+    "close": "Closed",
     "status": "Status",
     "invoicer": "Invoicer",
     "customer": "Customer",

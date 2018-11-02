@@ -91,7 +91,9 @@
 
         <div class="container-new-version col-lg-12 row">
           <div class="col-lg-8" *ngIf="!current && newVersion">
-          <div *ngFor="let i of history" class="col-lg-12 col-sm-12 new-table-invoice {{i.status==0?'invoice-open':'invoice-close'}} {{idDetailsSelected==i.id?'selected':''}} row" (click)="openDetails(i)" style="cursor: pointer;" >
+            <div *ngFor="let i of history"
+                 class="col-lg-12 col-sm-12 new-table-invoice {{i.status==0?'invoice-open':'invoice-close'}} {{idDetailsSelected==i.id?'selected':''}} row"
+                 (click)="openDetails(i)" style="cursor: pointer;">
               <div class="col-sm-12 col-lg-1 status">&nbsp;</div>
             <div class="col-lg-2" *ngIf="i.invoicer.logo" style="overflow: hidden">
               <app-image-loader [height]="75" [image]="i.invoicer.logo"></app-image-loader>
@@ -136,23 +138,24 @@
                   <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
                     <div (click)="openInvoice(i)">
                       <fa-icon [icon]="faFolderOpen"></fa-icon>
-                      Open
+                      {{'common.action.consult' | translate}}
                     </div>
                     <div (click)="openModal(content, i)">
                       <fa-icon [icon]="faEye"></fa-icon>
-                      Preview
+                      {{'common.action.preview' | translate}}
                     </div>
                     <div (click)="generatePdf(i)">
                       <fa-icon [icon]="faFilePdf"></fa-icon>
-                      Download PDF
+                      {{'common.action.downloadpdf' | translate}}
                     </div>
                     <div (click)="sendMail(i.id)">
                       <fa-icon [icon]="faMailBulk"></fa-icon>
-                      Send MAIL
+                      {{'common.action.sendmail' | translate}}
                     </div>
                     <div (click)="deleteInvoice(i)" *ngIf="i.status != 2">
                       <fa-icon [icon]="faTrashAlt"></fa-icon>
-                      Delete
+                      {{'common.action.delete' | translate}}
+
                     </div>
                   </div>
                 </div>
@@ -198,17 +201,19 @@
           <div class="col-lg-2">
             <label class="label" for="invoiceStatus">Status:&nbsp;</label>
             <select id="invoiceStatus" class="custom-select " [(ngModel)]="current.status">
-              <option value="0">Open</option>
-              <option value="2">Closed</option>
+              <option value="0">{{'common.open'| translate}}</option>
+              <option value="2">{{'common.close' | translate}}</option>
             </select>
           </div>
 
           &nbsp;
           <div class="col-lg-2">
             <button class="btn btn-dark text-white" (click)="invoiceBack()"><fa-icon [icon]="faArrowLeft"></fa-icon>
-                Back
+              {{'common.action.back'|translate}}
             </button>&nbsp;
-            <button type="button" class="btn btn-outline-dark" (click)="update()">Update</button>
+            <button type="button" class="btn btn-outline-dark" (click)="update()">
+              {{'common.action.update'|translate}}
+            </button>
           </div>
         </div>
         <hr>

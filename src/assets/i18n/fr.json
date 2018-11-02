@@ -6,11 +6,16 @@
     "action": {
       "add": "Ajouter",
       "edit": "Editer",
+      "update": "Mettre à jour",
+      "back": "Retour",
       "delete": "Supprimer",
-      "consult": "Consulter"
+      "consult": "Consulter",
+      "preview": "Aperçu",
+      "downloadpdf": "Télécharger PDF",
+      "sendmail": "Envoi Email"
     },
-    "open": "Ouvrir",
-    "close": "Fermer",
+    "open": "En cours",
+    "close": "Clôturée",
     "status": "Statut",
     "invoicer": "Vendeur",
     "customer": "Client",
