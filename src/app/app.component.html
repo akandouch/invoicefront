@@ -3,7 +3,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div [ngClass]="toggleNavbarShow()" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#">{{'main.title' | translate}}</a>
+    <a class="navbar-brand" routerLink="/">{{'main.title' | translate}}</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item" *ngFor="let m of menu" (click)="click(m);m.selected=true;">
         <a routerLink="{{m.route}}" class="nav-link text-white">
