@@ -5,8 +5,8 @@
   <div [ngClass]="toggleNavbarShow()" id="navbarTogglerDemo01">
     <a class="navbar-brand" routerLink="/"
        [ngStyle]="{'color': currentMenu && currentMenu.route === '/' && currentMenu.selected ? currentMenu.color:''}">
-      <img width="16" height="16" class="d-sm-block da-md-inline" src="favicon.ico">
-      <i class="d-sm-none d-md-inline">{{'main.title' | translate}}</i>
+      <img width="16" height="16" class="d-inline" src="favicon.ico">
+      <i class="d-inline">{{'main.title' | translate}}</i>
     </a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" *ngFor="let m of menu" (click)="click(m);m.selected=true;">
