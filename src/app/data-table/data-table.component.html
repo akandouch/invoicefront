@@ -1,4 +1,4 @@
-<div class="table-wrapper" *ngIf="0">    
+<div class="table-wrapper" *ngIf="0">
     <div class="table-column" *ngFor="let row of dataColumns">
       <div class="table-header">{{row.label | translate}}</div>
       <div class="table-content row-{{i}} {{row.cssClass}} {{getdataclass(data,row)}}"
@@ -28,7 +28,7 @@
       </div>
     </div>
 </div>
-<div class="mainGrid">
+<div class="mainGrid  mt-3">
   <div class="gridCol gridHeaders">
       <div class="gridRow" *ngFor="let row of dataColumns" title="{{row.label | translate}}">{{row.label | translate}}</div>
       <div class="gridRow" *ngIf="enableConsult || enableDelete || enableEdit">&nbsp;</div>
@@ -65,7 +65,7 @@
 </div>
 
 
-<div class="container-table-items col-lg-12" *ngIf="0">
+<div class="container-table-items col-lg-12 " *ngIf="0">
     <div class="row new-items table-header">
       <div *ngFor="let row of dataColumns" class="col-lg-{{row.size}}">{{row.label |translate}}</div>
     </div>
