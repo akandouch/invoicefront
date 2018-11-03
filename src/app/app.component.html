@@ -4,8 +4,8 @@
   </button>
   <div [ngClass]="toggleNavbarShow()" id="navbarTogglerDemo01">
     <img width="16" height="16" src="favicon.ico">
-    <a class="navbar-brand" routerLink="/">&nbsp;{{'main.title' | translate}}</a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <a class="navbar-brand p-0" routerLink="/"><i>{{'main.title' | translate}}&nbsp;</i></a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-1">
       <li class="nav-item" *ngFor="let m of menu" (click)="click(m);m.selected=true;">
         <a routerLink="{{m.route}}" class="nav-link text-white">
           <fa-icon [icon]="m.icon" [ngStyle]="{color: m.color}" width="50px"></fa-icon>
