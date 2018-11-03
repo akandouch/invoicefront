@@ -20,6 +20,7 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public gdpr: boolean;
   title = 'invoicecfront';
   faHome = faHome;
   faHistory = faHistory;
@@ -38,7 +39,7 @@ export class AppComponent {
               private translate: TranslateService) {
     this.translate.setDefaultLang(this.translate.currentLang || this.translate.getBrowserLang());
 
-
+    this.gdpr = true;
     this.menu = [];
 
     this.menu.push({color: '#ff84ff', route: '/dashboard', label: 'menu.dashboard', icon: faChartLine});

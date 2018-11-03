@@ -1,9 +1,12 @@
 {
   "main": {
-    "title": "nvoicer"
+    "title": "nvoicer",
+    "gdpr": "Nous utilisons des cookies qui nous permettent de vous offrir la meilleure expérience sur notre site. En continuant d'utiliser le site, vous acceptez notre usage des cookies."
   },
   "common": {
     "action": {
+      "accept": "Accepter",
+      "refuse": "Refuser",
       "clearselection": "Vider selection",
       "add": "Ajouter",
       "edit": "Editer",

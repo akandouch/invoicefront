@@ -78,3 +78,12 @@
     </div>
   </div>
 </div>
+<!-- Footer -->
+<footer *ngIf="gdpr" class="footer bg-dark p-2">
+  <div class="container mt-4 ">
+    <p class="text-white lead ">{{'main.gdpr'|translate}}</p>
+    <button class="btn btn-success text-white" (click)="gdpr=false">{{'common.action.accept'|translate}}</button>&nbsp;
+    <a href="https://google.fr" class="btn btn-danger text-white">{{'common.action.refuse'|translate}}</a>
+  </div>
+</footer>
+<!-- Footer -->

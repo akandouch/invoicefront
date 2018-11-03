@@ -1,9 +1,13 @@
 {
   "main": {
-    "title": "nvoicer"
+    "title": "nvoicer",
+    "gdpr": "Wij gebruiken cookies die ons helpen om u de beste ervaring op onze site te bieden. Door de site te blijven gebruiken, gaat u akkoord met ons gebruik van cookies."
+
   },
   "common": {
     "action": {
+      "accept": "Aanvaarden",
+      "refuse": "Weigeren",
       "clearselection": "Selectie wissen",
       "add": "Toevoegen",
       "edit": "Bewerken",
