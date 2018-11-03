@@ -90,15 +90,6 @@ ul.recent>li:hover {
     border-color: #dfa9b5;
     background-color: #ffd2d2;
 }*/
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
 
 .footer {
   position: absolute;
