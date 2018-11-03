@@ -72,7 +72,8 @@
     "invoice": "Invoice",
     "profile": "Profiles",
     "product": "Products",
-    "setting": "Settings"
+    "setting": "Settings",
+    "home": "Home"
   },
   "page": {
     "dashboard": {

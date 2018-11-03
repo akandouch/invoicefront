@@ -48,14 +48,17 @@ export class AppComponent {
     this.menu.push({color: '#ff8484', route: '/settings', label: 'menu.setting', icon: faCogs});
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
-        let url = e.url;
+        this.menu.forEach(menu => menu.selected = false);
+        const url = e.url;
         if (url === null || url.length === 0 || url === '/') {
-          url = '/';
-        }
-        const currentMenuList = this.menu.filter(r => r.route === url);
-        if (currentMenuList && currentMenuList.length > 0) {
-          this.currentMenu = currentMenuList[0];
+          this.currentMenu = {color: '#00c68e', route: '/', label: 'menu.home', icon: this.faHome};
           this.currentMenu.selected = true;
+        } else {
+          const currentMenuList = this.menu.filter(r => r.route === url);
+          if (currentMenuList && currentMenuList.length > 0) {
+            this.currentMenu = currentMenuList[0];
+            this.currentMenu.selected = true;
+          }
         }
 
       }
@@ -71,6 +74,7 @@ export class AppComponent {
   useLanguage(language: string) {
     this.translate.use(language);
   }
+
   isLoggedIn() {
     return this.getUser() !== null;
   }

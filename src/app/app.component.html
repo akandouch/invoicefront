@@ -4,7 +4,10 @@
   </button>
   <div [ngClass]="toggleNavbarShow()" id="navbarTogglerDemo01">
     <img width="16" height="16" src="favicon.ico">
-    <a class="navbar-brand p-0" routerLink="/"><i>{{'main.title' | translate}}&nbsp;</i></a>
+    <a class="navbar-brand p-0" routerLink="/"
+       [ngStyle]="{'color': currentMenu && currentMenu.route === '/' && currentMenu.selected ? currentMenu.color:''}">
+      <i>{{'main.title' | translate}}&nbsp;</i>
+    </a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-1">
       <li class="nav-item" *ngFor="let m of menu" (click)="click(m);m.selected=true;">
         <a routerLink="{{m.route}}" class="nav-link text-white">
@@ -61,12 +64,12 @@
     <div *ngIf="currentMenu" class="col-lg-12">
       <fa-icon [icon]="currentMenu.icon" class="header-icon"
                [ngStyle]="{'border-color': currentMenu.color, 'color': currentMenu.color}"></fa-icon>
-            <h5>
-              {{currentMenu.label | translate}}
-            </h5>
-        </div>
-        <router-outlet></router-outlet>
+      <h5>
+        {{currentMenu.label | translate}}
+      </h5>
     </div>
+    <router-outlet></router-outlet>
+  </div>
 </div>
 <div class="row col-sm-12" *ngIf="!isLoggedIn()">
   <div class="container">

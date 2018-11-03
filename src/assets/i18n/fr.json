@@ -72,7 +72,8 @@
     "invoice": "Facturation",
     "profile": "Gestion des profils",
     "product": "Produits",
-    "setting": "Paramètres"
+    "setting": "Paramètres",
+    "home": "Accueil"
   },
   "page": {
     "dashboard": {
