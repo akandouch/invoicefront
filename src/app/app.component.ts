@@ -50,7 +50,7 @@ export class AppComponent {
       if (e instanceof NavigationEnd) {
         let url = e.url;
         if (url === null || url.length === 0 || url === '/') {
-          url = '/dashboard';
+          url = '/';
         }
         const currentMenuList = this.menu.filter(r => r.route === url);
         if (currentMenuList && currentMenuList.length > 0) {

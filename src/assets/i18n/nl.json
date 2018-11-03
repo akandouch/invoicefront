@@ -119,6 +119,12 @@
       "general": "Algemeen",
       "active": "actief profiel?",
       "customer": "klantprofiel?"
+    },
+    "home": {
+      "greeting": "Welkom.",
+      "readmore": "Lees hier meer over de toepassing.",
+      "getstart": "Begin",
+      "getstarthere": "Begin hier."
     }
   },
   "error": {

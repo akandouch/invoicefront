@@ -37,9 +37,10 @@ import {InvoiceProfileRestServiceImpl} from './services/invoiceprofilerestservic
 import {ImageLoaderComponent} from './image-loader/image-loader.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HomeComponent} from './home/home.component';
 
 const routes: Route[] = [
-  {path: '', component: DashboardComponent},
+  {path: '', component: HomeComponent},
   {path: 'invoiceprofile', component: InvoiceprofileComponent},
   {path: 'invoice', component: InvoiceComponent},
   {path: 'settings', component: SettingsComponent},
@@ -62,7 +63,8 @@ const routes: Route[] = [
     AttachmentListComponent,
     ProductComponent,
     PaginationComponent,
-    ImageLoaderComponent
+    ImageLoaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
