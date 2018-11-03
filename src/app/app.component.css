@@ -90,12 +90,10 @@ ul.recent>li:hover {
     border-color: #dfa9b5;
     background-color: #ffd2d2;
 }*/
-
 .footer {
-  position: absolute;
-  text-align: center;
+  position: fixed;
+  left: 0;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
-  background-color: #f5f5f5;
+  text-align: center;
 }

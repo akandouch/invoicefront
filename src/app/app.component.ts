@@ -100,7 +100,7 @@ export class AppComponent {
 
   toggleNavbarShow() {
     if (this.toggleNavbarClass) {
-      return 'collapse navbar-collapse show';
+      return 'collapse navbar-collapse show ';
     }
     return 'collapse navbar-collapse';
   }

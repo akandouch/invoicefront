@@ -1,14 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+  <button class="navbar-toggler pb-2" type="button" (click)="toggleNavbar()">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div [ngClass]="toggleNavbarShow()" id="navbarTogglerDemo01">
-    <a class="navbar-brand mt-sm-1 mt-md-0" routerLink="/"
+    <a class="navbar-brand" routerLink="/"
        [ngStyle]="{'color': currentMenu && currentMenu.route === '/' && currentMenu.selected ? currentMenu.color:''}">
-      <img width="16" height="16" class="d-sm-block d-md-inline" src="favicon.ico">
+      <img width="16" height="16" class="d-sm-block da-md-inline" src="favicon.ico">
       <i class="d-sm-none d-md-inline">{{'main.title' | translate}}</i>
     </a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-1">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item" *ngFor="let m of menu" (click)="click(m);m.selected=true;">
         <a routerLink="{{m.route}}" class="nav-link text-white">
           <fa-icon [icon]="m.icon" [ngStyle]="{color: m.color}" width="50px"></fa-icon>
