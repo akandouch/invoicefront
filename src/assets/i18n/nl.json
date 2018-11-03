@@ -1,1 +1,128 @@
-{}
+{
+  "main": {
+    "title": "Invoicer V.0.0.3-SNAPSHOT NL"
+  },
+  "common": {
+    "action": {
+      "clearselection": "Selectie wissen",
+      "add": "Toevoegen",
+      "edit": "Bewerken",
+      "update": "Update",
+      "back": "Terug",
+      "delete": "Verwijderen",
+      "save": "Opslaan",
+      "change": "Wijzigen",
+      "consult": "Consult",
+      "preview": "Voorbeeld",
+      "downloadpdf": "PDF downloaden",
+      "sendmail": "Verzend MAIL"
+    },
+    "yourLogo": "Uw logo",
+    "street": "Straat",
+    "streetNumber": "N°",
+    "city": "Stad",
+    "postcode": "Postcode",
+    "country": "Land",
+    "accountNumber": "Account N°",
+    "phone": "Telefoon",
+    "firstname": "Voornaam",
+    "lastname": "Achternaam",
+    "mail": "Mail",
+    "days": "Dagen",
+    "type": "Type",
+    "description": "Beschrijving",
+    "name": "Naam",
+    "contentType": "Content-Type",
+    "title": "Titel",
+    "attachments": "Bijlagen",
+    "items": "Items",
+    "open": "Open",
+    "close": "Gesloten",
+    "status": "Status",
+    "invoicer": "Invoicer",
+    "customer": "Klant",
+    "vat": "BTW",
+    "username": "Gebruikersnaam",
+    "password": "Wachtwoord",
+    "language": "Taal",
+    "signin": "Inloggen",
+    "logout": "Afmelden",
+    "greeting": "Welkom",
+    "currentProfile": "Huidig ​​profiel",
+    "calendar": {
+      "year": "Jaar",
+      "labels": [
+        "Jan",
+        "Febr",
+        "Mar",
+        "April",
+        "Mei",
+        "Juni",
+        "Juli",
+        "Aug",
+        "Sept",
+        "Oct",
+        "Nov",
+        "Dec"
+      ]
+    }
+  },
+  "menu": {
+    "dashboard": "Dashboard",
+    "invoice": "Factuur",
+    "profile": "Profielen",
+    "product": "Producten",
+    "setting": "Instellingen"
+  },
+  "page": {
+    "dashboard": {
+      "nbInvoice": "Aantal facturen",
+      "totalRevenueInvoiced": "Totale gefactureerde omzet",
+      "totalRevenueWaitingForInvoice": "Totale inkomsten wachten op factuur",
+      "avgRate": "Gemiddeld tarief",
+      "legend": {
+        "ratePerMonth": "Tarief per maand",
+        "daysPerMonth": "Dagen per maand",
+        "totalInvoiced": "Totaal gefactureerd"
+      }
+    },
+    "invoice": {
+      "invoiceId": "Factuur id",
+      "newInvoice": "Nieuwe Factuur",
+      "currentProfile": "Mijn huidige profiel",
+      "customerToInvoice": "Klant om te factureren"
+    },
+    "items": {
+      "new": "Nieuw artikel",
+      "nature": "Nature",
+      "id": "Artikel Id",
+      "project": "Project",
+      "priceUnit": "Prijs per eenheid",
+      "vatRate": "BTW tarief",
+      "rate": "Tarief",
+      "period": "Periode",
+      "qty": "Aantal",
+      "unitOfMeasure": "Maateenheid"
+    },
+    "product": {
+      "searchProduct": "Zoeken naar een product",
+      "id": "Id"
+    },
+    "settings": {
+      "currentInvoiceNumber": "Huidig ​​factuurnummer",
+      "currentRate": "Huidige koers",
+      "currentVatRate": "Huidige BTW %"
+    },
+    "profile": {
+      "new": "Nieuw profiel",
+      "address": "Adres",
+      "general": "Algemeen",
+      "active": "actief profiel?",
+      "customer": "klantprofiel?"
+    }
+  },
+  "error": {
+    "forbidden": "Verboden. U hebt geen toegang tot deze bron. Meld u aan met de juiste toegangen."
+  }
+}
+
