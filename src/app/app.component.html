@@ -8,7 +8,7 @@
       <img width="16" height="16" class="d-inline" src="favicon.ico">
       <i class="d-inline">{{'main.title' | translate}}</i>
     </a>
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto pt-1">
       <li class="nav-item" *ngFor="let m of menu" (click)="click(m);m.selected=true;">
         <a routerLink="{{m.route}}" *ngIf="hasRole(m.role)" class="nav-link text-white">
           <fa-icon [icon]="m.icon" [ngStyle]="{color: m.color}" width="50px"></fa-icon>
