@@ -39,7 +39,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HomeComponent} from './home/home.component';
 import {ErrorPageComponent} from './error-page/error-page.component';
-import {AuthGuardService} from './authghardservice';
+import {AuthGuardService} from './authguardservice';
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
