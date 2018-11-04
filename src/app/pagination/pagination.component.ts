@@ -5,6 +5,7 @@ import { Entity } from '../entity.interface';
 import { RestServiceAbstract } from '../services/restserviceabstract.class';
 import { DataSourceFactory } from '../data-table/datasourcefactory.class';
 import { DataSource, Page } from '../data-table/datasource.interface';
+import { RestDataSource } from '../data-table/restdatasource.class';
 
 @Component({
   selector: 'app-pagination',
@@ -44,8 +45,9 @@ export class PaginationComponent implements OnInit, OnChanges {
     
     this.dataSource = DataSourceFactory.getDataSource(this.dataSource);
     this.get();
-    if( this.dataSource instanceof RestServiceAbstract ){
-      (<RestService>this.dataSource)
+    if( this.dataSource instanceof RestDataSource ){
+      console.log('listen');
+      (<RestDataSource>this.dataSource).source
       .on("post",()=>{
         this.get();
       })
