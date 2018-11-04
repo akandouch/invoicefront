@@ -16,15 +16,14 @@ export class ErrorInterceptor implements HttpInterceptor {
       console.log(err);
       console.log(err.status);
       let errorLabel = 'error.unexpected';
-      if (err.status === 401 || err.status === 403) {
+      if (err.status === 401 || err.status === 403 || err.status === 0) {
         console.log('forbidden');
         this.authenticationService.logout();
         errorLabel = 'error.forbidden';
       }
       this.router.navigate(['/error'],
         {
-          queryParams: {label: errorLabel, status: err.status, message: err.error.message},
-          relativeTo: this.actRoute
+          queryParams: {label: errorLabel, status: err.status, message: err.error.message}
         });
       const observable: Observable<HttpEvent<any>> = empty();
       return throwError(err);

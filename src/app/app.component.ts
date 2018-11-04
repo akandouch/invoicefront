@@ -72,7 +72,7 @@ export class AppComponent {
   login() {
     console.log(`Username : ${this.username}, password : ${this.password}`);
     this.authenticationService.login(this.username, this.password, (resp) => {
-      this.router.navigate(['/', {relativeTo: this.actRoute}]);
+      this.router.navigate(['/']);
     });
   }
 
@@ -90,7 +90,7 @@ export class AppComponent {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/'], {relativeTo: this.actRoute});
+    this.router.navigate(['/']);
   }
 
   click(item: MenuLink) {

@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prod": "node server.js"
+    "prod": "node server-prod.js"
   },
   "private": true,
   "dependencies": {
