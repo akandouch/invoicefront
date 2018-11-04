@@ -60,22 +60,22 @@
   </div>
 </nav>
 <div>
-  <div class="container-fluid routerContent">
+  <div class="container-fluid routerContent"><!--
     <div *ngIf="currentMenu" class="col-lg-12">
       <fa-icon [icon]="currentMenu.icon" class="header-icon"
                [ngStyle]="{'border-color': currentMenu.color, 'color': currentMenu.color}"></fa-icon>
       <h5>
         {{currentMenu.label | translate}}
       </h5>
-    </div>
+    </div>-->
     <router-outlet></router-outlet>
   </div>
 </div>
 <!-- Footer -->
-<footer *ngIf="gdpr" class="footer bg-dark p-2">
+<footer *ngIf="gdprShow()" class="footer bg-dark p-2">
   <div class="container ">
     <p class="text-white lead text-uppercase">{{'main.gdpr'|translate}}</p>
-    <button class="btn btn-success text-uppercase text-white" (click)="gdpr=false">
+    <button class="btn btn-success text-uppercase text-white" (click)="gdprAccepted()">
       {{'common.action.accept'|translate}}
     </button>&nbsp;
     <a href="https://google.fr" class="btn btn-danger text-white">{{'common.action.refuse'|translate}}</a>

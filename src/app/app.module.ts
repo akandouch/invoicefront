@@ -39,15 +39,16 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HomeComponent} from './home/home.component';
 import {ErrorPageComponent} from './error-page/error-page.component';
+import {AuthGuardService} from './authghardservice';
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
   {path: 'error', component: ErrorPageComponent},
-  {path: 'invoiceprofile', component: InvoiceprofileComponent},
-  {path: 'invoice', component: InvoiceComponent},
-  {path: 'settings', component: SettingsComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'product', component: ProductComponent},
+  {path: 'invoiceprofile', component: InvoiceprofileComponent, canActivate: [AuthGuardService]},
+  {path: 'invoice', component: InvoiceComponent, canActivate: [AuthGuardService]},
+  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService]},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
+  {path: 'product', component: ProductComponent, canActivate: [AuthGuardService]},
   {path: '**', component: ErrorPageComponent}
 ];
 
@@ -105,7 +106,8 @@ const routes: Route[] = [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: ProductRestServiceImpl, useClass: ProductRestServiceImpl},
-    {provide: InvoiceProfileRestServiceImpl, useClass: InvoiceProfileRestServiceImpl}
+    {provide: InvoiceProfileRestServiceImpl, useClass: InvoiceProfileRestServiceImpl},
+    {provide: AuthGuardService, useClass: AuthGuardService},
 
   ],
   bootstrap: [AppComponent]

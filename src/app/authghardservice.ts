@@ -1,0 +1,20 @@
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
+import {AuthenticationService} from './authenticationservice';
+
+@Injectable()
+export class AuthGuardService implements CanActivate {
+  constructor(public auth: AuthenticationService, public router: Router) {
+  }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    if (!this.auth.getUser()) {
+      this.router.navigate(['/error'],
+        {
+          queryParams: {label: 'error.forbidden', status: 401, message: 'error.forbidden', returnUrl: state.url}
+        });
+      return false;
+    }
+    return true;
+  }
+}

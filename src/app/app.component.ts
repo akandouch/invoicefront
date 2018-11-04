@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   faAddressBook,
   faChartLine,
@@ -20,8 +20,8 @@ import {environment} from './../environments/environment';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  public gdpr: boolean;
+export class AppComponent implements OnInit {
+  localStorage = localStorage;
   title = 'invoicecfront';
   faHome = faHome;
   faHistory = faHistory;
@@ -31,6 +31,7 @@ export class AppComponent {
   faCogs = faCogs;
   faLanguage = faSignLanguage;
   public username: string;
+  public returnUrl: string;
   public password: string;
 
   menu: MenuLink[];
@@ -40,7 +41,6 @@ export class AppComponent {
               private translate: TranslateService) {
     this.translate.setDefaultLang(this.translate.currentLang || this.translate.getBrowserLang());
 
-    this.gdpr = environment.production;
     this.menu = [];
 
     this.menu.push({color: '#ff84ff', route: '/dashboard', label: 'menu.dashboard', icon: faChartLine});
@@ -69,10 +69,19 @@ export class AppComponent {
     });
   }
 
+  ngOnInit() {
+    this.returnUrl = '';
+    this.actRoute.queryParams.subscribe(params => {
+      console.log(params);
+      this.returnUrl = params['returnUrl'];
+    });
+  }
+
   login() {
     console.log(`Username : ${this.username}, password : ${this.password}`);
     this.authenticationService.login(this.username, this.password, (resp) => {
-      this.router.navigate(['/']);
+      console.log(this.returnUrl);
+      this.router.navigateByUrl(this.returnUrl);
     });
   }
 
@@ -108,6 +117,14 @@ export class AppComponent {
       return 'collapse navbar-collapse show ';
     }
     return 'collapse navbar-collapse';
+  }
+
+  gdprShow() {
+    return environment.production && !localStorage.getItem('gdpr');
+  }
+
+  gdprAccepted() {
+    localStorage.setItem('gdpr', 'true');
   }
 }
 
