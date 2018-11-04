@@ -3,6 +3,8 @@ import { RestService } from '../services/restservice.interface';
 import { faFastBackward, faFastForward, faStepForward, faStepBackward } from '@fortawesome/free-solid-svg-icons';
 import { Entity } from '../entity.interface';
 import { RestServiceAbstract } from '../services/restserviceabstract.class';
+import { DataSourceFactory } from '../data-table/datasourcefactory.class';
+import { DataSource, Page } from '../data-table/datasource.interface';
 
 @Component({
   selector: 'app-pagination',
@@ -20,8 +22,11 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   faFastBackward=faFastBackward;faFastForward=faFastForward;faStepForward=faStepForward;faStepBackward=faStepBackward;
 
+ /* @Input()
+  dataSource:RestService|Array<Entity>;*/
+
   @Input()
-  dataSource:RestService|Array<Entity>;
+  dataSource:DataSource;
 
   @Output()
   newData:EventEmitter<any>=new EventEmitter();
@@ -33,10 +38,11 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(){
-    this.get();
+    //this.get();
   }
   ngOnInit() {
     
+    this.dataSource = DataSourceFactory.getDataSource(this.dataSource);
     this.get();
     if( this.dataSource instanceof RestServiceAbstract ){
       (<RestService>this.dataSource)
@@ -47,13 +53,26 @@ export class PaginationComponent implements OnInit, OnChanges {
         this.get();
       })
       .on("get", ()=>{
-        //this.get();
       });
-    }else if( this.dataSource instanceof Array){
     }
   }
 
   get(){
+    this.dataSource.getPage(this.pageSize, this.pageNumber).then((page)=>{
+
+      this.totalPages = page.totalPages;
+      this.totalElement = page.totalElement;
+      this.last = page.last;
+      
+      this.pages = [];
+      for(let i=0;i<this.totalPages;i++){
+        this.pages.push(i);
+      }
+      this.newData.emit(page.content);
+    });
+  }
+
+  getiold(){
     if(this.dataSource instanceof RestServiceAbstract){
       (<RestService>this.dataSource).get({pageNumber:this.pageNumber, pageSize:this.pageSize},(data)=>{
         this.newData.emit(data.content)

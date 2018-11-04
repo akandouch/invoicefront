@@ -22,26 +22,9 @@
     <option value="1">Article</option>
   </select>
   {{'common.name'| translate}}: <input [(ngModel)]="nameFilter">
-
   
   <app-data-table
-    [dataSource]="filteredProduct"
+    [dataSource]="productRestService"
     [dataColumns]="dataColumns"
-  ></app-data-table>
-  <!--
-  <div class="col-lg-12 table-product-selection">
-    <div class="col-lg-12 row header">
-      <div class="col-lg-2">Type</div>
-      <div class="col-lg-4">Name</div>
-      <div class="col-lg-3">Unit of Measure</div>
-      <div class="col-lg-3">Unit price</div>
-    </div>
-    <div class="col-lg-12 row content" *ngFor="let p of filteredProduct" (click)="select(p)">
-      <div class="col-lg-2">{{p.type}}</div>
-      <div class="col-lg-4">{{p.name}}</div>
-      <div class="col-lg-3">{{p.unitOfMeasure}}</div>
-      <div class="col-lg-3">{{p.unitPrice}}€</div>
-    </div>
-  </div>
-  -->
+  ></app-data-table>  
 </div>

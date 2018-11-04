@@ -24,7 +24,7 @@
         <!-- NEW VERSION -->
 
         <div class="container-new-version col-lg-12 row">
-          <div class="col-lg-8" *ngIf="!current && newVersion">
+          <div class="col-lg-8 col-sm-12" *ngIf="!current && newVersion">
             <div *ngFor="let i of history"
                  class="col-lg-12 col-sm-12 new-table-invoice {{i.status==0?'invoice-open':'invoice-close'}} {{idDetailsSelected==i.id?'selected':''}} row"
                  (click)="openDetails(i)" style="cursor: pointer;">
@@ -98,7 +98,7 @@
           </div>
           <app-pagination [dataSource]="invoiceService" (newData)="refreshGrid($event)"></app-pagination>
           </div>
-          <div class="col-lg-4 details-container" *ngIf="details && newVersion">
+          <div class="col-lg-4 col-sm-12 details-container" *ngIf="details && newVersion">
             <div class="col-lg-12" *ngIf="details.items.length == 0"><h5>No items</h5></div>
             <div class="col-lg-12 row details-row" *ngFor="let d of details.items">
 
