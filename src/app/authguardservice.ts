@@ -8,13 +8,14 @@ export class AuthGuardService implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (!this.auth.getUser()) {
-      this.router.navigate(['/error'],
-        {
-          queryParams: {label: 'error.unauthorized', status: 401, message: 'error.forbidden', returnUrl: state.url}
-        });
-      return false;
+    const expectedRole = route.data.expectedRole || 'ANONYMOUS';
+    if (this.auth.hasRole(expectedRole)) {
+      return true;
     }
-    return true;
+    this.router.navigate(['/error'],
+      {
+        queryParams: {label: 'error.forbidden', status: 401, message: 'error.forbidden', returnUrl: state.url}
+      });
+    return false;
   }
 }

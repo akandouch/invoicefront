@@ -10,7 +10,7 @@
     </a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" *ngFor="let m of menu" (click)="click(m);m.selected=true;">
-        <a routerLink="{{m.route}}" class="nav-link text-white">
+        <a routerLink="{{m.route}}" *ngIf="hasRole(m.role)" class="nav-link text-white">
           <fa-icon [icon]="m.icon" [ngStyle]="{color: m.color}" width="50px"></fa-icon>
           <span [ngStyle]="{'color': m.selected ? m.color:''}">&nbsp;{{m.label | translate}}</span>
         </a>

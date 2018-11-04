@@ -44,11 +44,11 @@ import {AuthGuardService} from './authguardservice';
 const routes: Route[] = [
   {path: '', component: HomeComponent},
   {path: 'error', component: ErrorPageComponent},
-  {path: 'invoiceprofile', component: InvoiceprofileComponent, canActivate: [AuthGuardService]},
-  {path: 'invoice', component: InvoiceComponent, canActivate: [AuthGuardService]},
-  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService]},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
-  {path: 'product', component: ProductComponent, canActivate: [AuthGuardService]},
+  {path: 'invoiceprofile', component: InvoiceprofileComponent, canActivate: [AuthGuardService], data: {expectedRole: 'ADMIN'}},
+  {path: 'invoice', component: InvoiceComponent, canActivate: [AuthGuardService], data: {expectedRole: 'ADMIN'}},
+  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService], data: {expectedRole: 'ADMIN'}},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService], data: {expectedRole: 'ADMIN'}},
+  {path: 'product', component: ProductComponent, canActivate: [AuthGuardService], data: {expectedRole: 'ADMIN'}},
   {path: '**', component: ErrorPageComponent}
 ];
 

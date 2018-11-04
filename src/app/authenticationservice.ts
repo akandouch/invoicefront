@@ -42,8 +42,17 @@ export class AuthenticationService {
   }
 
   getUser() {
-    let user = localStorage.getItem('user');
+    const user = localStorage.getItem('user');
     return user && user.length ? JSON.parse(user) : null;
+  }
+
+  hasRole(expectedRole) {
+    const user = this.getUser();
+    if (user) {
+      const authorities = user.authorities || ['ANONYMOUS'];
+      return authorities.find(a => expectedRole.toLocaleLowerCase() === a.toLowerCase());
+    }
+    return false;
   }
 
   logout() {
