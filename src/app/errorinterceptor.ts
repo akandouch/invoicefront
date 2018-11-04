@@ -20,7 +20,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       if (err.status === 401 || err.status === 403 || err.status === 0) {
         console.log('forbidden');
         this.authenticationService.logout();
-        errorLabel = 'error.forbidden';
+        errorLabel = 'error.unauthorized';
         errorMessage = 'error.forbidden';
       }
       this.router.navigate(['/error'],

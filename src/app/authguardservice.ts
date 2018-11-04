@@ -11,7 +11,7 @@ export class AuthGuardService implements CanActivate {
     if (!this.auth.getUser()) {
       this.router.navigate(['/error'],
         {
-          queryParams: {label: 'error.forbidden', status: 401, message: 'error.forbidden', returnUrl: state.url}
+          queryParams: {label: 'error.unauthorized', status: 401, message: 'error.forbidden', returnUrl: state.url}
         });
       return false;
     }

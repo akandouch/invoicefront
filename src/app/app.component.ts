@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.returnUrl = '';
     this.actRoute.queryParams.subscribe(params => {
-      this.returnUrl = params['returnUrl'];
+      this.returnUrl = params['returnUrl'] || '';
     });
   }
 
