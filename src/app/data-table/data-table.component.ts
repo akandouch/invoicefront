@@ -4,6 +4,7 @@ import {RestService} from '../services/restservice.interface';
 import {Entity} from '../entity.interface';
 import {RestServiceAbstract} from '../services/restserviceabstract.class';
 import {TranslateService} from '@ngx-translate/core';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -46,7 +47,7 @@ export class DataTableComponent implements OnInit, OnChanges {
   faTrashAlt = faTrashAlt;
   faEllipsisH = faEllipsisH;
 
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService, private modalService:NgbModal) {
   }
 
   ngOnInit() {
@@ -121,6 +122,23 @@ export class DataTableComponent implements OnInit, OnChanges {
     }
     return cssClass;
   }
+ /*modal*/
+  openModal(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+     
+    }, (reason) => {
+    });
+  }
+/*
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }*/
 
 }
 
@@ -131,6 +149,7 @@ export class DataColumn {
   searcheable?: boolean;
   rules?: FieldRule[];
   cssClass?: string;
+  hide?:boolean;
 }
 
 export class NestedField {

@@ -136,5 +136,8 @@
     "notfound": "La page n'existe pas",
     "unexpected": "Erreur",
     "forbidden": "Vous n'êtes pas autorisé à accéder à cette page. Veuillez vous connecter."
+  },
+  "datatable":{
+    "hide": "Cacher colonne"
   }
 }

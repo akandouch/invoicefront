@@ -137,6 +137,9 @@
     "notfound": "Niet gevonden",
     "unexpected": "Fout",
     "forbidden": "Verboden. U hebt geen toegang tot deze bron. Meld u aan met de juiste toegangen."
+  },
+  "datatable":{
+    "hide": "Kolom verbergen"
   }
 }
 

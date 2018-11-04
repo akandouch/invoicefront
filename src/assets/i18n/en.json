@@ -135,5 +135,8 @@
     "notfound": "Not found",
     "unexpected": "Unexpected error",
     "forbidden": "Forbidden. You are not allowed to access this resource. Please login with the right accesses."
+  },
+  "datatable":{
+    "hide": "Hide column"
   }
 }

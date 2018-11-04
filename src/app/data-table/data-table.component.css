@@ -100,3 +100,15 @@
 .gridHeaders:hover{
     color: #636363;
 }
+.hidebtn {
+    font-size: 10px !important;
+    border: solid 1px #d6d6d6;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+    margin-top: 1px;
+}
+.hidebtn:hover{
+    background-color: #505050;
+    color: #ffffff;
+}

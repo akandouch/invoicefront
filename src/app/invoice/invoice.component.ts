@@ -77,6 +77,7 @@ export class InvoiceComponent implements OnInit {
   public idDetailsSelected: string;
   public dataColumns: Array<DataColumn> = [
     {field: {name: 'invoiceNumber'}, label: 'page.invoice.invoiceId'},
+    {field: {name: 'title'}, label:'common.title',hide:true},
     {field: {name: 'invoicer', child: {name: 'firstname'}}, label: 'common.invoicer'},
     {field: {name: 'invoiced', child: {name: 'firstname'}}, label: 'common.customer'},
     {field: {name: 'invoiced', child: {name: 'vat'}}, label: 'common.vat'},
