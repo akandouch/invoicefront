@@ -23,9 +23,9 @@ export class ErrorPageComponent implements OnInit {
       .queryParams
       .subscribe(params => {
         console.log(params.length);
-        this.label = params['label'] || this.label;
-        this.status = params['status'] || this.status;
-        this.message = params['message'] || this.message;
+        this.label = params['label'] || this.label || 'error.notfound';
+        this.status = params['status'] || this.status || '404';
+        this.message = params['message'] || this.message || 'error.notfound';
       });
   }
 

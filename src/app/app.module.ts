@@ -47,7 +47,8 @@ const routes: Route[] = [
   {path: 'invoice', component: InvoiceComponent},
   {path: 'settings', component: SettingsComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'product', component: ProductComponent}
+  {path: 'product', component: ProductComponent},
+  {path: '**', component: ErrorPageComponent}
 ];
 
 @NgModule({
