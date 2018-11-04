@@ -59,7 +59,7 @@
     </div>
   </div>
 </nav>
-<div class="" *ngIf="isLoggedIn()">
+<div>
   <div class="container-fluid routerContent">
     <div *ngIf="currentMenu" class="col-lg-12">
       <fa-icon [icon]="currentMenu.icon" class="header-icon"
@@ -69,13 +69,6 @@
       </h5>
     </div>
     <router-outlet></router-outlet>
-  </div>
-</div>
-<div class="row col-sm-12" *ngIf="!isLoggedIn()">
-  <div class="container">
-    <div class="alert alert-danger">
-      <p>{{'error.forbidden' | translate}}</p>
-    </div>
   </div>
 </div>
 <!-- Footer -->

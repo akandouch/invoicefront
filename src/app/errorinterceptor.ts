@@ -1,26 +1,33 @@
 import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
+import {empty, Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
 import {AuthenticationService} from './authenticationservice';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private authenticationService: AuthenticationService, private router: Router, private actRoute: ActivatedRoute) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(catchError(err => {
       console.log(err);
       console.log(err.status);
+      let errorLabel = 'error.unexpected';
       if (err.status === 401 || err.status === 403) {
         console.log('forbidden');
         this.authenticationService.logout();
+        errorLabel = 'error.forbidden';
       }
-
-      const error = err.error.message || err.statusText;
-      return throwError(error);
+      this.router.navigate(['/error'],
+        {
+          queryParams: {label: errorLabel, status: err.status, message: err.error.message},
+          relativeTo: this.actRoute
+        });
+      const observable: Observable<HttpEvent<any>> = empty();
+      return throwError(err);
     }));
   }
 }

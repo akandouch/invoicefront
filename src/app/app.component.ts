@@ -13,6 +13,7 @@ import {
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {AuthenticationService} from './authenticationservice';
 import {TranslateService} from '@ngx-translate/core';
+import {environment} from './../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -39,7 +40,7 @@ export class AppComponent {
               private translate: TranslateService) {
     this.translate.setDefaultLang(this.translate.currentLang || this.translate.getBrowserLang());
 
-    this.gdpr = true;
+    this.gdpr = environment.production;
     this.menu = [];
 
     this.menu.push({color: '#ff84ff', route: '/dashboard', label: 'menu.dashboard', icon: faChartLine});
@@ -59,6 +60,8 @@ export class AppComponent {
           if (currentMenuList && currentMenuList.length > 0) {
             this.currentMenu = currentMenuList[0];
             this.currentMenu.selected = true;
+          } else {
+            this.currentMenu = null;
           }
         }
 
@@ -69,6 +72,7 @@ export class AppComponent {
   login() {
     console.log(`Username : ${this.username}, password : ${this.password}`);
     this.authenticationService.login(this.username, this.password, (resp) => {
+      this.router.navigate(['/', {relativeTo: this.actRoute}]);
     });
   }
 
@@ -86,6 +90,7 @@ export class AppComponent {
 
   logout() {
     this.authenticationService.logout();
+    this.router.navigate(['/'], {relativeTo: this.actRoute});
   }
 
   click(item: MenuLink) {

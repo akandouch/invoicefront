@@ -38,9 +38,11 @@ import {ImageLoaderComponent} from './image-loader/image-loader.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HomeComponent} from './home/home.component';
+import {ErrorPageComponent} from './error-page/error-page.component';
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
+  {path: 'error', component: ErrorPageComponent},
   {path: 'invoiceprofile', component: InvoiceprofileComponent},
   {path: 'invoice', component: InvoiceComponent},
   {path: 'settings', component: SettingsComponent},
@@ -64,7 +66,8 @@ const routes: Route[] = [
     ProductComponent,
     PaginationComponent,
     ImageLoaderComponent,
-    HomeComponent
+    HomeComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
