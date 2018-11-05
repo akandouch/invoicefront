@@ -13,7 +13,6 @@ import {
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {AuthenticationService} from './login/authenticationservice';
 import {TranslateService} from '@ngx-translate/core';
-import {environment} from './../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -93,14 +92,6 @@ export class AppComponent implements OnInit {
       return 'collapse navbar-collapse show ';
     }
     return 'collapse navbar-collapse';
-  }
-
-  gdprShow() {
-    return environment.production && !localStorage.getItem('gdpr');
-  }
-
-  gdprAccepted() {
-    localStorage.setItem('gdpr', 'true');
   }
 
   hasRole(expected) {
