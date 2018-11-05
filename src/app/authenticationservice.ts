@@ -47,12 +47,9 @@ export class AuthenticationService {
   }
 
   hasRole(expectedRole) {
-    const user = this.getUser();
-    if (user) {
-      const authorities = user.authorities || ['ANONYMOUS'];
-      return authorities.find(a => expectedRole.toLocaleLowerCase() === a.toLowerCase());
-    }
-    return false;
+    const user = this.getUser() || {authorities: ['ANONYMOUS']};
+    const authorities = user.authorities || ['ANONYMOUS'];
+    return authorities.map(a => a.toLowerCase()).includes(expectedRole.toLocaleLowerCase());
   }
 
   logout() {
