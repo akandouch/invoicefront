@@ -49,7 +49,7 @@ export class AuthenticationService {
   hasRole(expectedRole) {
     const user = this.getUser() || {authorities: ['ANONYMOUS']};
     const authorities = user.authorities || ['ANONYMOUS'];
-    return authorities.map(a => a.toLowerCase()).includes(expectedRole.toLocaleLowerCase());
+    return expectedRole.map(r => r.toLowerCase()).some(r => authorities.map(a => a.toLowerCase()).includes(r));
   }
 
   logout() {
