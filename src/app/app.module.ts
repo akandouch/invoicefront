@@ -41,6 +41,7 @@ import {HomeComponent} from './home/home.component';
 import {ErrorPageComponent} from './error-page/error-page.component';
 import {AuthGuardService} from './login/authguardservice';
 import {LoginComponent} from './login/login.component';
+import {TitlePageComponent} from './title-page/title-page.component';
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
@@ -71,7 +72,8 @@ const routes: Route[] = [
     ImageLoaderComponent,
     HomeComponent,
     ErrorPageComponent,
-    LoginComponent
+    LoginComponent,
+    TitlePageComponent
   ],
   imports: [
     BrowserModule,

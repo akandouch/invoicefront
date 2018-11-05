@@ -8,7 +8,6 @@ import {
   faEllipsisH,
   faEye,
   faFileDownload,
-  faFileInvoice,
   faFilePdf,
   faFolderOpen,
   faHome,
@@ -30,6 +29,7 @@ import {InvoiceSendMailRestServiceImpl} from '../services/invoicesendmailrestser
 import {Product} from '../product/product.class';
 import {DataColumn, FieldCondition} from '../data-table/data-table.component';
 import {TranslateService} from '@ngx-translate/core';
+import {faFileInvoice} from '@fortawesome/free-solid-svg-icons/faFileInvoice';
 
 @Component({
   selector: 'app-invoice',
@@ -60,9 +60,9 @@ export class InvoiceComponent implements OnInit {
   faUser = faUser;
   faEllipsisH = faEllipsisH;
   faFilePdf = faFilePdf;
-  faFileInvoice = faFileInvoice;
   faPaperclip = faPaperclip;
   faList = faList;
+  public menu = {color: '#5cc664', label: 'menu.invoice', icon: faFileInvoice};
 
   private currentModal: NgbActiveModal;
   private profiles: InvoiceProfile[];
@@ -77,7 +77,7 @@ export class InvoiceComponent implements OnInit {
   public idDetailsSelected: string;
   public dataColumns: Array<DataColumn> = [
     {field: {name: 'invoiceNumber'}, label: 'page.invoice.invoiceId'},
-    {field: {name: 'title'}, label:'common.title',hide:true},
+    {field: {name: 'title'}, label: 'common.title', hide: true},
     {field: {name: 'invoicer', child: {name: 'firstname'}}, label: 'common.invoicer'},
     {field: {name: 'invoiced', child: {name: 'firstname'}}, label: 'common.customer'},
     {field: {name: 'invoiced', child: {name: 'vat'}}, label: 'common.vat'},

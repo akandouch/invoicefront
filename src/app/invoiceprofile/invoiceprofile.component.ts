@@ -1,7 +1,18 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {InvoiceProfile} from './invoiceprofile.class';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {faCoffee, faCopy, faEdit, faEllipsisH, faEye, faPlus, faSave, faTrashAlt, faWindowClose} from '@fortawesome/free-solid-svg-icons';
+import {
+  faAddressBook,
+  faCoffee,
+  faCopy,
+  faEdit,
+  faEllipsisH,
+  faEye,
+  faPlus,
+  faSave,
+  faTrashAlt,
+  faWindowClose
+} from '@fortawesome/free-solid-svg-icons';
 import {Upload} from '../upload/upload.class';
 import {RestService} from '../services/restservice.interface';
 import {UploadRestServiceImpl} from '../services/uploadrestserviceimpl.class';
@@ -32,19 +43,20 @@ export class InvoiceprofileComponent implements OnInit {
   public currentProfile: InvoiceProfile;
   public currentIdx: number;
   public loadingLogo: boolean = false;
+  public menu = {color: '#848dff', label: 'menu.profile', icon: faAddressBook};
 
-  public dataColumns:Array<DataColumn> = [
+  public dataColumns: Array<DataColumn> = [
     {field: {name: 'firstname'}, label: 'common.firstname'},
     {field: {name: 'lastname'}, label: 'common.lastname'},
     {field: {name: 'mail'}, label: 'common.mail'},
     {field: {name: 'vat'}, label: 'common.vat'}
-  ]
+  ];
 
   constructor(
-    private ngbModalService: NgbModal, 
-    @Inject(UploadRestServiceImpl) private uploadService:RestService,
-    @Inject(InvoiceProfileRestServiceImpl) public invoiceProfileService:RestService
-    ) {
+    private ngbModalService: NgbModal,
+    @Inject(UploadRestServiceImpl) private uploadService: RestService,
+    @Inject(InvoiceProfileRestServiceImpl) public invoiceProfileService: RestService
+  ) {
     this.newInvoiceProfile = new InvoiceProfile();
     this.getAll();
   }
@@ -53,22 +65,22 @@ export class InvoiceprofileComponent implements OnInit {
   }
 
   getAll() {
-    this.invoiceProfileService.get({},(data)=>{
+    this.invoiceProfileService.get({}, (data) => {
       this.profiles = data;
-    })
+    });
   }
 
   save(invoiceProfile: InvoiceProfile) {
-    this.invoiceProfileService.post(invoiceProfile,()=>{
-      this.getAll();
-      this.closeModal();
-    },
-    ()=>{
-      alert('error happens my frend')
-    },
-    ()=>{
-      alert('profile created successfully')
-    })
+    this.invoiceProfileService.post(invoiceProfile, () => {
+        this.getAll();
+        this.closeModal();
+      },
+      () => {
+        alert('error happens my frend');
+      },
+      () => {
+        alert('profile created successfully');
+      });
     this.newInvoiceProfile = new InvoiceProfile();
   }
 
@@ -81,15 +93,15 @@ export class InvoiceprofileComponent implements OnInit {
 
   copyItem(profile: InvoiceProfile) {
     profile.id = null;
-    this.invoiceProfileService.post(profile,()=>{
-      this.getAll();
-    },
-    ()=>{
-      alert('error happens my frend')
-    },
-    ()=>{
-      alert('profile updated successfully')
-    })
+    this.invoiceProfileService.post(profile, () => {
+        this.getAll();
+      },
+      () => {
+        alert('error happens my frend');
+      },
+      () => {
+        alert('profile updated successfully');
+      });
   }
 
   editItem(content, invoiceProfile: InvoiceProfile, idx?: number) {
@@ -102,9 +114,9 @@ export class InvoiceprofileComponent implements OnInit {
   }
 
   removeItem(invoiceProfile: InvoiceProfile) {
-    this.invoiceProfileService.delete(invoiceProfile,()=>{
+    this.invoiceProfileService.delete(invoiceProfile, () => {
       this.getAll();
-    })
+    });
   }
 
   closeModal() {
@@ -126,14 +138,15 @@ export class InvoiceprofileComponent implements OnInit {
       profile.logo.contentType = blob.type;
       profile.logo.fileName = blob.name;
       profile.logo.newUpload = fileReader.result.split(',')[1];
-      this.uploadService.post(profile.logo,(u)=>{
+      this.uploadService.post(profile.logo, (u) => {
         profile.logo = u;
         this.loadingLogo = false;
-      })
+      });
     });
     fileReader.readAsDataURL(blob);
   }
-  refreshGrid(data){
+
+  refreshGrid(data) {
     this.profiles = data;
   }
 

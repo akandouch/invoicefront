@@ -6,109 +6,120 @@
   border-bottom: none;
   /*border-top: none;*/
 }
+
 .table-column {
-    flex: 1 1 50px;
+  flex: 1 1 50px;
 }
+
 .table-header {
-   /* font-weight: 600;
-    border-bottom: solid 1px #ededed;
-    text-indent: 10px;
-    background-color: #e6e6e6;
-    padding-top: 5px;
-    padding-bottom: 5px;  
-    max-height: 35px;
-    overflow: hidden;*/
+  /* font-weight: 600;
+   border-bottom: solid 1px #ededed;
+   text-indent: 10px;
+   background-color: #e6e6e6;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   max-height: 35px;
+   overflow: hidden;*/
 
-
-
-    font-weight: 600;
-    border-bottom: solid 1px #d6d6d6;;
-    text-indent: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    overflow: hidden;
-    color: #636363;
-    max-height: 31px;
-
-
-
-
+  font-weight: 600;
+  border-bottom: solid 1px #d6d6d6;;
+  text-indent: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow: hidden;
+  color: #636363;
+  max-height: 31px;
 
 }
+
 .table-content {
-    color: rgb(122, 122, 122);
-    padding: 5px 10px 5px 10px;
-    border-bottom: solid 1px #ededed;    
-    max-height: 31px;
-    overflow: hidden;
-}
-.table-content.actions {
-    overflow: visible;
+  color: rgb(122, 122, 122);
+  padding: 5px 10px 5px 10px;
+  border-bottom: solid 1px #ededed;
+  max-height: 31px;
+  overflow: hidden;
 }
 
-.table-content:nth-child(2n){
-    background-color: #f8f8f8;
+.table-content.actions {
+  overflow: visible;
+}
+
+.table-content:nth-child(2n) {
+  background-color: #f8f8f8;
 }
 
 .table-pagination {
-    flex: 1;
+  flex: 1;
 }
+
 .table-action {
-    flex: 1 1 0px;
+  flex: 1 1 0px;
 }
-.mainGrid{
-    display: table;
-    table-layout: fixed;
-    width: 100%;
-    color: #636363;
-    border: solid 1px #ebebeb;
-    border-bottom: none;
+
+.mainGrid {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  color: #636363;
+  border: solid 1px #ebebeb;
+  border-bottom: none;
 }
-.gridRow{
-    display: table-cell;
-    border-bottom: solid 1px #ebebeb;
-    padding: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+
+.gridRow {
+  display: table-cell;
+  border-bottom: solid 1px #ebebeb;
+  padding: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.gridRow.actions{
-    overflow: visible !important;
+
+.gridRow.actions {
+  overflow: visible !important;
 }
-.gridRow.actions > * > .dropdown-toggle::after{
-    display: none;
+
+.gridRow.actions > * > .dropdown-toggle::after {
+  display: none;
 }
-.gridCol{
-    display: table-row;
-    background-color: #ffffff;
-    cursor: pointer;
+
+.gridCol {
+  display: table-row;
+  background-color: #ffffff;
+  cursor: pointer;
 }
-.gridCol:hover{
-    font-weight: 600;
-    color: #5b5b5b;
+
+.gridCol:hover {
+  font-weight: 600;
+  color: #5b5b5b;
 }
-.gridCol:nth-child(2n){
-    background-color: #f7f7f7;
+
+.gridCol:nth-child(2n) {
+  background-color: #f7f7f7;
 }
+
 .gridHeaders {
-    font-weight: 600;
-    cursor: auto;
+  font-weight: 600;
+  cursor: auto;
 }
+
 .gridHeaders > .gridRow {
-    border-bottom:solid 1px #d6d6d6;
-    resize: horizontal;
+  border-bottom: solid 1px #d6d6d6;
+  resize: horizontal;
 }
-.gridHeaders:hover{
-    color: #636363;
+
+.gridHeaders:hover {
+  color: #636363;
 }
+
 .hidebtn {
-    font-size: 10px !important;
-    border: solid 1px #d6d6d6;
-    border-radius: 3px;
-    padding: 5px;
-    cursor: pointer;
-    margin-top: 1px;
+  border: solid 1px #d6d6d6;
+  border-radius: 3px;
+  padding: 5px;
+  cursor: pointer;
+  margin-top: 1px;
+  font-size: 12px !important;
 }
-.hidebtn:hover{
-    background-color: #505050;
-    color: #ffffff;
+
+.hidebtn:hover {
+  background-color: #505050;
+  color: #ffffff;
 }

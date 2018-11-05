@@ -1,3 +1,4 @@
+<app-title-page [menu]="menu"></app-title-page>
 <div class="main row">
   <div class="col-lg-12">
     <div class="col-lg-12 row">
@@ -12,13 +13,13 @@
 
 
         <app-data-table *ngIf="!newVersion"
-        [dataSource]="invoiceService"
-        [dataColumns]="dataColumns"
-        [enableDelete]="true"
-        [enableEdit]="true"
-        (editEvent)="openInvoice($event)"
-        (consultEvent)="openInvoice($event)"
-        (deleteEvent)="deleteInvoice($event)"
+                        [dataSource]="invoiceService"
+                        [dataColumns]="dataColumns"
+                        [enableDelete]="true"
+                        [enableEdit]="true"
+                        (editEvent)="openInvoice($event)"
+                        (consultEvent)="openInvoice($event)"
+                        (deleteEvent)="deleteInvoice($event)"
         ></app-data-table>
 
         <!-- NEW VERSION -->
@@ -29,9 +30,9 @@
                  class="col-lg-12 col-sm-12 new-table-invoice {{i.status==0?'invoice-open':'invoice-close'}} {{idDetailsSelected==i.id?'selected':''}} row"
                  (click)="openDetails(i)" style="cursor: pointer;">
               <div class="col-sm-12 col-lg-1 status">&nbsp;</div>
-            <div class="col-lg-2" *ngIf="i.invoicer.logo" style="overflow: hidden">
-              <app-image-loader [height]="75" [image]="i.invoicer.logo"></app-image-loader>
-            </div>
+              <div class="col-lg-2" *ngIf="i.invoicer.logo" style="overflow: hidden">
+                <app-image-loader [height]="75" [image]="i.invoicer.logo"></app-image-loader>
+              </div>
               <div class="col-lg-9 row">
                 <div class="col-lg-7">
                   <div class="col-lg-12 title">{{i.title}}</div>
@@ -48,16 +49,16 @@
                   </div>
                 </div>
                 <div class="col-lg-2">
-                    <div class="number">
+                  <div class="number">
                     <div ngbDropdown class="d-inline-block" style="cursor: pointer;">
-                        <span ngbDropdownToggle><fa-icon [icon]="faPaperclip"></fa-icon> {{i.attachments.length}}</span>
-                        <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-                          <div *ngFor="let a of i.attachments">
-                            <a [href]="downloadAttachment(a)">{{a.fileName}}</a>
-                          </div>
+                      <span ngbDropdownToggle><fa-icon [icon]="faPaperclip"></fa-icon> {{i.attachments.length}}</span>
+                      <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+                        <div *ngFor="let a of i.attachments">
+                          <a [href]="downloadAttachment(a)">{{a.fileName}}</a>
                         </div>
                       </div>
                     </div>
+                  </div>
                 </div>
                 <div class="col-lg-3">
                   <span class="total-invoice">{{calculateTotalRate(i)}}</span> €<br/>
@@ -65,38 +66,38 @@
                 </div>
               </div>
 
-            <div class="col-lg-1">
+              <div class="col-lg-1">
                 <div class="number">
-                <div ngbDropdown class="d-inline-block" style="cursor: pointer;">
-                  <span class="btn" ngbDropdownToggle></span>
-                  <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-                    <div (click)="openInvoice(i)">
-                      <fa-icon [icon]="faFolderOpen"></fa-icon>
-                      {{'common.action.consult' | translate}}
-                    </div>
-                    <div (click)="openModal(content, i)">
-                      <fa-icon [icon]="faEye"></fa-icon>
-                      {{'common.action.preview' | translate}}
-                    </div>
-                    <div (click)="generatePdf(i)">
-                      <fa-icon [icon]="faFilePdf"></fa-icon>
-                      {{'common.action.downloadpdf' | translate}}
-                    </div>
-                    <div (click)="sendMail(i.id)">
-                      <fa-icon [icon]="faMailBulk"></fa-icon>
-                      {{'common.action.sendmail' | translate}}
-                    </div>
-                    <div (click)="deleteInvoice(i)" *ngIf="i.status != 2">
-                      <fa-icon [icon]="faTrashAlt"></fa-icon>
-                      {{'common.action.delete' | translate}}
+                  <div ngbDropdown class="d-inline-block" style="cursor: pointer;">
+                    <span class="btn" ngbDropdownToggle></span>
+                    <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
+                      <div (click)="openInvoice(i)">
+                        <fa-icon [icon]="faFolderOpen"></fa-icon>
+                        {{'common.action.consult' | translate}}
+                      </div>
+                      <div (click)="openModal(content, i)">
+                        <fa-icon [icon]="faEye"></fa-icon>
+                        {{'common.action.preview' | translate}}
+                      </div>
+                      <div (click)="generatePdf(i)">
+                        <fa-icon [icon]="faFilePdf"></fa-icon>
+                        {{'common.action.downloadpdf' | translate}}
+                      </div>
+                      <div (click)="sendMail(i.id)">
+                        <fa-icon [icon]="faMailBulk"></fa-icon>
+                        {{'common.action.sendmail' | translate}}
+                      </div>
+                      <div (click)="deleteInvoice(i)" *ngIf="i.status != 2">
+                        <fa-icon [icon]="faTrashAlt"></fa-icon>
+                        {{'common.action.delete' | translate}}
 
+                      </div>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
-            </div>
-          </div>
-          <app-pagination [dataSource]="invoiceService" (newData)="refreshGrid($event)"></app-pagination>
+            <app-pagination [dataSource]="invoiceService" (newData)="refreshGrid($event)"></app-pagination>
           </div>
           <div class="col-lg-4 col-sm-12 details-container" *ngIf="details && newVersion">
             <div class="col-lg-12" *ngIf="details.items.length == 0"><h5>No items</h5></div>
@@ -174,13 +175,13 @@
             <h5>{{'menu.product' | translate}}</h5>
             <span class="btn btn-outline-dark" (click)="current.products = []">{{'common.action.clearselection'|translate}}</span>
             <div class="col-lg-12 row selected-product-header">
-                <div class="col-lg-1"></div>
+              <div class="col-lg-1"></div>
               <div class="col-lg-3">{{'common.name'|translate}}</div>
               <div class="col-lg-3">{{'page.items.priceUnit'|translate}}</div>
               <div class="col-lg-2">{{'page.items.qty'| translate}}</div>
               <div class="col-lg-3">{{'page.items.unitOfMeasure'| translate}}</div>
             </div>
-            <div  class="col-lg-12 row selected-product-content" *ngFor="let p of current.products;let i = index">
+            <div class="col-lg-12 row selected-product-content" *ngFor="let p of current.products;let i = index">
               <div class="col-lg-1"><span click="remove">-</span></div>
               <div class="col-lg-3"><input [(ngModel)]="p.name"></div>
               <div class="col-lg-3"><input [(ngModel)]="p.unitPrice"></div>
@@ -265,11 +266,4 @@
       |translate}}
     </button>
   </div>
-</ng-template>
-<ng-template #menu>
-  <ul>
-    <li>test</li>
-    <li>test</li>
-    <li>test</li>
-  </ul>
 </ng-template>

@@ -14,7 +14,7 @@
   </div>
   <div class="col-lg-1">
     <label style="float: right;">Total:<br/>
-      <select [(ngModel)]="pageSize" (change)="pageNumber=0;get()">
+      <select class="custom-select" [(ngModel)]="pageSize" (change)="pageNumber=0;get()">
         <option>1</option>
         <option>5</option>
         <option>10</option>

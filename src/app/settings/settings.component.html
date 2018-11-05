@@ -1,5 +1,4 @@
-<div class="col-lg-12">
-  <div class="col-lg-12 row">
+<app-title-page [menu]="menu"></app-title-page>
     <div class="col-lg-12" *ngIf="settings">
       <label for="currentInvoiceNumber">{{'page.settings.currentInvoiceNumber'| translate}}</label>
       <input class="form-control"  id="currentInvoiceNumber" type="number" [(ngModel)]="settings.currentInvoiceNumber">
@@ -15,6 +14,3 @@
     <div class="col-lg-12">
       <button type="button" class="btn btn-outline-dark" (click)="save()">{{'common.action.save'|translate}}</button>
     </div>
-  </div>
-
-</div>

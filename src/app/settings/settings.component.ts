@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {faCogs} from '@fortawesome/free-solid-svg-icons';
 import {Settings} from './settings.class';
 import {DataService} from '../services/data.service';
@@ -9,10 +9,10 @@ import {DataService} from '../services/data.service';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-
   faCogs = faCogs;
   settings: Settings;
   ds: DataService<any>;
+  public menu = {color: '#ff8484', role: ['ADMIN'], route: '/settings', label: 'menu.setting', icon: faCogs};
 
   constructor(ds: DataService<any>) {
     this.ds = ds;

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {Product, ProductType, UnitOfMeasure} from './product.class';
-import {faCopy, faEdit, faEllipsisH, faEye, faPlus, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {faCopy, faEdit, faEllipsisH, faEye, faListAlt, faPlus, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {RestService} from '../services/restservice.interface';
 import {ProductRestServiceImpl} from '../services/productrestserviceimpl.class';
 import {DataColumn} from '../data-table/data-table.component';
@@ -14,6 +14,7 @@ export class ProductComponent implements OnInit {
 
   public products: Product[];
   public _filteredProducts: Product[];
+  public menu = {color: '#ff8d64', label: 'menu.product', icon: faListAlt};
 
   faPlus = faPlus;
   faEllipsisH = faEllipsisH;

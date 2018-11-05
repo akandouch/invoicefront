@@ -1,6 +1,6 @@
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {Chart} from 'chart.js';
-import {faSync} from '@fortawesome/free-solid-svg-icons';
+import {faChartLine, faSync} from '@fortawesome/free-solid-svg-icons';
 import {RestService} from '../services/restservice.interface';
 import {RatePerMonth, TotalPerCustomer} from '../services/statisticsrestserviceimpl.class';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   labelTotalInvoiced: string [];
   labelRatePerMonth: string;
   labelDayPerMonth: string;
+  public menu = ({color: '#ff84ff', label: 'menu.dashboard', icon: faChartLine});
 
 
   constructor(
@@ -58,15 +59,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   initChartTotalPerCustomer() {
-    var labels = [];
-    var datas = [];
+    let labels = [];
+    let datas = [];
 
     this.totalPerCustomer.get({}, (data: { key: any, value: number }) => {
       datas = Object.values(data[0]);
-      //datas.push(Object.values(data[1]));
       labels = Object.keys(data[0]);
       console.log(labels);
-      //labels.push(Object.keys(data[1]));
       this.chartTotalPerCustomer = this.createOneLineChart('totalPerCustomer',
         this.labelTotalInvoiced,
         datas, labels);
