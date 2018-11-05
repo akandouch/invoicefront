@@ -11,7 +11,7 @@ import {
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {AuthenticationService} from './authenticationservice';
+import {AuthenticationService} from './login/authenticationservice';
 import {TranslateService} from '@ngx-translate/core';
 import {environment} from './../environments/environment';
 
@@ -30,9 +30,6 @@ export class AppComponent implements OnInit {
   toggleNavbarClass = false;
   faCogs = faCogs;
   faLanguage = faSignLanguage;
-  public username: string;
-  public returnUrl: string;
-  public password: string;
 
   menu: MenuLink[];
   currentMenu: MenuLink;
@@ -71,40 +68,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.returnUrl = '';
-    this.actRoute.queryParams.subscribe(params => {
-      this.returnUrl = params['returnUrl'] || '';
-    });
+
   }
 
-  hasRole(expected) {
-    return this.authenticationService.hasRole(expected);
-  }
 
-  login() {
-    console.log(`Username : ${this.username}, password : ${this.password}`);
-    this.authenticationService.login(this.username, this.password, (resp) => {
-      console.log(this.returnUrl);
-      this.router.navigateByUrl(this.returnUrl);
-    });
-  }
 
   useLanguage(language: string) {
     this.translate.use(language);
   }
 
-  isLoggedIn() {
-    return this.getUser() !== null;
-  }
-
-  getUser() {
-    return this.authenticationService.getUser();
-  }
-
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/']);
-  }
 
   click(item: MenuLink) {
     this.menu.forEach(x => x.selected = false);
@@ -130,6 +102,11 @@ export class AppComponent implements OnInit {
   gdprAccepted() {
     localStorage.setItem('gdpr', 'true');
   }
+
+  hasRole(expected) {
+    return this.authenticationService.hasRole(expected);
+  }
+
 }
 
 class MenuLink {

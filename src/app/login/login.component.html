@@ -1,0 +1,16 @@
+<div *ngIf="!isLoggedIn()" class="form-inline my-2 my-lg-0">
+  <input [(ngModel)]="username" name="username" class="form-control mr-sm-2" type="text"
+         [placeholder]="'common.username' | translate" aria-label="Username">
+  <input (keydown.enter)="login()" [(ngModel)]="password" name="password" class="form-control mr-sm-2"
+         type="password" [placeholder]="'common.password' | translate"
+         aria-label="Password">
+  <button class="btn  mb-sm-1 btn-outline-info text-white " type="button" (click)="login()">{{'common.signin' |
+    translate}}
+  </button>
+</div>
+<div *ngIf="isLoggedIn()" class="form-inline my-2 my-lg-0">
+  <span class="text-white">{{'common.greeting' | translate}} {{getUser().username}}</span>&nbsp;
+  <button class="btn btn-outline-danger text-white my-2 my-sm-0" type="button" (click)="logout()">{{'common.logout'
+    | translate}}
+  </button>
+</div>

@@ -27,9 +27,9 @@ import {UploadRestServiceImpl} from './services/uploadrestserviceimpl.class';
 import {AttachmentListComponent} from './attachment-list/attachment-list.component';
 import {InvoiceSendMailRestServiceImpl} from './services/invoicesendmailrestserviceimpl.class';
 import {DaysPerMonth, RatePerMonth, TotalPerCustomer} from './services/statisticsrestserviceimpl.class';
-import {AuthInterceptor} from './authinterceptor';
-import {ErrorInterceptor} from './errorinterceptor';
-import {AuthenticationService} from './authenticationservice';
+import {AuthInterceptor} from './login/authinterceptor';
+import {ErrorInterceptor} from './login/errorinterceptor';
+import {AuthenticationService} from './login/authenticationservice';
 import {ProductComponent} from './product/product.component';
 import {ProductRestServiceImpl} from './services/productrestserviceimpl.class';
 import {PaginationComponent} from './pagination/pagination.component';
@@ -39,7 +39,8 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HomeComponent} from './home/home.component';
 import {ErrorPageComponent} from './error-page/error-page.component';
-import {AuthGuardService} from './authguardservice';
+import {AuthGuardService} from './login/authguardservice';
+import {LoginComponent} from './login/login.component';
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
@@ -69,7 +70,8 @@ const routes: Route[] = [
     PaginationComponent,
     ImageLoaderComponent,
     HomeComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
