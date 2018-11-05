@@ -8,11 +8,11 @@ import {
   faHome,
   faListAlt,
   faSignLanguage,
-  IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {AuthenticationService} from '../login/authenticationservice';
 import {TranslateService} from '@ngx-translate/core';
+import MenuLink from './menulink';
 
 @Component({
   selector: 'app-navbar',
@@ -42,13 +42,13 @@ export class NavbarComponent implements OnInit {
   }
 
   private createMenu() {
-    this.menu = [];
-
-    this.menu.push({color: '#ff84ff', role: ['ADMIN'], route: '/dashboard', label: 'menu.dashboard', icon: faChartLine});
-    this.menu.push({color: '#5cc664', role: ['ADMIN'], route: '/invoice', label: 'menu.invoice', icon: faFileInvoice});
-    this.menu.push({color: '#848dff', role: ['ADMIN'], route: '/invoiceprofile', label: 'menu.profile', icon: faAddressBook});
-    this.menu.push({color: '#ff8d64', role: ['ADMIN'], route: '/product', label: 'menu.product', icon: faListAlt});
-    this.menu.push({color: '#ff8484', role: ['ADMIN'], route: '/settings', label: 'menu.setting', icon: faCogs});
+    this.menu = [
+      {color: '#ff84ff', role: ['ADMIN'], route: '/dashboard', label: 'menu.dashboard', icon: faChartLine},
+      {color: '#5cc664', role: ['ADMIN'], route: '/invoice', label: 'menu.invoice', icon: faFileInvoice},
+      {color: '#848dff', role: ['ADMIN'], route: '/invoiceprofile', label: 'menu.profile', icon: faAddressBook},
+      {color: '#ff8d64', role: ['ADMIN'], route: '/product', label: 'menu.product', icon: faListAlt},
+      {color: '#ff8484', role: ['ADMIN'], route: '/settings', label: 'menu.setting', icon: faCogs}
+    ];
   }
 
   private setupRoute() {
@@ -97,14 +97,4 @@ export class NavbarComponent implements OnInit {
     this.translate.use(language);
   }
 
-}
-
-class MenuLink {
-  color?: string;
-  route?: string;
-  role?: Array<string>;
-  label: string;
-  icon?: IconDefinition;
-  active?: string = 'active';
-  public selected?: boolean = false;
 }
