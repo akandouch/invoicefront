@@ -1,52 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <button class="navbar-toggler pb-2" type="button" (click)="toggleNavbar()">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div [ngClass]="toggleNavbarShow()" id="navbarTogglerDemo01">
-    <a class="navbar-brand" routerLink="/"
-       [ngStyle]="{'color': currentMenu && currentMenu.route === '/' && currentMenu.selected ? currentMenu.color:''}">
-      <img width="16" height="16" class="d-inline" src="favicon.ico">
-      <i class="d-inline">{{'main.title' | translate}}</i>
-    </a>
-    <ul class="navbar-nav mr-auto pt-1">
-      <li class="nav-item" *ngFor="let m of menu" (click)="click(m);m.selected=true;">
-        <a routerLink="{{m.route}}" *ngIf="hasRole(m.role)" class="nav-link text-white">
-          <fa-icon [icon]="m.icon" [ngStyle]="{color: m.color}" width="50px"></fa-icon>
-          <span [ngStyle]="{'color': m.selected ? m.color:''}">&nbsp;{{m.label | translate}}</span>
-        </a>
-
-      </li>
-      <li class="dropdown nav-item" dropdown>
-        <div ngbDropdown class="d-inline-block">
-          <a class="nav-link text-white " href="#" (click)="$event.preventDefault()" id="dropLang" ngbDropdownToggle>
-            <fa-icon [icon]="faLanguage" width="50px"></fa-icon>&nbsp;{{'common.language'| translate}}</a>
-          <div ngbDropdownMenu aria-labelledby="dropLang">
-            <button class="dropdown-item" (click)="useLanguage('fr')">
-              <span class="flag-icon flag-icon-fr "></span>&nbsp;FR
-            </button>
-            <button class="dropdown-item" (click)="useLanguage('nl')">
-              <span class="flag-icon flag-icon-nl"></span>&nbsp;NL
-            </button>
-            <button class="dropdown-item" (click)="useLanguage('en')">
-              <span class="flag-icon flag-icon-gb"></span>&nbsp;EN
-            </button>
-          </div>
-        </div>
-      </li>
-      <!--
-      <hr class="recent-hr"/>
-      <ul class="recent">
-        recent
-        <li><fa-icon [icon]="faFileInvoice"></fa-icon> TODO</li>
-        <li><fa-icon [icon]="faFileInvoice"></fa-icon> TODO</li>
-      </ul>-->
-    </ul>
-    <app-login></app-login>
-
-  </div>
-</nav>
+<!-- Navbar -->
+<app-navbar></app-navbar>
+<!-- Navbar -->
 <div>
-  -
   <div class="container-fluid routerContent">
     <router-outlet></router-outlet>
   </div>

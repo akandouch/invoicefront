@@ -43,6 +43,7 @@ import {AuthGuardService} from './login/authguardservice';
 import {LoginComponent} from './login/login.component';
 import {TitlePageComponent} from './title-page/title-page.component';
 import {GdprComponent} from './gdpr/gdpr.component';
+import {NavbarComponent} from './navbar/navbar.component';
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
@@ -75,7 +76,8 @@ const routes: Route[] = [
     ErrorPageComponent,
     LoginComponent,
     TitlePageComponent,
-    GdprComponent
+    GdprComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
