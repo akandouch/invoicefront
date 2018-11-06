@@ -1,14 +1,19 @@
 <div class="row col-sm-12">
   <div class="container">
     <div class="jumbotron">
-      <h1 class="display-4 text-danger">{{status}} </h1>
-      <p class="lead text-danger">{{label | translate}}</p>
-      <hr class="my-4">
-      <p class="lead">{{message|translate}}</p>
+      <div class="row">
+        <div class="col-4">
+          <h1 class="display-4 text-danger">{{status}} </h1>
+          <p class="lead text-danger">{{label | translate}}</p>
+          <p class="lead">{{message|translate}}</p>
+        </div>
+        <div class="col-8">
+          <img src="assets/img/error.jpg" class="img img-fluid col-12 ">
+          <audio class="col-12" autoplay="autoplay" controls>
+            <source src="assets/mp3/error.mp3">
+          </audio>
+        </div>
+      </div>
     </div>
   </div>
-  <audio class="container" autoplay="autoplay" controls>
-    <source src="assets/mp3/error.mp3">
-  </audio>
-
 </div>
