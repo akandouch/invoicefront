@@ -15,11 +15,13 @@
         <app-data-table *ngIf="!newVersion"
                         [dataSource]="invoiceService"
                         [dataColumns]="dataColumns"
+                        [customActions]="customActions"
                         [enableDelete]="true"
                         [enableEdit]="true"
                         (editEvent)="openInvoice($event)"
                         (consultEvent)="openInvoice($event)"
                         (deleteEvent)="deleteInvoice($event)"
+                        (customEvent)="customEvent($event)"
         ></app-data-table>
 
         <!-- NEW VERSION -->

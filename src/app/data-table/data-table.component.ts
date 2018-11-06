@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {faCopy, faEdit, faEllipsisH, faEye, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {faCopy, faEdit, faEllipsisH, faEye, faTrashAlt, IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {RestService} from '../services/restservice.interface';
 import {Entity} from '../entity.interface';
 import {RestServiceAbstract} from '../services/restserviceabstract.class';
@@ -18,6 +18,8 @@ export class DataTableComponent implements OnInit, OnChanges {
   public dataSource: RestService | Array<Entity>;
   @Input()
   public dataColumns: Array<DataColumn>;
+  @Input()
+  public customActions: Array<CustomAction>;
 
   @Input()
   enableConsult:boolean = false;
@@ -39,6 +41,9 @@ export class DataTableComponent implements OnInit, OnChanges {
 
   @Output()
   public clickEvent: EventEmitter<Entity> = new EventEmitter();
+
+  @Output()
+  public customEvent: EventEmitter<CustomEventData> = new EventEmitter();
 
   public datas: Array<Entity> = new Array();
 
@@ -84,6 +89,9 @@ export class DataTableComponent implements OnInit, OnChanges {
     });
 
     this.deleteEvent.emit(entity);
+  }
+  custom(action:string, entity:Entity){
+    this.customEvent.emit({action:action,data:entity});
   }
 
   getdata(data: any, column: DataColumn) {
@@ -177,4 +185,16 @@ export enum FieldCondition {
   EQGT,
   EQLT,
   DIFF
+}
+
+export class CustomAction {
+  label:string;
+  action:string;
+  icon?:IconDefinition;
+  cssClass?:string;
+}
+
+export class CustomEventData {
+  action:string;
+  data:Entity
 }

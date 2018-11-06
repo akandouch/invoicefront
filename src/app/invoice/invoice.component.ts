@@ -27,7 +27,7 @@ import {RestService} from '../services/restservice.interface';
 import {UploadRestServiceImpl} from '../services/uploadrestserviceimpl.class';
 import {InvoiceSendMailRestServiceImpl} from '../services/invoicesendmailrestserviceimpl.class';
 import {Product} from '../product/product.class';
-import {DataColumn, FieldCondition} from '../data-table/data-table.component';
+import {DataColumn, FieldCondition, CustomAction, CustomEventData} from '../data-table/data-table.component';
 import {TranslateService} from '@ngx-translate/core';
 import {faFileInvoice} from '@fortawesome/free-solid-svg-icons/faFileInvoice';
 
@@ -88,6 +88,10 @@ export class InvoiceComponent implements OnInit {
         {condition: FieldCondition.EQ, value: '2', cssClass: 'close-status', label: 'common.close'}],
       label: 'common.status', cssClass: 'inv-status'
     }];
+
+  public customActions: Array<CustomAction> = [
+    {label:"Download PDF", action:"downloadPdf",icon:faFilePdf}
+  ]
 
   constructor(
     ds: DataService<any>,
@@ -264,5 +268,11 @@ export class InvoiceComponent implements OnInit {
 
   refreshGrid(data) {
     this.history = data;
+  }
+
+  customEvent(data:CustomEventData){
+    switch(data.action){
+      case "downloadPdf": this.generatePdf(<Invoice>data.data);
+    }
   }
 }

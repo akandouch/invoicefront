@@ -56,6 +56,10 @@
               <fa-icon [icon]="faTrashAlt"></fa-icon>
               {{'common.action.delete' | translate}}
             </div>
+            <div (click)="custom(action.action,data)" *ngFor="let action of customActions">
+              <fa-icon [icon]="action.icon"></fa-icon>
+              {{action.label}}
+            </div>
           </div>
         </div>  
       </div>
