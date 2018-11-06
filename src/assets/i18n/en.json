@@ -112,7 +112,8 @@
     "product": {
       "searchProduct": "Search for a product",
       "id": "Id",
-      "downloadtemplatecsv": "Download Template CSV"
+      "downloadtemplatecsv": "Download Template CSV",
+      "uploadcsv": "Upload CSV"
     },
     "settings": {
       "currentInvoiceNumber": "Current invoice number",

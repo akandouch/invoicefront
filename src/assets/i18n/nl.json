@@ -113,7 +113,8 @@
     "product": {
       "searchProduct": "Zoeken naar een product",
       "id": "Id",
-      "downloadtemplatecsv": "Downloaden Template CSV"
+      "downloadtemplatecsv": "Downloaden Template CSV",
+      "uploadcsv": "Uploaden CSV"
     },
     "settings": {
       "currentInvoiceNumber": "Huidig ​​factuurnummer",

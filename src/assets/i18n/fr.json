@@ -112,7 +112,8 @@
     "product": {
       "searchProduct": "Rechercher un produit",
       "id": "Id",
-      "downloadtemplatecsv": "Télécharger le template CSV"
+      "downloadtemplatecsv": "Télécharger le template CSV",
+      "uploadcsv": "Charger CSV"
     },
     "settings": {
       "currentInvoiceNumber": "N° Facture courante",

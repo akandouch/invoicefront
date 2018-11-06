@@ -12,6 +12,11 @@
         </fa-icon>
         {{'page.product.downloadtemplatecsv' | translate}}
       </a>
+      <label class="btn btn-outline-primary" for="file">
+        <fa-icon [icon]="faUpload"></fa-icon>
+        {{'page.product.uploadcsv' | translate}}
+      </label>
+      <input type="file" (change)="addAttachment($event)" id="file" style="display:none">
     </div>
     <app-data-table
       [dataSource]="productRestService"

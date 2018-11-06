@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {Product, ProductType, UnitOfMeasure} from './product.class';
-import {faCopy, faDownload, faEdit, faEllipsisH, faEye, faListAlt, faPlus, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {faCopy, faDownload, faEdit, faEllipsisH, faEye, faListAlt, faPlus, faTrashAlt, faUpload} from '@fortawesome/free-solid-svg-icons';
 import {ProductRestServiceImpl} from '../services/productrestserviceimpl.class';
 import {DataColumn} from '../data-table/data-table.component';
+import {Upload} from '../upload/upload.class';
 
 @Component({
   selector: 'app-product',
@@ -17,6 +18,7 @@ export class ProductComponent implements OnInit {
 
   faPlus = faPlus;
   faDownload = faDownload;
+  faUpload = faUpload;
   faEllipsisH = faEllipsisH;
   faEye = faEye;
   faEdit = faEdit;
@@ -124,6 +126,24 @@ export class ProductComponent implements OnInit {
     const csvTemplatePath = this.productRestService.getCSVTemplatePath();
     console.log(csvTemplatePath);
     return csvTemplatePath;
+  }
+
+  addAttachment(event: any) {
+    const blob = event.srcElement.files[0];
+    const fileReader = new FileReader();
+    fileReader.addEventListener('load', () => {
+      const upl = new Upload();
+      upl.contentType = blob.type;
+      upl.fileName = blob.name;
+      upl.newUpload = fileReader.result.split(',')[1];
+      this.productRestService.postCSV(upl, (u) => {
+        this.reload();
+        alert('csv loaded successfully');
+      }, (err) => {
+        alert('error loading csv');
+      });
+    });
+    fileReader.readAsDataURL(blob);
   }
 
 }
