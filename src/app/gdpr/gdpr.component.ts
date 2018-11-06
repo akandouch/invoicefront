@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-gdpr',
@@ -15,7 +16,7 @@ export class GdprComponent implements OnInit {
 
 
   gdprShow() {
-    return !localStorage.getItem('gdpr');
+    return environment.production && !localStorage.getItem('gdpr');
   }
 
   gdprAccepted() {
