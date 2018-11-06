@@ -1,5 +1,6 @@
 <div *ngIf="!isLoggedIn()" class="form-inline my-2 my-lg-0">
-  <input [(ngModel)]="username" name="username" class="form-control mr-sm-2" type="text"
+  <input autocapitalize="none" autofocus="autofocus" [(ngModel)]="username" name="username" class="form-control mr-sm-2"
+         type="text"
          [placeholder]="'common.username' | translate" aria-label="Username">
   <input (keydown.enter)="login()" [(ngModel)]="password" name="password" class="form-control mr-sm-2"
          type="password" [placeholder]="'common.password' | translate"
