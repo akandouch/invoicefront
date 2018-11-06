@@ -270,7 +270,7 @@ export class InvoiceComponent implements OnInit {
     this.history = data;
   }
 
-  customEvent(data:CustomEventData){
+  customDataTableEvent(data:CustomEventData){
     switch(data.action){
       case "downloadPdf": this.generatePdf(<Invoice>data.data);
     }
