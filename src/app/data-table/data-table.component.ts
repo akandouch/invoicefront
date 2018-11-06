@@ -37,6 +37,9 @@ export class DataTableComponent implements OnInit, OnChanges {
   @Output()
   public deleteEvent: EventEmitter<Entity> = new EventEmitter();
 
+  @Output()
+  public clickEvent: EventEmitter<Entity> = new EventEmitter();
+
   public datas: Array<Entity> = new Array();
 
   public noPagination: boolean = false;
@@ -121,6 +124,9 @@ export class DataTableComponent implements OnInit, OnChanges {
       });
     }
     return cssClass;
+  }
+  click(entity:Entity){
+    this.clickEvent.emit(entity);
   }
  /*modal*/
   openModal(content) {

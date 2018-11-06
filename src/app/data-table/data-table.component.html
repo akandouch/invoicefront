@@ -36,7 +36,7 @@
       <div class="gridRow" *ngIf="enableConsult || enableDelete || enableEdit">&nbsp;</div>
   </div>
 
-  <div class="gridCol" *ngFor="let data of datas; let i=index">
+  <div class="gridCol" *ngFor="let data of datas; let i=index" (click)="click(data)">
     <ng-container  *ngFor="let col of dataColumns">
       <div *ngIf="!col.hide" class="gridRow {{col.cssClass}} {{getdataclass(data,col)}}" title="{{getdata(data, col) }}">{{getdata(data, col) }}</div>
     </ng-container>

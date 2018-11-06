@@ -28,6 +28,7 @@
     <app-data-table
       [dataSource]="productRestService"
       [dataColumns]="dataColumns"
+      (clickEvent)="select($event)"
     ></app-data-table>
   </div>
 </div>
