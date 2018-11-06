@@ -12,6 +12,7 @@
       "edit": "Editer",
       "update": "Mettre à jour",
       "back": "Retour",
+      "download": "Télécharger",
       "delete": "Supprimer",
       "change": "Changer",
       "save": "Sauvegarder",
@@ -110,7 +111,8 @@
     },
     "product": {
       "searchProduct": "Rechercher un produit",
-      "id": "Id"
+      "id": "Id",
+      "downloadtemplatecsv": "Télécharger le template CSV"
     },
     "settings": {
       "currentInvoiceNumber": "N° Facture courante",

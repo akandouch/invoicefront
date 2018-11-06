@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {Product, ProductType, UnitOfMeasure} from './product.class';
-import {faCopy, faEdit, faEllipsisH, faEye, faListAlt, faPlus, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
-import {RestService} from '../services/restservice.interface';
+import {faCopy, faDownload, faEdit, faEllipsisH, faEye, faListAlt, faPlus, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {ProductRestServiceImpl} from '../services/productrestserviceimpl.class';
 import {DataColumn} from '../data-table/data-table.component';
 
@@ -17,6 +16,7 @@ export class ProductComponent implements OnInit {
   public menu = {color: '#ff8d64', label: 'menu.product', icon: faListAlt};
 
   faPlus = faPlus;
+  faDownload = faDownload;
   faEllipsisH = faEllipsisH;
   faEye = faEye;
   faEdit = faEdit;
@@ -44,7 +44,7 @@ export class ProductComponent implements OnInit {
     {field: {name: 'type'}, label: 'common.type'}
   ];
 
-  constructor(@Inject(ProductRestServiceImpl) private productRestService: RestService) {
+  constructor(@Inject(ProductRestServiceImpl) private productRestService: ProductRestServiceImpl) {
     this.products = new Array();
     this.reload();
   }
@@ -118,6 +118,12 @@ export class ProductComponent implements OnInit {
 
   refreshGrid(data) {
     this.products = data;
+  }
+
+  public downloadCSV() {
+    const csvTemplatePath = this.productRestService.getCSVTemplatePath();
+    console.log(csvTemplatePath);
+    return csvTemplatePath;
   }
 
 }

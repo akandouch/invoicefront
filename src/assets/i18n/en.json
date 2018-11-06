@@ -10,6 +10,7 @@
       "clearselection": "Clear selection",
       "add": "Add",
       "edit": "Edit",
+      "download": "Download",
       "update": "Update",
       "back": "Back",
       "delete": "Delete",
@@ -110,7 +111,8 @@
     },
     "product": {
       "searchProduct": "Search for a product",
-      "id": "Id"
+      "id": "Id",
+      "downloadtemplatecsv": "Download Template CSV"
     },
     "settings": {
       "currentInvoiceNumber": "Current invoice number",

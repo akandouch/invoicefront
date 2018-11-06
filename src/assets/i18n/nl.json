@@ -19,6 +19,7 @@
       "consult": "Consult",
       "preview": "Voorbeeld",
       "downloadpdf": "PDF downloaden",
+      "download": "Downloaden",
       "sendmail": "Verzend MAIL"
     },
     "yourLogo": "Uw logo",
@@ -111,7 +112,8 @@
     },
     "product": {
       "searchProduct": "Zoeken naar een product",
-      "id": "Id"
+      "id": "Id",
+      "downloadtemplatecsv": "Downloaden Template CSV"
     },
     "settings": {
       "currentInvoiceNumber": "Huidig ​​factuurnummer",

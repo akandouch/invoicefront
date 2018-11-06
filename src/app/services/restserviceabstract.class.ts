@@ -7,22 +7,34 @@ import {HttpClient} from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
 export abstract class RestServiceAbstract implements RestService {
-  
-  path: string;
-  on(method:string,callback: any) {
-    switch( method.toLocaleLowerCase() ){
 
-      case "get"    :this.onGet     = callback;break;
-      case "post"   :this.onPost    = callback;break;
-      case "delete" :this.onDelete  = callback;break;
+  path: string;
+
+  on(method: string, callback: any) {
+    switch (method.toLocaleLowerCase()) {
+
+      case 'get'    :
+        this.onGet = callback;
+        break;
+      case 'post'   :
+        this.onPost = callback;
+        break;
+      case 'delete' :
+        this.onDelete = callback;
+        break;
 
     }
     return this;
   }
-  onGet:any = ()=>{};
-  onPost:any = ()=>{};
-  onDelete:any = ()=>{};
-  onPut:any = ()=>{};
+
+  onGet: any = () => {
+  };
+  onPost: any = () => {
+  };
+  onDelete: any = () => {
+  };
+  onPut: any = () => {
+  };
 
   constructor(private dataService: DataService<any>, private http: HttpClient) {
 

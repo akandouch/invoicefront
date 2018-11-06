@@ -1,12 +1,18 @@
 <app-title-page [menu]="menu" *ngIf="!selectOnly"></app-title-page>
 <div class="col-lg-12">
   <div class="form-group" *ngIf="!selectOnly">
-    <button class="btn btn-outline-secondary" (click)="newProduct()">
-      <fa-icon [icon]="faPlus">
+    <div class="btn-group">
+      <button class="btn btn-outline-secondary" (click)="newProduct()">
+        <fa-icon [icon]="faPlus"></fa-icon>
+        {{'common.action.add' | translate}}
+      </button>
+      <a class="btn btn-outline-info" [href]="downloadCSV()">
+        <fa-icon [icon]="faDownload">
 
-      </fa-icon>
-      {{'common.action.add' | translate}}
-    </button>
+        </fa-icon>
+        {{'page.product.downloadtemplatecsv' | translate}}
+      </a>
+    </div>
     <app-data-table
       [dataSource]="productRestService"
       [dataColumns]="dataColumns"
