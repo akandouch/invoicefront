@@ -27,7 +27,7 @@ import {RestService} from '../services/restservice.interface';
 import {UploadRestServiceImpl} from '../services/uploadrestserviceimpl.class';
 import {InvoiceSendMailRestServiceImpl} from '../services/invoicesendmailrestserviceimpl.class';
 import {Product} from '../product/product.class';
-import {DataColumn, FieldCondition, CustomAction, CustomEventData} from '../data-table/data-table.component';
+import {CustomAction, CustomEventData, DataColumn, FieldCondition} from '../data-table/data-table.component';
 import {TranslateService} from '@ngx-translate/core';
 import {faFileInvoice} from '@fortawesome/free-solid-svg-icons/faFileInvoice';
 
@@ -71,7 +71,7 @@ export class InvoiceComponent implements OnInit {
   private currentCustomer: InvoiceProfile;
 
   private listOpened: string = 'items';
-  public newVersion: boolean = true;
+  public newVersion: boolean;
 
   public details: Invoice = new Invoice();
   public idDetailsSelected: string;
@@ -111,6 +111,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.newVersion = false;
   }
 
   getAll() {
