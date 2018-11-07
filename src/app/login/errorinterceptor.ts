@@ -22,11 +22,11 @@ export class ErrorInterceptor implements HttpInterceptor {
         this.authenticationService.logout();
         errorLabel = 'error.unauthorized';
         errorMessage = 'error.forbidden';
+        this.router.navigate(['/error'],
+          {
+            queryParams: {label: errorLabel, status: err.status, message: errorMessage}
+          });
       }
-      this.router.navigate(['/error'],
-        {
-          queryParams: {label: errorLabel, status: err.status, message: errorMessage}
-        });
       return throwError(err);
     }));
   }
