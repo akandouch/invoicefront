@@ -57,7 +57,7 @@ export class NavbarComponent implements OnInit {
         this.menu.forEach(menu => menu.selected = false);
         const url = e.url;
         if (url === null || url.length === 0 || url === '/') {
-          this.currentMenu = {color: '#00c68e', role: ['ANONYMOUS', 'USER', 'ADMIN'], route: '/', label: 'menu.home', icon: this.faHome};
+          this.currentMenu = {color: '#dcdcdc', role: ['ANONYMOUS', 'USER', 'ADMIN'], route: '/', label: 'menu.home', icon: this.faHome};
           this.currentMenu.selected = true;
         } else {
           const currentMenuList = this.menu.filter(r => r.route === url);
