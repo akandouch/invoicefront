@@ -6,6 +6,7 @@
   },
   "common": {
     "action": {
+      "generatecsv": "Genereer CSV",
       "accept": "Aanvaarden",
       "refuse": "Weigeren",
       "clearselection": "Selectie wissen",

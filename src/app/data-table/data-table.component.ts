@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {faCopy, faEdit, faEllipsisH, faEye, faTrashAlt, IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import {faCopy, faEdit, faEllipsisH, faEye, faFileExcel, faTrashAlt, IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {RestService} from '../services/restservice.interface';
 import {Entity} from '../entity.interface';
 import {RestServiceAbstract} from '../services/restserviceabstract.class';
@@ -22,13 +22,13 @@ export class DataTableComponent implements OnInit, OnChanges {
   public customActions: Array<CustomAction>;
 
   @Input()
-  enableConsult:boolean = false;
-  
+  enableConsult: boolean = false;
+
   @Input()
-  enableDelete:boolean = false;
-  
+  enableDelete: boolean = false;
+
   @Input()
-  enableEdit:boolean = false;
+  enableEdit: boolean = false;
 
   @Output()
   public editEvent: EventEmitter<Entity> = new EventEmitter();
@@ -53,20 +53,44 @@ export class DataTableComponent implements OnInit, OnChanges {
   faEdit = faEdit;
   faCopy = faCopy;
   faTrashAlt = faTrashAlt;
+  faFileExcel = faFileExcel;
   faEllipsisH = faEllipsisH;
 
-  constructor(private translate: TranslateService, private modalService:NgbModal) {
+  constructor(private translate: TranslateService, private modalService: NgbModal) {
   }
 
   ngOnInit() {
-    if (this.dataSource instanceof RestServiceAbstract == false) {
+    if (this.dataSource instanceof RestServiceAbstract === false) {
       this.datas = <Array<Entity>>this.dataSource;
       this.noPagination = true;
     }
   }
-  
-  ngOnChanges(){
-    console.log("table change")
+
+  generateCSV() {
+    const labelHeaders = this.dataColumns.map(d => d.field.name);
+    const header = labelHeaders.join(',');
+    const rows = this.datas.map(data => labelHeaders.map((value) => data[value]).join(','))
+      .join('\n');
+    const csvData = header + '\n' + rows;
+    console.log(csvData);
+    const blob = new Blob([csvData], {type: 'text/csv'});
+    const url = window.URL.createObjectURL(blob);
+
+    if (navigator.msSaveOrOpenBlob) {
+      navigator.msSaveBlob(blob, 'generated-file.csv>');
+    } else {
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'generated-file.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+    window.URL.revokeObjectURL(url);
+  }
+
+  ngOnChanges() {
+    console.log('table change');
   }
 
   refreshGrid(data) {
@@ -90,8 +114,9 @@ export class DataTableComponent implements OnInit, OnChanges {
 
     this.deleteEvent.emit(entity);
   }
-  custom(action:string, entity:Entity){
-    this.customEvent.emit({action:action,data:entity});
+
+  custom(action: string, entity: Entity) {
+    this.customEvent.emit({action: action, data: entity});
   }
 
   getdata(data: any, column: DataColumn) {
@@ -133,26 +158,29 @@ export class DataTableComponent implements OnInit, OnChanges {
     }
     return cssClass;
   }
-  click(entity:Entity){
+
+  click(entity: Entity) {
     this.clickEvent.emit(entity);
   }
- /*modal*/
+
+  /*modal*/
   openModal(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-     
+
     }, (reason) => {
     });
   }
-/*
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }*/
+
+  /*
+    private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return  `with: ${reason}`;
+      }
+    }*/
 
 }
 
@@ -163,7 +191,7 @@ export class DataColumn {
   searcheable?: boolean;
   rules?: FieldRule[];
   cssClass?: string;
-  hide?:boolean;
+  hide?: boolean;
 }
 
 export class NestedField {
@@ -188,13 +216,13 @@ export enum FieldCondition {
 }
 
 export class CustomAction {
-  label:string;
-  action:string;
-  icon?:IconDefinition;
-  cssClass?:string;
+  label: string;
+  action: string;
+  icon?: IconDefinition;
+  cssClass?: string;
 }
 
 export class CustomEventData {
-  action:string;
-  data:Entity
+  action: string;
+  data: Entity;
 }

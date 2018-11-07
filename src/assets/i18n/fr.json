@@ -5,6 +5,7 @@
   },
   "common": {
     "action": {
+      "generatecsv": "Génerer CSV",
       "accept": "Accepter",
       "refuse": "Refuser",
       "clearselection": "Vider selection",
