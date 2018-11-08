@@ -28,14 +28,12 @@
       </div>
     </div>
 </div>
-<div class="row">
-  <div class="col-12">
-    <button (click)="generateCSV()" class="btn btn-outline-dark mt-3">
+<div class="d-inline-block ml-1">
+  <button (click)="generateCSV()" class="btn btn-outline-dark">
       <fa-icon [icon]="faFileExcel"></fa-icon>
-      {{'common.action.generatecsv' | translate}}
+    <span class="d-none d-lg-inline">{{'common.action.generatecsv' | translate}}</span>
     </button>
   </div>
-</div>
 <div class="mainGrid  mt-3">
   <div class="gridCol gridHeaders">
       <ng-container *ngFor="let row of dataColumns">
