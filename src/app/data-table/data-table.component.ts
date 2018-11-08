@@ -68,8 +68,8 @@ export class DataTableComponent implements OnInit, OnChanges {
 
   generateCSV() {
     const labelHeaders = this.dataColumns.map(d => d.field.name);
-    const header = labelHeaders.join(',');
-    const rows = this.datas.map(data => labelHeaders.map((value) => data[value]).join(','))
+    const header = labelHeaders.join(';');
+    const rows = this.datas.map(data => labelHeaders.map((value) => data[value]).join(';'))
       .join('\n');
     const csvData = header + '\n' + rows;
     console.log(csvData);
