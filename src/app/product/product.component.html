@@ -26,7 +26,8 @@
         <fa-icon [icon]="faPlus"></fa-icon>&nbsp;
         <span class="d-none d-lg-inline">{{'common.action.add' | translate}}</span>
       </button>
-      <a class="btn btn-outline-info" [href]="downloadCSV()">
+      <!--
+      <a class="btn btn-outline-info" [href]="">
         <fa-icon [icon]="faDownload">&nbsp;
         </fa-icon>
         <span class="d-none d-lg-inline">{{'page.product.downloadtemplatecsv' | translate}}</span>
@@ -35,15 +36,18 @@
         <fa-icon [icon]="faUpload"></fa-icon>&nbsp;
         <span class="d-none d-lg-inline">{{'page.product.uploadcsv' | translate}}</span>
       </label>
+    -->
       <input type="file" (change)="addAttachment($event)" id="file" style="display:none">
     </div>
     <app-data-table
       [dataSource]="productRestService"
       [dataColumns]="dataColumns"
+      [actionButtons]="dataTableButtons"
       (editEvent)="tableEdit($event)"
       (consultEvent)="tableConsult($event)"
       (deleteEvent)="tableDelete($event)"
       (clickEvent)="openEdit($event)"
+      (customEvent)="manageCustomAction($event)"
     ></app-data-table>
   </div>
 

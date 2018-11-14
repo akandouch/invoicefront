@@ -20,6 +20,8 @@ export class DataTableComponent implements OnInit, OnChanges {
   public dataColumns: Array<DataColumn>;
   @Input()
   public customActions: Array<CustomAction>;
+  @Input()
+  public actionButtons: Array<CustomAction>;
 
   @Input()
   enableConsult: boolean = false;
@@ -48,6 +50,7 @@ export class DataTableComponent implements OnInit, OnChanges {
   public datas: Array<Entity> = new Array();
 
   public noPagination: boolean = false;
+  
 
   faEye = faEye;
   faEdit = faEdit;
@@ -170,18 +173,6 @@ export class DataTableComponent implements OnInit, OnChanges {
     }, (reason) => {
     });
   }
-
-  /*
-    private getDismissReason(reason: any): string {
-      if (reason === ModalDismissReasons.ESC) {
-        return 'by pressing ESC';
-      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-        return 'by clicking on a backdrop';
-      } else {
-        return  `with: ${reason}`;
-      }
-    }*/
-
 }
 
 export class DataColumn {

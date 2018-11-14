@@ -2,8 +2,11 @@ import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/c
 import {Product, ProductType, UnitOfMeasure} from './product.class';
 import {faCopy, faDownload, faEdit, faEllipsisH, faEye, faListAlt, faPlus, faTrashAlt, faUpload} from '@fortawesome/free-solid-svg-icons';
 import {ProductRestServiceImpl} from '../services/productrestserviceimpl.class';
-import {DataColumn} from '../data-table/data-table.component';
+import {DataColumn, CustomAction} from '../data-table/data-table.component';
 import {Upload} from '../upload/upload.class';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { $ } from 'protractor';
+import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 
 @Component({
   selector: 'app-product',
@@ -46,6 +49,11 @@ export class ProductComponent implements OnInit {
     {field: {name: 'type'}, label: 'common.type'}
   ];
 
+  public dataTableButtons:Array<CustomAction> = [
+    {action:'importData',icon:faUpload, label:"page.product.uploadcsv"},
+    {action:'exportData',icon:faDownload, label:"page.product.downloadtemplatecsv"}
+  ]
+
   public newProduct: Product = new Product();
   constructor(@Inject(ProductRestServiceImpl) private productRestService: ProductRestServiceImpl) {
     this.products = new Array();
@@ -86,19 +94,6 @@ export class ProductComponent implements OnInit {
   }
 
   saveNewProduct() {
-    /*
-    var product: Product = {
-      id: '' + Date.now(),
-      description: 'test add',
-      name: 'Test Rest Add Generic',
-      quantity: 20,
-      unitOfMeasure: UnitOfMeasure.UNIT,
-      unitPrice: 35,
-      vat: 0.21,
-      type: ProductType.ITEM,
-      uploads: null
-    };
-    console.log(product);*/
     this.productRestService.post(this.newProduct, (data) => {
         this.reload();
       },
@@ -126,6 +121,12 @@ export class ProductComponent implements OnInit {
   public downloadCSV() {
     const csvTemplatePath = this.productRestService.getCSVTemplatePath();
     console.log(csvTemplatePath);
+
+    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveOrOpenBlob(csvTemplatePath, 'export.csv');
+    } else {
+      window.open(csvTemplatePath);
+    }
     return csvTemplatePath;
   }
 
@@ -145,6 +146,12 @@ export class ProductComponent implements OnInit {
       });
     });
     fileReader.readAsDataURL(blob);
+  }
+  manageCustomAction(action:CustomAction){
+    switch(action.action){
+      case "importData":document.getElementById('file').click();break;
+      case "exportData":this.downloadCSV();break;
+    }
   }
 
   openEdit(product:Product){

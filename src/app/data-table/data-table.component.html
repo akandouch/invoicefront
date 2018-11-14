@@ -42,6 +42,9 @@
   <div class="d-inline" style="padding:0; margin:0">
     <span class="hidebtn lead text-uppercase" (click)="generateCSV()" style="float: left;"><fa-icon [icon]="faFileExcel"></fa-icon> {{'common.action.generatecsv' | translate}}</span>
   </div>
+  <ng-container *ngFor="let actionButton of actionButtons">
+      <span class="hidebtn lead text-uppercase" (click)="custom(actionButton.action)" style="float: left;"><fa-icon [icon]="actionButton.icon" *ngIf="actionButton.icon"></fa-icon> {{actionButton.label | translate}}</span>
+  </ng-container>
   <div class="col-10 d-inline" style="text-align: right; padding: 0; margin: 0">
     <app-pagination [dataSource]="dataSource" (newData)="refreshGrid($event)"></app-pagination>
   </div>
