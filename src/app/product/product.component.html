@@ -8,15 +8,15 @@
     <label class="col-lg-3" for="newProductQT">Quantity</label>
     <input class="col-lg-9" id="newProductQT" type="text" [(ngModel)]="newProduct.quantity">
     <label class="col-lg-3" for="newProductUM">Unif of measure</label>
-    <select class="col-lg-9" style="height:32px">
-      <option>Day</option>
-      <option>Hour</option>
-      <option>Kg</option>
-      <option>Liter</option>
+    <select class="col-lg-9" style="height:32px" [(ngModel)]="newProduct.unitOfMeasure">
+      <option value="1">Day</option>
+      <option value="2">Hour</option>
+      <option value="3">Kg</option>
+      <option value="4">Liter</option>
     </select>
   </div>
   <div class="col-lg-6">
-    <input type="file"/>
+    <span class="btn btn-outline-secondary" click="addAttachment()">Add file</span>
   </div>
 </div><br/>
 <div class="col-lg-12">
@@ -43,6 +43,7 @@
       (editEvent)="tableEdit($event)"
       (consultEvent)="tableConsult($event)"
       (deleteEvent)="tableDelete($event)"
+      (clickEvent)="openEdit($event)"
     ></app-data-table>
   </div>
 

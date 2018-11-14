@@ -147,4 +147,8 @@ export class ProductComponent implements OnInit {
     fileReader.readAsDataURL(blob);
   }
 
+  openEdit(product:Product){
+    this.newProduct = product;
+  }
+
 }
