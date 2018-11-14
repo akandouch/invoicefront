@@ -1,39 +1,3 @@
-<div class="table-wrapper" *ngIf="0">
-    <div class="table-column" *ngFor="let row of dataColumns">
-      <div class="table-header">{{row.label | translate}}</div>
-      <div class="table-content row-{{i}} {{row.cssClass}} {{getdataclass(data,row)}}"
-           *ngFor="let data of datas;let i = index">{{getdata(data, row) }}
-      </div>
-    </div>
-    <div class="table-action" *ngIf="enableConsult || enableDelete || enableEdit">
-      <div class="table-header">&nbsp;</div>
-      <div class="table-content row-{{data['id']}} actions" *ngFor="let data of datas">
-        <div ngbDropdown class="d-inline-block">
-          <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
-          <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
-            <div (click)="consult(data)" *ngIf="enableConsult">
-              <fa-icon [icon]="faEye"></fa-icon>
-              {{'common.action.consult' | translate}}
-            </div>
-            <div (click)="edit(data)" *ngIf="enableEdit">
-              <fa-icon [icon]="faEdit"></fa-icon>
-              {{'common.action.edit' | translate}}
-            </div>
-            <div (click)="delete(data)" *ngIf="enableDelete">
-              <fa-icon [icon]="faTrashAlt"></fa-icon>
-              {{'common.action.delete' | translate}}
-            </div>
-          </div>
-        </div>  
-      </div>
-    </div>
-</div>
-<div class="d-inline-block ml-1">
-  <button (click)="generateCSV()" class="btn btn-outline-dark">
-      <fa-icon [icon]="faFileExcel"></fa-icon>
-    <span class="d-none d-lg-inline">{{'common.action.generatecsv' | translate}}</span>
-    </button>
-  </div>
 <div class="mainGrid  mt-3">
   <div class="gridCol gridHeaders">
       <ng-container *ngFor="let row of dataColumns">
@@ -72,8 +36,11 @@
   </div>
 </div>
 <div class="col-12 row p-2" style="padding: 0 !important; margin:0">
-  <div class="col-2 d-inline" style="padding:0; margin:0">
+  <div class="d-inline" style="padding:0; margin:0">
     <span class="hidebtn lead text-uppercase" (click)="openModal(columnHide)" style="float: left;">{{'datatable.hide' | translate }}</span>
+  </div>
+  <div class="d-inline" style="padding:0; margin:0">
+    <span class="hidebtn lead text-uppercase" (click)="generateCSV()" style="float: left;"><fa-icon [icon]="faFileExcel"></fa-icon> {{'common.action.generatecsv' | translate}}</span>
   </div>
   <div class="col-10 d-inline" style="text-align: right; padding: 0; margin: 0">
     <app-pagination [dataSource]="dataSource" (newData)="refreshGrid($event)"></app-pagination>

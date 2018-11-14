@@ -46,6 +46,7 @@ export class ProductComponent implements OnInit {
     {field: {name: 'type'}, label: 'common.type'}
   ];
 
+  public newProduct: Product = new Product();
   constructor(@Inject(ProductRestServiceImpl) private productRestService: ProductRestServiceImpl) {
     this.products = new Array();
     this.reload();
@@ -84,8 +85,8 @@ export class ProductComponent implements OnInit {
     console.log('delete : ' + data.id);
   }
 
-  newProduct() {
-
+  saveNewProduct() {
+    /*
     var product: Product = {
       id: '' + Date.now(),
       description: 'test add',
@@ -97,8 +98,8 @@ export class ProductComponent implements OnInit {
       type: ProductType.ITEM,
       uploads: null
     };
-    console.log(product);
-    this.productRestService.post(product, (data) => {
+    console.log(product);*/
+    this.productRestService.post(this.newProduct, (data) => {
         this.reload();
       },
       () => {
