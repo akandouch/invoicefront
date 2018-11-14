@@ -12,9 +12,16 @@
       <a *ngIf="!last" (click)="pageNumber=totalPages-1;get()"><fa-icon [icon]="faFastForward"></fa-icon></a>
     </label>
   </div>
+  <div class="col-lg-1" *ngIf="0">
+    <label style="float: right;">Page:<br/>
+    <select>
+      <option *ngFor="let i of pages" (click)="pageNumber=i;get()">{{i}}</option>
+    </select>
+    </label>
+  </div>
   <div class="col-lg-1">
     <label style="float: right;">Total:<br/>
-      <select class="custom-select" [(ngModel)]="pageSize" (change)="pageNumber=0;get()">
+      <select [(ngModel)]="pageSize" (change)="pageNumber=0;get()">
         <option>1</option>
         <option>5</option>
         <option>10</option>

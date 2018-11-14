@@ -6,6 +6,7 @@ import { RestServiceAbstract } from '../services/restserviceabstract.class';
 import { DataSourceFactory } from '../data-table/datasourcefactory.class';
 import { DataSource, Page } from '../data-table/datasource.interface';
 import { RestDataSource } from '../data-table/restdatasource.class';
+import { MatSelect} from '@angular/material';
 
 @Component({
   selector: 'app-pagination',

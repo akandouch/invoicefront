@@ -149,7 +149,7 @@ export class ProductComponent implements OnInit {
   }
   manageCustomAction(action:CustomAction){
     switch(action.action){
-      case "importData":document.getElementById('file').click();break;
+      case "importData":document.getElementById('file').click;break;
       case "exportData":this.downloadCSV();break;
     }
   }

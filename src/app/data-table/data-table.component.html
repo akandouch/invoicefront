@@ -36,15 +36,27 @@
   </div>
 </div>
 <div class="col-12 row p-2" style="padding: 0 !important; margin:0">
-  <div class="d-inline" style="padding:0; margin:0">
-    <span class="hidebtn lead text-uppercase" (click)="openModal(columnHide)" style="float: left;">{{'datatable.hide' | translate }}</span>
+  <div ngbDropdown class="d-inline-block">
+    <span id="dropdown" ngbDropdownToggle class="hidebtn lead text-uppercase" style="float: left;">{{'datatable.options' | translate }}</span>
+    <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu" style="width: max-content;">
+      
+      <div (click)="custom(action.action,data)" *ngFor="let action of customActions">
+            <fa-icon [icon]="action.icon"></fa-icon>
+            {{action.label}}
+      </div>
+      <div (click)="openModal(columnHide)" >
+        <fa-icon [icon]="faEyeSlash"></fa-icon> 
+        {{'datatable.hide' | translate }}</div>
+      <div (click)="generateCSV()">
+        <fa-icon [icon]="faFileExcel"></fa-icon> 
+        {{'common.action.generatecsv' | translate}}
+      </div>
+      <div *ngFor="let actionButton of actionButtons" (click)="custom(actionButton.action)">
+        <fa-icon [icon]="actionButton.icon" *ngIf="actionButton.icon"></fa-icon> 
+        {{actionButton.label | translate}}
+      </div>
+    </div>
   </div>
-  <div class="d-inline" style="padding:0; margin:0">
-    <span class="hidebtn lead text-uppercase" (click)="generateCSV()" style="float: left;"><fa-icon [icon]="faFileExcel"></fa-icon> {{'common.action.generatecsv' | translate}}</span>
-  </div>
-  <ng-container *ngFor="let actionButton of actionButtons">
-      <span class="hidebtn lead text-uppercase" (click)="custom(actionButton.action)" style="float: left;"><fa-icon [icon]="actionButton.icon" *ngIf="actionButton.icon"></fa-icon> {{actionButton.label | translate}}</span>
-  </ng-container>
   <div class="col-10 d-inline" style="text-align: right; padding: 0; margin: 0">
     <app-pagination [dataSource]="dataSource" (newData)="refreshGrid($event)"></app-pagination>
   </div>
