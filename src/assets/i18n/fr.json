@@ -142,6 +142,7 @@
     "forbidden": "Vous n'êtes pas autorisé à accéder à cette page. Veuillez vous connecter."
   },
   "datatable":{
-    "hide": "Cacher colonne"
+    "hide": "Cacher colonne",
+    "options":"Options"
   }
 }

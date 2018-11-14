@@ -37,7 +37,9 @@
 </div>
 <div class="col-12 row p-2" style="padding: 0 !important; margin:0">
   <div ngbDropdown class="d-inline-block">
-    <span id="dropdown" ngbDropdownToggle class="hidebtn lead text-uppercase" style="float: left;">{{'datatable.options' | translate }}</span>
+    <span id="dropdown" ngbDropdownToggle class="hidebtn lead text-uppercase" style="float: left;">
+      <fa-icon [icon]="faFlag"></fa-icon>
+      {{'datatable.options' | translate }}</span>
     <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu" style="width: max-content;">
       
       <div (click)="custom(action.action,data)" *ngFor="let action of customActions">

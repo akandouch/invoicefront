@@ -143,7 +143,8 @@
     "forbidden": "Verboden. U hebt geen toegang tot deze bron. Meld u aan met de juiste toegangen."
   },
   "datatable":{
-    "hide": "Kolom verbergen"
+    "hide": "Kolom verbergen",
+    "options": "Opties"
   }
 }
 

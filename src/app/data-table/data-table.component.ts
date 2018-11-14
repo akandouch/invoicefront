@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {faCopy, faEdit, faEllipsisH, faEye, faFileExcel, faTrashAlt, IconDefinition, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+import {faCopy, faEdit, faEllipsisH, faEye, faFileExcel, faTrashAlt, IconDefinition, faEyeSlash, faFlagCheckered} from '@fortawesome/free-solid-svg-icons';
 import {RestService} from '../services/restservice.interface';
 import {Entity} from '../entity.interface';
 import {RestServiceAbstract} from '../services/restserviceabstract.class';
@@ -59,6 +59,7 @@ export class DataTableComponent implements OnInit, OnChanges {
   faFileExcel = faFileExcel;
   faEllipsisH = faEllipsisH;
   faEyeSlash = faEyeSlash;
+  faFlag = faFlagCheckered;
 
   constructor(private translate: TranslateService, private modalService: NgbModal) {
   }
