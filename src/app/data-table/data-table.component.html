@@ -41,11 +41,6 @@
       <fa-icon [icon]="faFlag"></fa-icon>
       {{'datatable.options' | translate }}</span>
     <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu" style="width: max-content;">
-      
-      <div (click)="custom(action.action,data)" *ngFor="let action of customActions">
-            <fa-icon [icon]="action.icon"></fa-icon>
-            {{action.label}}
-      </div>
       <div (click)="openModal(columnHide)" >
         <fa-icon [icon]="faEyeSlash"></fa-icon> 
         {{'datatable.hide' | translate }}</div>
