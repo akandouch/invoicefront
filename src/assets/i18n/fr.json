@@ -20,7 +20,8 @@
       "consult": "Consulter",
       "preview": "Aperçu",
       "downloadpdf": "Télécharger PDF",
-      "sendmail": "Envoi Email"
+      "sendmail": "Envoi Email",
+      "reset":"Réinitialiser"
     },
     "yourLogo": "Votre logo",
     "street": "Rue",

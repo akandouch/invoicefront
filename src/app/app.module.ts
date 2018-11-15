@@ -44,6 +44,7 @@ import {LoginComponent} from './login/login.component';
 import {TitlePageComponent} from './title-page/title-page.component';
 import {GdprComponent} from './gdpr/gdpr.component';
 import {NavbarComponent} from './navbar/navbar.component';
+import { UnitOfMeasureRestServiceImpl } from './services/unitofmeasurerestserviceimpl.class';
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
@@ -116,6 +117,7 @@ const routes: Route[] = [
     {provide: ProductRestServiceImpl, useClass: ProductRestServiceImpl},
     {provide: InvoiceProfileRestServiceImpl, useClass: InvoiceProfileRestServiceImpl},
     {provide: AuthGuardService, useClass: AuthGuardService},
+    {provide: UnitOfMeasureRestServiceImpl, useClass:UnitOfMeasureRestServiceImpl}
 
   ],
   bootstrap: [AppComponent]

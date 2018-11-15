@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
-import {Product, ProductType, UnitOfMeasure} from './product.class';
+import {Product, ProductType} from './product.class';
 import {faCopy, faDownload, faEdit, faEllipsisH, faEye, faListAlt, faPlus, faTrashAlt, faUpload} from '@fortawesome/free-solid-svg-icons';
 import {ProductRestServiceImpl} from '../services/productrestserviceimpl.class';
 import {DataColumn, CustomAction} from '../data-table/data-table.component';
@@ -7,6 +7,8 @@ import {Upload} from '../upload/upload.class';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { $ } from 'protractor';
 import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
+import { UnitOfMeasureRestServiceImpl } from '../services/unitofmeasurerestserviceimpl.class';
+import { UnitOfMeasure } from '../domain/unitofmeasure.class';
 
 @Component({
   selector: 'app-product',
@@ -37,13 +39,15 @@ export class ProductComponent implements OnInit {
   typeFilter: number;
   nameFilter: string;
 
+  public uom:Array<UnitOfMeasure>;
+
   /* for data table */
   public dataColumns: Array<DataColumn> = [
     {field: {name: 'id'}, label: 'page.product.id'},
     {field: {name: 'name'}, label: 'common.name'},
     {field: {name: 'description'}, label: 'common.description'},
     {field: {name: 'quantity'}, label: 'page.items.qty'},
-    {field: {name: 'unitOfMeasure'}, label: 'page.items.unitOfMeasure'},
+    {field: {name: 'unitOfMeasure', child:{name:'name'}}, label: 'page.items.unitOfMeasure'},
     {field: {name: 'unitPrice'}, label: 'page.items.priceUnit'},
     {field: {name: 'vat'}, label: 'page.items.vatRate'},
     {field: {name: 'type'}, label: 'common.type'}
@@ -55,12 +59,16 @@ export class ProductComponent implements OnInit {
   ]
 
   public newProduct: Product = new Product();
-  constructor(@Inject(ProductRestServiceImpl) private productRestService: ProductRestServiceImpl) {
+  constructor(
+    @Inject(ProductRestServiceImpl) private productRestService: ProductRestServiceImpl,
+    @Inject(UnitOfMeasureRestServiceImpl) private uomRestService: UnitOfMeasureRestServiceImpl
+  ) {
     this.products = new Array();
     this.reload();
   }
 
   ngOnInit() {
+    this.uomRestService.get({},(data)=>{this.uom = data})
   }
 
   select(product: Product) {

@@ -21,7 +21,8 @@
       "preview": "Voorbeeld",
       "downloadpdf": "PDF downloaden",
       "download": "Downloaden",
-      "sendmail": "Verzend MAIL"
+      "sendmail": "Verzend MAIL",
+      "reset":"Reset"
     },
     "yourLogo": "Uw logo",
     "street": "Straat",
