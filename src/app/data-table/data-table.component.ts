@@ -142,6 +142,9 @@ export class DataTableComponent implements OnInit, OnChanges {
   finddata(data: any, field: NestedField) {
     var value = data[field.name];
 
+    if(!value || value == null){
+      return "";
+    }
     if (field.child) {
       return this.finddata(value, field.child);
     }
