@@ -20,7 +20,7 @@
     </div>
     </div>
     <div class="col-lg-6">
-    <h3 class="col-lg-12">{{'menu.product'|translate}}</h3>
+    <h3 class="col-lg-12">{{'page.items.unitOfMeasure'|translate}}</h3>
       
       
       <div class="col-lg-12" *ngIf="settings">
@@ -37,7 +37,6 @@
       
       </div>
       <div class="col-lg-12" *ngIf="settings">
-          <label>Unit of measure</label>
           <app-data-table
             [dataSource]="uomRestService"
             [dataColumns]="[
