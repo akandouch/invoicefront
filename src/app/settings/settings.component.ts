@@ -18,7 +18,7 @@ export class SettingsComponent implements OnInit {
   public menu = {color: '#ff8484', role: ['ADMIN'], route: '/settings', label: 'menu.setting', icon: faCogs};
 
   public uom:Array<UnitOfMeasure>;
-  constructor(ds: DataService<any>, @Inject(UnitOfMeasureRestServiceImpl) private uomService:UnitOfMeasureRestServiceImpl) {
+  constructor(ds: DataService<any>, @Inject(UnitOfMeasureRestServiceImpl) private uomRestService:UnitOfMeasureRestServiceImpl) {
     this.ds = ds;
     this.getSettings();
     this.newUom = new UnitOfMeasure();
@@ -35,10 +35,10 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.uomService.get({},(data)=>{this.uom=data});
+    this.uomRestService.get({},(data)=>{this.uom=data});
   }
   saveNewUom(){
-    this.uomService.post(this.newUom,
+    this.uomRestService.post(this.newUom,
     ()=>{
       alert('saved successfully');
     },
