@@ -195,7 +195,7 @@
               <!--<button (click)="removeProduct(i)">-</button>-->
             </div>
             
-            <div class="col-lg-12 row selected-product-content">
+            <div class="col-lg-12 row selected-product-content" *ngIf="current.products">
                 <div class="col-lg-6"></div>
                 <div class="col-lg-1"><label><b>Total</b></label></div>
                 <div class="col-lg-2"><b style="width: 80%">{{totalPriceProduct}}</b></div>
