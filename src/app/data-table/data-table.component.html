@@ -48,7 +48,8 @@
   <div ngbDropdown class="d-inline-block col-3 m-0 p-0">
     <span id="dropdown" ngbDropdownToggle class="hidebtn lead text-uppercase" style="float: left;">
       <fa-icon [icon]="faFlag"></fa-icon>
-      {{'datatable.options' | translate }}</span>
+      <span class="d-none d-md-inline">{{'datatable.options' | translate }}</span>
+      </span>
     <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu" style="width: max-content;">
       <div (click)="openModal(columnHide)" >
         <fa-icon [icon]="faEyeSlash"></fa-icon> 
