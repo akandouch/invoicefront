@@ -12,7 +12,7 @@
       <option *ngFor="let u of uom" [ngValue]="u">{{u.name}}</option>
     </select>
     <label class="col-lg-3" for="newProductDescription">Description</label>
-    <textarea id="newProductDescription" class="col-lg-9 md-textarea  form-control" [(ngModel)]="newProduct.description" placeholder="Your description here ..."></textarea>
+    <textarea id="newProductDescription" class="col-lg-9 md-textarea  form-control form-control-sm" [(ngModel)]="newProduct.description" placeholder="Your description here ..."></textarea>
     <span class="offset-lg-10 col-lg-2 btn btn-outline-secondary" click="addAttachment()">Add file</span>
   
 </div><br/>
