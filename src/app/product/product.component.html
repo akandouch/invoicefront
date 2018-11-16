@@ -2,18 +2,18 @@
 <div class="col-lg-12 row" *ngIf="!selectOnly">
   <div class="col-lg-6 row">
     <label class="col-lg-3" for="newProductName">Name</label>
-    <input class="col-lg-9" id="newProductName" type="text" [(ngModel)]="newProduct.name">
+    <input class="col-lg-9 form-control form-control-sm" id="newProductName" type="text" [(ngModel)]="newProduct.name">
     <label class="col-lg-3" for="newProductUP">Unit price</label>
-    <input class="col-lg-9" id="newProductUP" type="text" [(ngModel)]="newProduct.unitPrice">
+    <input class="col-lg-9 form-control form-control-sm" id="newProductUP" type="text" [(ngModel)]="newProduct.unitPrice">
     <label class="col-lg-3" for="newProductQT">Quantity</label>
-    <input class="col-lg-9" id="newProductQT" type="text" [(ngModel)]="newProduct.quantity">
+    <input class="col-lg-9 form-control form-control-sm" id="newProductQT" type="text" [(ngModel)]="newProduct.quantity">
     <label class="col-lg-3" for="newProductUM">Unif of measure</label>
-    <select class="col-lg-9" id="newProductUM" style="height:32px" [(ngModel)]="newProduct.unitOfMeasure">
+    <select class="col-lg-9 form-control form-control-sm" id="newProductUM" style="height:32px" [(ngModel)]="newProduct.unitOfMeasure">
       <option *ngFor="let u of uom" [ngValue]="u">{{u.name}}</option>
     </select>
   </div>
   <div class="col-lg-6 row">
-    <textarea class="col-lg-12" [(ngModel)]="newProduct.description" placeholder="Your description here ..."></textarea>
+    <textarea class="col-lg-12 md-textarea  form-control" [(ngModel)]="newProduct.description" placeholder="Your description here ..."></textarea>
     <span class="btn btn-outline-secondary" click="addAttachment()">Add file</span>
   </div>
 </div><br/>

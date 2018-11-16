@@ -174,8 +174,9 @@
 
         <div class="col-lg-12 row" *ngIf="current && listOpened == 'products'">
           <div class="col-lg-5">
-            <h5><span class="btn btn-outline-dark" (click)="current.products = []">{{'common.action.clearselection'|translate}}</span>
-               {{'menu.product' | translate}}</h5>
+            <h5>{{'menu.product' | translate}}</h5>
+            <span class="btn btn-outline-dark" (click)="current.products = []">{{'common.action.clearselection'|translate}}</span>
+               
             <div class="col-lg-12 row selected-product-header">
               <div class="col-lg-1"></div>
               <div class="col-lg-3">{{'common.name'|translate}}</div>
