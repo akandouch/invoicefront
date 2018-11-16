@@ -1,5 +1,5 @@
 <app-title-page [menu]="menu" *ngIf="!selectOnly"></app-title-page>
-<div class="col-lg-12 row form-group" *ngIf="!selectOnly">
+<div class="col-lg-12 form-group row m-0" *ngIf="!selectOnly">
  
     <label class="col-lg-3" for="newProductName">Name</label>
     <input class="col-lg-9 form-control form-control-sm" id="newProductName" type="text" [(ngModel)]="newProduct.name">
