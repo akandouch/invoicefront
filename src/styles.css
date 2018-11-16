@@ -420,3 +420,15 @@ input {
 .ready-status {
   background-color: #669cff !important;
 }
+a.page-link {
+  color: #747676;
+  font-size: 10px;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #747676;
+  font-weight: bold;
+  background-color: #fff;
+  border: 1px solid #dee2e6; 
+}

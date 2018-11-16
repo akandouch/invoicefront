@@ -19,7 +19,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   pageNumber:number = 0;
   pageSize:number = 10;
   totalPages:number;
-  totalElement:number;
+  totalElements:number;
   last:boolean;
   pages:number[];
 
@@ -67,7 +67,7 @@ export class PaginationComponent implements OnInit, OnChanges {
     this.dataSource.getPage(this.pageSize, this.pageNumber, this.columnOrder && this.columnOrder.name?this.columnOrder:null).then((page)=>{
 
       this.totalPages = page.totalPages;
-      this.totalElement = page.totalElement;
+      this.totalElements = page.totalElements;
       this.last = page.last;
       
       this.pages = [];

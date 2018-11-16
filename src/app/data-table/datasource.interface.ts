@@ -6,7 +6,7 @@ export interface DataSource{
 }
 export class Page {
     totalPages:number;
-    totalElement:number;
+    totalElements:number;
     last:boolean;
     content:any[];
 }

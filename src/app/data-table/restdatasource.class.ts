@@ -16,7 +16,7 @@ export class RestDataSource implements DataSource{
     getPage(pageSize:number, pageNumber:number, order?:columnOrder){
         var promise:Promise<Page>= new Promise((resolve)=>{
 
-        
+        if(pageNumber>0)pageNumber-=1;
         var params = {pageNumber:pageNumber, pageSize:pageSize, orderColumn:null, direction:null};
         var p:Page;
         if(order){
@@ -26,7 +26,7 @@ export class RestDataSource implements DataSource{
         this._source.get(params,(data)=>{
             p = {
                 totalPages: data.totalPages,
-                totalElement: data.totalElement,
+                totalElements: data.totalElements,
                 last: data.last,
                 content:data.content
             };

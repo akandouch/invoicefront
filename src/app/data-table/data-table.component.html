@@ -44,8 +44,8 @@
       </div>
   </div>
 </div>
-<div class="col-12 row p-2" style="padding: 0 !important; margin:0">
-  <div ngbDropdown class="d-inline-block">
+<div class="col-12 row p-0 m-0">
+  <div ngbDropdown class="d-inline-block col-3 m-0 p-0">
     <span id="dropdown" ngbDropdownToggle class="hidebtn lead text-uppercase" style="float: left;">
       <fa-icon [icon]="faFlag"></fa-icon>
       {{'datatable.options' | translate }}</span>
@@ -63,7 +63,7 @@
       </div>
     </div>
   </div>
-  <div class="col-10 d-inline" style="text-align: right; padding: 0; margin: 0">
+  <div class="col-9 d-inline p-0 m-0" style="text-align: right; padding: 0; margin: 0">
     <app-pagination [dataSource]="dataSource" (newData)="refreshGrid($event)" [columnOrder]="columnOrder"></app-pagination>
   </div>
 </div>
