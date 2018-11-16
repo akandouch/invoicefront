@@ -152,7 +152,7 @@ i{
 }
 .selected-product-content > div > input {
     border: none;
-    border-bottom: solid 1px #EDEDED;
+    border-bottom: dotted 1px #b7b7b7;/*solid 1px #EDEDED;*/
     border-radius: 0;
     outline: none;
     width: 95%;

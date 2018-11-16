@@ -18,7 +18,8 @@ import {
   faPlus,
   faSearch,
   faTrashAlt,
-  faUser
+  faUser,
+  faCannabis
 } from '@fortawesome/free-solid-svg-icons';
 import {InvoiceProfile} from '../invoiceprofile/invoiceprofile.class';
 import {InvoiceRestServiceImpl} from '../services/invoicerestserviceimpl.class';
@@ -62,6 +63,7 @@ export class InvoiceComponent implements OnInit {
   faFilePdf = faFilePdf;
   faPaperclip = faPaperclip;
   faList = faList;
+  faCannabis = faCannabis;
   public menu = {color: '#5cc664', label: 'menu.invoice', icon: faFileInvoice};
 
   private currentModal: NgbActiveModal;
