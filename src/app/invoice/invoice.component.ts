@@ -265,12 +265,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   removeProduct(i: number) {
-    console.log(i);
-    var begin = this.current.products.slice(0,i);
-    var end = this.current.products.slice(i+1);
-    
-    this.current.products = [];
-    this.current.products.concat(begin,end);
+    this.current.products.splice(i,1);
   }
 
   refreshGrid(data) {
