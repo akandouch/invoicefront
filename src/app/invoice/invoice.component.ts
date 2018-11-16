@@ -257,10 +257,10 @@ export class InvoiceComponent implements OnInit {
   }
 
   productSelected(product: Product) {
-    console.log(product);
     if (!this.current.products) {
       this.current.products = [];
     }
+    product.quantity = 1;
     this.current.products.push(product);
   }
 
