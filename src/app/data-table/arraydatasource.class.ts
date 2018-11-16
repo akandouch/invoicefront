@@ -41,7 +41,7 @@ export class ArrayDataSource implements DataSource{
             p = {
                 content:content,
                 last:last,
-                totalElement:totalElement,
+                totalElements:totalElement,
                 totalPages:totalPages
             };
             console.log(p);
