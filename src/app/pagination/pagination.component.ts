@@ -64,7 +64,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   get(){
-    this.dataSource.getPage(this.pageSize, this.pageNumber, this.columnOrder.name?this.columnOrder:null).then((page)=>{
+    this.dataSource.getPage(this.pageSize, this.pageNumber, this.columnOrder && this.columnOrder.name?this.columnOrder:null).then((page)=>{
 
       this.totalPages = page.totalPages;
       this.totalElement = page.totalElement;
