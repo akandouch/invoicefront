@@ -1,7 +1,8 @@
 <div class="mainGrid  mt-3">
   <div class="gridCol gridHeaders">
       <ng-container *ngFor="let row of dataColumns">
-        <div *ngIf="!row.hide" class="gridRow" title="{{row.label | translate}}" (click)="
+        <div *ngIf="!row.hide" class="gridRow" title="{{row.label | translate}}" style="cursor:pointer"
+        (click)="
         orderBy(row) == columnOrder.name
         ?columnOrder = {name: orderBy(row),asc: !columnOrder.asc}
         :columnOrder = {name: orderBy(row),asc: false}">
