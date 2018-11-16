@@ -42,7 +42,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   ngOnChanges(){
     if(this.dataSource.getPage){
-      this.get(this.columnOrder);
+      this.get();
     }
   }
   ngOnInit() {
@@ -63,8 +63,8 @@ export class PaginationComponent implements OnInit, OnChanges {
     }
   }
 
-  get(columnOrder?:columnOrder){
-    this.dataSource.getPage(this.pageSize, this.pageNumber, columnOrder).then((page)=>{
+  get(){
+    this.dataSource.getPage(this.pageSize, this.pageNumber, this.columnOrder.name?this.columnOrder:null).then((page)=>{
 
       this.totalPages = page.totalPages;
       this.totalElement = page.totalElement;
