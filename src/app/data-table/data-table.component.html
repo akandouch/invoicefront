@@ -20,7 +20,7 @@
       <div *ngIf="!col.hide" class="gridRow {{col.cssClass}} {{getdataclass(data,col)}}" title="{{getdata(data, col) }}">{{getdata(data, col) }}</div>
     </ng-container>
     <div class="gridRow actions" *ngIf="enableConsult || enableDelete || enableEdit">
-        <div ngbDropdown class="d-inline-block">
+        <div ngbDropdown placement="bottom-right" class="d-inline-block">
           <fa-icon [icon]="faEllipsisH" class="option-list-button" id="dropdown" ngbDropdownToggle></fa-icon>
           <div ngbDropdownMenu aria-labelledby="dropdown" class="dropdown-menu">
             <div (click)="consult(data)" *ngIf="enableConsult">
