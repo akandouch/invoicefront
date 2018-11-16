@@ -3,11 +3,11 @@
       <ng-container *ngFor="let row of dataColumns">
         <div *ngIf="!row.hide" class="gridRow" title="{{row.label | translate}}" (click)="
         orderBy(row) == columnOrder.name
-        ?columnOrder = {name: orderBy(row),asc: !columnOrder.asc,desc: !columnOrder.desc}
-        :columnOrder = {name: orderBy(row),asc: false,desc: true}">
+        ?columnOrder = {name: orderBy(row),asc: !columnOrder.asc}
+        :columnOrder = {name: orderBy(row),asc: false}">
           {{row.label | translate}}&nbsp;
           <fa-icon [icon]="faSort" style="color:rgb(199, 199, 199)" *ngIf="orderBy(row) != columnOrder.name"></fa-icon>
-          <fa-icon [icon]="faSortDown" *ngIf="orderBy(row) == columnOrder.name && columnOrder.desc"></fa-icon>
+          <fa-icon [icon]="faSortDown" *ngIf="orderBy(row) == columnOrder.name && !columnOrder.asc"></fa-icon>
           <fa-icon [icon]="faSortUp" *ngIf="orderBy(row) == columnOrder.name && columnOrder.asc"></fa-icon>
         </div>
       </ng-container>

@@ -65,7 +65,7 @@ export class DataTableComponent implements OnInit, OnChanges {
   faSortDown = faSortDown;
   faSort = faSort;
 
-  columnOrder:columnOrder = {name:"",asc:false,desc:true};
+  columnOrder:columnOrder = {name:"",asc:false};
 
   constructor(private translate: TranslateService, private modalService: NgbModal) {
   }
@@ -242,5 +242,4 @@ export class CustomEventData {
 export class columnOrder {
   name:string;
   asc:boolean;
-  desc:boolean;
 }
