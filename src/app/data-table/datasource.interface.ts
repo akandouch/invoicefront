@@ -1,7 +1,8 @@
 import { Observable } from "rxjs";
+import { columnOrder } from "./data-table.component";
 
 export interface DataSource{
-    getPage(pageSize:number, pageNumber:number):Promise<Page>;
+    getPage(pageSize:number, pageNumber:number, columnOrder?:columnOrder):Promise<Page>;
 }
 export class Page {
     totalPages:number;

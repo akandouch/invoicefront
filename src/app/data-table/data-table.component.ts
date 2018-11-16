@@ -1,10 +1,11 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {faCopy, faEdit, faEllipsisH, faEye, faFileExcel, faTrashAlt, IconDefinition, faEyeSlash, faFlagCheckered} from '@fortawesome/free-solid-svg-icons';
+import {faSort,faSortUp,faSortDown,faCopy, faEdit, faEllipsisH, faEye, faFileExcel, faTrashAlt, IconDefinition, faEyeSlash, faFlagCheckered} from '@fortawesome/free-solid-svg-icons';
 import {RestService} from '../services/restservice.interface';
 import {Entity} from '../entity.interface';
 import {RestServiceAbstract} from '../services/restserviceabstract.class';
 import {TranslateService} from '@ngx-translate/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { DataSourceFactory } from './datasourcefactory.class';
 
 
 @Component({
@@ -60,6 +61,11 @@ export class DataTableComponent implements OnInit, OnChanges {
   faEllipsisH = faEllipsisH;
   faEyeSlash = faEyeSlash;
   faFlag = faFlagCheckered;
+  faSortUp = faSortUp;
+  faSortDown = faSortDown;
+  faSort = faSort;
+
+  columnOrder:columnOrder = {name:"",asc:false,desc:true};
 
   constructor(private translate: TranslateService, private modalService: NgbModal) {
   }
@@ -178,6 +184,16 @@ export class DataTableComponent implements OnInit, OnChanges {
     }, (reason) => {
     });
   }
+
+  orderBy(column:DataColumn){
+    var path = column.field.name;
+    var col = column.field;
+    while(col.child){
+      path+= "." + column.field.child.name;
+      col = col.child;
+    }
+    return path;
+  }
 }
 
 export class DataColumn {
@@ -221,4 +237,10 @@ export class CustomAction {
 export class CustomEventData {
   action: string;
   data: Entity;
+}
+
+export class columnOrder {
+  name:string;
+  asc:boolean;
+  desc:boolean;
 }

@@ -1,7 +1,15 @@
 <div class="mainGrid  mt-3">
   <div class="gridCol gridHeaders">
       <ng-container *ngFor="let row of dataColumns">
-        <div *ngIf="!row.hide" class="gridRow" title="{{row.label | translate}}">{{row.label | translate}}</div>
+        <div *ngIf="!row.hide" class="gridRow" title="{{row.label | translate}}" (click)="
+        orderBy(row) == columnOrder.name
+        ?columnOrder = {name: orderBy(row),asc: !columnOrder.asc,desc: !columnOrder.desc}
+        :columnOrder = {name: orderBy(row),asc: false,desc: true}">
+          {{row.label | translate}}&nbsp;
+          <fa-icon [icon]="faSort" style="color:rgb(199, 199, 199)" *ngIf="orderBy(row) != columnOrder.name"></fa-icon>
+          <fa-icon [icon]="faSortDown" *ngIf="orderBy(row) == columnOrder.name && columnOrder.desc"></fa-icon>
+          <fa-icon [icon]="faSortUp" *ngIf="orderBy(row) == columnOrder.name && columnOrder.asc"></fa-icon>
+        </div>
       </ng-container>
       <div class="gridRow" *ngIf="enableConsult || enableDelete || enableEdit">&nbsp;</div>
   </div>
@@ -55,21 +63,10 @@
     </div>
   </div>
   <div class="col-10 d-inline" style="text-align: right; padding: 0; margin: 0">
-    <app-pagination [dataSource]="dataSource" (newData)="refreshGrid($event)"></app-pagination>
+    <app-pagination [dataSource]="dataSource" (newData)="refreshGrid($event)" [columnOrder]="columnOrder"></app-pagination>
   </div>
 </div>
 
-
-<div class="container-table-items col-lg-12 " *ngIf="0">
-    <div class="row new-items table-header">
-      <div *ngFor="let row of dataColumns" class="col-lg-{{row.size}}">{{row.label |translate}}</div>
-    </div>
-
-    <div class="row add-items table-items" *ngFor="let data of datas">
-      <div *ngFor="let row of dataColumns" class="col-lg-{{row.size}}">{{data[row.field]}}</div>
-    </div>
-  <app-pagination [dataSource]="dataSource" (newData)="refreshGrid($event)"></app-pagination>
-</div>
 
 <ng-template #columnHide let-modal>
   <h4 class="modal-title" id="modal-basic-title" style="text-align:center">{{'datatable.hide' | translate }}</h4>

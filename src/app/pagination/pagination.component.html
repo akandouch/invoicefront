@@ -1,6 +1,6 @@
 <div class="col-lg-12 row pagination">
   <div class="col-lg-11">
-    <label>Pages:<br/>
+    <label>Pages:
       <a *ngIf="pageNumber !==0" (click)="pageNumber=0;get()"><fa-icon [icon]="faFastBackward"></fa-icon>&nbsp;</a>
       <a *ngIf="pageNumber !==0" (click)="pageNumber=pageNumber-1;get()"><fa-icon [icon]="faStepBackward"></fa-icon>&nbsp;</a>
       <a *ngIf="pageNumber ==0" style="color:gray"><fa-icon [icon]="faFastBackward"></fa-icon>&nbsp;</a>
@@ -20,7 +20,7 @@
     </label>
   </div>
   <div class="col-lg-1">
-    <label style="float: right;">Total:<br/>
+    <label style="float: right;">Total:
       <select [(ngModel)]="pageSize" (change)="pageNumber=0;get()">
         <option>1</option>
         <option>5</option>
@@ -32,10 +32,3 @@
     </label>
   </div>
 </div>
-<!--<label>Page: <select [(ngModel)]="pageNumber" (change)="get()">
-  <option *ngFor="let i of pages">{{i}}</option>
-</select>
-</label>
-<label>Page :<input [(ngModel)]="pageNumber" (change)="get()"></label>
-<label>Size :<input [(ngModel)]="pageSize" (change)="get()"></label>
--->

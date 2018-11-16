@@ -1,6 +1,7 @@
 import { DataSource, Page } from "./datasource.interface";
 import { RestServiceAbstract } from "../services/restserviceabstract.class";
 import { resolve } from "q";
+import { columnOrder } from "./data-table.component";
 
 
 export class RestDataSource implements DataSource{
@@ -12,13 +13,17 @@ export class RestDataSource implements DataSource{
     set source(source:RestServiceAbstract){
         this._source = source;
     }
-    getPage(pageSize:number, pageNumber:number){
-
+    getPage(pageSize:number, pageNumber:number, order?:columnOrder){
         var promise:Promise<Page>= new Promise((resolve)=>{
 
         
+        var params = {pageNumber:pageNumber, pageSize:pageSize, orderColumn:null, direction:null};
         var p:Page;
-        this._source.get({pageNumber:pageNumber, pageSize:pageSize},(data)=>{
+        if(order){
+            params.orderColumn = order.name
+            params.direction = order.asc?"asc":"desc";
+        }
+        this._source.get(params,(data)=>{
             p = {
                 totalPages: data.totalPages,
                 totalElement: data.totalElement,
