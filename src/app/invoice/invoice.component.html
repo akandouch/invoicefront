@@ -31,7 +31,7 @@
             <div *ngFor="let i of history"
                  class="p-0 m-0 col-lg-12 col-sm-12 new-table-invoice {{i.status==0?'invoice-open':'invoice-close'}} {{idDetailsSelected==i.id?'selected':''}} row"
                  (click)="openDetails(i)" style="cursor: pointer;">
-              <div class="col-sm-12 col-lg-1 status">&nbsp;</div>
+              <div class="col-sm-12 col-lg-1 status d-none d-md-block">&nbsp;</div>
               <div class="col-lg-2" *ngIf="i.invoicer.logo" style="overflow: hidden">
                 <app-image-loader [height]="75" [image]="i.invoicer.logo"></app-image-loader>
               </div>
