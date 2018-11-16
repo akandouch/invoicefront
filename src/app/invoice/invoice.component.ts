@@ -276,4 +276,9 @@ export class InvoiceComponent implements OnInit {
       case "downloadPdf": this.generatePdf(<Invoice>data.data);
     }
   }
+  get totalPriceProduct(){
+    var total = 0;
+    this.current.products.forEach(x=>total += x.quantity*x.unitPrice);
+    return total;
+  }
 }
