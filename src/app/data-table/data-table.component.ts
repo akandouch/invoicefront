@@ -16,6 +16,9 @@ import { DataSourceFactory } from './datasourcefactory.class';
 export class DataTableComponent implements OnInit, OnChanges {
 
   @Input()
+  public id:string;
+
+  @Input()
   public dataSource: RestService | Array<Entity>;
   @Input()
   public dataColumns: Array<DataColumn>;
@@ -75,6 +78,7 @@ export class DataTableComponent implements OnInit, OnChanges {
       this.datas = <Array<Entity>>this.dataSource;
       this.noPagination = true;
     }
+    this.loadLocalSettings();
   }
 
   generateCSV() {
@@ -193,6 +197,20 @@ export class DataTableComponent implements OnInit, OnChanges {
       col = col.child;
     }
     return path;
+  }
+
+  saveLocalSettings(){
+    if(this.id){
+      window.localStorage.setItem("data-table-preferences-" + this.id, JSON.stringify(this.dataColumns));
+    }
+  }
+  loadLocalSettings(){
+    if(this.id){
+      let settings = window.localStorage.getItem("data-table-preferences-" + this.id);
+      if (settings){
+        this.dataColumns = JSON.parse(settings);
+      }
+    }
   }
 }
 

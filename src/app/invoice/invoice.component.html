@@ -13,6 +13,7 @@
 
 
         <app-data-table *ngIf="!newVersion"
+                        [id]="'invoice-list'"
                         [dataSource]="invoiceService"
                         [dataColumns]="dataColumns"
                         [customActions]="customActions"

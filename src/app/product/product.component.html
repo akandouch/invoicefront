@@ -37,6 +37,7 @@
       <input type="file" (change)="addAttachment($event)" id="file" style="display:none">
     </div>
     <app-data-table
+      [id]="'product-list'"
       [dataSource]="productRestService"
       [dataColumns]="dataColumns"
       [actionButtons]="dataTableButtons"
