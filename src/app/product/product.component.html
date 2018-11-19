@@ -52,6 +52,7 @@
   <div *ngIf="selectOnly">
     <h5>{{'page.product.searchProduct'|translate}}</h5>
     <app-data-table
+      [id]="'product-list-select-only'"
       [dataSource]="productRestService"
       [dataColumns]="dataColumns"
       (clickEvent)="select($event)"
