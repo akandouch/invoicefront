@@ -18,8 +18,8 @@
       <input type="file" (change)="addAttachment($event)" id="file" style="display:none">
   </div>
   <div class="col-lg-6 p-0 m-0 form-group" *ngIf="newProduct.uploads">
-    <div class="image" style="height: 200px;width: 100%;">
-    <img [src]="getAttachment(newProduct.uploads[currentImage])" class="main"> 
+    <div class="image main" style="height: 160px;width: 50%;">
+      <img [src]="getAttachment(newProduct.uploads[currentImage])" class="main"> 
     </div>
     <ng-container *ngFor="let u of newProduct.uploads;index as i">
       <div class="image" style="height: 50px;width: 50px;float: left;" (click)="currentImage = i">
