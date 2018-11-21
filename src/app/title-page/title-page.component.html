@@ -1,7 +1,11 @@
 <div class="col-lg-12 m-0 p-0">
   <h5>
     <fa-icon [icon]="menu.icon" class="header-icon"
-             [ngStyle]="{'border-color': menu.color, 'color': menu.color}"></fa-icon>&nbsp;{{menu.label | translate}}
+             [ngStyle]="{'background-color': menu.color, 'color': '#fff'}"></fa-icon>&nbsp;
+             {{menu.label | translate}}
+
+    <fa-icon [icon]="faCog" class="header-settings"
+    ></fa-icon>
   </h5>
   <hr>
 </div>
