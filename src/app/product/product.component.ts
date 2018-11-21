@@ -9,6 +9,7 @@ import { $ } from 'protractor';
 import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 import { UnitOfMeasureRestServiceImpl } from '../services/unitofmeasurerestserviceimpl.class';
 import { UnitOfMeasure } from '../domain/unitofmeasure.class';
+import { UploadRestServiceImpl } from '../services/uploadrestserviceimpl.class';
 
 @Component({
   selector: 'app-product',
@@ -41,6 +42,8 @@ export class ProductComponent implements OnInit {
 
   public uom:Array<UnitOfMeasure>;
 
+  public currentImage:number = 0;
+
   /* for data table */
   public dataColumns: Array<DataColumn> = [
     {field: {name: 'id'}, label: 'page.product.id'},
@@ -61,7 +64,8 @@ export class ProductComponent implements OnInit {
   public newProduct: Product = new Product();
   constructor(
     @Inject(ProductRestServiceImpl) private productRestService: ProductRestServiceImpl,
-    @Inject(UnitOfMeasureRestServiceImpl) private uomRestService: UnitOfMeasureRestServiceImpl
+    @Inject(UnitOfMeasureRestServiceImpl) private uomRestService: UnitOfMeasureRestServiceImpl,
+    @Inject(UploadRestServiceImpl) private uploadRestService: UploadRestServiceImpl
   ) {
     this.products = new Array();
     this.reload();
@@ -138,7 +142,7 @@ export class ProductComponent implements OnInit {
     return csvTemplatePath;
   }
 
-  addAttachment(event: any) {
+  addAttachment(event: any) {    
     const blob = event.srcElement.files[0];
     const fileReader = new FileReader();
     fileReader.addEventListener('load', () => {
@@ -146,14 +150,31 @@ export class ProductComponent implements OnInit {
       upl.contentType = blob.type;
       upl.fileName = blob.name;
       upl.newUpload = fileReader.result.split(',')[1];
-      this.productRestService.postCSV(upl, (u) => {
+
+      
+      this.uploadRestService.post(upl, 
+        (u)=>{
+          if(!this.newProduct.uploads){
+            this.newProduct.uploads = [];
+          }
+          this.newProduct.uploads.push(u);
+          alert('file successfully added')
+        },
+        ()=>{alert('errora')});
+      /*this.productRestService.postCSV(upl, (u) => {
         this.reload();
         alert('csv loaded successfully');
       }, (err) => {
         alert('error loading csv');
-      });
+      });*/
     });
     fileReader.readAsDataURL(blob);
+  }
+  
+  getAttachment(upload: Upload) {
+    console.log(upload);
+    const uploadUrl = this.uploadRestService.getResourcePath(upload);
+    return uploadUrl;
   }
   manageCustomAction(action:CustomAction){
     switch(action.action){

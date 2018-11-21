@@ -7,3 +7,27 @@
 .table-product-selection > .content:hover {
     background-color: #ffe674;
 }
+
+.form-group > label {
+    text-align: right;
+    font-weight: 600;
+    color: rgb(110, 110, 110);
+
+}
+
+textarea.form-control {
+    height: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+img.image {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 5px; /* Some padding */
+    width: 150px; /* Set a small width */
+}
+
+/* Add a hover effect (blue shadow) */
+img.image:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
