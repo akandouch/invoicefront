@@ -20,14 +20,39 @@ textarea.form-control {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+img.main.image {
+    width: 250px;
+    height: 250px;
+}
 img.image {
     border: 1px solid #ddd; /* Gray border */
     border-radius: 4px;  /* Rounded border */
     padding: 5px; /* Some padding */
-    width: 150px; /* Set a small width */
+    height: 50px;
+    width: 50px; /* Set a small width */
+    max-width: 100%;
+    max-height: 100%;
+    margin: 2px;
+    float: left;
 }
 
 /* Add a hover effect (blue shadow) */
 img.image:hover {
     box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+.img-next {
+    right: 5px;
+}
+.img-prev {
+    left: 5px;
+}
+.img-next, .img-prev {
+    cursor: pointer;
+    position:absolute; 
+    background-color: rgb(124, 124, 124);
+    color: #ddd;
+    top:50%;
+}
+.img-next:hover, .img-prev:hover {
+    border: solid 2px #ffe674;
 }
